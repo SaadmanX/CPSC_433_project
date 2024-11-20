@@ -9,7 +9,7 @@ public class Constraint {
         this.item1 = item1;
         this.item2 = item2;
     }
-
+ 
     @Override
     public String toString() {
         return String.format("Constraint[type=%s, item1=%s, item2=%s]", type, item1, item2);
