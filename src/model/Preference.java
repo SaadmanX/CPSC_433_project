@@ -1,3 +1,4 @@
+package model;
 public class Preference {
     private String day;
     private String time;

@@ -1,3 +1,4 @@
+package model;
 public class Constraint {
     private String type;
     private String item1;

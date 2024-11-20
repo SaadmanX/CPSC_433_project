@@ -1,4 +1,5 @@
 import java.io.IOException;
+import parser.InputParser;
 
 public class Main {
     public static void main(String[] args) {

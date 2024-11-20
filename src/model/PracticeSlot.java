@@ -1,3 +1,4 @@
+package model;
 public class PracticeSlot {
     private String day;
     private String startTime;

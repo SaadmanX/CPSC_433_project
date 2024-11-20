@@ -1,3 +1,4 @@
+package model;
 public class Practice {
     private String identifier;
 

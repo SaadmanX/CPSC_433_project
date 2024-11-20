@@ -1,3 +1,4 @@
+package model;
 public class GameSlot {
     private String day;
     private String startTime;

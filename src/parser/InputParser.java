@@ -1,5 +1,12 @@
+package parser;
 import java.io.*;
 import java.util.*;
+
+import model.Assignment;
+import model.Constraint;
+import model.GameSlot;
+import model.PracticeSlot;
+import model.Preference;
 
 public class InputParser {
     private Map<String, List<String>> sections;

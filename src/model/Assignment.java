@@ -1,3 +1,4 @@
+package model;
 public class Assignment {
     private String identifier;
     private String day;
@@ -8,6 +9,7 @@ public class Assignment {
         this.day = day;
         this.time = time;
     }
+
 
     @Override
     public String toString() {
