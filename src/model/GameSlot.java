@@ -12,6 +12,23 @@ public class GameSlot {
         this.gameMin = gameMin;
     }
 
+    public String getDay(){
+        return this.day;
+    }
+
+    public String getStartTime(){
+        return this.startTime;
+    }
+
+    public int gameMax(){
+        return this.gameMax;
+    }
+
+    public int gameMin(){
+        return this.gameMin;
+    }
+
+
     @Override
     public String toString() {
         return String.format("GameSlot[day=%s, startTime=%s, gameMax=%d, gameMin=%d]", day, startTime, gameMax, gameMin);

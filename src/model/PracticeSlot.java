@@ -12,6 +12,22 @@ public class PracticeSlot {
         this.practiceMin = practiceMin;
     }
 
+    public String getDay(){
+        return this.day;
+    }
+
+    public String getStartTime(){
+        return this.startTime;
+    }
+
+    public int practiceMax(){
+        return this.practiceMax;
+    }
+
+    public int practiceMin(){
+        return this.practiceMin;
+    }
+
     @Override
     public String toString() {
         return String.format("PracticeSlot[day=%s, startTime=%s, practiceMax=%d, practiceMin=%d]", day, startTime, practiceMax, practiceMin);

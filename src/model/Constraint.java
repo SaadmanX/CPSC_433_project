@@ -9,6 +9,18 @@ public class Constraint {
         this.item1 = item1;
         this.item2 = item2;
     }
+
+    public String getType(){
+        return this.type;
+    }
+
+    public String item1(){
+        return this.item1;
+    }
+
+    public String item2(){
+        return this.item2;
+    }
  
     @Override
     public String toString() {

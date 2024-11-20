@@ -12,6 +12,8 @@ public class Preference {
         this.value = value;
     }
 
+    
+
     @Override
     public String toString() {
         return String.format("Preference[day=%s, time=%s, identifier=%s, value=%d]", day, time, identifier, value);

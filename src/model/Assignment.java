@@ -10,6 +10,17 @@ public class Assignment {
         this.time = time;
     }
 
+    public String getDay(){
+        return this.day;
+    }
+
+    public String getTime(){
+        return this.time;
+    }
+
+    public String getId(){
+        return this.identifier;
+    }
 
     @Override
     public String toString() {
