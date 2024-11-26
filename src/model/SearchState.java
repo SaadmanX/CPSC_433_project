@@ -3,6 +3,7 @@ package model;
 import java.util.*;
 
 import model.slots.*;
+import model.task.Practice;
 import model.task.Task;
 
 public class SearchState {
@@ -31,6 +32,28 @@ public class SearchState {
 
     public void setAvailableGamesSlot(List<GameSlot> gameSlots){
         this.availableGamesSlots = gameSlots;
+    }
+
+    public void setRemainingGamesSlots(Slot slot){
+        for (Iterator<GameSlot> iterator = availableGamesSlots.iterator(); iterator.hasNext(); ) {
+            GameSlot cur = iterator.next();
+            if (cur.getId().equals(slot.getId())) {
+                cur.setMax(slot.getMax() - 1);
+                cur.setMin(slot.getMin() - 1);
+                break;
+            }
+        }
+    }
+
+    public void setRemainingPracticesSlots(Slot slot){
+        for (Iterator<PracticeSlot> iterator = availablePracticesSlots.iterator(); iterator.hasNext(); ) {
+            PracticeSlot cur = iterator.next();
+            if (cur.getId().equals(slot.getId())) {
+                cur.setMax(slot.getMax() - 1);
+                cur.setMin(slot.getMin() - 1);
+                break;
+            }
+        }
     }
 
     public void setAvailablePracticesSlot(List<PracticeSlot> practiceSlots){

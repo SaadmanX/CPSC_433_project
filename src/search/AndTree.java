@@ -59,6 +59,11 @@ public class AndTree {
             this.constraints.put("Unwanted", parser.parseUnwanted());
             this.allPatials = parser.parsePartialAssignments();
 
+            this.allTasks = parser.getAllTasks();
+            this.allSlots = parser.getAllSlots();
+
+            state.setRemainingTask(allTasks);
+
             //DEBUGGING
             //parser.parseNotCompatible().forEach(System.out::println);
             //parser.parseUnwanted().forEach(System.out::println);
@@ -78,8 +83,6 @@ public class AndTree {
     }
     public void preprocess(){
         parse();
-        this.allTasks = parser.getAllTasks(); //joint (will be fixed later)
-        this.allSlots = parser.getAllSlots(); //joint
         assignPartialAssignment();
         //assignNotCompatible();
     }
@@ -148,31 +151,36 @@ public class AndTree {
             }
         }
 
-        //Reset max capacity
+        //Reset max capacity (Wrong, needs to be in the remaining slots)
         if (isGame){
-            List<GameSlot> gSlots = state.getAvailableGamesSlots();
-            for (Iterator<GameSlot> iterator = gSlots.iterator(); iterator.hasNext(); ) {
-                GameSlot slot = iterator.next();
-                if (slot.getId().equals(newAssignment.getSlot().getId())) {
-                    slot.setMax(slot.getMax() - 1);
-                    break;
-                }
-            }
+            state.setRemainingGamesSlots(newAssignment.getSlot());
+
         } else {
-            List<PracticeSlot> pSlots = state.getAvailablePracticesSlots();
-            for (Iterator<PracticeSlot> iterator = pSlots.iterator(); iterator.hasNext(); ) {
-                PracticeSlot slot = iterator.next();
-                if (slot.getId().equals(newAssignment.getSlot().getId())) {
-                    slot.setMax(slot.getMax() - 1);
-                    break;
-                }
-            }
+            state.setRemainingPracticesSlots(newAssignment.getSlot());
         }
        
-        //System.out.println("Successfully transits to a new state where: ");
-        //for (int a = 0; a < state){
+        System.out.println("Successfully transits to a new state where: ");
+        System.out.println("Assignment: ");
+        for (int a = 0; a < assignments.size(); ++a){
+            System.out.println(assignments.get(a));
+        }
+        System.out.println("Remaining Tasks: ");
+        for (int b = 0; b < state.getRemaininngTask().size(); b++){
+            System.out.println(state.getRemaininngTask().get(b).toString());
+        }
 
-        //}
+        System.out.println("Remaining Games Slots:");
+
+        for (int c = 0; c < state.getAvailablePracticesSlots().size(); c++){
+            System.out.println(state.getAvailableGamesSlots().get(c));
+        }
+
+        System.out.println("Remaining Practices Slots:");
+        for (int d = 0; d < state.getAvailablePracticesSlots().size(); d++){
+            System.out.println(state.getAvailablePracticesSlots().get(d));
+        }
+
+        System.out.println("Penalty: " + penalty);
     }
 
     public void chooseNext(){

@@ -34,6 +34,10 @@ public abstract class Slot {
         return this.max;
     }
 
+    public void setMin(int min){
+        this.min = min;
+    }
+    
     public void setMax(int max){
         this.max = max;
     }

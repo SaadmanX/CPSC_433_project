@@ -22,6 +22,6 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return String.format("Assignment[Task=%s, day=%s, time=%s]", task.getIdentifier(), slot.getId());
+        return String.format("Assignment[Task=%s, day=%s, time=%s]", task.getIdentifier(), slot.getDay(), slot.getStartTime());
     }
 }
