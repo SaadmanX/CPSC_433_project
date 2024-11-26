@@ -20,10 +20,6 @@ import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
 
  //TODO: Logic for penalty/multiplier + Handle NotCompatible
-//Preprocess for all the constraints list
-//For example, if it invovles with 2 parties, 
-//make HashMap to list of their Paired, Unwanted, Preferences, NotCompatible, and Partial Assignments
-//These can be used to loop through and easier management of information
 
 public class AndTree {
     private SearchState state;
@@ -35,19 +31,19 @@ public class AndTree {
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     HardConstraintsEval hardChecker = new HardConstraintsEval();
-    SoftConstraintsEval softChecker = new SoftConstraintsEval();
+    SoftConstraintsEval softChecker;
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
-        parser.setMultiplierList(multiplierList);
-        parser.setWeightList(weightList);
         this.inputFileName = filename;
+        softChecker = new SoftConstraintsEval(multiplierList, weightList);
     }
 
 
     private void parse(){
         try {
             parser.parseFile(this.inputFileName);
+            
             state.setAvailableGamesSlot(parser.parseGameSlots());
             state.setAvailablePracticesSlot(parser.parsePracticeSlots());;
             parser.parseGames();
@@ -159,6 +155,7 @@ public class AndTree {
             state.setRemainingPracticesSlots(newAssignment.getSlot());
         }
        
+        /** 
         System.out.println("Successfully transits to a new state where: ");
         System.out.println("Assignment: ");
         for (int a = 0; a < assignments.size(); ++a){
@@ -181,6 +178,7 @@ public class AndTree {
         }
 
         System.out.println("Penalty: " + penalty);
+        */
     }
 
     public void chooseNext(){

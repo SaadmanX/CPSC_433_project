@@ -17,8 +17,6 @@ import model.task.Task;
 
 public class InputParser {
     private Map<String, List<String>> sections;
-    private ArrayList<Integer> multiplierList = new ArrayList<>();
-    private ArrayList<Integer> weightList = new ArrayList<>();
     private ArrayList<Task> allTasks = new ArrayList<>();
     private ArrayList<Slot> allSlots = new ArrayList<>();
 
@@ -28,14 +26,6 @@ public class InputParser {
 
     public ArrayList<Slot> getAllSlots(){
         return allSlots;
-    }
-
-    public void setMultiplierList( ArrayList<Integer> multiplierList){
-        this.multiplierList = multiplierList;
-    }
-
-    public void setWeightList(ArrayList<Integer> weightList){
-        this.weightList = weightList;
     }
 
     public InputParser() {

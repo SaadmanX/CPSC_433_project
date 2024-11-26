@@ -1,7 +1,7 @@
 package model.slots;
 
 public abstract class Slot {
-    //This is for day and time
+    //TODO: Will need to convert startTime to int and timefrime, .0 and .5
     private String day;
     private String startTime;
     private String identifier;
@@ -37,7 +37,7 @@ public abstract class Slot {
     public void setMin(int min){
         this.min = min;
     }
-    
+
     public void setMax(int max){
         this.max = max;
     }
