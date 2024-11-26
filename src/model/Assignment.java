@@ -1,5 +1,7 @@
 package model;
 public class Assignment {
+    //I'll change this later to Task + Slot 
+
     private String identifier;
     private String day;
     private String time;

@@ -1,38 +1,38 @@
-import java.io.IOException;
-import parser.InputParser;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import model.SearchState;
+import model.slots.GameSlot;
+import model.slots.PracticeSlot;
+import model.task.Game;
+import model.task.Practice;
+import search.AndTree;
 
 public class Main {
     public static void main(String[] args) {
+        ArrayList<Integer> weightList = new ArrayList<>();
+        ArrayList<Integer> multiplierList = new ArrayList<>();
+
+        //Parse from command line here
         String inputFileName = args[0];
-        InputParser parser = new InputParser();
-
-        try {
-            parser.parseFile(inputFileName);
-            //System.out.println("Name: " + parser.parseName());
-            //System.out.println("\nGame Slots:");
-            parser.parseGameSlots().forEach(System.out::println);
-           // System.out.println("\nPractice Slots:");
-            parser.parsePracticeSlots().forEach(System.out::println);
-            //System.out.println("\nGames:");
-            parser.parseGames().forEach(System.out::println);
-
-            //System.out.println("\nPractices:");
-            parser.parsePractices().forEach(System.out::println);
-
-            //System.out.println("\nNot Compatible:");
-            parser.parseNotCompatible().forEach(System.out::println);
-
-            //System.out.println("\nPairs:");
-            parser.parsePairs().forEach(System.out::println);
-
-            //System.out.println("\nPreferences:");
-            parser.parsePreferences().forEach(System.out::println);
-
-            //System.out.println("\nPartial Assignments:");
-            parser.parsePartialAssignments().forEach(System.out::println);
-
-        } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+        for (int i = 1; i < 5; i++){
+            weightList.add(Integer.parseInt(args[i]));
+            multiplierList.add(Integer.parseInt(args[i+4]));
         }
+
+        //Initial state
+        Map<String, String> assignments = new HashMap<>();
+        List<Game> remainingGames = new ArrayList<>();
+        List<Practice> remainingPractices = new ArrayList<>();
+        List<GameSlot> availableGamesSlots = new ArrayList<>();
+        List<PracticeSlot> availablePracticesSlots = new ArrayList<>();
+        AndTree andTree = new AndTree(new SearchState(assignments, remainingGames, remainingPractices, 
+            availableGamesSlots, availablePracticesSlots, 0), inputFileName, weightList, multiplierList);
+        
+        //This will parse inputs from file + preprocess data
+
+        andTree.preprocess();
     }
 }

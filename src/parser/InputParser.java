@@ -3,17 +3,47 @@ import java.io.*;
 import java.util.*;
 
 import model.Assignment;
-import model.Constraint;
-import model.GameSlot;
-import model.PracticeSlot;
-import model.Preference;
+import model.constraints.Constraint;
+import model.constraints.NotCompatible;
+import model.constraints.Pair;
+import model.constraints.PartialAssignment;
+import model.constraints.Preference;
+import model.constraints.Unwanted;
+import model.slots.GameSlot;
+import model.slots.PracticeSlot;
+import model.slots.Slot;
+import model.task.Game;
+import model.task.Practice;
+import model.task.Task;
 
 public class InputParser {
     private Map<String, List<String>> sections;
+    private ArrayList<Integer> multiplierList = new ArrayList<>();
+    private ArrayList<Integer> weightList = new ArrayList<>();
+    private ArrayList<Task> allTasks = new ArrayList<>();
+    private ArrayList<Slot> allSlots = new ArrayList<>();
+
+    public ArrayList<Task> getAllTasks(){
+        return allTasks;
+    }
+
+    public ArrayList<Slot> getAllSlots(){
+        return allSlots;
+    }
+
+    public void setMultiplierList( ArrayList<Integer> multiplierList){
+        this.multiplierList = multiplierList;
+    }
+
+    public void setWeightList(ArrayList<Integer> weightList){
+        this.weightList = weightList;
+    }
 
     public InputParser() {
         sections = new LinkedHashMap<>(); // Preserve order of sections
-    }
+    }    
+
+    //TODO: Partial Assignment, Unwanted
 
     public void parseFile(String filename) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -52,7 +82,9 @@ public class InputParser {
                     String startTime = parts[1].trim();
                     int gameMax = Integer.parseInt(parts[2].trim());
                     int gameMin = Integer.parseInt(parts[3].trim());
-                    gameSlots.add(new GameSlot(day, startTime, gameMax, gameMin));
+                    GameSlot gs = new GameSlot(day, startTime, gameMax, gameMin);
+                    gameSlots.add(gs);
+                    allSlots.add(gs);
                 }
             }
         }
@@ -71,21 +103,53 @@ public class InputParser {
                     String startTime = parts[1].trim();
                     int practiceMax = Integer.parseInt(parts[2].trim());
                     int practiceMin = Integer.parseInt(parts[3].trim());
-                    practiceSlots.add(new PracticeSlot(day, startTime, practiceMax, practiceMin));
+                    PracticeSlot ps = new PracticeSlot(day, startTime, practiceMax, practiceMin);
+                    practiceSlots.add(ps);
+                    allSlots.add(ps);
                 }
             }
         }
         return practiceSlots;
     }
 
-    public List<String> parseGames() {
-        return sections.getOrDefault("Games:", new ArrayList<>());
+    public List<Game> parseGames() {
+        List<Game> games = new ArrayList<>();
+        List<String> lines = sections.get("Games:");
+
+        if (lines != null) {
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                String identifer = parts[0].trim();
+                Game newGame = new Game(identifer);
+                games.add(newGame);
+                allTasks.add(newGame);
+            }
+        }
+        
+        return games;
     }
 
-    public List<String> parsePractices() {
-        return sections.getOrDefault("Practices:", new ArrayList<>());
+    public List<Practice> parsePractices() {
+        List<Practice> practices = new ArrayList<>();
+        List<String> lines = sections.get("Practices:");
+
+        if (lines != null) {
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                String identifer = parts[0].trim();
+                Practice newP= new Practice(identifer);
+                practices.add(newP);
+                allTasks.add(newP);
+            }
+        }
+        
+        return practices;
     }
 
+    //Logically, this will be arranged into maps such that every
+    //Query can just takes into account every non-compatible
+    //Counterpart for each iteration and remove it from the assignable slot
+    //for current task
     public List<Constraint> parseNotCompatible() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Not compatible:");
@@ -93,14 +157,16 @@ public class InputParser {
         if (lines != null) {
             for (String line : lines) {
                 String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    constraints.add(new Constraint("NotCompatible", parts[0].trim(), parts[1].trim()));
-                }
+                constraints.add(new NotCompatible(parts[0].trim(), parts[1].trim()));
             }
+
         }
         return constraints;
     }
 
+    //Similarly, each assignment loops through the pairs
+    //After soft eval, they will go for the one that minimize
+    //the penalty (or the one with the highest penalty if not matched)
     public List<Constraint> parsePairs() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Pair:");
@@ -108,16 +174,15 @@ public class InputParser {
         if (lines != null) {
             for (String line : lines) {
                 String[] parts = line.split(",");
-                if (parts.length == 2) {
-                    constraints.add(new Constraint("Pair", parts[0].trim(), parts[1].trim()));
-                }
+                constraints.add(new Pair(parts[0].trim(), parts[1].trim()));
             }
         }
         return constraints;
     }
 
-    public List<Preference> parsePreferences() {
-        List<Preference> preferences = new ArrayList<>();
+    //Essentially the same with soft constraint but easier with penalty hard-coded
+    public List<Constraint> parsePreferences() {
+        List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Preferences:");
 
         if (lines != null) {
@@ -128,25 +193,48 @@ public class InputParser {
                     String time = parts[1].trim();
                     String identifier = parts[2].trim();
                     int value = Integer.parseInt(parts[3].trim());
-                    preferences.add(new Preference(day, time, identifier, value));
+                    constraints.add(new Preference(day, time, identifier, value));
                 }
             }
         }
-        return preferences;
+        return constraints;
     }
 
-    public List<Assignment> parsePartialAssignments() {
-        List<Assignment> assignments = new ArrayList<>();
+    public List<Constraint> parseUnwanted() {
+        List<Constraint> constraints = new ArrayList<>();
+        List<String> lines = sections.get("Unwanted:");
+
+        if (lines != null) {
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                if (parts.length == 3) {
+                    String identifier = parts[0].trim();
+                    String day = parts[1].trim();
+                    String time = parts[2].trim();
+                    constraints.add(new Unwanted(identifier, day, time));
+                }
+            }
+        }
+        return constraints;
+    }
+
+    //Logic: just parse in as preprocess and checks for conflicts of
+    //hard constraints eval. If doesn't work, immediately returns
+    //Otherwise, new SearchState
+
+    //Return the ArrayList for AndTree to preprocess
+    public List<PartialAssignment> parsePartialAssignments() {
+        List<PartialAssignment> constraints = new ArrayList<>();
         List<String> lines = sections.get("Partial assignments:");
 
         if (lines != null) {
             for (String line : lines) {
                 String[] parts = line.split(",");
                 if (parts.length == 3) {
-                    assignments.add(new Assignment(parts[0].trim(), parts[1].trim(), parts[2].trim()));
+                    constraints.add(new PartialAssignment(parts[0].trim(), parts[1].trim(), parts[2].trim()));
                 }
             }
         }
-        return assignments;
+        return constraints;
     }
 }
