@@ -1,31 +1,27 @@
 package model;
+
+import model.slots.Slot;
+import model.task.Task;
+
 public class Assignment {
-    //I'll change this later to Task + Slot 
+    private Task task;
+    private Slot slot;
 
-    private String identifier;
-    private String day;
-    private String time;
-
-    public Assignment(String identifier, String day, String time) {
-        this.identifier = identifier;
-        this.day = day;
-        this.time = time;
+    public Assignment(Task task, Slot slot) {
+       this.task = task;
+       this.slot = slot;
     }
 
-    public String getDay(){
-        return this.day;
+    public Task getTask(){
+        return this.task;
     }
 
-    public String getTime(){
-        return this.time;
-    }
-
-    public String getId(){
-        return this.identifier;
+    public Slot getSlot(){
+        return this.slot;
     }
 
     @Override
     public String toString() {
-        return String.format("Assignment[identifier=%s, day=%s, time=%s]", identifier, day, time);
+        return String.format("Assignment[Task=%s, day=%s, time=%s]", task.getIdentifier(), slot.getId());
     }
 }

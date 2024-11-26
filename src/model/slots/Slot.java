@@ -7,13 +7,19 @@ public abstract class Slot {
     private String identifier;
     private int max;
     private int min;
+    private boolean forGame;
 
-    public Slot(String day, String startTime, int max, int min) {
+    public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
         this.startTime = startTime;
         this.identifier = day + ", " + startTime;
         this.max = max;
         this.min = min;
+        this.forGame = isGame;
+    }
+
+    public boolean forGame(){
+        return this.forGame;
     }
 
     public String getDay() {
@@ -26,6 +32,10 @@ public abstract class Slot {
 
     public int getMax() {
         return this.max;
+    }
+
+    public void setMax(int max){
+        this.max = max;
     }
 
     public int getMin() {

@@ -4,16 +4,20 @@ import model.Assignment;
 import model.SearchState;
 import model.constraints.Constraint;
 import model.constraints.PartialAssignment;
+import model.slots.GameSlot;
+import model.slots.PracticeSlot;
 import model.slots.Slot;
 import model.task.Task;
 import parser.InputParser;
-import constraints.HardConstraintsEval;
-import constraints.SoftConstraintsEval;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+
+import constraints.HardConstraintsEval;
+import constraints.SoftConstraintsEval;
 
  //TODO: Logic for penalty/multiplier + preprocess of: Partial Assignment, Not Compatible 
 //Preprocess for all the constraints list
@@ -22,7 +26,7 @@ import java.util.List;
 //These can be used to loop through and easier management of information
 
 public class AndTree {
-    private SearchState root;
+    private SearchState state;
     private HashMap<String, List<Constraint>> constraints = new HashMap<>(); 
     private InputParser parser = new InputParser();
     private String inputFileName;
@@ -30,9 +34,11 @@ public class AndTree {
     private List<PartialAssignment> allPatials = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
+    HardConstraintsEval hardChecker = new HardConstraintsEval();
+    SoftConstraintsEval softChecker = new SoftConstraintsEval();
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
-        this.root = root;
+        this.state = root;
         parser.setMultiplierList(multiplierList);
         parser.setWeightList(weightList);
         this.inputFileName = filename;
@@ -42,21 +48,10 @@ public class AndTree {
     private void parse(){
         try {
             parser.parseFile(this.inputFileName);
-            root.setAvailableGamesSlot(parser.parseGameSlots());
-            root.setAvailablePracticesSlot(parser.parsePracticeSlots());;
-            root.setGames(parser.parseGames());
-            root.setPractices(parser.parsePractices());
-
-            /**
-             * 
-             * for (Task task : allTasks) {
-                    if (task.getIdentifier().equals(team1Id)){
-                        task.addNotCompatible(team2Id);
-                    } else if (task.getIdentifier().equals(team2Id)){
-                        task.addNotCompatible(team1Id);
-                    }
-                }
-             */
+            state.setAvailableGamesSlot(parser.parseGameSlots());
+            state.setAvailablePracticesSlot(parser.parsePracticeSlots());;
+            parser.parseGames();
+            parser.parsePractices();
             
             this.constraints.put("NotCompatible", parser.parseNotCompatible());
             this.constraints.put("Pairs", parser.parsePairs());
@@ -97,23 +92,98 @@ public class AndTree {
             String time = allPatials.get(i).getTime();
 
             for (int j = 0; j < allTasks.size(); j++){
-                String currentTaskId = allTasks.get(i).getIdentifier();
+                String currentTaskId = allTasks.get(j).getIdentifier();
                 //Assign it there and then to the required slot
+                //System.out.println("CurrentTaskId: " + currentTaskId);
+                //System.out.println("What I'm looking for: " + taskIdenfitier);
                 if (currentTaskId.equals(taskIdenfitier)){
+                    //System.out.println("At least I'm here");
+
                     for (int k = 0; k < allSlots.size(); k++){
+
+                        //System.out.println("What I'm Looking for: " + day + ", " + time);
+
                         String currentTime = allSlots.get(k).getStartTime();
                         String currentDay = allSlots.get(k).getDay();
+
+                        //System.out.println("What I'm having: " + currentDay + ", " + currentTime);
                         if (currentDay.equals(day) && currentTime.equals(time)){
-                            //Assign, then break
-                            
+                            //Transit, break
+                           
+                            Assignment nAssignment = new Assignment(allTasks.get(j), allSlots.get(k));
+                            transitNext(nAssignment);
                             break;
                         }
                     }
-
                 }
             }
-
         }
+    }
+
+    public void handleIdentifier(){
+        /**
+         * 
+         * for (Task task : allTasks) {
+            if (task.getIdentifier().equals(team1Id)){
+                task.addNotCompatible(team2Id);
+            } else if (task.getIdentifier().equals(team2Id)){
+                task.addNotCompatible(team1Id);
+                }
+            }
+        */
+    }
+
+    //Transits to next assignment
+    public void transitNext(Assignment newAssignment){
+        List<Assignment> assignments = state.getAssignments();
+        assignments.add(newAssignment); //test new assignment
+        if (!hardChecker.validate(state)){
+            return;
+        }
+        int penalty = softChecker.calculatePenalty(state);
+        
+        //Set new state
+        this.state.setAssignments(assignments);
+        this.state.setPenalty(penalty);
+
+        boolean isGame = false;
+
+        //Remove current task, and update state
+        for (Iterator<Task> iterator = allTasks.iterator(); iterator.hasNext(); ) {
+            Task task = iterator.next();
+            if (task.getIdentifier().equals(newAssignment.getTask().getIdentifier())) {
+                isGame = newAssignment.getTask().getIsGame();
+                iterator.remove(); 
+                break;  
+            }
+        }
+
+        //Reset max capacity
+        if (isGame){
+            List<GameSlot> gSlots = state.getAvailableGamesSlots();
+            for (Iterator<GameSlot> iterator = gSlots.iterator(); iterator.hasNext(); ) {
+                GameSlot slot = iterator.next();
+                if (slot.getId().equals(newAssignment.getSlot().getId())) {
+                    slot.setMax(slot.getMax() - 1);
+                    break;
+                }
+            }
+        } else {
+            List<PracticeSlot> pSlots = state.getAvailablePracticesSlots();
+            for (Iterator<PracticeSlot> iterator = pSlots.iterator(); iterator.hasNext(); ) {
+                PracticeSlot slot = iterator.next();
+                if (slot.getId().equals(newAssignment.getSlot().getId())) {
+                    slot.setMax(slot.getMax() - 1);
+                    break;
+                }
+            }
+        }
+       
+        System.out.println("Successfully transits to: " + state);
+    }
+
+    public void chooseNext(){
+        //With remaining Task, propagates possibilities and choose the appropriate one
     }
 
     //TODO: Search algorithm

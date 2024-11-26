@@ -2,40 +2,31 @@ package model;
 
 import java.util.*;
 
-import model.*;
 import model.slots.*;
-import model.task.Game;
-import model.task.Practice;
+import model.task.Task;
 
 public class SearchState {
-    private Map<String, String> assignments; // Maps game/practice to slot
-    private List<Game> remainingGames;
-    private List<Practice> remainingPractices;
+    private List<Assignment> assignments; // Maps game/practice to slot
+    private List<Task> remainingTasks;
     private List<GameSlot> availableGamesSlots;
     private List<PracticeSlot> availablePracticesSlots;
     private int penalty;
 
-    public SearchState(Map<String, String> assignments, List<Game> remainingGames,
-                       List<Practice> remainingPractices, List<GameSlot> availableGamesSlots, 
+    public SearchState(List<Assignment> assignments, List<Task> remaningTasks, List<GameSlot> availableGamesSlots, 
                        List<PracticeSlot> availablePracticesSlots, int penalty) {
         this.assignments = assignments;
-        this.remainingGames = remainingGames;
-        this.remainingPractices = remainingPractices;
+        this.remainingTasks = remaningTasks;
         this.availableGamesSlots = availableGamesSlots;
         this.availablePracticesSlots = availablePracticesSlots;
         this.penalty = penalty;
     }
 
-    public void setAssignments(Map<String, String> assignments){
+    public void setAssignments(List<Assignment> assignments){
         this.assignments = assignments;
     }
 
-    public void setGames(List<Game> games){
-        this.remainingGames = games;
-    }
-
-    public void setPractices(List<Practice> practices){
-        this.remainingPractices = practices;
+    public void setRemainingTask(List<Task> tasks){
+        this.remainingTasks = tasks;
     }
 
     public void setAvailableGamesSlot(List<GameSlot> gameSlots){
@@ -46,16 +37,12 @@ public class SearchState {
         this.availablePracticesSlots = practiceSlots;
     }
 
-    public Map<String, String> getAssignments() {
+    public List<Assignment> getAssignments() {
         return assignments;
     }
 
-    public List<Game> getRemainingGames() {
-        return remainingGames;
-    }
-
-    public List<Practice> getRemainingPractices() {
-        return remainingPractices;
+    public List<Task> getRemaininngTask(){
+        return remainingTasks;
     }
 
     public List<GameSlot> getAvailableGamesSlots() {
@@ -72,10 +59,5 @@ public class SearchState {
 
     public void setPenalty(int penalty) {
         this.penalty = penalty;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("State[assignments=%s, penalty=%d]", assignments, penalty);
     }
 }

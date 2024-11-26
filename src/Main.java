@@ -1,13 +1,11 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import model.Assignment;
 import model.SearchState;
 import model.slots.GameSlot;
 import model.slots.PracticeSlot;
-import model.task.Game;
-import model.task.Practice;
+import model.task.Task;
 import search.AndTree;
 
 public class Main {
@@ -23,12 +21,11 @@ public class Main {
         }
 
         //Initial state
-        Map<String, String> assignments = new HashMap<>();
-        List<Game> remainingGames = new ArrayList<>();
-        List<Practice> remainingPractices = new ArrayList<>();
+        List<Assignment> assignments = new ArrayList<>();
+        List<Task> remainingTasks = new ArrayList<>();
         List<GameSlot> availableGamesSlots = new ArrayList<>();
         List<PracticeSlot> availablePracticesSlots = new ArrayList<>();
-        AndTree andTree = new AndTree(new SearchState(assignments, remainingGames, remainingPractices, 
+        AndTree andTree = new AndTree(new SearchState(assignments, remainingTasks, 
             availableGamesSlots, availablePracticesSlots, 0), inputFileName, weightList, multiplierList);
         
         //This will parse inputs from file + preprocess data

@@ -2,7 +2,6 @@ package parser;
 import java.io.*;
 import java.util.*;
 
-import model.Assignment;
 import model.constraints.Constraint;
 import model.constraints.NotCompatible;
 import model.constraints.Pair;
