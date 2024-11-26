@@ -19,7 +19,7 @@ import java.util.List;
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
 
- //TODO: Logic for penalty/multiplier + preprocess of: Partial Assignment, Not Compatible 
+ //TODO: Logic for penalty/multiplier + Handle NotCompatible
 //Preprocess for all the constraints list
 //For example, if it invovles with 2 parties, 
 //make HashMap to list of their Paired, Unwanted, Preferences, NotCompatible, and Partial Assignments
@@ -94,22 +94,12 @@ public class AndTree {
             for (int j = 0; j < allTasks.size(); j++){
                 String currentTaskId = allTasks.get(j).getIdentifier();
                 //Assign it there and then to the required slot
-                //System.out.println("CurrentTaskId: " + currentTaskId);
-                //System.out.println("What I'm looking for: " + taskIdenfitier);
                 if (currentTaskId.equals(taskIdenfitier)){
-                    //System.out.println("At least I'm here");
-
                     for (int k = 0; k < allSlots.size(); k++){
-
-                        //System.out.println("What I'm Looking for: " + day + ", " + time);
-
                         String currentTime = allSlots.get(k).getStartTime();
                         String currentDay = allSlots.get(k).getDay();
-
-                        //System.out.println("What I'm having: " + currentDay + ", " + currentTime);
                         if (currentDay.equals(day) && currentTime.equals(time)){
                             //Transit, break
-                           
                             Assignment nAssignment = new Assignment(allTasks.get(j), allSlots.get(k));
                             transitNext(nAssignment);
                             break;
@@ -120,7 +110,7 @@ public class AndTree {
         }
     }
 
-    public void handleIdentifier(){
+    public void handleNotCompatible(){
         /**
          * 
          * for (Task task : allTasks) {
@@ -137,10 +127,10 @@ public class AndTree {
     public void transitNext(Assignment newAssignment){
         List<Assignment> assignments = state.getAssignments();
         assignments.add(newAssignment); //test new assignment
-        if (!hardChecker.validate(state)){
+        if (!hardChecker.validate(assignments)){
             return;
         }
-        int penalty = softChecker.calculatePenalty(state);
+        int penalty = softChecker.calculatePenalty(assignments);
         
         //Set new state
         this.state.setAssignments(assignments);
@@ -179,7 +169,10 @@ public class AndTree {
             }
         }
        
-        System.out.println("Successfully transits to: " + state);
+        //System.out.println("Successfully transits to a new state where: ");
+        //for (int a = 0; a < state){
+
+        //}
     }
 
     public void chooseNext(){

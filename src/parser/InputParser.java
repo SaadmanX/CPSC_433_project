@@ -42,8 +42,6 @@ public class InputParser {
         sections = new LinkedHashMap<>(); // Preserve order of sections
     }    
 
-    //TODO: Partial Assignment, Unwanted
-
     public void parseFile(String filename) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
