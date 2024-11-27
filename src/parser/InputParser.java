@@ -67,9 +67,12 @@ public class InputParser {
                     String startTime = parts[1].trim();
                     int gameMax = Integer.parseInt(parts[2].trim());
                     int gameMin = Integer.parseInt(parts[3].trim());
-                    Slot gs = new Slot(day, startTime, gameMax, gameMin, true);
-                    gameSlots.add(gs);
-                    allSlots.add(gs);
+
+                    if (!(day.equals("TU") && startTime.equals("11:00"))){
+                        Slot gs = new Slot(day, startTime, gameMax, gameMin, true);
+                        gameSlots.add(gs);
+                        allSlots.add(gs);
+                    }
                 }
             }
         }
@@ -185,8 +188,8 @@ public class InputParser {
         return constraints;
     }
 
-    public List<Constraint> parseUnwanted() {
-        List<Constraint> constraints = new ArrayList<>();
+    public List<Unwanted> parseUnwanted() {
+        List<Unwanted> constraints = new ArrayList<>();
         List<String> lines = sections.get("Unwanted:");
 
         if (lines != null) {

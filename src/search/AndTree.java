@@ -4,6 +4,7 @@ import model.Assignment;
 import model.SearchState;
 import model.constraints.Constraint;
 import model.constraints.PartialAssignment;
+import model.constraints.Unwanted;
 import model.slots.Slot;
 import model.task.Task;
 import parser.InputParser;
@@ -24,6 +25,7 @@ public class AndTree {
     private InputParser parser = new InputParser();
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
+    private List<Unwanted> unwantedList = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
@@ -50,7 +52,7 @@ public class AndTree {
             constraints.put("NotCompatible", parser.parseNotCompatible());
             constraints.put("Pairs", parser.parsePairs());
             constraints.put("Preferences", parser.parsePreferences());
-            constraints.put("Unwanted", parser.parseUnwanted());
+            unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
 
             allTasks = parser.getAllTasks();
@@ -82,6 +84,23 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
         assignPartialAssignments();
+        assignUnwanted();
+
+        // Validate partial assignments against the current state
+        HardConstraintsEval hardChecker = new HardConstraintsEval();
+        if (!hardChecker.validatePartialAssignmentsForState(partialAssignments, state)) {
+            throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
+        }
+    }
+
+    private void assignUnwanted(){
+        for (Unwanted unwanted : unwantedList) {
+            Task task = findTaskByIdentifier(unwanted.getTaskIdentifier());
+            Slot slot = findSlotByDayAndTime(unwanted.getDay(), unwanted.getTime(), task.getIsGame());
+            if (task != null && slot != null) {
+                task.addUnwantedSlot(slot);
+            }
+        }
     }
 
     private Task findTaskByIdentifier(String identifier) {
@@ -122,6 +141,10 @@ public class AndTree {
     }
 
     private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
+        // Check if the slot is in the unwanted list for the current task
+        if (task.isUnwantedSlot(slot)) {
+            return state;
+        }
         // Retrieve linked slots for the given slot
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
         List<Assignment> linkedAssignments = new ArrayList<>();
