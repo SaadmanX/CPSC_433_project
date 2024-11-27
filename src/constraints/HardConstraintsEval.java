@@ -35,6 +35,7 @@ public class HardConstraintsEval {
             //if (!unwantedSlotConstraint(assignment)) return false;
             if (!notCompatibleConstraint(assignments)) return false;
             if (!specialPracticeBookingConstraint(assignments)) return false;
+            if (!specialGamePracticeBookingConstraint(assignments)) return false;
         }
         return true;
     }
@@ -102,4 +103,18 @@ public class HardConstraintsEval {
         }
         return true;
     }
+
+    // 10. Special Game and Practice Booking Constraint. CMSA U12T1 and CMSA U12T1S practice and games cannot be placed in the in the same slot. same with CMSA U13T1 and CMSA U13T1S
+    private boolean specialGamePracticeBookingConstraint(List<Assignment> assignments) {
+        for (Assignment a : assignments) {
+            for (Assignment b : assignments) {
+                if ((a.getTask().getIdentifier().matches("CMSA U12T1.*") && b.getTask().getIdentifier().matches("CMSA U12T1.*")) && (a.getSlot().equals(b.getSlot())) || ((a.getTask().getIdentifier().matches("CMSA U13T1.*") && b.getTask().getIdentifier().matches("CMSA U13T1.*")) && (a.getSlot().equals(b.getSlot())))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
 }
