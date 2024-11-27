@@ -96,7 +96,7 @@ public class HardConstraintsEval {
     // 9. Special Practice Booking Constraint
     private boolean specialPracticeBookingConstraint(List<Assignment> assignments) {
         for (Assignment a : assignments) {
-            if (a.getTask().isSpecialPractice() && !a.getSlot().getDay().matches("TU|TH")) {
+            if (a.getTask().isSpecialPractice() && !(a.getSlot().getDay().matches("TU|TH") && a.getSlot().getSlotStartTime() == 18.0)) {
                 return false;
             }
         }

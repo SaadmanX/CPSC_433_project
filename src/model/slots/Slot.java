@@ -4,7 +4,7 @@ public class Slot {
     //TODO: Will need to convert startTime to int and timefrime, .0 and .5
     private String day;
     private String startTime;
-    private double slotTime;    // start time + time frame
+    private double slotStartTime;    // start time + time frame
     private String identifier;
     private int max;
     private int min;
@@ -17,7 +17,7 @@ public class Slot {
         this.max = max;
         this.min = min;
         this.forGame = isGame;
-        this.slotTime = convertTimeToDouble(startTime);
+        this.slotStartTime = convertTimeToDouble(startTime);
     }
 
     public boolean forGame(){
@@ -38,8 +38,8 @@ public class Slot {
                 (timeStr.charAt(timeStr.length() - 2) == '3' ? 0.5 : 0.0);
     }
 
-    public double getSlotTime() {
-        return this.slotTime;
+    public double getSlotStartTime() {
+        return this.slotStartTime;
     }
     
     public int getMax() {
