@@ -122,35 +122,44 @@ public class AndTree {
     }
 
     private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
+        // Retrieve linked slots for the given slot
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
         List<Assignment> linkedAssignments = new ArrayList<>();
-
+    
         // Add the primary assignment
         linkedAssignments.add(new Assignment(task, slot));
-
-        // Add linked assignments
+    
+        // Add linked assignments while checking availability
         for (Slot linkedSlot : linkedSlots) {
+            if (!state.getAvailableSlots().contains(linkedSlot)) {
+                // If any linked slot is unavailable, the assignment fails
+                return state;
+            }
             linkedAssignments.add(new Assignment(task, linkedSlot));
         }
-
+    
         // Validate all assignments together
         List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
         newAssignments.addAll(linkedAssignments);
         if (!hardChecker.validate(newAssignments)) {
             return state; // Return the original state if validation fails
         }
-
+    
         // Create a new state with updated assignments and penalties
         SearchState newState = state.clone();
         newState.getAssignments().addAll(linkedAssignments);
+    
+        // Remove assigned slots from availability
         for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
             newState.updateRemainingSlots(assignedSlot);
         }
+    
+        // Recalculate the penalty for the new state
         newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
         newState.printState();
         return newState;
     }
-
+    
     private void assignPartialAssignments() {
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());

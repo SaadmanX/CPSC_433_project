@@ -33,12 +33,16 @@ public class SearchState {
     public void updateRemainingSlots(Slot slot){
         for (Iterator<Slot> iterator = availableSlots.iterator(); iterator.hasNext(); ) {
             Slot cur = iterator.next();
-            if (cur.getId().equals(slot.getId())) {
+            if (cur.getId().equals(slot.getId()) && cur.forGame() == slot.forGame()) {
                 cur.setMax(slot.getMax() - 1);
                 cur.setMin(slot.getMin() - 1);
+                if (cur.getMax() == 0){
+                    availableSlots.remove(cur);
+                }
                 break;
             }
         }
+
     }
 
     public List<Assignment> getAssignments() {

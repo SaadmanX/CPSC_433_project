@@ -2,7 +2,7 @@ Name:
 ShortExample 
 
 Game slots: 
-MO, 8:00, 3, 2 
+MO, 8:00, 1, 2 
 WE, 8:00, 3, 2 
 FR, 8:00, 3, 2 
 MO, 9:00,3,2 
@@ -48,4 +48,5 @@ CUSA O18 DIV 01, CMSA U17T1 DIV 01
 
 Partial assignments: 
 CUSA O18 DIV 01, MO, 8:00 
+CMSA U13T3 DIV 02, MO, 8:00
 CUSA O18 DIV 01 PRC 01, FR, 10:00 
