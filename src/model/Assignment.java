@@ -8,8 +8,8 @@ public class Assignment {
     private Slot slot;
 
     public Assignment(Task task, Slot slot) {
-       this.task = task;
-       this.slot = slot;
+        this.task = task;
+        this.slot = slot;
     }
 
     public Task getTask(){

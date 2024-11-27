@@ -8,6 +8,8 @@ import model.task.Task;
 import search.AndTree;
 
 public class Main {
+
+    // for test commit
     public static void main(String[] args) {
         ArrayList<Integer> weightList = new ArrayList<>();
         ArrayList<Integer> multiplierList = new ArrayList<>();
