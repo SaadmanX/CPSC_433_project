@@ -109,11 +109,30 @@ public class HardConstraintsEval {
     private boolean specialGamePracticeBookingConstraint(List<Assignment> assignments) {
         for (Assignment a : assignments) {
             for (Assignment b : assignments) {
-                if (!(a.equals(b)) && ((a.getTask().getIdentifier().matches("CMSA U12T1.*") && b.getTask().getIdentifier().matches("CMSA U12T1.*")) && (a.getSlot().equals(b.getSlot())) || ((a.getTask().getIdentifier().matches("CMSA U13T1.*") && b.getTask().getIdentifier().matches("CMSA U13T1.*")) && (a.getSlot().equals(b.getSlot()))))) {
+                if (a.equals(b)) {
+                    continue;
+                }
+                
+                boolean isU12Conflict = (
+                    (a.getTask().getIdentifier().matches("^CMSA U12T1 .*") && 
+                    b.getTask().getIdentifier().matches("^CMSA U12T1S .*")) ||
+                    (b.getTask().getIdentifier().matches("^CMSA U12T1 .*") && 
+                    a.getTask().getIdentifier().matches("^CMSA U12T1S .*")) &&
+                    a.getSlot().equals(b.getSlot())
+                );
+    
+                boolean isU13Conflict = (
+                    (a.getTask().getIdentifier().matches("^CMSA U13T1 .*") && 
+                    b.getTask().getIdentifier().matches("^CMSA U13T1S .*")) ||
+                    (b.getTask().getIdentifier().matches("^CMSA U13T1 .*") && 
+                    a.getTask().getIdentifier().matches("^CMSA U13T1S .*")) &&
+                    a.getSlot().equals(b.getSlot())
+                );
+    
+                if (isU12Conflict || isU13Conflict) {
                     return false;
                 }
             }
         }
         return true;
-    }
-}
+    }}
