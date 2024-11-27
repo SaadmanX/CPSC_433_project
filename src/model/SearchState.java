@@ -3,22 +3,18 @@ package model;
 import java.util.*;
 
 import model.slots.*;
-import model.task.Practice;
 import model.task.Task;
 
 public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;
-    private List<GameSlot> availableGamesSlots;
-    private List<PracticeSlot> availablePracticesSlots;
+    private List<Slot> availableSlots;
     private int penalty;
 
-    public SearchState(List<Assignment> assignments, List<Task> remaningTasks, List<GameSlot> availableGamesSlots, 
-                       List<PracticeSlot> availablePracticesSlots, int penalty) {
+    public SearchState(List<Assignment> assignments, List<Task> remaningTasks, List<Slot> availableSlots, int penalty) {
         this.assignments = assignments;
         this.remainingTasks = remaningTasks;
-        this.availableGamesSlots = availableGamesSlots;
-        this.availablePracticesSlots = availablePracticesSlots;
+        this.availableSlots = availableSlots;
         this.penalty = penalty;
     }
 
@@ -30,50 +26,38 @@ public class SearchState {
         this.remainingTasks = tasks;
     }
 
-    public void setAvailableGamesSlot(List<GameSlot> gameSlots){
-        this.availableGamesSlots = gameSlots;
+    public void setRemainingSlots(List<Slot> slots){
+        this.availableSlots = slots;
     }
 
-    public void setRemainingGamesSlots(Slot slot){
-        for (Iterator<GameSlot> iterator = availableGamesSlots.iterator(); iterator.hasNext(); ) {
-            GameSlot cur = iterator.next();
+    public void updateRemainingSlots(Slot slot){
+        for (Iterator<Slot> iterator = availableSlots.iterator(); iterator.hasNext(); ) {
+            Slot cur = iterator.next();
             if (cur.getId().equals(slot.getId())) {
                 cur.setMax(slot.getMax() - 1);
                 cur.setMin(slot.getMin() - 1);
                 break;
             }
         }
-    }
-
-    public void setRemainingPracticesSlots(Slot slot){
-        for (Iterator<PracticeSlot> iterator = availablePracticesSlots.iterator(); iterator.hasNext(); ) {
-            PracticeSlot cur = iterator.next();
-            if (cur.getId().equals(slot.getId())) {
-                cur.setMax(slot.getMax() - 1);
-                cur.setMin(slot.getMin() - 1);
-                break;
-            }
-        }
-    }
-
-    public void setAvailablePracticesSlot(List<PracticeSlot> practiceSlots){
-        this.availablePracticesSlots = practiceSlots;
     }
 
     public List<Assignment> getAssignments() {
         return assignments;
     }
 
-    public List<Task> getRemaininngTask(){
+    public SearchState clone() {
+        SearchState clone = new SearchState(assignments, remainingTasks, availableSlots, penalty);
+        clone.assignments = new ArrayList<>(assignments);
+        clone.penalty = penalty;
+        return clone;
+    }
+
+    public List<Task> getRemainingTask(){
         return remainingTasks;
     }
 
-    public List<GameSlot> getAvailableGamesSlots() {
-        return availableGamesSlots;
-    }
-
-    public List<PracticeSlot> getAvailablePracticesSlots() {
-        return availablePracticesSlots;
+    public List<Slot> getAvailableSlots(){
+        return availableSlots;
     }
 
     public int getPenalty() {
@@ -82,5 +66,34 @@ public class SearchState {
 
     public void setPenalty(int penalty) {
         this.penalty = penalty;
+    }
+
+    public void printState(){
+        System.out.println("Successfully transits to a new state where: ");
+        System.out.println("Assignment: ");
+        for (int a = 0; a < assignments.size(); ++a){
+            System.out.println(assignments.get(a));
+        }
+        System.out.println("Remaining Tasks: ");
+        for (int b = 0; b < getRemainingTask().size(); b++){
+            System.out.println(getRemainingTask().get(b).toString());
+        }
+
+        System.out.println("Remaining Slots:");
+
+        for (int c = 0; c < getAvailableSlots().size(); c++){
+            if (getAvailableSlots().get(c).forGame()){
+                System.out.println("---For Game--- " + getAvailableSlots().get(c));
+            } else {
+                System.out.println("---For Practices--- " + getAvailableSlots().get(c));
+            }
+            
+        }
+
+        System.out.println("Penalty: " + penalty);
+    }
+
+    public void addAssignment(Assignment assignment) {
+        assignments.add(assignment);
     }
 }

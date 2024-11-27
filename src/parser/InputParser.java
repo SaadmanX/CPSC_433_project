@@ -8,8 +8,6 @@ import model.constraints.Pair;
 import model.constraints.PartialAssignment;
 import model.constraints.Preference;
 import model.constraints.Unwanted;
-import model.slots.GameSlot;
-import model.slots.PracticeSlot;
 import model.slots.Slot;
 import model.task.Game;
 import model.task.Practice;
@@ -57,8 +55,8 @@ public class InputParser {
         return (lines != null && !lines.isEmpty()) ? lines.get(0).trim() : null;
     }
 
-    public List<GameSlot> parseGameSlots() {
-        List<GameSlot> gameSlots = new ArrayList<>();
+    public List<Slot> parseGameSlots() {
+        List<Slot> gameSlots = new ArrayList<>();
         List<String> lines = sections.get("Game slots:");
 
         if (lines != null) {
@@ -69,7 +67,7 @@ public class InputParser {
                     String startTime = parts[1].trim();
                     int gameMax = Integer.parseInt(parts[2].trim());
                     int gameMin = Integer.parseInt(parts[3].trim());
-                    GameSlot gs = new GameSlot(day, startTime, gameMax, gameMin);
+                    Slot gs = new Slot(day, startTime, gameMax, gameMin, true);
                     gameSlots.add(gs);
                     allSlots.add(gs);
                 }
@@ -78,8 +76,8 @@ public class InputParser {
         return gameSlots;
     }
 
-    public List<PracticeSlot> parsePracticeSlots() {
-        List<PracticeSlot> practiceSlots = new ArrayList<>();
+    public List<Slot> parsePracticeSlots() {
+        List<Slot> practiceSlots = new ArrayList<>();
         List<String> lines = sections.get("Practice slots:");
 
         if (lines != null) {
@@ -90,7 +88,7 @@ public class InputParser {
                     String startTime = parts[1].trim();
                     int practiceMax = Integer.parseInt(parts[2].trim());
                     int practiceMin = Integer.parseInt(parts[3].trim());
-                    PracticeSlot ps = new PracticeSlot(day, startTime, practiceMax, practiceMin);
+                    Slot ps = new Slot(day, startTime, practiceMax, practiceMin, false);
                     practiceSlots.add(ps);
                     allSlots.add(ps);
                 }

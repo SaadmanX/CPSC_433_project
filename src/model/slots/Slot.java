@@ -1,6 +1,6 @@
 package model.slots;
 
-public abstract class Slot {
+public class Slot {
     //TODO: Will need to convert startTime to int and timefrime, .0 and .5
     private String day;
     private String startTime;

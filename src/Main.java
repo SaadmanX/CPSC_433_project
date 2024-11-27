@@ -3,8 +3,7 @@ import java.util.List;
 
 import model.Assignment;
 import model.SearchState;
-import model.slots.GameSlot;
-import model.slots.PracticeSlot;
+import model.slots.Slot;
 import model.task.Task;
 import search.AndTree;
 
@@ -23,10 +22,9 @@ public class Main {
         //Initial state
         List<Assignment> assignments = new ArrayList<>();
         List<Task> remainingTasks = new ArrayList<>();
-        List<GameSlot> availableGamesSlots = new ArrayList<>();
-        List<PracticeSlot> availablePracticesSlots = new ArrayList<>();
+        List<Slot> availableSlots = new ArrayList<>();
         AndTree andTree = new AndTree(new SearchState(assignments, remainingTasks, 
-            availableGamesSlots, availablePracticesSlots, 0), inputFileName, weightList, multiplierList);
+            availableSlots, 0), inputFileName, weightList, multiplierList);
         
         //This will parse inputs from file + preprocess data
 
