@@ -28,6 +28,10 @@ public class Preference extends Constraint{
         return this.day;
     }
     
+    public int getPenalty(){
+        return this.penalty;
+    }
+
     public String getTime(){
         return this.time;
     }

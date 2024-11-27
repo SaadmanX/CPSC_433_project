@@ -4,6 +4,7 @@ import model.Assignment;
 import model.SearchState;
 import model.constraints.Constraint;
 import model.constraints.PartialAssignment;
+import model.constraints.Preference;
 import model.constraints.Unwanted;
 import model.slots.Slot;
 import model.task.Task;
@@ -26,6 +27,7 @@ public class AndTree {
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
     private List<Unwanted> unwantedList = new ArrayList<>();
+    private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
@@ -51,7 +53,7 @@ public class AndTree {
             
             constraints.put("NotCompatible", parser.parseNotCompatible());
             constraints.put("Pairs", parser.parsePairs());
-            constraints.put("Preferences", parser.parsePreferences());
+            preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
 
@@ -84,6 +86,7 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
         assignPartialAssignments();
+        assignPreferences();
         assignUnwanted();
 
         // Validate partial assignments against the current state
@@ -99,6 +102,16 @@ public class AndTree {
             Slot slot = findSlotByDayAndTime(unwanted.getDay(), unwanted.getTime(), task.getIsGame());
             if (task != null && slot != null) {
                 task.addUnwantedSlot(slot);
+            }
+        }
+    }
+
+    private void assignPreferences(){
+        for (Preference preference: preferencesList){
+            Task task = findTaskByIdentifier(preference.getTaskIdentifier());
+            Slot slot = findSlotByDayAndTime(preference.getDay(), preference.getTime(), task.getIsGame());
+            if (task != null && slot != null) {
+                task.addPreference(slot, preference.getPenalty());
             }
         }
     }

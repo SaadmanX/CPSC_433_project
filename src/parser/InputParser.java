@@ -134,10 +134,6 @@ public class InputParser {
         return practices;
     }
 
-    //Logically, this will be arranged into maps such that every
-    //Query can just takes into account every non-compatible
-    //Counterpart for each iteration and remove it from the assignable slot
-    //for current task
     public List<Constraint> parseNotCompatible() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Not compatible:");
@@ -152,9 +148,6 @@ public class InputParser {
         return constraints;
     }
 
-    //Similarly, each assignment loops through the pairs
-    //After soft eval, they will go for the one that minimize
-    //the penalty (or the one with the highest penalty if not matched)
     public List<Constraint> parsePairs() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Pair:");
@@ -168,9 +161,8 @@ public class InputParser {
         return constraints;
     }
 
-    //Essentially the same with soft constraint but easier with penalty hard-coded
-    public List<Constraint> parsePreferences() {
-        List<Constraint> constraints = new ArrayList<>();
+    public List<Preference> parsePreferences() {
+        List<Preference> constraints = new ArrayList<>();
         List<String> lines = sections.get("Preferences:");
 
         if (lines != null) {
@@ -206,11 +198,6 @@ public class InputParser {
         return constraints;
     }
 
-    //Logic: just parse in as preprocess and checks for conflicts of
-    //hard constraints eval. If doesn't work, immediately returns
-    //Otherwise, new SearchState
-
-    //Return the ArrayList for AndTree to preprocess
     public List<PartialAssignment> parsePartialAssignments() {
         List<PartialAssignment> constraints = new ArrayList<>();
         List<String> lines = sections.get("Partial assignments:");

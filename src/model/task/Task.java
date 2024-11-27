@@ -1,6 +1,7 @@
 package model.task;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import model.slots.Slot;
@@ -11,7 +12,9 @@ public class Task {
     private String division; 
     private String tier;
     private List<Slot> unwantedSlots;
+    private HashMap<Slot, Integer> preferences = new HashMap<>();
     private ArrayList<String> notCompatibleIdentifiers = new ArrayList<>();
+    private List<Task> pairedList = new ArrayList<>();
     private boolean isGame; 
     private boolean isSpecialPractice;
 
@@ -19,6 +22,31 @@ public class Task {
         this.identifier = identifier;
         this.isGame = isGame;
         parseIdentifier(); 
+    }
+
+    public void addPreference(Slot slot, int value) {
+        preferences.put(slot, value);
+    }
+
+    public boolean isPreferredSlot(Slot slot) {
+        return preferences.containsKey(slot);
+    }
+
+    public List<Task> getPairs(){
+        return pairedList;
+    }
+
+    public int getPreferenceValue(Slot slot) {
+        return preferences.getOrDefault(slot, 0);
+    }
+
+    public void addPair(Task anotherTask) {
+        pairedList.add(anotherTask);
+        anotherTask.addPair(this);
+    }
+
+    public boolean isPair(Task anotherTask) {
+        return pairedList.contains(anotherTask);
     }
 
     public String getIdentifier() {
@@ -66,6 +94,9 @@ public class Task {
         return unwantedSlots.contains(slot);
     }
 
+    public List<Slot> getUnwantedSlots(){
+        return unwantedSlots;
+    }
     private void parseIdentifier() {
         String[] parts = this.identifier.split(" "); 
 

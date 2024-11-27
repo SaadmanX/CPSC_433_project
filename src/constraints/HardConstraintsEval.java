@@ -34,7 +34,7 @@ public class HardConstraintsEval {
             if (!nonOverlappingTimeForCertainLevels(assignments)) return false;
             //if (!unwantedSlotConstraint(assignment)) return false;
             if (!notCompatibleConstraint(assignments)) return false;
-            if (!specialPracticeBookingConstraint(assignments)) return false;
+            //if (!specialPracticeBookingConstraint(assignments)) return false;
         }
         return true;
     }
@@ -44,7 +44,7 @@ public class HardConstraintsEval {
         return assignment.getSlot().getMax() > 0;
     }
 
-    // 2. Practices and Games Cannot Overlap
+    // Practices and Games Cannot Overlap
     private boolean noOverlappingPracticesAndGames(List<Assignment> assignments) {
         for (Assignment a : assignments) {
             for (Assignment b : assignments) {
@@ -57,7 +57,7 @@ public class HardConstraintsEval {
         return true;
     }
 
-    // 3. Evening Division Constraint
+    //Evening Division Constraint
     private boolean eveningDivisionConstraint(Assignment assignment) {
         boolean isEveningSlot = assignment.getSlot().getStartTime().compareTo("18:00") >= 0;
         if (assignment.getTask().getDivision().startsWith("DIV 9")) {
@@ -66,7 +66,7 @@ public class HardConstraintsEval {
         return true;
     }
 
-    // 4. Non-Overlapping Time for Certain Levels (e.g., U15/U16/U17/U19)
+    //Non-Overlapping Time for Certain Levels (e.g., U15/U16/U17/U19)
     private boolean nonOverlappingTimeForCertainLevels(List<Assignment> assignments) {
         for (Assignment a : assignments) {
             for (Assignment b : assignments) {
@@ -81,7 +81,7 @@ public class HardConstraintsEval {
         return true;
     }
 
-    // 8. Not Compatible Constraint
+    // Not Compatible Constraint
     private boolean notCompatibleConstraint(List<Assignment> assignments) {
         for (Assignment a : assignments) {
             for (Assignment b : assignments) {
@@ -93,7 +93,7 @@ public class HardConstraintsEval {
         return true;
     }
 
-    // 9. Special Practice Booking Constraint
+    /** 
     private boolean specialPracticeBookingConstraint(List<Assignment> assignments) {
         for (Assignment a : assignments) {
             if (a.getTask().isSpecialPractice() && !a.getSlot().getDay().matches("TU|TH")) {
@@ -102,4 +102,5 @@ public class HardConstraintsEval {
         }
         return true;
     }
+    */
 }
