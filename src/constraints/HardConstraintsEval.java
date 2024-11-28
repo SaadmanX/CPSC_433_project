@@ -77,7 +77,12 @@ public class HardConstraintsEval {
                 System.err.println("Failed: Not compatible constraint violation");
                 return false;
             }
-            
+
+            if (!noGamesOnTuesdayMeeting(assignments)) {
+                System.err.println("Failed: Game scheduled on Tuesday at 11 constraint violation");
+                return false;
+            }
+
             if (!specialPracticeBookingConstraint(assignments)) {
                 System.err.println("Failed: Special practice booking constraint violation");
                 return false;
@@ -98,39 +103,22 @@ public class HardConstraintsEval {
 
     // 2. Practices and Games Cannot Overlap
     private boolean noOverlappingPracticesAndGames(List<Assignment> assignments) {
-        for (Assignment a : assignments) {
-            for (Assignment b : assignments) {
-                if (!a.equals(b)) { // Different assignments
-                    System.out.println("\nChecking for overlap:");
-                    System.out.println("Task A: " + a.getTask().getIdentifier() + 
-                                    " (Game: " + a.getTask().getIsGame() + ")");
-                    System.out.println("Task B: " + b.getTask().getIdentifier() + 
-                                    " (Game: " + b.getTask().getIsGame() + ")");
-                    
-                    boolean sameSlot = a.getSlot().equals(b.getSlot());
-                    boolean sameDivision = a.getTask().getDivision().equals(b.getTask().getDivision());
-                    boolean differentTypes = (a.getTask().getIsGame() && !b.getTask().getIsGame()) || 
-                                        (!a.getTask().getIsGame() && b.getTask().getIsGame());
-                    
-                    if (sameSlot && sameDivision && differentTypes) {
-                        System.err.println("\nOverlap Found!");
-                        System.err.println("Same slot: " + a.getSlot().getId());
-                        System.err.println("Same division: " + a.getTask().getDivision());
-                        System.err.println("Task A: " + a.getTask().getIdentifier() + 
-                                        " (Game: " + a.getTask().getIsGame() + ")");
-                        System.err.println("Task B: " + b.getTask().getIdentifier() + 
-                                        " (Game: " + b.getTask().getIsGame() + ")");
-                        return false;
-                    }
+        for (int i = 0; i < assignments.size(); i++) {
+            Assignment a = assignments.get(i);
+            for (int j = i + 1; j < assignments.size(); j++) {
+                Assignment b = assignments.get(j);
+                if ((a.getTask().getIsGame() != b.getTask().getIsGame()) &&
+                    a.getSlot().equals(b.getSlot()) &&
+                    a.getTask().getDivision().equals(b.getTask().getDivision())) {
+                    return false;
                 }
             }
         }
         return true;
-    }
-    
+    }    
     // 3. Evening Division Constraint
     private boolean eveningDivisionConstraint(Assignment assignment) {
-        boolean isEveningSlot = assignment.getSlot().getStartTime().compareTo("18:00") >= 0;
+        boolean isEveningSlot = assignment.getSlot().getSlotStartTime() == 18.0;
         if (assignment.getTask().getDivision().startsWith("DIV 9")) {
             return isEveningSlot;
         }
@@ -204,4 +192,14 @@ public class HardConstraintsEval {
             }
         }
         return true;
-    }}
+    }
+
+    private boolean noGamesOnTuesdayMeeting(List<Assignment> assignments) {
+        for (Assignment a : assignments) {
+            if (a.getTask().getIsGame() && a.getSlot().getDay().startsWith("TU") && a.getSlot().getSlotStartTime() == 11.0) {
+                return false;
+            }
+        }
+        return true;
+    } 
+}
