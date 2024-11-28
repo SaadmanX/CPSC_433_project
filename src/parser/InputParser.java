@@ -161,8 +161,8 @@ public class InputParser {
         return constraints;
     }
 
-    public List<Constraint> parsePreferences() {
-        List<Constraint> constraints = new ArrayList<>();
+    public List<Preference> parsePreferences() {
+        List<Preference> constraints = new ArrayList<>();
         List<String> lines = sections.get("Preferences:");
 
         if (lines != null) {

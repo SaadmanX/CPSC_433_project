@@ -1,6 +1,7 @@
 package model.task;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import model.slots.Slot;
@@ -10,7 +11,8 @@ public class Task {
     private String level; 
     private String division; 
     private String tier;
-    private List<Slot> unwantedSlots;
+    private List<Slot> unwantedSlots = new ArrayList<Slot>();
+    private HashMap<Slot, Integer> preferences = new HashMap<>();
     private ArrayList<String> notCompatibleIdentifiers = new ArrayList<>();
     private boolean isGame; 
     private boolean isSpecialPractice;
@@ -45,6 +47,15 @@ public class Task {
         return this.isSpecialPractice;
     }
 
+    public void addPreference(Slot slot, int value) {
+        preferences.put(slot, value);
+    }
+
+    public boolean isPreferredSlot(Slot slot) {
+        if (preferences != null)return preferences.containsKey(slot);
+        return false;
+    }
+
     // Method to set special practice flag
     public void setSpecialPractice(boolean isSpecialPractice) {
         this.isSpecialPractice = isSpecialPractice;
@@ -55,7 +66,8 @@ public class Task {
     }
 
     public boolean isNotCompatibleWith(Task otherTask) {
-        return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
+        if (notCompatibleIdentifiers != null)return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
+        return false;
     }
 
     public void addUnwantedSlot(Slot slot){

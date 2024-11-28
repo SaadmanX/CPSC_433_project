@@ -20,6 +20,11 @@ public class Preference extends Constraint{
         return this.penalty;
     }
 
+    public int getPenalty(){
+        return this.penalty;
+    }
+
+
     public String getTimeSlotId(){
         return this.timeSlotId;
     }

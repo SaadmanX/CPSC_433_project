@@ -4,6 +4,7 @@ import model.Assignment;
 import model.SearchState;
 import model.constraints.Constraint;
 import model.constraints.PartialAssignment;
+import model.constraints.Preference;
 import model.constraints.Unwanted;
 import model.slots.Slot;
 import model.task.Task;
@@ -26,6 +27,7 @@ public class AndTree {
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
     private List<Unwanted> unwantedList = new ArrayList<>();
+    private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
@@ -48,16 +50,16 @@ public class AndTree {
 
             parser.parseGames();
             parser.parsePractices();
-            
+
             constraints.put("NotCompatible", parser.parseNotCompatible());
             constraints.put("Pairs", parser.parsePairs());
-            constraints.put("Preferences", parser.parsePreferences());
+            preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
 
             allTasks = parser.getAllTasks();
             allSlots = parser.getAllSlots();
-            
+
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
 
@@ -79,30 +81,45 @@ public class AndTree {
 
     }
 
-    
+
     public void preprocess() {
         parseInput();
         buildLinkedSlots();
         assignPartialAssignments();
+        assignPreferences();
         assignUnwanted();
 
         // Validate partial assignments against the current state
         HardConstraintsEval hardChecker = new HardConstraintsEval();
         if (!hardChecker.validatePartialAssignmentsForState(partialAssignments, state)) {
-            throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
+            System.out.println("FAILED WITH PARTIAL");
+            System.exit(1);
+            //throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
         }
     }
 
     private void assignUnwanted(){
         for (Unwanted unwanted : unwantedList) {
             Task task = findTaskByIdentifier(unwanted.getTaskIdentifier());
+            if (task == null)continue;
             Slot slot = findSlotByDayAndTime(unwanted.getDay(), unwanted.getTime(), task.getIsGame());
-            if (task != null && slot != null) {
+            if (slot != null) {
                 task.addUnwantedSlot(slot);
             }
         }
     }
-    
+
+    private void assignPreferences(){
+        for (Preference preference: preferencesList){
+            Task task = findTaskByIdentifier(preference.getTaskIdentifier());
+            if (task == null)continue;
+            Slot slot = findSlotByDayAndTime(preference.getDay(), preference.getTime(), task.getIsGame());
+            if (slot != null) {
+                task.addPreference(slot, preference.getPenalty());
+            }
+        }
+    }
+
     private Task findTaskByIdentifier(String identifier) {
         return allTasks.stream().filter(task -> task.getIdentifier().equals(identifier)).findFirst().orElse(null);
     }
@@ -121,11 +138,11 @@ public class AndTree {
             // Build linked slots based on problem constraints
             switch (slot.getDay()) {
                 case "MO" -> {
-                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime()));
-                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime()));
+                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame()));
+                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
                 }
-                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime()));
-                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime()));
+                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame()));
+                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
                 default -> {
                 }
             }
@@ -134,9 +151,10 @@ public class AndTree {
         }
     }
 
-    private List<Slot> findSlotsByDayAndTime(String day, String time) {
+    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
         return allSlots.stream()
-                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time))
+                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
+                && slot.forGame() == forGame)
                 .toList();
     }
 
@@ -148,45 +166,46 @@ public class AndTree {
         // Retrieve linked slots for the given slot
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
         List<Assignment> linkedAssignments = new ArrayList<>();
-    
+
         // Add the primary assignment
         linkedAssignments.add(new Assignment(task, slot));
-    
+
         // Add linked assignments while checking availability
         for (Slot linkedSlot : linkedSlots) {
             if (!state.getAvailableSlots().contains(linkedSlot)) {
-                // If any linked slot is unavailable, the assignment fails
                 return state;
             }
             linkedAssignments.add(new Assignment(task, linkedSlot));
         }
-    
+
         // Validate all assignments together
         List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
         newAssignments.addAll(linkedAssignments);
         if (!hardChecker.validate(newAssignments)) {
             return state; // Return the original state if validation fails
         }
-    
+
         // Create a new state with updated assignments and penalties
         SearchState newState = state.clone();
         newState.getAssignments().addAll(linkedAssignments);
-    
+
         // Remove assigned slots from availability
         for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
             newState.updateRemainingSlots(assignedSlot);
         }
-    
+
         // Recalculate the penalty for the new state
         newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
         newState.printState();
         return newState;
     }
-    
+
     private void assignPartialAssignments() {
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
+            System.out.println(task);
+            System.out.println(slot);
             if (task != null && slot != null) {
                 state = transitLinkedAssignment(state, task, slot);
             }
@@ -229,7 +248,7 @@ public class AndTree {
         return states;
     }
 
-    
+
     //TODO: fleaf
     public void chooseNext(){
         //With remaining Task, propagates possibilities and choose the appropriate one
