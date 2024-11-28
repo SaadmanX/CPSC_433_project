@@ -103,31 +103,31 @@ public class HardConstraintsEval {
                 if (!a.equals(b)) { // Different assignments
                     System.out.println("\nChecking for overlap:");
                     System.out.println("Task A: " + a.getTask().getIdentifier() + 
-                                     " (Game: " + a.getTask().getIsGame() + ")");
+                                    " (Game: " + a.getTask().getIsGame() + ")");
                     System.out.println("Task B: " + b.getTask().getIdentifier() + 
-                                     " (Game: " + b.getTask().getIsGame() + ")");
+                                    " (Game: " + b.getTask().getIsGame() + ")");
                     
                     boolean sameSlot = a.getSlot().equals(b.getSlot());
                     boolean sameDivision = a.getTask().getDivision().equals(b.getTask().getDivision());
                     boolean differentTypes = (a.getTask().getIsGame() && !b.getTask().getIsGame()) || 
-                                          (!a.getTask().getIsGame() && b.getTask().getIsGame());
+                                        (!a.getTask().getIsGame() && b.getTask().getIsGame());
                     
                     if (sameSlot && sameDivision && differentTypes) {
                         System.err.println("\nOverlap Found!");
                         System.err.println("Same slot: " + a.getSlot().getId());
                         System.err.println("Same division: " + a.getTask().getDivision());
                         System.err.println("Task A: " + a.getTask().getIdentifier() + 
-                                         " (Game: " + a.getTask().getIsGame() + ")");
+                                        " (Game: " + a.getTask().getIsGame() + ")");
                         System.err.println("Task B: " + b.getTask().getIdentifier() + 
-                                         " (Game: " + b.getTask().getIsGame() + ")");
+                                        " (Game: " + b.getTask().getIsGame() + ")");
                         return false;
                     }
                 }
             }
         }
         return true;
-     }
-     
+    }
+    
     // 3. Evening Division Constraint
     private boolean eveningDivisionConstraint(Assignment assignment) {
         boolean isEveningSlot = assignment.getSlot().getStartTime().compareTo("18:00") >= 0;
