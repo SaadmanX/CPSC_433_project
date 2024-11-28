@@ -70,6 +70,10 @@ public class Task {
         return false;
     }
 
+    public ArrayList<String> getNotCompatibleIdentifiers() {
+        return this.notCompatibleIdentifiers;
+    }
+
     public void addUnwantedSlot(Slot slot){
         this.unwantedSlots.add(slot);
     }

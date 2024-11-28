@@ -3,6 +3,7 @@ package search;
 import model.Assignment;
 import model.SearchState;
 import model.constraints.Constraint;
+import model.constraints.NotCompatible;
 import model.constraints.PartialAssignment;
 import model.constraints.Preference;
 import model.constraints.Unwanted;
@@ -28,12 +29,15 @@ public class AndTree {
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
     private List<Unwanted> unwantedList = new ArrayList<>();
     private List<Preference> preferencesList = new ArrayList<>();
+    private List<Task> notCompatibles = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
     SearchState lastState;
     HardConstraintsEval hardChecker = new HardConstraintsEval();
     SoftConstraintsEval softChecker;
+    private boolean backtracking = false;
+    private int minEval = Integer.MAX_VALUE;
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
@@ -51,17 +55,22 @@ public class AndTree {
             parser.parseGames();
             parser.parsePractices();
 
-            constraints.put("NotCompatible", parser.parseNotCompatible());
-            constraints.put("Pairs", parser.parsePairs());
-            preferencesList = parser.parsePreferences();
-            unwantedList = parser.parseUnwanted();
-            partialAssignments  = parser.parsePartialAssignments();
-
             allTasks = parser.getAllTasks();
             allSlots = parser.getAllSlots();
 
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
+
+
+            constraints.put("NotCompatible", parser.parseNotCompatible());
+            makeNotCompatibleList();
+            constraints.put("Pairs", parser.parsePairs());
+
+
+
+            preferencesList = parser.parsePreferences();
+            unwantedList = parser.parseUnwanted();
+            partialAssignments  = parser.parsePartialAssignments();
 
             //DEBUGGING
             //parser.parseNotCompatible().forEach(System.out::println);
@@ -221,6 +230,7 @@ public class AndTree {
             SearchState current = queue.poll();
 
             // Check if this is a valid solution
+            //* what is the condition for the solution?? there was a trail of thought that I forgot I had before. */
             if (hardChecker.validate(current.getAssignments()) && current.getRemainingTask().isEmpty()) {
                 System.out.println("Solution Found!");
                 current.printState();
@@ -228,10 +238,12 @@ public class AndTree {
             }
 
             // Generate the next states
-            for (Task task : current.getRemainingTask()) {
-                List<SearchState> nextStates = generateNextStates(current, task);
-                queue.addAll(nextStates);
-            }
+            // for (Task task : current.getRemainingTask()) {
+            //     List<SearchState> nextStates = generateNextStates(current, task);
+            //     queue.addAll(nextStates);
+            // }
+
+            chooseNext(current, queue);
         }
         System.out.println("No solution found.");
     }
@@ -249,8 +261,105 @@ public class AndTree {
     }
 
 
-    //TODO: fleaf
-    public void chooseNext(){
-        //With remaining Task, propagates possibilities and choose the appropriate one
+    // all possible next states are given already
+    // we want to choose a state that contains the task in the following order of priority:
+        // unwanted
+        // notcompatible
+        // preference
+    // even if these options does not guarentee optimal assignments, this will help eliminate some branches
+
+    // ^^ these options should be implemented before fleaf, since fleaf will just choose 
+    // if remaining tasks is empty, and a leaf node is reached, then set backtracking flag as true if a solution is not found yet
+    // ^^ maybe change the order of the priority depending on the penalty inputs and mulitpliers. food for thought
+    //  ^^ also add pair constraints somewhere in the priority??
+    //  && add backtracking later after code is more clear
+
+    private void chooseNext(SearchState current, PriorityQueue<SearchState> queue) {
+        if (queue.isEmpty()) {
+            // remaining tasks and remaining slots have already been checked when generating the states
+            // if the last remaining state is not valid, set backtracking to true and set the penalty of the state high
+            if (!hardChecker.validate(state.getAssignments())) {
+                backtracking = true;
+            }
+            // minEval = Math.min(minEval, softChecker.calculatePenalty(state.getAssignments()));
+            state.setPenalty(Integer.MAX_VALUE);
+        }
+
+        addUnwantedToQueue(current, queue);
+        addNotCompatibleToQueue(current, queue);
+        addPreferenceToQueue(current, queue);
+
+        // ** needs refinement for this. still not clear how the flow will work
+
+        // when states is not empty, add states to the queue depending on the priority list
+        
+    }
+
+    // check to see if any unwanted tasks are present in current tasks.
+    // if they are present, for each task, generate new states from the current state, and add them to the queue
+    private void addUnwantedToQueue(SearchState current, PriorityQueue<SearchState> queue) {
+        for (Unwanted u : unwantedList) {
+            for (Task t : current.getRemainingTask()) {
+                if (u.getTaskIdentifier().equals(t.getIdentifier())) {
+                    List<SearchState> nextStates = generateNextStates(current, t);
+                    queue.addAll(nextStates);
+                }
+            }
+        }
+    }
+
+    // check to see if any prefered assignment tasks are present in current tasks.
+    // if they are present, for each task, generate new states from the current state, and add them to the queue
+    private void addPreferenceToQueue(SearchState current, PriorityQueue<SearchState> queue) {
+        for (Preference p : preferencesList) {
+            for (Task t : current.getRemainingTask()) {
+                if (p.getTaskIdentifier().equals(t.getIdentifier())) {
+                    List<SearchState> nextStates = generateNextStates(current, t);
+                    queue.addAll(nextStates);
+                } 
+            }
+        }
+    }
+
+    private void addNotCompatibleToQueue(SearchState current, PriorityQueue<SearchState> queue) {
+        for (Task c : notCompatibles) {
+            for (Task t : current.getRemainingTask()) {
+                if (c.getIdentifier().equals(t.getIdentifier())) {
+                    List<SearchState> nextStates = generateNextStates(current, t);
+                    queue.addAll(nextStates);
+                } 
+            }
+        }
+    }
+
+    private void makeNotCompatibleList() {
+        List<Constraint> notCompatibleConstraints = constraints.get("NotCompatible");
+        
+        if (notCompatibleConstraints == null || notCompatibleConstraints.isEmpty()) {
+            return;
+        }
+        
+    
+        // For each not compatible constraint
+        for (Constraint constraint : notCompatibleConstraints) {
+            NotCompatible nc = (NotCompatible) constraint;
+
+            Task task1 = findTaskByIdentifier(nc.getTeam1Id());
+            Task task2 = findTaskByIdentifier(nc.getTeam2Id());
+            
+            // Add first task if exists and not already in list
+            if (task1 != null) {
+                if (!notCompatibles.contains(task1)) {
+                    notCompatibles.add(task1);
+                }
+            }
+            // Add second task if exists and not already in list
+            if (task2 != null) {
+                if (!notCompatibles.contains(task2)) {
+                    notCompatibles.add(task2);
+                }
+            }
+        }
     }
 }
+
