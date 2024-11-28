@@ -41,7 +41,7 @@ public class HardConstraintsEval {
 
     //Max-Min Slot Capacity Constraint
     private boolean maxConstraint(Assignment assignment) {
-        return assignment.getSlot().getMax() > 0;
+        return (assignment.getSlot().getMax() >= 0);
     }
 
     // Practices and Games Cannot Overlap
@@ -50,6 +50,7 @@ public class HardConstraintsEval {
             for (Assignment b : assignments) {
                 if (!a.equals(b) && a.getSlot().equals(b.getSlot())
                         && a.getTask().getDivision().equals(b.getTask().getDivision())) {
+                            System.out.println("Why am I here8?");
                     return false;
                 }
             }
@@ -61,6 +62,7 @@ public class HardConstraintsEval {
     private boolean eveningDivisionConstraint(Assignment assignment) {
         boolean isEveningSlot = assignment.getSlot().getStartTime().compareTo("18:00") >= 0;
         if (assignment.getTask().getDivision().startsWith("DIV 9")) {
+            System.out.println("Why am I here9?");
             return isEveningSlot;
         }
         return true;
@@ -74,6 +76,7 @@ public class HardConstraintsEval {
                         && a.getSlot().equals(b.getSlot())
                         && a.getTask().getLevel().matches("U1[5-9]")
                         && b.getTask().getLevel().matches("U1[5-9]")) {
+                            System.out.println("Why am I here3?");
                     return false;
                 }
             }
@@ -86,6 +89,7 @@ public class HardConstraintsEval {
         for (Assignment a : assignments) {
             for (Assignment b : assignments) {
                 if (!a.equals(b) && a.getTask().isNotCompatibleWith(b.getTask())) {
+                    System.out.println("Why am I here4?");
                     return false;
                 }
             }

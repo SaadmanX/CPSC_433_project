@@ -29,7 +29,8 @@ public class Task {
     }
 
     public boolean isPreferredSlot(Slot slot) {
-        return preferences.containsKey(slot);
+        if (preferences != null)return preferences.containsKey(slot);
+        return false;
     }
 
     public List<Task> getPairs(){
@@ -83,7 +84,8 @@ public class Task {
     }
 
     public boolean isNotCompatibleWith(Task otherTask) {
-        return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
+        if (notCompatibleIdentifiers != null)return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
+        return false;
     }
 
     public void addUnwantedSlot(Slot slot){
@@ -91,7 +93,8 @@ public class Task {
     }
 
     public boolean isUnwantedSlot(Slot slot){
-        return unwantedSlots.contains(slot);
+        if (unwantedSlots != null)return unwantedSlots.contains(slot);
+        return false;
     }
 
     public List<Slot> getUnwantedSlots(){

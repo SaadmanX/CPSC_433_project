@@ -92,15 +92,18 @@ public class AndTree {
         // Validate partial assignments against the current state
         HardConstraintsEval hardChecker = new HardConstraintsEval();
         if (!hardChecker.validatePartialAssignmentsForState(partialAssignments, state)) {
-            throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
+            System.out.println("FAILED WITH PARTIAL");
+            System.exit(1);
+            //throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
         }
     }
 
     private void assignUnwanted(){
         for (Unwanted unwanted : unwantedList) {
             Task task = findTaskByIdentifier(unwanted.getTaskIdentifier());
+            if (task == null)continue;
             Slot slot = findSlotByDayAndTime(unwanted.getDay(), unwanted.getTime(), task.getIsGame());
-            if (task != null && slot != null) {
+            if (slot != null) {
                 task.addUnwantedSlot(slot);
             }
         }
@@ -109,8 +112,9 @@ public class AndTree {
     private void assignPreferences(){
         for (Preference preference: preferencesList){
             Task task = findTaskByIdentifier(preference.getTaskIdentifier());
+            if (task == null)continue;
             Slot slot = findSlotByDayAndTime(preference.getDay(), preference.getTime(), task.getIsGame());
-            if (task != null && slot != null) {
+            if (slot != null) {
                 task.addPreference(slot, preference.getPenalty());
             }
         }
@@ -134,11 +138,11 @@ public class AndTree {
             // Build linked slots based on problem constraints
             switch (slot.getDay()) {
                 case "MO" -> {
-                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime()));
-                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime()));
+                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame()));
+                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
                 }
-                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime()));
-                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime()));
+                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame()));
+                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
                 default -> {
                 }
             }
@@ -147,9 +151,10 @@ public class AndTree {
         }
     }
 
-    private List<Slot> findSlotsByDayAndTime(String day, String time) {
+    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
         return allSlots.stream()
-                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time))
+                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
+                && slot.forGame() == forGame)
                 .toList();
     }
 
@@ -168,7 +173,6 @@ public class AndTree {
         // Add linked assignments while checking availability
         for (Slot linkedSlot : linkedSlots) {
             if (!state.getAvailableSlots().contains(linkedSlot)) {
-                // If any linked slot is unavailable, the assignment fails
                 return state;
             }
             linkedAssignments.add(new Assignment(task, linkedSlot));
@@ -200,6 +204,8 @@ public class AndTree {
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
+            System.out.println(task);
+            System.out.println(slot);
             if (task != null && slot != null) {
                 state = transitLinkedAssignment(state, task, slot);
             }
