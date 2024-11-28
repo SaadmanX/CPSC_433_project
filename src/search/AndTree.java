@@ -4,6 +4,7 @@ import model.Assignment;
 import model.SearchState;
 import model.constraints.Constraint;
 import model.constraints.NotCompatible;
+import model.constraints.Pair;
 import model.constraints.PartialAssignment;
 import model.constraints.Preference;
 import model.constraints.Unwanted;
@@ -30,6 +31,7 @@ public class AndTree {
     private List<Unwanted> unwantedList = new ArrayList<>();
     private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> notCompatibles = new ArrayList<>();
+    private List<Task> pairs = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
@@ -65,6 +67,7 @@ public class AndTree {
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
             constraints.put("Pairs", parser.parsePairs());
+            makePairList();
 
 
 
@@ -253,26 +256,33 @@ public class AndTree {
         for (Slot slot : state.getAvailableSlots()) {
             // Use the unified linked assignment logic
             SearchState newState = transitLinkedAssignment(state, task, slot);
+            // ^^ over here we should calculate the penalty of the new state so that we can order them in choosenext()
             if (!newState.equals(state)) {
                 states.add(newState);
             }
         }
         return states;
     }
+    /*
+     * this area is being used for notes for myself. read if you want, but the stuff here is pretty messed up
+     */
 
-
-    // all possible next states are given already
-    // we want to choose a state that contains the task in the following order of priority:
-        // unwanted
-        // notcompatible
-        // preference
-    // even if these options does not guarentee optimal assignments, this will help eliminate some branches
-
-    // ^^ these options should be implemented before fleaf, since fleaf will just choose 
-    // if remaining tasks is empty, and a leaf node is reached, then set backtracking flag as true if a solution is not found yet
-    // ^^ maybe change the order of the priority depending on the penalty inputs and mulitpliers. food for thought
-    //  ^^ also add pair constraints somewhere in the priority??
-    //  && add backtracking later after code is more clear
+    /*
+     * my idea on how the flow should go:
+     *  a new queue is started with the preassignments state (or empty state if preassign is empty)
+     *  take the beginning of the queue and set it as current state to check
+     *  check for hardconstraint, and see if the current state is the solution
+     *  otherwise, and here comes the fun part, CHOOSENEXT STATE
+     *      order states in terms of priority of tasks present in some of constraint lists.
+     *          for the sake of simplicity, lets assume that for every task added in the queue from current state, the penalty of the next state will be as follows:
+     *              if task taken from unwanted: 5
+     *              if task taken from compatible: 4
+     *              if task taken from preference: 3
+     *              if task taken from pair: 2
+     *              if task taken from none (remaining tasks): 1
+     *      loop through queue, keep adding states and checking for solution, marking them as valid or invalid solutions, and BACKTRACKING
+     *          
+     */
 
     private void chooseNext(SearchState current, PriorityQueue<SearchState> queue) {
         if (queue.isEmpty()) {
@@ -288,7 +298,8 @@ public class AndTree {
         addUnwantedToQueue(current, queue);
         addNotCompatibleToQueue(current, queue);
         addPreferenceToQueue(current, queue);
-
+        addPairToQueue(current, queue);
+        addRemainingTasksToQueue(current, queue);
         // ** needs refinement for this. still not clear how the flow will work
 
         // when states is not empty, add states to the queue depending on the priority list
@@ -328,6 +339,52 @@ public class AndTree {
                     List<SearchState> nextStates = generateNextStates(current, t);
                     queue.addAll(nextStates);
                 } 
+            }
+        }
+    }
+
+    private void addPairToQueue(SearchState current, PriorityQueue<SearchState> queue) {
+        for (Task p : pairs) {
+            for (Task t : current.getRemainingTask()) {
+                if (p.getIdentifier().equals(t.getIdentifier())) {
+                    List<SearchState> nextStates = generateNextStates(current, t);
+                    queue.addAll(nextStates);
+                } 
+            }
+        }
+    }
+
+    private void addRemainingTasksToQueue(SearchState current, PriorityQueue<SearchState> queue) {
+        for (Task t : current.getRemainingTask()) {
+            List<SearchState> nextStates = generateNextStates(current, t);
+            queue.addAll(nextStates);
+        }
+    }
+
+    private void makePairList() {
+        List<Constraint> pairConstraints = constraints.get("Pairs");
+
+        if (pairConstraints == null || pairConstraints.isEmpty()) {
+            return;
+        }
+
+        for (Constraint constraint : pairConstraints) {
+            Pair nc = (Pair) constraint;
+
+            Task task1 = findTaskByIdentifier(nc.getTeam1Id());
+            Task task2 = findTaskByIdentifier(nc.getTeam2Id());
+            
+            // Add first task if exists and not already in list
+            if (task1 != null) {
+                if (!notCompatibles.contains(task1)) {
+                    notCompatibles.add(task1);
+                }
+            }
+            // Add second task if exists and not already in list
+            if (task2 != null) {
+                if (!notCompatibles.contains(task2)) {
+                    notCompatibles.add(task2);
+                }
             }
         }
     }
