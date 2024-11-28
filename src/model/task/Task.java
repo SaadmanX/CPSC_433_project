@@ -63,7 +63,8 @@ public class Task {
     }
 
     public boolean isUnwantedSlot(Slot slot){
-        return unwantedSlots.contains(slot);
+        if (unwantedSlots != null) return unwantedSlots.contains(slot);
+        return false; 
     }
 
     private void parseIdentifier() {

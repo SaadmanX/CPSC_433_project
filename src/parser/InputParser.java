@@ -18,11 +18,11 @@ public class InputParser {
     private ArrayList<Task> allTasks = new ArrayList<>();
     private ArrayList<Slot> allSlots = new ArrayList<>();
 
-    public ArrayList<Task> getAllTasks(){
+    public ArrayList<Task> getAllTasks() {
         return allTasks;
     }
 
-    public ArrayList<Slot> getAllSlots(){
+    public ArrayList<Slot> getAllSlots() {
         return allSlots;
     }
 
@@ -37,9 +37,8 @@ public class InputParser {
 
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
-                if (line.isEmpty()) continue; // Skip blank lines
+                if (line.isEmpty()) continue;
 
-                // Check for section headers
                 if (line.endsWith(":")) {
                     currentSection = line;
                     sections.putIfAbsent(currentSection, new ArrayList<>());
@@ -61,14 +60,14 @@ public class InputParser {
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\s*,\\s*");
                 if (parts.length == 4) {
                     String day = parts[0].trim();
                     String startTime = parts[1].trim();
                     int gameMax = Integer.parseInt(parts[2].trim());
                     int gameMin = Integer.parseInt(parts[3].trim());
 
-                    if (!(day.equals("TU") && startTime.equals("11:00"))){
+                    if (!(day.equals("TU") && startTime.equals("11:00"))) {
                         Slot gs = new Slot(day, startTime, gameMax, gameMin, true);
                         gameSlots.add(gs);
                         allSlots.add(gs);
@@ -85,7 +84,7 @@ public class InputParser {
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\s*,\\s*");
                 if (parts.length == 4) {
                     String day = parts[0].trim();
                     String startTime = parts[1].trim();
@@ -106,14 +105,13 @@ public class InputParser {
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
-                String identifer = parts[0].trim();
-                Game newGame = new Game(identifer);
+                String[] parts = line.split("\\s*,\\s*");
+                String identifier = parts[0].trim().replaceAll("\\s+", " ");
+                Game newGame = new Game(identifier);
                 games.add(newGame);
                 allTasks.add(newGame);
             }
         }
-        
         return games;
     }
 
@@ -123,63 +121,57 @@ public class InputParser {
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
-                String identifer = parts[0].trim();
-                Practice newP= new Practice(identifer);
+                String[] parts = line.split("\\s*,\\s*");
+                String identifier = parts[0].trim().replaceAll("\\s+", " ");
+                Practice newP = new Practice(identifier);
                 practices.add(newP);
                 allTasks.add(newP);
             }
         }
-        
         return practices;
     }
 
-    //Logically, this will be arranged into maps such that every
-    //Query can just takes into account every non-compatible
-    //Counterpart for each iteration and remove it from the assignable slot
-    //for current task
     public List<Constraint> parseNotCompatible() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Not compatible:");
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
-                constraints.add(new NotCompatible(parts[0].trim(), parts[1].trim()));
+                String[] parts = line.split("\\s*,\\s*");
+                String id1 = parts[0].trim().replaceAll("\\s+", " ");
+                String id2 = parts[1].trim().replaceAll("\\s+", " ");
+                constraints.add(new NotCompatible(id1, id2));
             }
-
         }
         return constraints;
     }
 
-    //Similarly, each assignment loops through the pairs
-    //After soft eval, they will go for the one that minimize
-    //the penalty (or the one with the highest penalty if not matched)
     public List<Constraint> parsePairs() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Pair:");
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
-                constraints.add(new Pair(parts[0].trim(), parts[1].trim()));
+                String[] parts = line.split("\\s*,\\s*");
+                String id1 = parts[0].trim().replaceAll("\\s+", " ");
+                String id2 = parts[1].trim().replaceAll("\\s+", " ");
+                constraints.add(new Pair(id1, id2));
             }
         }
         return constraints;
     }
 
-    //Essentially the same with soft constraint but easier with penalty hard-coded
     public List<Constraint> parsePreferences() {
         List<Constraint> constraints = new ArrayList<>();
         List<String> lines = sections.get("Preferences:");
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\s*,\\s*");
                 if (parts.length == 4) {
                     String day = parts[0].trim();
                     String time = parts[1].trim();
-                    String identifier = parts[2].trim();
+                    String identifier = parts[2].trim().replaceAll("\\s+", " ");
                     int value = Integer.parseInt(parts[3].trim());
                     constraints.add(new Preference(day, time, identifier, value));
                 }
@@ -194,9 +186,9 @@ public class InputParser {
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\s*,\\s*");
                 if (parts.length == 3) {
-                    String identifier = parts[0].trim();
+                    String identifier = parts[0].trim().replaceAll("\\s+", " ");
                     String day = parts[1].trim();
                     String time = parts[2].trim();
                     constraints.add(new Unwanted(identifier, day, time));
@@ -206,20 +198,18 @@ public class InputParser {
         return constraints;
     }
 
-    //Logic: just parse in as preprocess and checks for conflicts of
-    //hard constraints eval. If doesn't work, immediately returns
-    //Otherwise, new SearchState
-
-    //Return the ArrayList for AndTree to preprocess
     public List<PartialAssignment> parsePartialAssignments() {
         List<PartialAssignment> constraints = new ArrayList<>();
         List<String> lines = sections.get("Partial assignments:");
 
         if (lines != null) {
             for (String line : lines) {
-                String[] parts = line.split(",");
+                String[] parts = line.split("\\s*,\\s*");
                 if (parts.length == 3) {
-                    constraints.add(new PartialAssignment(parts[0].trim(), parts[1].trim(), parts[2].trim()));
+                    String identifier = parts[0].trim().replaceAll("\\s+", " ");
+                    String day = parts[1].trim();
+                    String time = parts[2].trim();
+                    constraints.add(new PartialAssignment(identifier, day, time));
                 }
             }
         }

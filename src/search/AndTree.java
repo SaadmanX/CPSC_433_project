@@ -102,7 +102,7 @@ public class AndTree {
             }
         }
     }
-
+    
     private Task findTaskByIdentifier(String identifier) {
         return allTasks.stream().filter(task -> task.getIdentifier().equals(identifier)).findFirst().orElse(null);
     }
