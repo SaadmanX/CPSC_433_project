@@ -253,17 +253,63 @@ public class AndTree {
     //     System.out.println("No solution found.");
     // }
 
+    // private List<SearchState> generateNextStates(SearchState state, Task task) {
+    //     List<SearchState> states = new ArrayList<>();
+    //     for (Slot slot : state.getAvailableSlots()) {
+    //         // Use the unified linked assignment logic
+    //         SearchState newState = transitLinkedAssignment(state, task, slot);
+    //         if (!newState.equals(state)) {
+    //             newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
+    //             states.add(newState);
+    //         }
+    //     }
+    //     return states;
+    // }
+
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
-        for (Slot slot : state.getAvailableSlots()) {
-            // Use the unified linked assignment logic
-            SearchState newState = transitLinkedAssignment(state, task, slot);
-            if (!newState.equals(state)) {
-                states.add(newState);
+        
+        System.out.println("\nGenerating next states for task: " + task.getIdentifier());
+        System.out.println("Current available slots size: " + state.getAvailableSlots().size());
+        
+        try {
+            // Create a new list to avoid concurrent modification
+            List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());
+            System.out.println("Copied available slots size: " + availableSlots.size());
+            
+            for (Slot slot : availableSlots) {
+                System.out.println("\nTrying slot: " + slot.toString());
+                
+                // Use the unified linked assignment logic
+                System.out.println("Attempting transitLinkedAssignment...");
+                SearchState newState = transitLinkedAssignment(state, task, slot);
+                
+                System.out.println("After transitLinkedAssignment:");
+                System.out.println("New state equals current state? " + newState.equals(state));
+                
+                if (!newState.equals(state)) {
+                    System.out.println("Adding new state to states list");
+                    System.out.println("New state assignments size: " + newState.getAssignments().size());
+                    System.out.println("New state remaining tasks size: " + newState.getRemainingTask().size());
+                    System.out.println("New state available slots size: " + newState.getAvailableSlots().size());
+                    states.add(newState);
+                } else {
+                    System.out.println("Skipping state as it equals current state");
+                }
             }
+            
+            System.out.println("\nGenerated " + states.size() + " new states");
+            
+        } catch (Exception e) {
+            System.out.println("Exception caught in generateNextStates:");
+            System.out.println("Exception type: " + e.getClass().getName());
+            System.out.println("Exception message: " + e.getMessage());
+            e.printStackTrace();
         }
+        
         return states;
     }
+    
     /*
      * this area is being used for notes for myself. read if you want, but the stuff here is pretty messed up
      */

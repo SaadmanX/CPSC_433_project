@@ -11,9 +11,10 @@ public class Task {
     private String level; 
     private String division; 
     private String tier;
-    private List<Slot> unwantedSlots = new ArrayList<Slot>();
+    private List<Slot> unwantedSlots;
     private HashMap<Slot, Integer> preferences = new HashMap<>();
     private ArrayList<String> notCompatibleIdentifiers = new ArrayList<>();
+    private List<Task> pairedList = new ArrayList<>();
     private boolean isGame; 
     private boolean isSpecialPractice;
 
@@ -21,6 +22,32 @@ public class Task {
         this.identifier = identifier;
         this.isGame = isGame;
         parseIdentifier(); 
+    }
+
+    public void addPreference(Slot slot, int value) {
+        preferences.put(slot, value);
+    }
+
+    public boolean isPreferredSlot(Slot slot) {
+        if (preferences != null)return preferences.containsKey(slot);
+        return false;
+    }
+
+    public List<Task> getPairs(){
+        return pairedList;
+    }
+
+    public int getPreferenceValue(Slot slot) {
+        return preferences.getOrDefault(slot, 0);
+    }
+
+    public void addPair(Task anotherTask) {
+        pairedList.add(anotherTask);
+        anotherTask.addPair(this);
+    }
+
+    public boolean isPair(Task anotherTask) {
+        return pairedList.contains(anotherTask);
     }
 
     public String getIdentifier() {
@@ -47,15 +74,6 @@ public class Task {
         return this.isSpecialPractice;
     }
 
-    public void addPreference(Slot slot, int value) {
-        preferences.put(slot, value);
-    }
-
-    public boolean isPreferredSlot(Slot slot) {
-        if (preferences != null)return preferences.containsKey(slot);
-        return false;
-    }
-
     // Method to set special practice flag
     public void setSpecialPractice(boolean isSpecialPractice) {
         this.isSpecialPractice = isSpecialPractice;
@@ -70,19 +88,18 @@ public class Task {
         return false;
     }
 
-    public ArrayList<String> getNotCompatibleIdentifiers() {
-        return this.notCompatibleIdentifiers;
-    }
-
     public void addUnwantedSlot(Slot slot){
         this.unwantedSlots.add(slot);
     }
 
     public boolean isUnwantedSlot(Slot slot){
-        if (unwantedSlots != null) return unwantedSlots.contains(slot);
-        return false; 
+        if (unwantedSlots != null)return unwantedSlots.contains(slot);
+        return false;
     }
 
+    public List<Slot> getUnwantedSlots(){
+        return unwantedSlots;
+    }
     private void parseIdentifier() {
         String[] parts = this.identifier.split(" "); 
 
