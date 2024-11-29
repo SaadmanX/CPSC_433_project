@@ -42,7 +42,6 @@ public class SearchState {
                 break;
             }
         }
-
     }
 
     public List<Assignment> getAssignments() {
