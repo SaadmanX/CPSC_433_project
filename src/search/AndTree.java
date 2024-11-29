@@ -97,6 +97,11 @@ public class AndTree {
     public void preprocess() {
         parseInput();
         buildLinkedSlots();
+
+        System.out.println("initial state before preprocess");
+        state.printState();
+
+
         assignPartialAssignments();
         assignPreferences();
         assignUnwanted();
@@ -108,7 +113,8 @@ public class AndTree {
             System.exit(1);
             //throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
         }
-
+        System.out.println("initial state before search");
+        state.printState();
         search();
     }
 
@@ -267,46 +273,27 @@ public class AndTree {
     // }
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
-        List<SearchState> states = new ArrayList<>();
-        
-        System.out.println("\nGenerating next states for task: " + task.getIdentifier());
-        System.out.println("Current available slots size: " + state.getAvailableSlots().size());
-        
+        System.out.println("=================================generating next states start================================");
+        List<SearchState> states = new ArrayList<>();        
         try {
             // Create a new list to avoid concurrent modification
             List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());
-            System.out.println("Copied available slots size: " + availableSlots.size());
-            
             for (Slot slot : availableSlots) {
                 System.out.println("\nTrying slot: " + slot.toString());
-                
-                // Use the unified linked assignment logic
-                System.out.println("Attempting transitLinkedAssignment...");
                 SearchState newState = transitLinkedAssignment(state, task, slot);
-                
-                System.out.println("After transitLinkedAssignment:");
-                System.out.println("New state equals current state? " + newState.equals(state));
-                
                 if (!newState.equals(state)) {
-                    System.out.println("Adding new state to states list");
-                    System.out.println("New state assignments size: " + newState.getAssignments().size());
-                    System.out.println("New state remaining tasks size: " + newState.getRemainingTask().size());
-                    System.out.println("New state available slots size: " + newState.getAvailableSlots().size());
+                    newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
                     states.add(newState);
-                } else {
-                    System.out.println("Skipping state as it equals current state");
                 }
             }
-            
             System.out.println("\nGenerated " + states.size() + " new states");
-            
         } catch (Exception e) {
             System.out.println("Exception caught in generateNextStates:");
             System.out.println("Exception type: " + e.getClass().getName());
             System.out.println("Exception message: " + e.getMessage());
             e.printStackTrace();
         }
-        
+        System.out.println("=================================generating next states end================================");
         return states;
     }
     
@@ -322,11 +309,11 @@ public class AndTree {
      *  otherwise, and here comes the fun part, CHOOSENEXT STATE
      *      order states in terms of priority of tasks present in some of constraint lists.
      *          for the sake of simplicity, lets assume that for every task added in the queue from current state, the penalty of the next state will be as follows:
-     *              if task taken from unwanted: 5
-     *              if task taken from compatible: 4
+     *              if task taken from unwanted: 1
+     *              if task taken from compatible: 2
      *              if task taken from preference: 3
-     *              if task taken from pair: 2
-     *              if task taken from none (remaining tasks): 1
+     *              if task taken from pair: 4
+     *              if task taken from none (remaining tasks): 5
      *      loop through queue, keep adding states and checking for solution, marking them as valid or invalid solutions, and BACKTRACKING
      *      for this context of using queues, I am backtracking using "continue", essentially going to the next available state added before the after state
      */
@@ -337,6 +324,7 @@ public class AndTree {
         queue.add(state);
     
         while (!queue.isEmpty()) {
+            System.out.println("**********************************GOING TO NEXT STATE IN QUEUE***********************************");
             SearchState current = queue.poll();
             System.out.println("current state at head: ");
             current.printState();

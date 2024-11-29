@@ -24,15 +24,19 @@ public class SoftConstraintsEval {
 
         // Min Fill Constraint
         penalty += minFillPenalty(assignments) * multiplierList.get(0); 
+        System.out.println("penalty after min fill check: " + Integer.toString(penalty));
 
         // Preferences
         penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
+        System.out.println("penalty after preference check: " + Integer.toString(penalty));
 
         //  Tasks that should be paired
         penalty += pairingPenalty(assignments) * multiplierList.get(2); 
+        System.out.println("penalty after pair check: " + Integer.toString(penalty));
 
         // Section Difference: Minimize uneven section
         penalty += sectionDifferencePenalty(assignments) * multiplierList.get(3); 
+        System.out.println("penalty after section check: " + Integer.toString(penalty));
 
         return penalty;
     }
