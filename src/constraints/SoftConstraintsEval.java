@@ -5,6 +5,9 @@ import java.util.List;
 import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
+import model.constraints.Constraint;
+import model.constraints.Pair;
+import model.constraints.Preference;
 
 public class SoftConstraintsEval {
     
@@ -14,9 +17,18 @@ public class SoftConstraintsEval {
     // Penalty List (Order: gameMin, practiceMin, notPaird, section)
     private List<Integer> penaltyList;
 
-    public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList) {
+    private List<Preference> preferenceList;
+
+    private List<Slot> allSlots;
+
+    private List<Constraint> pairs;
+
+    public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Preference> prefer, List<Constraint> pair, List<Slot> allSlots) {
         this.multiplierList = multiplierList;
         this.penaltyList = penaltyList;
+        this.preferenceList = prefer;
+        this.allSlots = allSlots;
+        this.pairs = pair;
     }
 
     public int calculatePenalty(List<Assignment> assignments) {
@@ -27,7 +39,8 @@ public class SoftConstraintsEval {
         System.out.println("penalty after min fill check: " + Integer.toString(penalty));
 
         // Preferences
-        penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
+        // penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
+        penalty += preferencesPenalty() * multiplierList.get(1); 
         System.out.println("penalty after preference check: " + Integer.toString(penalty));
 
         //  Tasks that should be paired
@@ -41,21 +54,21 @@ public class SoftConstraintsEval {
         return penalty;
     }
 
-    private List<Slot> getAllSlots(List<Assignment> assignments) {
-        List<Slot> slots = new ArrayList<>();
-        for (Assignment assignment : assignments) {
-            if (!slots.contains(assignment.getSlot())) {
-                slots.add(assignment.getSlot());
-            }
-        }
+    // private List<Slot> getAllSlots(List<Assignment> assignments) {
+    //     List<Slot> slots = new ArrayList<>();
+    //     for (Assignment assignment : assignments) {
+    //         if (!slots.contains(assignment.getSlot())) {
+    //             slots.add(assignment.getSlot());
+    //         }
+    //     }
 
-        return slots;
-    }
+    //     return slots;
+    // }
 
     private int minFillPenalty(List<Assignment> assignments) {
         int penalty = 0;
 
-        for (Slot slot : getAllSlots(assignments)) {
+        for (Slot slot : allSlots) {
             // Count the number of assignments for this slot
             long count = assignments.stream().filter(a -> a.getSlot().equals(slot)).count();
 
@@ -65,18 +78,28 @@ public class SoftConstraintsEval {
         }
 
         return penalty;
+
     }
 
-    private int preferencesPenalty(List<Assignment> assignments) {
+    // private int preferencesPenalty(List<Assignment> assignments) {
+    //     int penalty = 0;
+
+    //     for (Assignment assignment : assignments) {
+    //         Slot assignedSlot = assignment.getSlot();
+    //         Task task = assignment.getTask();
+
+    //         if (!task.isPreferredSlot(assignedSlot)) {
+    //             penalty += task.getPreferenceValue(assignedSlot); 
+    //         }
+    //     }
+
+    //     return penalty;
+    // }
+
+    private int preferencesPenalty() {
         int penalty = 0;
-
-        for (Assignment assignment : assignments) {
-            Slot assignedSlot = assignment.getSlot();
-            Task task = assignment.getTask();
-
-            if (!task.isPreferredSlot(assignedSlot)) {
-                penalty += task.getPreferenceValue(assignedSlot); 
-            }
+        for (Preference p : preferenceList) {
+            penalty += p.getPenalty();
         }
 
         return penalty;
@@ -96,11 +119,32 @@ public class SoftConstraintsEval {
                 if (!neededToBePairedList.isEmpty() && neededToBePairedList.contains(b))neededToBePairedList.remove(b);
             }
 
-            return penalty += neededToBePairedList.size() * penaltyList.get(2);
+            penalty += neededToBePairedList.size() * penaltyList.get(2);
         }
 
         return penalty;
     }
+
+    // ** maybe add component such that each task carries a list of slots its assigned to. this will speed up this function more
+    // private int pairingPenalty(List<Assignment> assignments) {
+    //     int penalty = 0;
+
+    //     for (Constraint c : pairs) {
+    //         Pair pair = (Pair) c;
+    //         String t1;
+    //         String t2;
+    //         t1 = pair.getTeam1Id();
+
+    //         t2 = pair.getTeam2Id();
+    //     }
+
+    //     for (Assignment a : assignments) {
+
+    //     }
+
+    //     return penalty;
+    // }
+
 
     private List<Task> getTasksBySlot(List<Assignment> assignments, Slot slot){
         List<Task> result = new ArrayList<>();

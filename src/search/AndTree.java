@@ -40,11 +40,14 @@ public class AndTree {
     SoftConstraintsEval softChecker;
     private boolean backtracking = false;
     private int minEval = Integer.MAX_VALUE;
+    ArrayList<Integer> weightList;
+    ArrayList<Integer> multiplierList;
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
         this.inputFileName = filename;
-        softChecker = new SoftConstraintsEval(multiplierList, weightList);
+        this.weightList = weightList;
+        this.multiplierList = multiplierList;
     }
 
     private void parseInput(){
@@ -86,6 +89,7 @@ public class AndTree {
             //parser.parseGames().forEach(System.out::println);
             //parser.parsePracticeSlots().forEach(System.out::println);
             //parser.parsePractices().forEach(System.out::println);
+            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, constraints.get("Pairs"), allSlots);
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
