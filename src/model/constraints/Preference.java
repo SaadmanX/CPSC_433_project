@@ -20,11 +20,6 @@ public class Preference extends Constraint{
         return this.penalty;
     }
 
-    public int getPenalty(){
-        return this.penalty;
-    }
-
-
     public String getTimeSlotId(){
         return this.timeSlotId;
     }
@@ -33,6 +28,10 @@ public class Preference extends Constraint{
         return this.day;
     }
     
+    public int getPenalty(){
+        return this.penalty;
+    }
+
     public String getTime(){
         return this.time;
     }

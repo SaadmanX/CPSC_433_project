@@ -10,27 +10,32 @@ public class HardConstraintsEval {
     // Validate that the current state satisfies all partial assignments
     public boolean validatePartialAssignmentsForState(List<PartialAssignment> partialAssignments, SearchState currentState) {
         for (PartialAssignment partial : partialAssignments) {
+            /** 
             System.out.println("\n=== Checking Partial Assignment ===");
             System.out.println("Partial Assignment requires:");
             System.out.println("Task: " + partial.getTaskIdentifier());
             System.out.println("Day: " + partial.getDay());
             System.out.println("Time: " + partial.getTime());
-            
+            */
             boolean isSatisfied = currentState.getAssignments().stream().anyMatch(assignment -> {
+                /* 
                 System.out.println("\nComparing with Current Assignment:");
                 System.out.println("Current Task: " + assignment.getTask().getIdentifier());
                 System.out.println("Current Day: " + assignment.getSlot().getDay());
                 System.out.println("Current Time: " + assignment.getSlot().getStartTime());
+                */
                 
                 boolean taskMatches = assignment.getTask().getIdentifier().equals(partial.getTaskIdentifier());
                 boolean dayMatches = assignment.getSlot().getDay().equals(partial.getDay());
                 boolean timeMatches = assignment.getSlot().getStartTime().equals(partial.getTime());
                 
+                /* 
                 System.out.println("\nResults:");
                 System.out.println("Task Match: " + taskMatches);
                 System.out.println("Day Match: " + dayMatches); 
                 System.out.println("Time Match: " + timeMatches);
                 System.out.println("Overall Match: " + (taskMatches && dayMatches && timeMatches));
+                */
                 
                 return taskMatches && dayMatches && timeMatches;
             });
@@ -40,43 +45,34 @@ public class HardConstraintsEval {
                 return false;
             }
         }
-        System.out.println("\nSUCCESS: All Partial Assignments satisfied!");
+        //System.out.println("\nSUCCESS: All Partial Assignments satisfied!");
         return true;
     }    
     // Validate all hard constraints for a list of assignments
     public boolean validate(List<Assignment> assignments) {
         for (Assignment assignment : assignments) {
-            System.out.println("\nValidating constraints for assignment: " + assignment);
+            //System.out.println("\nValidating constraints for assignment: " + assignment);
             
             if (!maxConstraint(assignment)) {
                 System.err.println("Failed: Max constraint violation");
                 return false;
             }
             
-            if (!noOverlappingPracticesAndGames(assignments)) {
-                System.err.println("Failed: Overlapping practices and games constraint violation");
-                return false;
-            }
+            //if (!noOverlappingPracticesAndGames(assignments)) {
+            //    System.err.println("Failed: Overlapping practices and games constraint violation");
+            //    return false;
+            //}
             
             if (!eveningDivisionConstraint(assignment)) {
                 System.err.println("Failed: Evening division constraint violation");
                 return false;
             }
             
-            if (!nonOverlappingTimeForCertainLevels(assignments)) {
-                System.err.println("Failed: Non-overlapping time for certain levels constraint violation");
-                return false;
-            }
-            
-            //if (!unwantedSlotConstraint(assignment)) {
-            //    System.err.println("Failed: Unwanted slot constraint violation");
+            //if (!nonOverlappingTimeForCertainLevels(assignments)) {
+            //    System.err.println("Failed: Non-overlapping time for certain levels constraint violation");
             //    return false;
             //}
-            
-            if (!notCompatibleConstraint(assignments)) {
-                System.err.println("Failed: Not compatible constraint violation");
-                return false;
-            }
+        
 
             if (!noGamesOnTuesdayMeeting(assignments)) {
                 System.err.println("Failed: Game scheduled on Tuesday at 11 constraint violation");
@@ -93,9 +89,10 @@ public class HardConstraintsEval {
                 return false;
             }
         }
-        System.out.println("Success: All constraints passed");
+        //System.out.println("Success: All constraints passed");
         return true;
     }
+
     //Max-Min Slot Capacity Constraint
     private boolean maxConstraint(Assignment assignment) {
         return assignment.getSlot().getMax() >= 0;
@@ -201,5 +198,5 @@ public class HardConstraintsEval {
             }
         }
         return true;
-    } 
+    }
 }

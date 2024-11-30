@@ -20,6 +20,15 @@ public class Slot {
         this.slotStartTime = convertTimeToDouble(startTime);
     }
 
+    public Slot(Slot anotherSlot){
+        this.day = anotherSlot.day;
+        this.startTime = anotherSlot.startTime;
+        this.identifier = anotherSlot.identifier;
+        this.max = anotherSlot.max;
+        this.min = anotherSlot.min;
+        this.forGame = anotherSlot.forGame;
+    }
+
     public boolean forGame(){
         return this.forGame;
     }
