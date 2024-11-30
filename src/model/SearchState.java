@@ -9,7 +9,6 @@ public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;
     private List<Slot> availableSlots;
-    private SearchState parent;
     private int penalty;
 
     public SearchState(List<Assignment> assignments, List<Task> remaningTasks, List<Slot> availableSlots, int penalty) {
@@ -19,12 +18,15 @@ public class SearchState {
         this.penalty = penalty;
     }
 
-    public void setAssignments(List<Assignment> assignments){
-        this.assignments = assignments;
+    public SearchState(SearchState another){
+        this.assignments = another.assignments;
+        this.remainingTasks = another.remainingTasks;
+        this.availableSlots = another.availableSlots;
+        this.penalty = another.penalty;
     }
 
-    public SearchState getParent(){
-        return parent;
+    public void setAssignments(List<Assignment> assignments){
+        this.assignments = assignments;
     }
 
     public void setRemainingTask(List<Task> tasks){
@@ -38,11 +40,12 @@ public class SearchState {
     public void updateRemainingSlots(Slot slot){
         for (Iterator<Slot> iterator = availableSlots.iterator(); iterator.hasNext(); ) {
             Slot cur = iterator.next();
+            //Ah, this needs to be clone as well in order to avoid concurrent update
             if (cur.getId().equals(slot.getId()) && cur.forGame() == slot.forGame()) {
                 cur.setMax(slot.getMax() - 1);
                 cur.setMin(slot.getMin() - 1);
                 if (cur.getMax() == 0){
-                    availableSlots.remove(cur);
+                    iterator.remove();
                 }
                 break;
             }
@@ -53,14 +56,17 @@ public class SearchState {
         return assignments;
     }
 
+   
     public SearchState clone() {
-        SearchState clone = new SearchState(assignments, remainingTasks, availableSlots, penalty);
-        clone.assignments = new ArrayList<>(assignments);
-        clone.availableSlots = availableSlots;
-        clone.remainingTasks = remainingTasks;
-        clone.penalty = penalty;
-        return clone;
+        SearchState clonedState = new SearchState(this);
+        clonedState.availableSlots = new ArrayList<>();
+        for (Slot slot : this.availableSlots) {
+            clonedState.availableSlots.add(new Slot(slot)); // Deep clone slots
+        }
+        
+        return clonedState;
     }
+
 
     public List<Task> getRemainingTask(){
         return remainingTasks;
@@ -78,9 +84,6 @@ public class SearchState {
         this.penalty = penalty;
     }
 
-    public void setParent(SearchState parent){
-        this.parent = parent;
-    }
 
     public void printState(){
         System.out.println("Assignment: ");

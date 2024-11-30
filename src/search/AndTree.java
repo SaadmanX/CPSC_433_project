@@ -63,13 +63,10 @@ public class AndTree {
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
 
-
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
             constraints.put("Pairs", parser.parsePairs());
             makePairList();
-
-
 
             preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
@@ -106,7 +103,6 @@ public class AndTree {
         if (!hardChecker.validatePartialAssignmentsForState(partialAssignments, state)) {
             System.out.println("FAILED WITH PARTIAL");
             System.exit(1);
-            //throw new IllegalStateException("Preprocessing failed: Partial assignments are not satisfied in the current state.");
         }
 
     }
@@ -202,16 +198,12 @@ public class AndTree {
         }
 
         //Remove slots and tasks
-        List<Task> remainingTask = state.getRemainingTask();
+        List<Task> remainingTask = newState.getRemainingTask();
         remainingTask.remove(task);
         newState.setRemainingTask(remainingTask);
 
         // Recalculate the penalty for the new state
         newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
-        System.out.println("----------------------------------------------------");
-        System.out.println("Transited");
-        newState.printState();
-        System.out.println("----------------------------------------------------");
         return newState;
     }
 
@@ -259,6 +251,10 @@ public class AndTree {
     }
     
     private void dfs(SearchState current) {
+        System.out.println("------------Current State-------------------");
+        current.printState();
+        System.out.println("--------------------------------------------");
+
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("Reached leaf node.");
             if (hardChecker.validate(current.getAssignments())) {
@@ -276,17 +272,11 @@ public class AndTree {
             return;
         }
     
-        // Get the next task to assign
         Task nextTask = current.getRemainingTask().get(0);
-        List<Task> remainingTasks = new ArrayList<>(current.getRemainingTask());
-        remainingTasks.remove(0); // Remove the current task for the next recursive call
-    
-        // Generate possible next states for the current task
+
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
-        // Recurse on each generated state
         for (SearchState nextState : nextStates) {
-            nextState.setRemainingTask(remainingTasks); // Pass updated task list
             dfs(nextState); // Recursive DFS call
         }
     }
