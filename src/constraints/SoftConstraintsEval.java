@@ -31,6 +31,10 @@ public class SoftConstraintsEval {
         this.pairs = pair;
     }
 
+    // && should probably add minifunctions that calculate penalties, not for a list of assignments, but for every assignment added. also could add functions for estimating penalties roughly instead, making it much quicker
+
+    // && most of these are O(n), and for pairing its O(n^3) :shocker. gotta change that asap
+
     public int calculatePenalty(List<Assignment> assignments) {
         int penalty = 0;
 

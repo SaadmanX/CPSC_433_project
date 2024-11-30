@@ -15,20 +15,20 @@ public class HardConstraintsEval {
                 return false;
             }
             
-            //if (!noOverlappingPracticesAndGames(assignments)) {
-            //    System.err.println("Failed: Overlapping practices and games constraint violation");
-            //    return false;
-            //}
+            if (!noOverlappingPracticesAndGames(assignments)) {
+                System.err.println("Failed: Overlapping practices and games constraint violation");
+                return false;
+            }
             
             if (!eveningDivisionConstraint(assignment)) {
                 System.err.println("Failed: Evening division constraint violation");
                 return false;
             }
             
-            //if (!nonOverlappingTimeForCertainLevels(assignments)) {
-            //    System.err.println("Failed: Non-overlapping time for certain levels constraint violation");
-            //    return false;
-            //}
+            if (!nonOverlappingTimeForCertainLevels(assignments)) {
+                System.err.println("Failed: Non-overlapping time for certain levels constraint violation");
+                return false;
+            }
         
 
             if (!noGamesOnTuesdayMeeting(assignments)) {
@@ -46,7 +46,7 @@ public class HardConstraintsEval {
                 return false;
             }
         }
-        //System.out.println("Success: All constraints passed");
+        System.out.println("Success: All constraints passed");
         return true;
     }
 
@@ -55,6 +55,7 @@ public class HardConstraintsEval {
         return assignment.getSlot().getMax() >= 0;
     }
 
+    // ^^ can be better if we store slots in tasks, much less comparisons. actually can be O(n) if we store tasks in assignment, and a boolean method called hasSamePracticeAsGame().
     // 2. Practices and Games Cannot Overlap
     private boolean noOverlappingPracticesAndGames(List<Assignment> assignments) {
         for (int i = 0; i < assignments.size(); i++) {
@@ -79,6 +80,7 @@ public class HardConstraintsEval {
         return true;
     }
 
+    // ^^ can be O(n) if we store slots for every task
     // 4. Non-Overlapping Time for Certain Levels (e.g., U15/U16/U17/U19)
     private boolean nonOverlappingTimeForCertainLevels(List<Assignment> assignments) {
         for (Assignment a : assignments) {
@@ -94,6 +96,7 @@ public class HardConstraintsEval {
         return true;
     }
 
+    // ^^ can be O(n) if we store slots for every task
     // 8. Not Compatible Constraint
     private boolean notCompatibleConstraint(List<Assignment> assignments) {
         for (Assignment a : assignments) {
