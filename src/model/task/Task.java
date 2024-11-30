@@ -11,7 +11,7 @@ public class Task {
     private String level; 
     private String division; 
     private String tier;
-    private List<Slot> unwantedSlots;
+    private List<Slot> unwantedSlots = new ArrayList<>();
     private HashMap<Slot, Integer> preferences = new HashMap<>();
     private ArrayList<String> notCompatibleIdentifiers = new ArrayList<>();
     private List<Task> pairedList = new ArrayList<>();

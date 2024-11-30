@@ -31,5 +31,6 @@ public class Main {
         //This will parse inputs from file + preprocess data
 
         andTree.preprocess();
+        andTree.search();
     }
 }

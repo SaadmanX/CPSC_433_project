@@ -9,6 +9,7 @@ public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;
     private List<Slot> availableSlots;
+    private SearchState parent;
     private int penalty;
 
     public SearchState(List<Assignment> assignments, List<Task> remaningTasks, List<Slot> availableSlots, int penalty) {
@@ -20,6 +21,10 @@ public class SearchState {
 
     public void setAssignments(List<Assignment> assignments){
         this.assignments = assignments;
+    }
+
+    public SearchState getParent(){
+        return parent;
     }
 
     public void setRemainingTask(List<Task> tasks){
@@ -51,6 +56,8 @@ public class SearchState {
     public SearchState clone() {
         SearchState clone = new SearchState(assignments, remainingTasks, availableSlots, penalty);
         clone.assignments = new ArrayList<>(assignments);
+        clone.availableSlots = availableSlots;
+        clone.remainingTasks = remainingTasks;
         clone.penalty = penalty;
         return clone;
     }
@@ -71,8 +78,11 @@ public class SearchState {
         this.penalty = penalty;
     }
 
+    public void setParent(SearchState parent){
+        this.parent = parent;
+    }
+
     public void printState(){
-        System.out.println("Successfully transits to a new state where: ");
         System.out.println("Assignment: ");
         for (int a = 0; a < assignments.size(); ++a){
             System.out.println(assignments.get(a));
