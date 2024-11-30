@@ -2,52 +2,9 @@ package constraints;
 
 import java.util.List;
 import model.Assignment;
-import model.SearchState;
-import model.constraints.PartialAssignment;
 
 public class HardConstraintsEval {
 
-    // Validate that the current state satisfies all partial assignments
-    public boolean validatePartialAssignmentsForState(List<PartialAssignment> partialAssignments, SearchState currentState) {
-        for (PartialAssignment partial : partialAssignments) {
-            /** 
-            System.out.println("\n=== Checking Partial Assignment ===");
-            System.out.println("Partial Assignment requires:");
-            System.out.println("Task: " + partial.getTaskIdentifier());
-            System.out.println("Day: " + partial.getDay());
-            System.out.println("Time: " + partial.getTime());
-            */
-            boolean isSatisfied = currentState.getAssignments().stream().anyMatch(assignment -> {
-                /* 
-                System.out.println("\nComparing with Current Assignment:");
-                System.out.println("Current Task: " + assignment.getTask().getIdentifier());
-                System.out.println("Current Day: " + assignment.getSlot().getDay());
-                System.out.println("Current Time: " + assignment.getSlot().getStartTime());
-                */
-                
-                boolean taskMatches = assignment.getTask().getIdentifier().equals(partial.getTaskIdentifier());
-                boolean dayMatches = assignment.getSlot().getDay().equals(partial.getDay());
-                boolean timeMatches = assignment.getSlot().getStartTime().equals(partial.getTime());
-                
-                /* 
-                System.out.println("\nResults:");
-                System.out.println("Task Match: " + taskMatches);
-                System.out.println("Day Match: " + dayMatches); 
-                System.out.println("Time Match: " + timeMatches);
-                System.out.println("Overall Match: " + (taskMatches && dayMatches && timeMatches));
-                */
-                
-                return taskMatches && dayMatches && timeMatches;
-            });
-            
-            if (!isSatisfied) {
-                System.err.println("FAILED: Partial Assignment not satisfied: " + partial);
-                return false;
-            }
-        }
-        //System.out.println("\nSUCCESS: All Partial Assignments satisfied!");
-        return true;
-    }    
     // Validate all hard constraints for a list of assignments
     public boolean validate(List<Assignment> assignments) {
         for (Assignment assignment : assignments) {

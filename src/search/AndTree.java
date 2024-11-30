@@ -14,11 +14,9 @@ import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.PriorityQueue;
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
 
@@ -31,14 +29,12 @@ public class AndTree {
     private List<Unwanted> unwantedList = new ArrayList<>();
     private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> notCompatibles = new ArrayList<>();
-    private List<Task> pairs = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
     SearchState lastState;
     HardConstraintsEval hardChecker = new HardConstraintsEval();
     SoftConstraintsEval softChecker;
-    private boolean backtracking = false;
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
@@ -102,17 +98,13 @@ public class AndTree {
         // System.out.println("initial state before preprocess");
         // state.printState();
 
-
-        assignPartialAssignments();
-        assignPreferences();
-        assignUnwanted();
-
-        // Validate partial assignments against the current state
-        HardConstraintsEval hardChecker = new HardConstraintsEval();
-        if (!hardChecker.validatePartialAssignmentsForState(partialAssignments, state)) {
+        if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
             System.exit(1);
         }
+        assignPreferences();
+        assignUnwanted();
+
     }
 
     private void assignUnwanted(){
@@ -215,16 +207,21 @@ public class AndTree {
         return newState;
     }
 
-    private void assignPartialAssignments() {
+    // Faster tracking of assignPartial
+    private boolean assignPartialAssignments() {
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
            // System.out.println(task);
            // System.out.println(slot);
             if (task != null && slot != null) {
-                state = transitLinkedAssignment(state, task, slot);
+                if (state.equals(transitLinkedAssignment(state, task, slot))){
+                    return false;
+                }
             }
         }
+
+        return true;
     }
 
 
@@ -242,28 +239,6 @@ public class AndTree {
         System.out.println("=================================generating next states end================================");
         return states;
     }
-    
-    /*
-     * this area is being used for notes for myself. read if you want, but the stuff here is pretty messed up
-     */
-
-    /*
-     * my idea on how the flow should go:
-     *  a new queue is started with the preassignments state (or empty state if preassign is empty)
-     *  take the beginning of the queue and set it as current state to check
-     *  check for hardconstraint, and see if the current state is the solution
-     *  otherwise, and here comes the fun part, CHOOSENEXT STATE
-     *      order states in terms of priority of tasks present in some of constraint lists.
-     *          for the sake of simplicity, lets assume that for every task added in the queue from current state, the penalty of the next state will be as follows:
-     *              if task taken from unwanted: 1
-     *              if task taken from compatible: 2
-     *              if task taken from preference: 3
-     *              if task taken from pair: 4
-     *              if task taken from none (remaining tasks): 5
-     *      loop through queue, keep adding states and checking for solution, marking them as valid or invalid solutions, and BACKTRACKING
-     *      for this context of using queues, I am backtracking using "continue", essentially going to the next available state added before the after state
-     */
-
 
     public void search() {
         // Start from the initial state
