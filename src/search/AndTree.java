@@ -99,8 +99,8 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
 
-        System.out.println("initial state before preprocess");
-        state.printState();
+        // System.out.println("initial state before preprocess");
+        // state.printState();
 
 
         assignPartialAssignments();
@@ -288,7 +288,7 @@ public class AndTree {
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("Reached leaf node.");
             if (hardChecker.validate(current.getAssignments())) {
-                if (current.getPenalty() < minEval) {
+                if (current.getPenalty() <= minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();
                     lastState = current;
@@ -298,11 +298,12 @@ public class AndTree {
         }
     
         // Prune states with penalty worse than the best solution
-        if (current.getPenalty() >= minEval) {
+        if (current.getPenalty() > minEval) {
             return;
         }
     
         Task nextTask = current.getRemainingTask().get(0);
+        System.out.println(nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
