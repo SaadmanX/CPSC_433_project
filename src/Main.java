@@ -26,7 +26,7 @@ public class Main {
         List<Task> remainingTasks = new ArrayList<>();
         List<Slot> availableSlots = new ArrayList<>();
         AndTree andTree = new AndTree(new SearchState(assignments, remainingTasks, 
-            availableSlots, 0), inputFileName, weightList, multiplierList);
+            availableSlots, Integer.MAX_VALUE), inputFileName, weightList, multiplierList);
         
         //This will parse inputs from file + preprocess data
 

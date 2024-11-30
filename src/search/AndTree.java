@@ -40,11 +40,14 @@ public class AndTree {
     SoftConstraintsEval softChecker;
     private boolean backtracking = false;
     private int minEval = Integer.MAX_VALUE;
+    ArrayList<Integer> weightList;
+    ArrayList<Integer> multiplierList;
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
         this.inputFileName = filename;
-        softChecker = new SoftConstraintsEval(multiplierList, weightList);
+        this.weightList = weightList;
+        this.multiplierList = multiplierList;
     }
 
     private void parseInput(){
@@ -83,6 +86,7 @@ public class AndTree {
             //parser.parseGames().forEach(System.out::println);
             //parser.parsePracticeSlots().forEach(System.out::println);
             //parser.parsePractices().forEach(System.out::println);
+            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, constraints.get("Pairs"), allSlots);
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -94,6 +98,11 @@ public class AndTree {
     public void preprocess() {
         parseInput();
         buildLinkedSlots();
+
+        // System.out.println("initial state before preprocess");
+        // state.printState();
+
+
         assignPartialAssignments();
         assignPreferences();
         assignUnwanted();
@@ -104,7 +113,6 @@ public class AndTree {
             System.out.println("FAILED WITH PARTIAL");
             System.exit(1);
         }
-
     }
 
     private void assignUnwanted(){
@@ -231,9 +239,31 @@ public class AndTree {
                 states.add(newState);
             } 
         }
-        
+        System.out.println("=================================generating next states end================================");
         return states;
     }
+    
+    /*
+     * this area is being used for notes for myself. read if you want, but the stuff here is pretty messed up
+     */
+
+    /*
+     * my idea on how the flow should go:
+     *  a new queue is started with the preassignments state (or empty state if preassign is empty)
+     *  take the beginning of the queue and set it as current state to check
+     *  check for hardconstraint, and see if the current state is the solution
+     *  otherwise, and here comes the fun part, CHOOSENEXT STATE
+     *      order states in terms of priority of tasks present in some of constraint lists.
+     *          for the sake of simplicity, lets assume that for every task added in the queue from current state, the penalty of the next state will be as follows:
+     *              if task taken from unwanted: 1
+     *              if task taken from compatible: 2
+     *              if task taken from preference: 3
+     *              if task taken from pair: 4
+     *              if task taken from none (remaining tasks): 5
+     *      loop through queue, keep adding states and checking for solution, marking them as valid or invalid solutions, and BACKTRACKING
+     *      for this context of using queues, I am backtracking using "continue", essentially going to the next available state added before the after state
+     */
+
 
     public void search() {
         // Start from the initial state
@@ -258,7 +288,7 @@ public class AndTree {
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("Reached leaf node.");
             if (hardChecker.validate(current.getAssignments())) {
-                if (current.getPenalty() < minEval) {
+                if (current.getPenalty() <= minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();
                     lastState = current;
@@ -268,11 +298,12 @@ public class AndTree {
         }
     
         // Prune states with penalty worse than the best solution
-        if (current.getPenalty() >= minEval) {
+        if (current.getPenalty() > minEval) {
             return;
         }
     
         Task nextTask = current.getRemainingTask().get(0);
+        System.out.println(nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
