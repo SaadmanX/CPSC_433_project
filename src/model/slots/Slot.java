@@ -1,7 +1,11 @@
 package model.slots;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import model.task.Task;
+
 public class Slot {
-    //TODO: Will need to convert startTime to int and timefrime, .0 and .5
     private String day;
     private String startTime;
     private double slotStartTime;    // start time + time frame
@@ -9,6 +13,10 @@ public class Slot {
     private int max;
     private int min;
     private boolean forGame;
+    private ArrayList<Task> tasksList;
+    private int u1519 = 0;
+    private HashSet<String> stringAllTasks = new HashSet<>();
+    private boolean hasSamePracticeAsGame = false;
 
     public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
@@ -18,6 +26,7 @@ public class Slot {
         this.min = min;
         this.forGame = isGame;
         this.slotStartTime = convertTimeToDouble(startTime);
+        this.tasksList = new ArrayList<Task>();
     }
 
     public Slot(Slot anotherSlot){
@@ -28,6 +37,20 @@ public class Slot {
         this.min = anotherSlot.min;
         this.forGame = anotherSlot.forGame;
     }
+
+    public boolean getHasSameGameAsPractice() {
+        return hasSamePracticeAsGame;
+    }
+
+    public void addU1519() {
+        this.u1519 += 1;
+    }
+
+    public int getU1519() {
+        return this.u1519;
+    }
+
+
 
     public boolean forGame(){
         return this.forGame;
@@ -45,6 +68,30 @@ public class Slot {
     private double convertTimeToDouble(String timeStr) {
         return Double.parseDouble(timeStr.substring(0, timeStr.indexOf(':'))) + 
                 (timeStr.charAt(timeStr.length() - 2) == '3' ? 0.5 : 0.0);
+    }
+
+    public void addTask(Task task) {
+        this.tasksList.add(task);
+        this.stringAllTasks.add(task.getIdentifier());
+        this.hasSamePracticeAsGame = findMatch(task);
+    }
+    
+    public boolean findMatch(Task task) {
+        if (hasSamePracticeAsGame) {
+            return true;
+        }
+        String begin;
+        if (task.getIsGame()) {
+            begin = task.getIdentifier();
+        } else {
+            String identifier = task.getIdentifier();
+            begin = identifier.substring(0, identifier.length() - 6);    
+        }
+        return stringAllTasks.contains(begin);
+    }
+    
+    public ArrayList<Task> getTaskList() {
+        return this.tasksList;
     }
 
     public double getSlotStartTime() {

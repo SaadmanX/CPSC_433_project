@@ -10,6 +10,11 @@ public class Assignment {
     public Assignment(Task task, Slot slot) {
         this.task = task;
         this.slot = slot;
+        this.slot.addTask(task);
+        this.task.addSlot(slot);
+        if (task.getLevel().matches("U1[5-9]")) {
+            slot.addU1519();
+        }
     }
 
     public Task getTask(){

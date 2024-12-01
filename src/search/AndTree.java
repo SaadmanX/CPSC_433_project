@@ -168,7 +168,6 @@ public class AndTree {
     }
 
     // ** could also add checks here for faster processing. 
-
     private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
         if (task.isUnwantedSlot(slot)) {
             return state;
@@ -186,7 +185,7 @@ public class AndTree {
 
         List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
         newAssignments.addAll(linkedAssignments);
-        if (!hardChecker.validate(newAssignments)) {
+        if (!hardChecker.validate(newAssignments, allSlots, allTasks)) {
             return state; // Return the original state if validation fails
         }
 
@@ -286,7 +285,7 @@ public class AndTree {
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("Reached leaf node.");
-            if (hardChecker.validate(current.getAssignments())) {
+            if (hardChecker.validate(current.getAssignments(), allSlots, allTasks)) {
                 if (current.getPenalty() <= minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();

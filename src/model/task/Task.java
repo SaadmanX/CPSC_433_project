@@ -17,11 +17,21 @@ public class Task {
     private List<Task> pairedList = new ArrayList<>();
     private boolean isGame; 
     private boolean isSpecialPractice;
+    private ArrayList<Slot> slotList;
 
     public Task(String identifier, boolean isGame) {
         this.identifier = identifier;
         this.isGame = isGame;
+        this.slotList = new ArrayList<Slot>();
         parseIdentifier(); 
+    }
+
+    public void addSlot(Slot s) {
+        this.slotList.add(s);
+    }
+
+    public ArrayList<Slot> getSlotList() {
+        return this.slotList;
     }
 
     public void addPreference(Slot slot, int value) {

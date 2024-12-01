@@ -43,8 +43,8 @@ public class SoftConstraintsEval {
         System.out.println("penalty after min fill check: " + Integer.toString(penalty));
 
         // Preferences
-        // penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
-        penalty += preferencesPenalty() * multiplierList.get(1); 
+        penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
+        // penalty += preferencesPenalty() * multiplierList.get(1); 
         System.out.println("penalty after preference check: " + Integer.toString(penalty));
 
         //  Tasks that should be paired
@@ -57,17 +57,6 @@ public class SoftConstraintsEval {
 
         return penalty;
     }
-
-    // private List<Slot> getAllSlots(List<Assignment> assignments) {
-    //     List<Slot> slots = new ArrayList<>();
-    //     for (Assignment assignment : assignments) {
-    //         if (!slots.contains(assignment.getSlot())) {
-    //             slots.add(assignment.getSlot());
-    //         }
-    //     }
-
-    //     return slots;
-    // }
 
     private int minFillPenalty(List<Assignment> assignments) {
         int penalty = 0;
@@ -85,25 +74,16 @@ public class SoftConstraintsEval {
 
     }
 
-    // private int preferencesPenalty(List<Assignment> assignments) {
-    //     int penalty = 0;
-
-    //     for (Assignment assignment : assignments) {
-    //         Slot assignedSlot = assignment.getSlot();
-    //         Task task = assignment.getTask();
-
-    //         if (!task.isPreferredSlot(assignedSlot)) {
-    //             penalty += task.getPreferenceValue(assignedSlot); 
-    //         }
-    //     }
-
-    //     return penalty;
-    // }
-
-    private int preferencesPenalty() {
+    private int preferencesPenalty(List<Assignment> assignments) {
         int penalty = 0;
-        for (Preference p : preferenceList) {
-            penalty += p.getPenalty();
+
+        for (Assignment assignment : assignments) {
+            Slot assignedSlot = assignment.getSlot();
+            Task task = assignment.getTask();
+
+            if (!task.isPreferredSlot(assignedSlot)) {
+                penalty += task.getPreferenceValue(assignedSlot); 
+            }
         }
 
         return penalty;
