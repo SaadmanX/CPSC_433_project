@@ -66,7 +66,7 @@ public class HardConstraintsEval {
     //Max-Min Slot Capacity Constraint
     private boolean maxConstraint(List<Assignment> assignments) {
         for (Assignment assignment : assignments) {
-            if (assignment.getSlot().getMax() >= 0) {
+            if (assignment.getSlot().getMax() < 0) {
                 return false;
             }
         }
@@ -76,6 +76,7 @@ public class HardConstraintsEval {
     // 2. Practices and Games Cannot Overlap
     private boolean noOverlappingPracticesAndGames(List<Slot> allSlots) {
         for (Slot s : allSlots) {
+            
             if (s.getHasSameGameAsPractice()) {
                 return false;
             }

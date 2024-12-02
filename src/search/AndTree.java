@@ -95,6 +95,13 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
 
+        for (Map.Entry<Slot, List<Slot>> entry : linkedSlotGroups.entrySet()) {
+            Slot key = entry.getKey();
+            int size = entry.getValue().size();
+            System.out.println("List for slot " + key + " has size: " + size);
+        }
+        
+
         // System.out.println("initial state before preprocess");
         // state.printState();
 
@@ -147,11 +154,11 @@ public class AndTree {
             // Build linked slots based on problem constraints
             switch (slot.getDay()) {
                 case "MO" -> {
-                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame()));
-                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
+                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getSlotStartTime(), slot.forGame()));
+                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getSlotStartTime(), slot.forGame()));
                 }
-                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame()));
-                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
+                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getSlotStartTime(), slot.forGame()));
+                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getSlotStartTime(), slot.forGame()));
                 default -> {
                 }
             }
@@ -160,9 +167,9 @@ public class AndTree {
         }
     }
 
-    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
+    private List<Slot> findSlotsByDayAndTime(String day, double time, boolean forGame) {
         return allSlots.stream()
-                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
+                .filter(slot -> slot.getDay().equals(day) && slot.getSlotStartTime() == time
                 && slot.forGame() == forGame)
                 .toList();
     }
@@ -173,8 +180,12 @@ public class AndTree {
             return state;
         }
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
+        System.out.println("getting the linkedslots now");
+        System.out.println(linkedSlots.size());
         List<Assignment> linkedAssignments = new ArrayList<>();
-        linkedAssignments.add(new Assignment(task, slot));
+        if (linkedSlots.size() > 0) {
+            linkedAssignments.add(new Assignment(task, slot));
+        }
 
         for (Slot linkedSlot : linkedSlots) {
             if (!state.getAvailableSlots().contains(linkedSlot)) {
@@ -213,8 +224,6 @@ public class AndTree {
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
-           // System.out.println(task);
-           // System.out.println(slot);
             if (task != null && slot != null) {
                 if (state.equals(transitLinkedAssignment(state, task, slot))){
                     return false;

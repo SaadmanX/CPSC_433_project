@@ -16,7 +16,7 @@ public class Slot {
     private ArrayList<Task> tasksList;
     private int u1519 = 0;
     private HashSet<String> stringAllTasks = new HashSet<>();
-    private boolean hasSamePracticeAsGame = false;
+    private boolean hasSamePracticeAsGame;
 
     public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
@@ -27,6 +27,7 @@ public class Slot {
         this.forGame = isGame;
         this.slotStartTime = convertTimeToDouble(startTime);
         this.tasksList = new ArrayList<Task>();
+        this.hasSamePracticeAsGame = false;
     }
 
     public Slot(Slot anotherSlot){
@@ -72,8 +73,8 @@ public class Slot {
 
     public void addTask(Task task) {
         this.tasksList.add(task);
-        this.stringAllTasks.add(task.getIdentifier());
         this.hasSamePracticeAsGame = findMatch(task);
+        this.stringAllTasks.add(task.getIdentifier());
     }
     
     public boolean findMatch(Task task) {
