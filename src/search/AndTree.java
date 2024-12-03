@@ -39,6 +39,7 @@ public class AndTree {
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
+    ArrayList<Slot> commonSlots = new ArrayList<>();
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
@@ -63,9 +64,11 @@ public class AndTree {
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
 
+            findCommonSlots();
+
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
-          
+
             makePairList();
             pairList = parser.parsePairs();
             preferencesList = parser.parsePreferences();
@@ -106,6 +109,26 @@ public class AndTree {
         assignPreferences();
         assignUnwanted();
 
+    }
+
+    private void findCommonSlots() {
+        for (Slot s1 : allSlots) {
+            for (Slot s2 : allSlots) {
+                if (s1.equals(s2)) {
+                    continue;
+                }
+
+                if (s1.getDay().equals(s2.getDay()) && s1.getSlotStartTime() == s2.getSlotStartTime()) {
+                    if (s1.forGame()) {
+                        commonSlots.add(s1);
+                    }
+
+                    if (s2.forGame()) {
+                        commonSlots.add(s2);
+                    }
+                }
+            }
+        }
     }
 
     private void assignUnwanted(){
@@ -185,7 +208,7 @@ public class AndTree {
 
         List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
         newAssignments.addAll(linkedAssignments);
-        if (!hardChecker.validate(newAssignments, allSlots)) {
+        if (!hardChecker.validate(newAssignments, allSlots, commonSlots)) {
             return state; // Return the original state if validation fails
         }
 
@@ -282,7 +305,7 @@ public class AndTree {
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("Reached leaf node.");
-            if (hardChecker.validate(current.getAssignments(), allSlots)) {
+            if (hardChecker.validate(current.getAssignments(), allSlots, commonSlots)) {
                 if (current.getPenalty() <= minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();

@@ -14,13 +14,13 @@ import model.task.Task;
 public class HardConstraintsEval {
 
     // Validate all hard constraints for a list of assignments
-    public boolean validate(List<Assignment> assignments, List<Slot> slots) {
+    public boolean validate(List<Assignment> assignments, List<Slot> slots, List<Slot> commonSlots) {
         if (!maxConstraint(slots)) {
             System.err.println("Failed: Max constraint violation");
             return false;
         }
         
-        if (!noOverlappingPracticesAndGames(assignments)) {
+        if (!noOverlappingPracticesAndGames(commonSlots)) {
             System.err.println("Failed: Overlapping practices and games constraint violation");
             return false;
         }
@@ -67,17 +67,29 @@ public class HardConstraintsEval {
     }
 
 
-    // && need to change this. currently at O(n^3)
     // 2. Practices and Games Cannot Overlap
-    private boolean noOverlappingPracticesAndGames(List<Assignment> assignments) {
-        for (int i = 0; i < assignments.size(); i++) {
-            Assignment a = assignments.get(i);
-            for (int j = i + 1; j < assignments.size(); j++) {
-                Assignment b = assignments.get(j);
-                if ((a.getTask().getIsGame() != b.getTask().getIsGame()) &&
-                    a.getSlot().equals(b.getSlot()) &&
-                    a.getTask().getDivision().equals(b.getTask().getDivision())) {
-                    return false;
+    private boolean noOverlappingPracticesAndGames(List<Slot> slots) {
+        // ** not the most optimal, i know. but it is correctly checking now. and its not that bad since it only checks overlapping slots for game and practice
+        for (Slot s : slots) {
+            for (Task t1 : s.getAssignedTasks()) {
+                for (Task t2 : s.getAssignedTasks()) {
+                    if (t1.equals(t2)) {
+                        continue;
+                    }
+                    if (t1.getIsGame() == t2.getIsGame()) {
+                        continue;
+                    }
+                    String task1 = t1.getIdentifier();
+                    String task2 = t2.getIdentifier();
+                    if (t1.getIsGame()) {
+                        if (task1.equals(task2.substring(0, task2.length() - 6))) {
+                            return false;
+                        }
+                    } else {
+                        if (task2.equals(task1.substring(0, task1.length() - 6))) {
+                            return false;
+                        }
+                    }
                 }
             }
         }
@@ -105,6 +117,7 @@ public class HardConstraintsEval {
         return true;
     }
 
+    // && still O(n^2)
     // 8. Not Compatible Constraint
     private boolean notCompatibleConstraint(List<Assignment> assignments) {
         for (Assignment a : assignments) {
