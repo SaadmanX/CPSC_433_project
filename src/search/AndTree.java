@@ -242,9 +242,25 @@ public class AndTree {
     }
 
     public void search() {
+        long startTime = System.nanoTime();
+        // Register a shutdown hook to handle SIGINT
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("\nProgram interrupted! Returning the best solution found so far...");
+            if (lastState != null) {
+                System.out.println("Best solution found with penalty: " + minEval);
+                System.out.println("--------------------------------------------");
+                lastState.printState();
+                System.out.println("--------------------------------------------");
+            } else {
+                System.out.println("No solution found.");
+            }
+            long endTime = System.nanoTime();
+            System.out.println("Total execution time: " + (endTime - startTime) / 1_000_000 + " ms");
+        }));
+    
         // Start from the initial state
         dfs(state);
-        
+    
         // After DFS, print the best state found
         if (lastState != null) {
             System.out.println("Best solution found with penalty: " + minEval);
@@ -254,6 +270,9 @@ public class AndTree {
         } else {
             System.out.println("No solution found.");
         }
+
+        long endTime = System.nanoTime();
+        System.out.println("Total execution time: " + (endTime - startTime) / 1_000_000 + " ms");
     }
     
     private void dfs(SearchState current) {
