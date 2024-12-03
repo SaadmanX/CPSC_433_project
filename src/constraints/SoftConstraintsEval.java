@@ -142,12 +142,47 @@ public class SoftConstraintsEval {
         return result;
     }
 
-    // TODO: Minimize the difference in task assignment across sections
-    private int sectionDifferencePenalty(List<Assignment> assignments) {
-        int penalty = 0;
+    // // TODO: Minimize the difference in task assignment across sections
+    // private int sectionDifferencePenalty(List<Assignment> assignments) {
+    //     int penalty = 0;
     
-        penalty += Math.abs(assignments.size() % 2) * penaltyList.get(3); 
+    //     penalty += Math.abs(assignments.size() % 2) * penaltyList.get(3); 
         
-        return penalty;
+    //     return penalty;
+    // }
+
+    private int sectionDifferencePenalty(List<Assignment> assignments) {
+        Map<String, Integer> divisionCounts = new HashMap<>();
+        
+        // Count assignments per division based on task identifier
+        for (Assignment assignment : assignments) {
+            String identifier = assignment.getTask().getIdentifier();
+            String division = "";
+            
+            // Parse division from identifier
+            String[] parts = identifier.split(" ");
+            for (String part : parts) {
+                if (part.startsWith("DIV")) {
+                    division = part;
+                    break;
+                }
+            }
+            
+            if (!division.isEmpty()) {
+                divisionCounts.put(division, divisionCounts.getOrDefault(division, 0) + 1);
+            }
+        }
+        
+        // If less than 2 divisions found, return 0
+        if (divisionCounts.size() < 2) {
+            return 0;
+        }
+        
+        // Find max and min division counts
+        int maxCount = Collections.max(divisionCounts.values());
+        int minCount = Collections.min(divisionCounts.values());
+        
+        // Penalty is the difference between max and min division counts
+        return (maxCount - minCount) * penaltyList.get(3);
     }
 }
