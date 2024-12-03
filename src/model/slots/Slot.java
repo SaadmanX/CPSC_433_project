@@ -54,6 +54,10 @@ public class Slot {
         this.u1519 += 1;
     }
 
+    public void delU1519() {
+        this.u1519 -= 1;
+    }
+
     public int getU1519() {
         return this.u1519;
     }

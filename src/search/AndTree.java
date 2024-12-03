@@ -39,7 +39,6 @@ public class AndTree {
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
-    ArrayList<Slot> commonSlots = new ArrayList<>();
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
@@ -47,6 +46,7 @@ public class AndTree {
         this.weightList = weightList;
         this.multiplierList = multiplierList;
     }
+
 
     private void parseInput(){
         try {
@@ -63,8 +63,6 @@ public class AndTree {
 
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
-
-            findCommonSlots();
 
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
@@ -111,25 +109,6 @@ public class AndTree {
 
     }
 
-    private void findCommonSlots() {
-        for (Slot s1 : allSlots) {
-            for (Slot s2 : allSlots) {
-                if (s1.equals(s2)) {
-                    continue;
-                }
-
-                if (s1.getDay().equals(s2.getDay()) && s1.getSlotStartTime() == s2.getSlotStartTime()) {
-                    if (s1.forGame()) {
-                        commonSlots.add(s1);
-                    }
-
-                    if (s2.forGame()) {
-                        commonSlots.add(s2);
-                    }
-                }
-            }
-        }
-    }
 
     private void assignUnwanted(){
         for (Unwanted unwanted : unwantedList) {
@@ -191,26 +170,99 @@ public class AndTree {
                 .toList();
     }
 
+    // private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
+    //     if (task.isUnwantedSlot(slot)) {
+    //         return state;
+    //     }
+    //     List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
+    //     List<Assignment> linkedAssignments = new ArrayList<>();
+    //     linkedAssignments.add(new Assignment(task, slot));
+
+    //     for (Slot linkedSlot : linkedSlots) {
+    //         if (!state.getAvailableSlots().contains(linkedSlot)) {
+    //             return state;
+    //         }
+    //         linkedAssignments.add(new Assignment(task, linkedSlot));
+    //     }
+
+    //     List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
+    //     newAssignments.addAll(linkedAssignments);
+    //     if (!hardChecker.validate(newAssignments, allSlots, commonSlots)) {
+    //         return state; // Return the original state if validation fails
+    //     }
+
+    //     // Create a new state with updated assignments and penalties
+    //     SearchState newState = state.clone();
+    //     newState.setAssignments(newAssignments);
+
+    //     // Remove assigned slots from availability
+    //     for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
+    //         newState.updateRemainingSlots(assignedSlot);
+    //     }
+
+    //     //Remove slots and tasks
+    //     List<Task> remainingTask = newState.getRemainingTask();
+    //     remainingTask.remove(task);
+    //     newState.setRemainingTask(remainingTask);
+
+    //     // Recalculate the penalty for the new state
+    //     newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
+    //     return newState;
+    // }
+
     private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
         if (task.isUnwantedSlot(slot)) {
             return state;
         }
+
+        // Create initial assignment to test
+        Assignment newAssignment = new Assignment(task, slot);
+        if (!hardChecker.validate(newAssignment)) {
+            // If the first assignment fails, no need to try linked slots
+            slot.getAssignedTasks().remove(task); // Clean up the failed assignment
+            if (task.getLevel().matches("U1[5-9]")) {
+                slot.delU1519(); // Decrement the U15-19 counter
+            }
+            return state;
+        }
+
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
         List<Assignment> linkedAssignments = new ArrayList<>();
-        linkedAssignments.add(new Assignment(task, slot));
+        linkedAssignments.add(newAssignment);
 
+        // Try to add linked assignments
         for (Slot linkedSlot : linkedSlots) {
             if (!state.getAvailableSlots().contains(linkedSlot)) {
+                // Clean up all assignments made so far if we can't complete the linked group
+                for (Assignment a : linkedAssignments) {
+                    a.getSlot().getAssignedTasks().remove(a.getTask());
+                    if (a.getTask().getLevel().matches("U1[5-9]")) {
+                        a.getSlot().delU1519();
+                    }
+                }
                 return state;
             }
-            linkedAssignments.add(new Assignment(task, linkedSlot));
+            Assignment linkedAssignment = new Assignment(task, linkedSlot);
+            if (!hardChecker.validate(linkedAssignment)) {
+                // Clean up all assignments made so far if any linked assignment fails
+                linkedSlot.getAssignedTasks().remove(task);
+                if (task.getLevel().matches("U1[5-9]")) {
+                    linkedSlot.addU1519();
+                }
+                for (Assignment a : linkedAssignments) {
+                    a.getSlot().getAssignedTasks().remove(a.getTask());
+                    if (a.getTask().getLevel().matches("U1[5-9]")) {
+                        a.getSlot().addU1519();
+                    }
+                }
+                return state;
+            }
+            linkedAssignments.add(linkedAssignment);
         }
 
+        // All assignments validated successfully, create new state
         List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
         newAssignments.addAll(linkedAssignments);
-        if (!hardChecker.validate(newAssignments, allSlots, commonSlots)) {
-            return state; // Return the original state if validation fails
-        }
 
         // Create a new state with updated assignments and penalties
         SearchState newState = state.clone();
@@ -221,7 +273,7 @@ public class AndTree {
             newState.updateRemainingSlots(assignedSlot);
         }
 
-        //Remove slots and tasks
+        // Remove task
         List<Task> remainingTask = newState.getRemainingTask();
         remainingTask.remove(task);
         newState.setRemainingTask(remainingTask);
@@ -230,6 +282,7 @@ public class AndTree {
         newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
         return newState;
     }
+
 
     // Faster tracking of assignPartial
     private boolean assignPartialAssignments() {
@@ -305,12 +358,10 @@ public class AndTree {
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("Reached leaf node.");
-            if (hardChecker.validate(current.getAssignments(), allSlots, commonSlots)) {
-                if (current.getPenalty() <= minEval) {
-                    System.out.println("New best state with penalty: " + current.getPenalty());
-                    minEval = current.getPenalty();
-                    lastState = current;
-                }
+            if (current.getPenalty() <= minEval) {
+                System.out.println("New best state with penalty: " + current.getPenalty());
+                minEval = current.getPenalty();
+                lastState = current;
             }
             return;
         }
@@ -326,10 +377,10 @@ public class AndTree {
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
         for (SearchState nextState : nextStates) {
-            dfs(nextState); // Recursive DFS call
+            dfs(nextState);
         }
     }
-
+    
     private void makePairList() {
         List<Constraint> pairConstraints = constraints.get("Pairs");
 
