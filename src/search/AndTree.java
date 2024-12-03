@@ -99,8 +99,7 @@ public class AndTree {
             Slot key = entry.getKey();
             int size = entry.getValue().size();
             System.out.println("List for slot " + key + " has size: " + size);
-        }
-        
+        }        
 
         // System.out.println("initial state before preprocess");
         // state.printState();
@@ -183,9 +182,7 @@ public class AndTree {
         System.out.println("getting the linkedslots now");
         System.out.println(linkedSlots.size());
         List<Assignment> linkedAssignments = new ArrayList<>();
-        if (linkedSlots.size() > 0) {
-            linkedAssignments.add(new Assignment(task, slot));
-        }
+        linkedAssignments.add(new Assignment(task, slot));
 
         for (Slot linkedSlot : linkedSlots) {
             if (!state.getAvailableSlots().contains(linkedSlot)) {
@@ -240,7 +237,9 @@ public class AndTree {
         
         List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());            
         
-        for (Slot slot : availableSlots) {                
+        for (Slot slot : availableSlots) {     
+            System.out.println("22222222222222222222222 printing a slot humbly 222222222222222222222222222");
+            System.out.println(slot);           
             SearchState newState = transitLinkedAssignment(state, task, slot);
             if (!newState.equals(state)) {
                 states.add(newState);

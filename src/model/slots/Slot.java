@@ -73,12 +73,13 @@ public class Slot {
 
     public void addTask(Task task) {
         this.tasksList.add(task);
-        this.hasSamePracticeAsGame = findMatch(task);
+        this.hasSamePracticeAsGame = hasMatch(task);
         this.stringAllTasks.add(task.getIdentifier());
     }
     
-    public boolean findMatch(Task task) {
+    public boolean hasMatch(Task task) {
         if (hasSamePracticeAsGame) {
+            System.out.println("11111111111111111111111111111 still true 11111111111111111111111111111");
             return true;
         }
         String begin;
@@ -88,6 +89,8 @@ public class Slot {
             String identifier = task.getIdentifier();
             begin = identifier.substring(0, identifier.length() - 6);    
         }
+        System.out.println("the hasMatch will be returning: ");
+        System.out.println(stringAllTasks.contains(begin));
         return stringAllTasks.contains(begin);
     }
     

@@ -24,7 +24,7 @@ public class HardConstraintsEval {
             return false;
         }
         
-        if (!noOverlappingPracticesAndGames(allSlots)) {
+        if (!noOverlappingPracticesAndGames(assignments)) {
             System.err.println("Failed: Overlapping practices and games constraint violation");
             return false;
         }
@@ -74,15 +74,30 @@ public class HardConstraintsEval {
     }
 
     // 2. Practices and Games Cannot Overlap
-    private boolean noOverlappingPracticesAndGames(List<Slot> allSlots) {
-        for (Slot s : allSlots) {
-            
-            if (s.getHasSameGameAsPractice()) {
-                return false;
+    // private boolean noOverlappingPracticesAndGames(List<Slot> allSlots) {
+    //     for (Slot s : allSlots) {
+    //         if (s.getHasSameGameAsPractice()) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }    
+
+    private boolean noOverlappingPracticesAndGames(List<Assignment> assignments) {
+        for (int i = 0; i < assignments.size(); i++) {
+            Assignment a = assignments.get(i);
+            for (int j = i + 1; j < assignments.size(); j++) {
+                Assignment b = assignments.get(j);
+                if ((a.getTask().getIsGame() != b.getTask().getIsGame()) &&
+                    a.getSlot().equals(b.getSlot()) &&
+                    a.getTask().getDivision().equals(b.getTask().getDivision())) {
+                    return false;
+                }
             }
         }
         return true;
     }    
+
     // 3. Evening Division Constraint
     private boolean eveningDivisionConstraint(List<Assignment> assignments) {
         for (Assignment assignment : assignments) {
