@@ -15,7 +15,7 @@ public class HardConstraintsEval {
 
     // Validate all hard constraints for a list of assignments
     public boolean validate(List<Assignment> assignments, List<Slot> slots) {
-        if (!maxConstraint(assignments)) {
+        if (!maxConstraint(slots)) {
             System.err.println("Failed: Max constraint violation");
             return false;
         }
@@ -59,9 +59,9 @@ public class HardConstraintsEval {
     }
 
     //Max-Min Slot Capacity Constraint
-    private boolean maxConstraint(List<Assignment> assignments) {
-        for (Assignment assignment : assignments) {
-            return assignment.getSlot().getCurrentCount() <= assignment.getSlot().getMax();
+    private boolean maxConstraint(List<Slot> slots) {
+        for (Slot slot : slots) {
+            return slot.getCurrentCount() <= slot.getMax();
         }
         return true;
     }
@@ -83,6 +83,7 @@ public class HardConstraintsEval {
         }
         return true;
     }    
+    
     // 3. Evening Division Constraint
     private boolean eveningDivisionConstraint(List<Assignment> assignments) {
         for (Assignment assignment : assignments) {
@@ -94,7 +95,6 @@ public class HardConstraintsEval {
         return true;
     }
 
-    // && need to change this as well. currently running at O(n^2)
     // 4. Non-Overlapping Time for Certain Levels (e.g., U15/U16/U17/U19)
     private boolean nonOverlappingTimeForCertainLevels(List<Slot> slots) {
         for (Slot s : slots) {
