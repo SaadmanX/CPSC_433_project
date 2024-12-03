@@ -16,6 +16,8 @@ public class Slot {
     private boolean forGame;
     private int currentCount = 0;
     private List<Task> taskList = new ArrayList<>();
+    private int u1519 = 0;
+
 
     public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
@@ -48,6 +50,14 @@ public class Slot {
         return this.startTime;
     }
 
+    public void addU1519() {
+        this.u1519 += 1;
+    }
+
+    public int getU1519() {
+        return this.u1519;
+    }
+
     // returns a double value such that "9:30" -> 9.5
     private double convertTimeToDouble(String timeStr) {
         return Double.parseDouble(timeStr.substring(0, timeStr.indexOf(':'))) + 
@@ -71,7 +81,7 @@ public class Slot {
     }
 
     public List<Task> getAssignedTasks(){
-        return this.getAssignedTasks();
+        return this.taskList;
     }
 
     public int getCurrentCount(){
