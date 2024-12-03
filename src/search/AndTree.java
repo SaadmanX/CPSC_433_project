@@ -27,6 +27,7 @@ public class AndTree {
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
     private List<Unwanted> unwantedList = new ArrayList<>();
+    private List<Pair> pairList = new ArrayList<>();
     private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> notCompatibles = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
@@ -64,9 +65,9 @@ public class AndTree {
 
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
-            constraints.put("Pairs", parser.parsePairs());
+          
             makePairList();
-
+            pairList = parser.parsePairs();
             preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
@@ -82,7 +83,7 @@ public class AndTree {
             //parser.parseGames().forEach(System.out::println);
             //parser.parsePracticeSlots().forEach(System.out::println);
             //parser.parsePractices().forEach(System.out::println);
-            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, constraints.get("Pairs"), allSlots);
+            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());

@@ -146,8 +146,8 @@ public class InputParser {
         return constraints;
     }
 
-    public List<Constraint> parsePairs() {
-        List<Constraint> constraints = new ArrayList<>();
+    public List<Pair> parsePairs() {
+        List<Pair> constraints = new ArrayList<>();
         List<String> lines = sections.get("Pair:");
 
         if (lines != null) {

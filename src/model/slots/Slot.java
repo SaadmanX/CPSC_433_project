@@ -1,5 +1,10 @@
 package model.slots;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import model.task.Task;
+
 public class Slot {
     //TODO: Will need to convert startTime to int and timefrime, .0 and .5
     private String day;
@@ -9,6 +14,8 @@ public class Slot {
     private int max;
     private int min;
     private boolean forGame;
+    private int currentCount = 0;
+    private List<Task> taskList = new ArrayList<>();
 
     public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
@@ -55,12 +62,20 @@ public class Slot {
         return this.max;
     }
 
-    public void setMin(int min){
-        this.min = min;
+    public void setCurrentCount(int count){
+        this.currentCount = count;
     }
 
-    public void setMax(int max){
-        this.max = max;
+    public void addAssignedTask(Task task){
+        taskList.add(task);
+    }
+
+    public List<Task> getAssignedTasks(){
+        return this.getAssignedTasks();
+    }
+
+    public int getCurrentCount(){
+        return this.currentCount;
     }
 
     public int getMin() {

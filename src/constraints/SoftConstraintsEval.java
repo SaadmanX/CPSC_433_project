@@ -2,28 +2,27 @@ package constraints;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
-import model.constraints.Constraint;
 import model.constraints.Pair;
 import model.constraints.Preference;
 
 public class SoftConstraintsEval {
-    
     // Multiplier List (Order: minFill, pref, pair, secdiff)
     private List<Integer> multiplierList;
     
-    // Penalty List (Order: gameMin, practiceMin, notPaird, section)
+    // Penalty List (Order: gameMin, practiceMin, notPaired, section)
     private List<Integer> penaltyList;
 
     private List<Preference> preferenceList;
 
     private List<Slot> allSlots;
 
-    private List<Constraint> pairs;
+    private List<Pair> pairs;
 
-    public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Preference> prefer, List<Constraint> pair, List<Slot> allSlots) {
+    public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Preference> prefer, List<Pair> pair, List<Slot> allSlots) {
         this.multiplierList = multiplierList;
         this.penaltyList = penaltyList;
         this.preferenceList = prefer;
@@ -31,27 +30,63 @@ public class SoftConstraintsEval {
         this.pairs = pair;
     }
 
+
+    //Calculate penalty difference to subtract
+    public int calculatePenalty(Assignment assignment, List<Assignment> curAssignments, int currentPenalty){
+        int penaltyDiff = 0;
+
+        // Min Fill Penalty
+        int minFilledDif = updateMinFillPenalty(assignment);
+        if (minFilledDif != -1)penaltyDiff +=  penaltyList.get(0);
+
+        //TODO Check logic again, basically it should be the same although many prefs for one task
+        // Preferences Penalty       
+        int preferenceDiff = updatePreferencesPenalty(assignment);
+        if (penaltyDiff != -1){
+            penaltyDiff += (preferenceDiff  * multiplierList.get(1));
+        }
+        
+        //int pairingDiff = updatePairingPenalty(assignment, curAssignments);
+        //if (pairingDiff != -1)penaltyDiff += (pairingDiff * multiplierList.get(2));
+                
+        // Section Difference Penalty
+        //penaltyDiff += updateSectionDifferencePenalty(assignment) * multiplierList.get(3);
+                
+        return currentPenalty - penaltyDiff;
+                   
+    }    
+      
+
+
+    //Should only be called exactly once at the initial state, after only the newest assignment is evaluated
     public int calculatePenalty(List<Assignment> assignments) {
         int penalty = 0;
 
-        // Min Fill Constraint
         penalty += minFillPenalty(assignments) * multiplierList.get(0); 
         System.out.println("penalty after min fill check: " + Integer.toString(penalty));
 
-        // Preferences
-        // penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
-        penalty += preferencesPenalty() * multiplierList.get(1); 
+        penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
+        //penalty += preferencesPenalty() * multiplierList.get(1); 
         System.out.println("penalty after preference check: " + Integer.toString(penalty));
 
-        //  Tasks that should be paired
         penalty += pairingPenalty(assignments) * multiplierList.get(2); 
         System.out.println("penalty after pair check: " + Integer.toString(penalty));
 
-        // Section Difference: Minimize uneven section
         penalty += sectionDifferencePenalty(assignments) * multiplierList.get(3); 
         System.out.println("penalty after section check: " + Integer.toString(penalty));
 
         return penalty;
+    }
+
+    private int updatePreferencesPenalty(Assignment assignment) {
+        Slot slot = assignment.getSlot();
+        Task task = assignment.getTask();
+
+        if (task.isPreferredSlot(slot)){
+            return task.getPreferenceValue(slot);
+        }
+
+        return -1;
     }
 
     // private List<Slot> getAllSlots(List<Assignment> assignments) {
@@ -67,39 +102,33 @@ public class SoftConstraintsEval {
 
     private int minFillPenalty(List<Assignment> assignments) {
         int penalty = 0;
-
         for (Slot slot : allSlots) {
-            // Count the number of assignments for this slot
-            long count = assignments.stream().filter(a -> a.getSlot().equals(slot)).count();
-
-            if (count < slot.getMin()) {
-                penalty += (slot.getMin() - (int) count) * penaltyList.get(0); 
+            if (slot.getCurrentCount() < slot.getMin()) {
+                penalty += (slot.getMin() - slot.getCurrentCount()); 
             }
         }
 
         return penalty;
-
     }
 
-    // private int preferencesPenalty(List<Assignment> assignments) {
-    //     int penalty = 0;
+    // Update Min Fill Penalty
+    private int updateMinFillPenalty(Assignment assignment) {
+        Slot slot = assignment.getSlot();
+        if (slot.getCurrentCount() >= slot.getMin())return -1;
+        
+        return 1; //Difference between before and after is 1 * mult
+    }
 
-    //     for (Assignment assignment : assignments) {
-    //         Slot assignedSlot = assignment.getSlot();
-    //         Task task = assignment.getTask();
-
-    //         if (!task.isPreferredSlot(assignedSlot)) {
-    //             penalty += task.getPreferenceValue(assignedSlot); 
-    //         }
-    //     }
-
-    //     return penalty;
-    // }
-
-    private int preferencesPenalty() {
+    private int preferencesPenalty(List<Assignment> assignments) {
         int penalty = 0;
-        for (Preference p : preferenceList) {
-            penalty += p.getPenalty();
+
+        for (Assignment assignment : assignments) {
+            Slot assignedSlot = assignment.getSlot();
+            Task task = assignment.getTask();
+
+            if (!task.isPreferredSlot(assignedSlot)) {
+                penalty += task.getPreferenceValue(assignedSlot); 
+            }
         }
 
         return penalty;
@@ -125,7 +154,6 @@ public class SoftConstraintsEval {
         return penalty;
     }
 
-    // ** maybe add component such that each task carries a list of slots its assigned to. this will speed up this function more
     // private int pairingPenalty(List<Assignment> assignments) {
     //     int penalty = 0;
 
@@ -159,6 +187,9 @@ public class SoftConstraintsEval {
     }
 
     // TODO: Minimize the difference in task assignment across sections
+    //Different divisional games within a single age/tier group should be scheduled 
+    //at different times. For each pair of divisions that is scheduled into the same slot, 
+    //we add a penalty pensection to the Eval-value of an assignment.
     private int sectionDifferencePenalty(List<Assignment> assignments) {
         int penalty = 0;
     

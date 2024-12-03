@@ -3,6 +3,7 @@ package constraints;
 import java.util.List;
 import model.Assignment;
 
+
 public class HardConstraintsEval {
 
     // Validate all hard constraints for a list of assignments
@@ -52,7 +53,7 @@ public class HardConstraintsEval {
 
     //Max-Min Slot Capacity Constraint
     private boolean maxConstraint(Assignment assignment) {
-        return assignment.getSlot().getMax() >= 0;
+        return assignment.getSlot().getCurrentCount() <= assignment.getSlot().getMax();
     }
 
     // 2. Practices and Games Cannot Overlap

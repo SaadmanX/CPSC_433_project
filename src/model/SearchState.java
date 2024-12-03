@@ -42,9 +42,8 @@ public class SearchState {
             Slot cur = iterator.next();
             //Ah, this needs to be clone as well in order to avoid concurrent update
             if (cur.getId().equals(slot.getId()) && cur.forGame() == slot.forGame()) {
-                cur.setMax(slot.getMax() - 1);
-                cur.setMin(slot.getMin() - 1);
-                if (cur.getMax() == 0){
+                cur.setCurrentCount(cur.getCurrentCount() + 1);
+                if (cur.getMax() == cur.getCurrentCount()){
                     iterator.remove();
                 }
                 break;

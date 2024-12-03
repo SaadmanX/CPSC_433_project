@@ -17,6 +17,7 @@ public class Task {
     private List<Task> pairedList = new ArrayList<>();
     private boolean isGame; 
     private boolean isSpecialPractice;
+    private int sumPreferences = 0;
 
     public Task(String identifier, boolean isGame) {
         this.identifier = identifier;
@@ -24,8 +25,14 @@ public class Task {
         parseIdentifier(); 
     }
 
+    //Handy for update with 1 newest assignment only
+    public int getSumPreferences(){
+        return sumPreferences;
+    }
+
     public void addPreference(Slot slot, int value) {
         preferences.put(slot, value);
+        sumPreferences += value;
     }
 
     public boolean isPreferredSlot(Slot slot) {
