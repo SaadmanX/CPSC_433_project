@@ -84,7 +84,10 @@ public class AndTree {
             //parser.parseGames().forEach(System.out::println);
             //parser.parsePracticeSlots().forEach(System.out::println);
             //parser.parsePractices().forEach(System.out::println);
-            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
+            // softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
+
+            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, constraints.get("Pairs"), allSlots);
+
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
