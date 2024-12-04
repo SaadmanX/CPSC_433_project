@@ -96,8 +96,8 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
 
-        // System.out.println("initial state before preprocess");
-        // state.printState();
+        //System.out.println("initial state before preprocess");
+        //state.printState();
 
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
@@ -105,6 +105,9 @@ public class AndTree {
         }
         assignPreferences();
         assignUnwanted();
+
+        //System.out.println("After preprocess");
+        //state.printState();
 
     }
 
@@ -205,23 +208,25 @@ public class AndTree {
 
         // Recalculate the penalty for the new state
         newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
+        System.out.println("SO NEW STATE IS");
+        newState.printState();
         return newState;
     }
 
     // Faster tracking of assignPartial
     private boolean assignPartialAssignments() {
+
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
-           // System.out.println(task);
-           // System.out.println(slot);
             if (task != null && slot != null) {
-                if (state.equals(transitLinkedAssignment(state, task, slot))){
+                SearchState newestState = transitLinkedAssignment(state, task, slot);
+                if (state.equals(newestState)){
                     return false;
                 }
+                state = newestState;
             }
         }
-
         return true;
     }
 
@@ -244,6 +249,7 @@ public class AndTree {
     public void search() {
         // Start from the initial state
         dfs(state);
+        
         
         // After DFS, print the best state found
         if (lastState != null) {
