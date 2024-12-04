@@ -84,6 +84,7 @@ public class AndTree {
             //parser.parsePracticeSlots().forEach(System.out::println);
             //parser.parsePractices().forEach(System.out::println);
             softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
+            state.setPenalty(softChecker.initialPenalty);
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -206,10 +207,13 @@ public class AndTree {
         remainingTask.remove(task);
         newState.setRemainingTask(remainingTask);
 
-        // Recalculate the penalty for the new state
-        newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
-        System.out.println("SO NEW STATE IS");
-        newState.printState();
+        // Recalculate the penalty for the new state, huh... so this is the only time called
+        int penalty = newState.getPenalty();
+        newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
+        
+        
+        //System.out.println("SO NEW STATE IS");
+        //newState.printState();
         return newState;
     }
 

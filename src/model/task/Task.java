@@ -18,6 +18,7 @@ public class Task {
     private boolean isGame; 
     private boolean isSpecialPractice;
     private int sumPreferences = 0;
+    private Slot isCurrentlyAssignedTo;
 
     public Task(String identifier, boolean isGame) {
         this.identifier = identifier;
@@ -28,6 +29,14 @@ public class Task {
     //Handy for update with 1 newest assignment only
     public int getSumPreferences(){
         return sumPreferences;
+    }
+
+    public void setCurrentAssign(Slot slot){
+        this.isCurrentlyAssignedTo = slot;
+    }
+
+    public Slot getCurrentAssigned(){
+        return this.isCurrentlyAssignedTo;
     }
 
     public void addPreference(Slot slot, int value) {

@@ -1,7 +1,9 @@
 package constraints;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.Assignment;
 import model.slots.Slot;
@@ -9,6 +11,9 @@ import model.task.Task;
 import model.constraints.Pair;
 import model.constraints.Preference;
 
+//TODO: Something wrong, beacause penaltyList is unused, have to check this again 
+//TODO: (it's another multiplier in the subfunction), and all these values must be calculated separately
+//TODO: WIll need to separate it into subfunctions for this reason + readibility
 public class SoftConstraintsEval {
     // Multiplier List (Order: minFill, pref, pair, secdiff)
     private List<Integer> multiplierList;
@@ -20,6 +25,8 @@ public class SoftConstraintsEval {
 
     private List<Slot> allSlots;
 
+    public int initialPenalty; //can be higher/lower after assignment, acts as a reference point of initial state
+
     private List<Pair> pairs;
 
     public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Preference> prefer, List<Pair> pair, List<Slot> allSlots) {
@@ -28,173 +35,125 @@ public class SoftConstraintsEval {
         this.preferenceList = prefer;
         this.allSlots = allSlots;
         this.pairs = pair;
+
+        initialPenalty = calculateInitialPenalty();
     }
 
-
-    //Calculate penalty difference to subtract
-    public int calculatePenalty(Assignment assignment, List<Assignment> curAssignments, int currentPenalty){
-        int penaltyDiff = 0;
-
-        // Min Fill Penalty
-        int minFilledDif = updateMinFillPenalty(assignment);
-        if (minFilledDif != -1)penaltyDiff +=  penaltyList.get(0);
-
-        //TODO Check logic again, basically it should be the same although many prefs for one task
-        // Preferences Penalty       
-        int preferenceDiff = updatePreferencesPenalty(assignment);
-        if (penaltyDiff != -1){
-            penaltyDiff += (preferenceDiff  * multiplierList.get(1));
-        }
-        
-        //int pairingDiff = updatePairingPenalty(assignment, curAssignments);
-        //if (pairingDiff != -1)penaltyDiff += (pairingDiff * multiplierList.get(2));
-                
-        // Section Difference Penalty
-        //penaltyDiff += updateSectionDifferencePenalty(assignment) * multiplierList.get(3);
-                
-        return currentPenalty - penaltyDiff;
-                   
-    }    
-      
-
-
-    //Should only be called exactly once at the initial state, after only the newest assignment is evaluated
-    public int calculatePenalty(List<Assignment> assignments) {
-        int penalty = 0;
-
-        penalty += minFillPenalty(assignments) * multiplierList.get(0); 
-        System.out.println("penalty after min fill check: " + Integer.toString(penalty));
-
-        penalty += preferencesPenalty(assignments) * multiplierList.get(1); 
-        //penalty += preferencesPenalty() * multiplierList.get(1); 
-        System.out.println("penalty after preference check: " + Integer.toString(penalty));
-
-        penalty += pairingPenalty(assignments) * multiplierList.get(2); 
-        System.out.println("penalty after pair check: " + Integer.toString(penalty));
-
-        penalty += sectionDifferencePenalty(assignments) * multiplierList.get(3); 
-        System.out.println("penalty after section check: " + Integer.toString(penalty));
-
-        return penalty;
-    }
-
-    private int updatePreferencesPenalty(Assignment assignment) {
-        Slot slot = assignment.getSlot();
-        Task task = assignment.getTask();
-
-        if (task.isPreferredSlot(slot)){
-            return task.getPreferenceValue(slot);
-        }
-
-        return -1;
-    }
-
-    // private List<Slot> getAllSlots(List<Assignment> assignments) {
-    //     List<Slot> slots = new ArrayList<>();
-    //     for (Assignment assignment : assignments) {
-    //         if (!slots.contains(assignment.getSlot())) {
-    //             slots.add(assignment.getSlot());
-    //         }
-    //     }
-
-    //     return slots;
-    // }
-
-    private int minFillPenalty(List<Assignment> assignments) {
-        int penalty = 0;
-        for (Slot slot : allSlots) {
-            if (slot.getCurrentCount() < slot.getMin()) {
-                penalty += (slot.getMin() - slot.getCurrentCount()); 
-            }
-        }
-
-        return penalty;
-    }
-
-    // Update Min Fill Penalty
-    private int updateMinFillPenalty(Assignment assignment) {
-        Slot slot = assignment.getSlot();
-        if (slot.getCurrentCount() >= slot.getMin())return -1;
-        
-        return 1; //Difference between before and after is 1 * mult
-    }
-
-    private int preferencesPenalty(List<Assignment> assignments) {
+    //max 3 here for the link transit
+    public int calculatePenalty(List<Assignment> assignments){
         int penalty = 0;
 
         for (Assignment assignment : assignments) {
-            Slot assignedSlot = assignment.getSlot();
-            Task task = assignment.getTask();
-
-            if (!task.isPreferredSlot(assignedSlot)) {
-                penalty += task.getPreferenceValue(assignedSlot); 
-            }
+            penalty += calculatePenalty(assignment);
         }
 
         return penalty;
     }
 
-    private int pairingPenalty(List<Assignment> assignments) {
+    public int calculatePenalty(Assignment assignment){
         int penalty = 0;
 
-        for (Assignment assignment: assignments) {
-            Task task = assignment.getTask();
-            if (task.getPairs().isEmpty())continue;
-            
-            List<Task> neededToBePairedList = task.getPairs();
-            Slot slot = assignment.getSlot();
+        Slot slot = assignment.getSlot();
+        Task task = assignment.getTask();
 
-            for (Task b: getTasksBySlot(assignments, slot)){
-                if (!neededToBePairedList.isEmpty() && neededToBePairedList.contains(b))neededToBePairedList.remove(b);
-            }
-
-            penalty += neededToBePairedList.size() * penaltyList.get(2);
+        // Min Fill Penalty
+        if (slot.getCurrentCount() < slot.getMin()){
+            penalty += (slot.getMin() - slot.getCurrentCount()) * multiplierList.get(0);
         }
 
-        return penalty;
-    }
+        // Pref Penalty update
+        if (task.isPreferredSlot(slot))penalty -=  task.getPreferenceValue(slot) * multiplierList.get(1);
 
-    // private int pairingPenalty(List<Assignment> assignments) {
-    //     int penalty = 0;
+        // Pairing
+        // Basically this needs to be iterated... can't think of another way, but this is so slow
+        int counter = 0;
+        if (task.getPairs() != null){
+            int total = task.getPairs().size();
+            for (Task t: task.getPairs()){
+                //find if they are paired
+                if (isOverlap(task, t)){
+                    counter++;
+                }
+            }
 
-    //     for (Constraint c : pairs) {
-    //         Pair pair = (Pair) c;
-    //         String t1;
-    //         String t2;
-    //         t1 = pair.getTeam1Id();
+            penalty += (total - counter) * multiplierList.get(2);
+        }
+                
+        // Section Difference Penalty
 
-    //         t2 = pair.getTeam2Id();
-    //     }
+        //Different divisional games within a single age/tier group should be scheduled 
+        //at different times. For each pair of divisions that is scheduled into the same slot, 
+        //we add a penalty pensection to the Eval-value of an assignment.
 
-    //     for (Assignment a : assignments) {
+        HashMap<String, Integer> ageFrequencyMap = new HashMap<>();
 
-    //     }
-
-    //     return penalty;
-    // }
-
-
-    private List<Task> getTasksBySlot(List<Assignment> assignments, Slot slot){
-        List<Task> result = new ArrayList<>();
-        for (Assignment assignment: assignments){
-            if (assignment.getSlot().getDay().equals(slot.getDay())
-            && assignment.getSlot().getStartTime().equals(slot.getStartTime())
-            && assignment.getSlot().forGame() == slot.forGame()){
-                result.add(assignment.getTask());
+        for (Task t : slot.getAssignedTasks()) {
+            if (t.getIsGame() && !t.getDivision().equals("")){
+                String tier = t.getTier();
+                ageFrequencyMap.put(tier, ageFrequencyMap.getOrDefault(tier, 0) + 1);
             }
         }
-        return result;
-    }
 
-    // TODO: Minimize the difference in task assignment across sections
-    //Different divisional games within a single age/tier group should be scheduled 
-    //at different times. For each pair of divisions that is scheduled into the same slot, 
-    //we add a penalty pensection to the Eval-value of an assignment.
-    private int sectionDifferencePenalty(List<Assignment> assignments) {
-        int penalty = 0;
-    
-        penalty += Math.abs(assignments.size() % 2) * penaltyList.get(3); 
+        int numberOfPair = 0;
+        for (Map.Entry<String, Integer> entry : ageFrequencyMap.entrySet()) {
+            Integer n = entry.getValue(); //frequency
         
+            if (n > 1){
+                numberOfPair += n * (n-1) / 2;
+            }
+        }
+        penalty += numberOfPair * multiplierList.get(3);
+                
+        return penalty;
+                    
+    }    
+
+    private boolean isOverlap(Task a, Task b){
+        return (a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime()));
+    }
+
+
+    //Should only be called exactly once at the initial state, after only the newest assignment is evaluated
+    public int calculateInitialPenalty() {
+        int penalty = 0;
+
+        penalty += minFillPenalty() * multiplierList.get(0); 
+        //System.out.println("penalty after min fill check: " + Integer.toString(penalty));
+
+        penalty += preferencesPenalty() * multiplierList.get(1); 
+        //penalty += preferencesPenalty() * multiplierList.get(1); 
+        //System.out.println("penalty after preference check: " + Integer.toString(penalty));
+
+        penalty += pairingPenalty() * multiplierList.get(2); 
+        //System.out.println("penalty after pair check: " + Integer.toString(penalty));
+
+        //No initial assignment, no penalty for sec diff
+
         return penalty;
     }
+
+
+    private int minFillPenalty() {
+        int penalty = 0;
+        for (Slot slot : allSlots) {
+            penalty += slot.getMin();
+        }
+
+        return penalty;
+    }
+
+    private int preferencesPenalty() {
+        int penalty = 0;
+
+        for (Preference pref : preferenceList) {
+            penalty += pref.getPenalty();
+        }
+
+        return penalty;
+    }
+
+    private int pairingPenalty() {
+       return pairs.size();
+    }
+
 }
