@@ -182,7 +182,6 @@
 
 package constraints;
 
-import java.util.List;
 import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;

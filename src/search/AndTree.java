@@ -100,8 +100,8 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
 
-        // System.out.println("initial state before preprocess");
-        // state.printState();
+        System.out.println("initial state before preprocess");
+        state.printState();
 
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
@@ -110,6 +110,8 @@ public class AndTree {
         assignPreferences();
         assignUnwanted();
 
+        System.out.println("initial state after preprocess");
+        state.printState();
     }
 
 
@@ -292,18 +294,18 @@ public class AndTree {
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
-           // System.out.println(task);
-           // System.out.println(slot);
+            
             if (task != null && slot != null) {
-                if (state.equals(transitLinkedAssignment(state, task, slot))){
-                    return false;
+                SearchState newState = transitLinkedAssignment(state, task, slot);
+                if (state.equals(newState)) {
+                    return false; // Assignment failed
                 }
+                state = newState; // Update the current state with the new assignment
             }
         }
-
         return true;
     }
-
+    
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
