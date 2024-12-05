@@ -50,7 +50,6 @@ public class Task {
 
     public void addPair(Task anotherTask) {
         pairedList.add(anotherTask);
-        anotherTask.addPair(this);
     }
 
     public boolean isPair(Task anotherTask) {

@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
 
@@ -27,7 +28,7 @@ public class AndTree {
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
     private List<Unwanted> unwantedList = new ArrayList<>();
-    private List<Pair> pairList = new ArrayList<>();
+    private List<Task> pairs = new ArrayList<>();
     private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> notCompatibles = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
@@ -67,24 +68,12 @@ public class AndTree {
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
 
+            constraints.put("Pairs", parser.parsePairs());
             makePairList();
-            pairList = parser.parsePairs();
+            // pairs = parser.parsePairs();
             preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
-
-            //DEBUGGING
-            //parser.parseNotCompatible().forEach(System.out::println);
-            //parser.parseUnwanted().forEach(System.out::println);
-            //parser.parsePairs().forEach(System.out::println);
-            //parser.parsePartialAssignments().forEach(System.out::println);
-            //parser.parsePreferences().forEach(System.out::println);
-
-            //parser.parseGameSlots().forEach(System.out::println);
-            //parser.parseGames().forEach(System.out::println);
-            //parser.parsePracticeSlots().forEach(System.out::println);
-            //parser.parsePractices().forEach(System.out::println);
-            // softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
 
             softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, constraints.get("Pairs"), allSlots);
 
@@ -175,46 +164,6 @@ public class AndTree {
                 .toList();
     }
 
-    // private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
-    //     if (task.isUnwantedSlot(slot)) {
-    //         return state;
-    //     }
-    //     List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
-    //     List<Assignment> linkedAssignments = new ArrayList<>();
-    //     linkedAssignments.add(new Assignment(task, slot));
-
-    //     for (Slot linkedSlot : linkedSlots) {
-    //         if (!state.getAvailableSlots().contains(linkedSlot)) {
-    //             return state;
-    //         }
-    //         linkedAssignments.add(new Assignment(task, linkedSlot));
-    //     }
-
-    //     List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
-    //     newAssignments.addAll(linkedAssignments);
-    //     if (!hardChecker.validate(newAssignments, allSlots, commonSlots)) {
-    //         return state; // Return the original state if validation fails
-    //     }
-
-    //     // Create a new state with updated assignments and penalties
-    //     SearchState newState = state.clone();
-    //     newState.setAssignments(newAssignments);
-
-    //     // Remove assigned slots from availability
-    //     for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
-    //         newState.updateRemainingSlots(assignedSlot);
-    //     }
-
-    //     //Remove slots and tasks
-    //     List<Task> remainingTask = newState.getRemainingTask();
-    //     remainingTask.remove(task);
-    //     newState.setRemainingTask(remainingTask);
-
-    //     // Recalculate the penalty for the new state
-    //     newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
-    //     return newState;
-    // }
-
     private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
         if (task.isUnwantedSlot(slot)) {
             return state;
@@ -285,6 +234,9 @@ public class AndTree {
 
         // Recalculate the penalty for the new state
         newState.setPenalty(softChecker.calculatePenalty(newState.getAssignments()));
+
+        // System.out.println("999999999999999999999999 this is the approximation function 999999999999999999999999");
+        // System.out.println(softChecker.estimateIncrementalPenalty(newAssignment, state.getAssignments(), state.getPenalty()));
         return newState;
     }
 
@@ -298,9 +250,9 @@ public class AndTree {
             if (task != null && slot != null) {
                 SearchState newState = transitLinkedAssignment(state, task, slot);
                 if (state.equals(newState)) {
-                    return false; // Assignment failed
+                    return false;
                 }
-                state = newState; // Update the current state with the new assignment
+                state = newState; 
             }
         }
         return true;
@@ -324,21 +276,6 @@ public class AndTree {
 
     public void search() {
         long startTime = System.nanoTime();
-        // Register a shutdown hook to handle SIGINT
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("\nProgram interrupted! Returning the best solution found so far...");
-            if (lastState != null) {
-                System.out.println("Best solution found with penalty: " + minEval);
-                System.out.println("--------------------------------------------");
-                lastState.printState();
-                System.out.println("--------------------------------------------");
-            } else {
-                System.out.println("No solution found.");
-            }
-            long endTime = System.nanoTime();
-            System.out.println("Total execution time: " + (endTime - startTime) / 1_000_000 + " ms");
-        }));
-    
         // Start from the initial state
         dfs(state);
     
@@ -362,7 +299,7 @@ public class AndTree {
         System.out.println("--------------------------------------------");
 
         if (current.getRemainingTask().isEmpty()) {
-            System.out.println("Reached leaf node.");
+            System.out.println("Reached leaf node with eval: " + current.getPenalty());
             if (current.getPenalty() <= minEval) {
                 System.out.println("New best state with penalty: " + current.getPenalty());
                 minEval = current.getPenalty();
@@ -385,35 +322,35 @@ public class AndTree {
             dfs(nextState);
         }
     }
-    
+
     private void makePairList() {
         List<Constraint> pairConstraints = constraints.get("Pairs");
-
+    
         if (pairConstraints == null || pairConstraints.isEmpty()) {
             return;
         }
-
+    
         for (Constraint constraint : pairConstraints) {
-            Pair nc = (Pair) constraint;
-
-            Task task1 = findTaskByIdentifier(nc.getTeam1Id());
-            Task task2 = findTaskByIdentifier(nc.getTeam2Id());
-            
-            // Add first task if exists and not already in list
-            if (task1 != null) {
-                if (!notCompatibles.contains(task1)) {
-                    notCompatibles.add(task1);
+            Pair pair = (Pair) constraint;
+    
+            Task task1 = findTaskByIdentifier(pair.getTeam1Id());
+            Task task2 = findTaskByIdentifier(pair.getTeam2Id());
+    
+            // Add tasks to each other's pair lists if they both exist
+            if (task1 != null && task2 != null) {
+                // Add task2 to task1's pair list
+                if (!task1.getPairs().contains(task2)) {
+                    task1.addPair(task2);
                 }
-            }
-            // Add second task if exists and not already in list
-            if (task2 != null) {
-                if (!notCompatibles.contains(task2)) {
-                    notCompatibles.add(task2);
+                
+                // Add task1 to task2's pair list
+                if (!task2.getPairs().contains(task1)) {
+                    task2.addPair(task1);
                 }
             }
         }
     }
-
+    
     private void makeNotCompatibleList() {
         List<Constraint> notCompatibleConstraints = constraints.get("NotCompatible");
         
