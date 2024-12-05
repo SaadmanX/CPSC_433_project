@@ -8,6 +8,9 @@ import model.task.Task;
 import model.constraints.Constraint;
 import model.constraints.Pair;
 import model.constraints.Preference;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 
 public class SoftConstraintsEval {
     
