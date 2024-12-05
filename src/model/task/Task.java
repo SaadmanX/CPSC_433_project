@@ -116,6 +116,7 @@ public class Task {
     public List<Slot> getUnwantedSlots(){
         return unwantedSlots;
     }
+    
     private void parseIdentifier() {
         String[] parts = this.identifier.split(" "); 
 
@@ -126,6 +127,7 @@ public class Task {
         this.division = ""; 
         for (String part : parts) {
             if (part.startsWith("DIV")) {
+                //its the next one
                 this.division = part;
                 break;
             }
