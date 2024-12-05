@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
 
@@ -28,7 +27,7 @@ public class AndTree {
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
     private List<Unwanted> unwantedList = new ArrayList<>();
-    private List<Task> pairs = new ArrayList<>();
+    private List<Pair> pairList = new ArrayList<>();
     private List<Preference> preferencesList = new ArrayList<>();
     private List<Task> notCompatibles = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
@@ -48,7 +47,6 @@ public class AndTree {
         this.multiplierList = multiplierList;
     }
 
-
     private void parseInput(){
         try {
             parser.parseFile(this.inputFileName);
@@ -67,16 +65,26 @@ public class AndTree {
 
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
-
+          
             constraints.put("Pairs", parser.parsePairs());
             makePairList();
-            // pairs = parser.parsePairs();
             preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
 
-            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, constraints.get("Pairs"), allSlots);
+            //DEBUGGING
+            //parser.parseNotCompatible().forEach(System.out::println);
+            //parser.parseUnwanted().forEach(System.out::println);
+            //parser.parsePairs().forEach(System.out::println);
+            //parser.parsePartialAssignments().forEach(System.out::println);
+            //parser.parsePreferences().forEach(System.out::println);
 
+            //parser.parseGameSlots().forEach(System.out::println);
+            //parser.parseGames().forEach(System.out::println);
+            //parser.parsePracticeSlots().forEach(System.out::println);
+            //parser.parsePractices().forEach(System.out::println);
+            softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
+            state.setPenalty(softChecker.initialPenalty);
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -89,8 +97,8 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
 
-        System.out.println("initial state before preprocess");
-        state.printState();
+        //System.out.println("initial state before preprocess");
+        //state.printState();
 
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
@@ -99,10 +107,10 @@ public class AndTree {
         assignPreferences();
         assignUnwanted();
 
-        System.out.println("initial state after preprocess");
-        state.printState();
-    }
+        //System.out.println("After preprocess");
+        //state.printState();
 
+    }
 
     private void assignUnwanted(){
         for (Unwanted unwanted : unwantedList) {
@@ -240,24 +248,23 @@ public class AndTree {
         return newState;
     }
 
-
     // Faster tracking of assignPartial
     private boolean assignPartialAssignments() {
+
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
-            
             if (task != null && slot != null) {
-                SearchState newState = transitLinkedAssignment(state, task, slot);
-                if (state.equals(newState)) {
+                SearchState newestState = transitLinkedAssignment(state, task, slot);
+                if (state.equals(newestState)){
                     return false;
                 }
-                state = newState; 
+                state = newestState;
             }
         }
         return true;
     }
-    
+
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
@@ -275,10 +282,10 @@ public class AndTree {
     }
 
     public void search() {
-        long startTime = System.nanoTime();
         // Start from the initial state
         dfs(state);
-    
+        
+        
         // After DFS, print the best state found
         if (lastState != null) {
             System.out.println("Best solution found with penalty: " + minEval);
@@ -288,9 +295,6 @@ public class AndTree {
         } else {
             System.out.println("No solution found.");
         }
-
-        long endTime = System.nanoTime();
-        System.out.println("Total execution time: " + (endTime - startTime) / 1_000_000 + " ms");
     }
     
     private void dfs(SearchState current) {
@@ -325,32 +329,32 @@ public class AndTree {
 
     private void makePairList() {
         List<Constraint> pairConstraints = constraints.get("Pairs");
-    
+
         if (pairConstraints == null || pairConstraints.isEmpty()) {
             return;
         }
-    
+
         for (Constraint constraint : pairConstraints) {
-            Pair pair = (Pair) constraint;
-    
-            Task task1 = findTaskByIdentifier(pair.getTeam1Id());
-            Task task2 = findTaskByIdentifier(pair.getTeam2Id());
-    
-            // Add tasks to each other's pair lists if they both exist
-            if (task1 != null && task2 != null) {
-                // Add task2 to task1's pair list
-                if (!task1.getPairs().contains(task2)) {
-                    task1.addPair(task2);
+            Pair nc = (Pair) constraint;
+
+            Task task1 = findTaskByIdentifier(nc.getTeam1Id());
+            Task task2 = findTaskByIdentifier(nc.getTeam2Id());
+            
+            // Add first task if exists and not already in list
+            if (task1 != null) {
+                if (!notCompatibles.contains(task1)) {
+                    notCompatibles.add(task1);
                 }
-                
-                // Add task1 to task2's pair list
-                if (!task2.getPairs().contains(task1)) {
-                    task2.addPair(task1);
+            }
+            // Add second task if exists and not already in list
+            if (task2 != null) {
+                if (!notCompatibles.contains(task2)) {
+                    notCompatibles.add(task2);
                 }
             }
         }
     }
-    
+
     private void makeNotCompatibleList() {
         List<Constraint> notCompatibleConstraints = constraints.get("NotCompatible");
         
@@ -381,4 +385,3 @@ public class AndTree {
         }
     }
 }
-

@@ -6,7 +6,6 @@ import java.util.List;
 import model.task.Task;
 
 public class Slot {
-    //TODO: Will need to convert startTime to int and timefrime, .0 and .5
     private String day;
     private String startTime;
     private double slotStartTime;    // start time + time frame
