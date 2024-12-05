@@ -1,7 +1,7 @@
-Temporary cope:
+this comnpilation tech works:
 
-Make all:
-    javac Main.java
+cd into src
 
-clean:
-    find . -name "*.class" -type f -delete     
+javac -d bin Main.java
+
+java -cp Main <filename> <weight1> <weight2> <weight3> <weight4> <pen1> <pen2> <pen3> <pen4>
