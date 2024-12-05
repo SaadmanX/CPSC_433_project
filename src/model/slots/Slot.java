@@ -15,6 +15,7 @@ public class Slot {
     private boolean forGame;
     private int currentCount = 0;
     private List<Task> taskList = new ArrayList<>();
+    private int u1519 = 0;
 
     public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
@@ -23,7 +24,6 @@ public class Slot {
         this.max = max;
         this.min = min;
         this.forGame = isGame;
-        this.slotStartTime = convertTimeToDouble(startTime);
     }
 
     public Slot(Slot anotherSlot){
@@ -47,12 +47,6 @@ public class Slot {
         return this.startTime;
     }
 
-    // returns a double value such that "9:30" -> 9.5
-    private double convertTimeToDouble(String timeStr) {
-        return Double.parseDouble(timeStr.substring(0, timeStr.indexOf(':'))) + 
-                (timeStr.charAt(timeStr.length() - 2) == '3' ? 0.5 : 0.0);
-    }
-
     public double getSlotStartTime() {
         return this.slotStartTime;
     }
@@ -73,6 +67,19 @@ public class Slot {
         return this.taskList;
     }
 
+
+    public void addU1519() {
+        this.u1519 += 1;
+    }
+
+    public void delU1519() {
+        this.u1519 -= 1;
+    }
+
+    public int getU1519() {
+        return this.u1519;
+    }
+
     public int getCurrentCount(){
         return this.currentCount;
     }
@@ -87,6 +94,6 @@ public class Slot {
 
     @Override
     public String toString() {
-        return String.format("TimeSlot[day=%s, startTime=%s, max=%d, min=%d]", day, startTime, max, min);
+        return String.format("TimeSlot[day=%s, startTime=%s, max=%d, min=%d, isGame=%s]", day, startTime, max, min, forGame);
     }
 }
