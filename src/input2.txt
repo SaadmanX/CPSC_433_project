@@ -1,12 +1,14 @@
-Name: 
+//Need to test evening slots as wellName: 
+
+Name:
 ShortExample 
 
 Game slots: 
 MO, 8:00, 1, 0 
 WE, 8:00, 3, 0 
-FR, 8:00, 3, 0
-TU, 9:00, 1, 0
-TH, 9:00, 1, 0  
+FR, 8:00, 3, 2
+TU, 9:00, 1, 1
+TH, 9:00, 1, 1  
 
 Practice slots: 
 MO, 11:00, 3, 2 
@@ -32,11 +34,11 @@ Unwanted:
 CMSA U13T3 DIV 01, WE, 8:00 
 
 Preferences: 
-MO, 11:00, CMSA U13T3 DIV 01 PRC 01, 3 
-TU, 9:00, CMSA U13T3 DIV 02, 10 
+MO, 8:00, CMSA U13T3 DIV 01 PRC 01, 3 
+MO, 10:00, CMSA U13T3 DIV 02, 10 
 
 Pair: 
-CUSA O18 DIV 01, CMSA U13T3 DIV 01 
+CUSA O18 DIV 01, CMSA U17T1 DIV 01 
 
 Partial assignments: 
 CUSA O18 DIV 01, MO, 8:00 

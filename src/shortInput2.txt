@@ -1,0 +1,38 @@
+Game Slots: 		
+MO, 9:00, 2, 1	
+WE, 9:00, 1, 1
+FR, 9:00, 1, 1
+FR, 10:00, 2, 1
+
+Practice Slots:		
+MO, 11:00, 2, 1
+WE, 11:00, 1, 1
+FR, 11:00, 2, 1		
+TU, 9:00, 1, 0
+TH, 9:00, 1, 0	
+FR, 13:00, 1, 1	
+
+Games:			
+CMSA U13T3 DIV 01 
+CMSA U13T3 DIV 02 
+CUSA O18 DIV 01 
+
+Practices:		
+CMSA U13T3 DIV 02 PRC 01		
+CMSA U13T3 DIV 01 PRC 01	
+CMSA U13T3 DIV 01 PRC 02		
+
+Not Compatible:	
+CMSA U13T3 DIV 01, CMSA U13T3 DIV 02	
+
+Unwanted:		
+CMSA U13T3 DIV 02 PRC 01, MO, 11:00
+
+Preferences:		
+FR, 13:00, CMSA U13T3 DIV 01 PRC 01, 3
+
+Pair:
+CMSA U13T3 DIV 01, CUSA O18 DIV 01
+
+Partial assignments:	
+CMSA U13T3 DIV 01, MO, 9:00
