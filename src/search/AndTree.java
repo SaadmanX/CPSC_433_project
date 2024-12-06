@@ -14,6 +14,7 @@ import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -175,42 +176,17 @@ public class AndTree {
     }
 
     private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
-        
         if (task.isUnwantedSlot(slot)) {
             return currentState;
         }
-        /**
-        List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
-        List<Assignment> linkedAssignments = new ArrayList<>();
-        linkedAssignments.add(new Assignment(task, slot));
 
-        for (Slot linkedSlot : linkedSlots) {
-            if (!currentState.getAvailableSlots().contains(linkedSlot)) {
-                return state;
-            }
-            linkedAssignments.add(new Assignment(task, linkedSlot));
+        // Check if this is a valid assignment considering linked days
+        if (!isValidDayAssignment(task, slot, currentState)) {
+            return currentState;
         }
 
-        List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
-        newAssignments.addAll(linkedAssignments);
-       
-        for (Assignment a : linkedAssignments) {
-            if (!hardChecker.validate(a)) {
-                return currentState; // Return the original state if validation fails
-            }
-            
-            // Create a new state with updated assignments and penalties
-            SearchState newState = currentState.clone();
-            newState.setAssignments(newAssignments);
-
-            // Remove assigned slots from availability
-            for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
-                newState.updateRemainingSlots(assignedSlot);
-            }
-
-         */
         Assignment newAssignment = new Assignment(task, slot);
-        if (!hardChecker.validate(newAssignment)){
+        if (!hardChecker.validate(newAssignment)) {
             return currentState;
         }
 
@@ -219,25 +195,51 @@ public class AndTree {
         newState.addAssignment(newAssignment);
         newState.updateRemainingSlots(slot);
 
-            //Remove slots and tasks
-            List<Task> remainingTasks = newState.getRemainingTask();
-            for (int i = 0; i < remainingTasks.size(); i++){
-                Task cult = remainingTasks.get(i);
-                if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
-            }
+        // Remove assigned task
+        List<Task> remainingTasks = newState.getRemainingTask();
+        remainingTasks.removeIf(t -> t.getIdentifier().equals(task.getIdentifier()));
 
-            // Recalculate the penalty for the new state, huh... so this is the only time called
-            int penalty = newState.getPenalty();
-            newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
-                        
-            //System.out.println("SO NEW STATE IS");
-            //newState.printState();
-            return newState;
-        //}
+        // Recalculate penalty
+        int penalty = newState.getPenalty();
+        newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
 
-        //return state;
+        return newState;
     }
 
+    private boolean isValidDayAssignment(Task task, Slot slot, SearchState currentState) {
+        String day = slot.getDay();
+        
+        // Check linked days pattern
+        switch (day) {
+            case "MO":
+                // If Monday is assigned, check if Wednesday and Friday slots are available
+                return hasAvailableLinkedSlots(currentState, task, "WE", "FR", slot.getStartTime());
+            case "TU":
+                // If Tuesday is assigned, check if Thursday slot is available
+                return hasAvailableLinkedSlots(currentState, task, "TH", null, slot.getStartTime());
+            case "WE":
+                // If Wednesday is assigned, check if Friday slot is available
+                return hasAvailableLinkedSlots(currentState, task, "FR", null, slot.getStartTime());
+            default:
+                return true;
+        }
+    }
+
+    private boolean hasAvailableLinkedSlots(SearchState state, Task task, String day1, String day2, String time) {
+        boolean day1Available = state.getAvailableSlots().stream()
+                .anyMatch(s -> s.getDay().equals(day1) && 
+                             s.getStartTime().equals(time) && 
+                             s.forGame() == task.getIsGame());
+        
+        if (day2 == null) return day1Available;
+        
+        boolean day2Available = state.getAvailableSlots().stream()
+                .anyMatch(s -> s.getDay().equals(day2) && 
+                             s.getStartTime().equals(time) && 
+                             s.forGame() == task.getIsGame());
+        
+        return day1Available && day2Available;
+    }
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
@@ -272,33 +274,27 @@ public class AndTree {
     }
     
     private void dfs(SearchState current) {
-        System.out.println("------------Current State-------------------");
-        current.printState();
-        System.out.println("--------------------------------------------");
-
         if (current.getRemainingTask().isEmpty()) {
-            System.out.println("REACHED LEAF NODE.");
-                if (current.getPenalty() < minEval) {
-                    System.out.println("New best state with penalty: " + current.getPenalty());
-                    minEval = current.getPenalty();
-                    lastState = current;
-                }
+            if (current.getPenalty() < minEval) {
+                minEval = current.getPenalty();
+                lastState = current;
+            }
             return;
         }
-    
-        // Prune states with penalty worse than the best solution
-        if (current.getPenalty() > minEval) {
+
+        // Only prune if penalty is significantly worse
+        if (current.getPenalty() > minEval * 1.5) {
             return;
         }
 
         Task nextTask = current.getRemainingTask().get(0);
-        //System.out.println("##########################NEXT TASK: " + nextTask);
-
         List<SearchState> nextStates = generateNextStates(current, nextTask);
-    
+
+        // Sort states by penalty to try most promising first
+        nextStates.sort(Comparator.comparingInt(SearchState::getPenalty));
+
         for (SearchState nextState : nextStates) {
-            
-            dfs(nextState); // Recursive DFS call
+            dfs(nextState);
         }
     }
     
