@@ -10,6 +10,7 @@ public class SearchState {
     private List<Task> remainingTasks;
     private List<Slot> availableSlots;
     private int penalty;
+    
 
     public SearchState(List<Assignment> assignments, List<Task> remainingTasks, List<Slot> availableSlots, int penalty) {
         this.assignments = assignments;
@@ -29,42 +30,56 @@ public class SearchState {
         this.assignments = assignments;
     }
 
-    public void setRemainingTask(List<Task> tasks){
-        this.remainingTasks = tasks;
+    public void setRemainingTask(List<Task> tasks) {
+        List<Task> orderedTasks = new ArrayList<>();
+        
+        // First add tasks with division >= 9
+        for (Task task : tasks) {
+            try {
+                int divNum = Integer.parseInt(task.getDivision());
+                if (divNum >= 9) {
+                    orderedTasks.add(task);
+                }
+            } catch (NumberFormatException e) {
+                continue;
+            }
+        }
+        
+        // Then add remaining tasks
+        for (Task task : tasks) {
+            try {
+                int divNum = Integer.parseInt(task.getDivision());
+                if (divNum < 9) {
+                    orderedTasks.add(task);
+                }
+            } catch (NumberFormatException e) {
+                // Add tasks with non-numeric divisions at the end
+                orderedTasks.add(task);
+            }
+        }
+        
+        this.remainingTasks = orderedTasks;
     }
-
+        
     public void setRemainingSlots(List<Slot> slots){
         this.availableSlots = slots;
     }
 
-    public void updateRemainingSlots(Slot slot){
-        for (Slot s: this.availableSlots){
-            if (s.getId().equals(slot.getId()) && s.forGame() == slot.forGame()){
+    public void updateRemainingSlots(Slot slot) {
+        List<Slot> slotsToUpdate = new ArrayList<>();
+        
+        for (Slot s: this.availableSlots) {
+            if (s.getId().equals(slot.getId()) && s.forGame() == slot.forGame()) {
                 s.setCurrentCount(s.getCurrentCount() + 1);
-
-                if (s.getMax() == s.getCurrentCount()){
-                    availableSlots.remove(s);
+                if (s.getMax() == s.getCurrentCount()) {
+                    slotsToUpdate.add(s);
                 }
             }
         }
-
-        /* 
-        for (Iterator<Slot> iterator = availableSlots.iterator(); iterator.hasNext(); ) {
-            Slot cur = iterator.next();
-            //Ah, this needs to be clone as well in order to avoid concurrent update
-            if (cur.getId().equals(slot.getId()) && cur.forGame() == slot.forGame()) {
-                
-                cur.setCurrentCount(cur.getCurrentCount() + 1);
-
-                if (cur.getMax() == cur.getCurrentCount()){
-                    availableSlots.remove(slot);
-                }
-                break;
-            }
-        }
-        */
+        
+        availableSlots.removeAll(slotsToUpdate);
     }
-
+    
     public List<Assignment> getAssignments() {
         return assignments;
     }

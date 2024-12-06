@@ -13,7 +13,6 @@ import model.task.Task;
 import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +21,7 @@ import constraints.SoftConstraintsEval;
 
 public class AndTree {
     private SearchState state;
-    private HashMap<String, List<Constraint>> constraints = new HashMap<>(); 
+    // private HashMap<String, List<Constraint>> constraints = new HashMap<>(); 
     private InputParser parser = new InputParser();
     private String inputFileName;
     private List<PartialAssignment> partialAssignments = new ArrayList<>();
@@ -32,9 +31,8 @@ public class AndTree {
     private List<Task> notCompatibles = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
-    private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
     SearchState lastState;
-    HardConstraintsEval hardChecker = new HardConstraintsEval(allSlots);
+    HardConstraintsEval hardChecker = new HardConstraintsEval(allTasks);
     SoftConstraintsEval softChecker;
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
@@ -66,10 +64,10 @@ public class AndTree {
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
 
-            constraints.put("NotCompatible", parser.parseNotCompatible());
+            // constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
 
-            makePairList();
+            // makePairList();
             pairList = parser.parsePairs();
             preferencesList = parser.parsePreferences();
             unwantedList = parser.parseUnwanted();
@@ -87,7 +85,7 @@ public class AndTree {
 
     public void preprocess() {
         parseInput();
-        buildLinkedSlots();
+        // buildLinkedSlots();
 
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
@@ -148,85 +146,85 @@ public class AndTree {
     }
 
 
-    private void buildLinkedSlots() {
-        for (Slot slot : allSlots) {
-            List<Slot> linkedSlots = new ArrayList<>();
+    // private void buildLinkedSlots() {
+    //     for (Slot slot : allSlots) {
+    //         List<Slot> linkedSlots = new ArrayList<>();
 
-            // Build linked slots based on problem constraints
-            switch (slot.getDay()) {
-                case "MO" -> {
-                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame()));
-                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
-                }
-                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame()));
-                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
-                default -> {
-                }
-            }
+    //         // Build linked slots based on problem constraints
+    //         switch (slot.getDay()) {
+    //             case "MO" -> {
+    //                 linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame()));
+    //                 linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
+    //             }
+    //             case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame()));
+    //             case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
+    //             default -> {
+    //             }
+    //         }
 
-            linkedSlotGroups.put(slot, linkedSlots);
+    //         linkedSlotGroups.put(slot, linkedSlots);
 
-        }
+    //     }
 
-        // System.out.println(linkedSlotGroups);
+    //     // System.out.println(linkedSlotGroups);
 
-    }
+    // }
 
-    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
-        return allSlots.stream()
-                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
-                && slot.forGame() == forGame)
-                .toList();
-    }
+    // private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
+    //     return allSlots.stream()
+    //             .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
+    //             && slot.forGame() == forGame)
+    //             .toList();
+    // }
 
-    private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
+    // private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
         
-        if (task.isUnwantedSlot(slot)) {
-            return currentState;
-        }
-        List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
-        List<Assignment> linkedAssignments = new ArrayList<>();
-        linkedAssignments.add(new Assignment(task, slot));
+    //     if (task.isUnwantedSlot(slot)) {
+    //         return currentState;
+    //     }
+    //     List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
+    //     List<Assignment> linkedAssignments = new ArrayList<>();
+    //     linkedAssignments.add(new Assignment(task, slot));
 
-        for (Slot linkedSlot : linkedSlots) {
-            if (!currentState.getAvailableSlots().contains(linkedSlot)) {
-                return currentState;
-            }
-            linkedAssignments.add(new Assignment(task, linkedSlot));
-        }
+    //     for (Slot linkedSlot : linkedSlots) {
+    //         if (!currentState.getAvailableSlots().contains(linkedSlot)) {
+    //             return currentState;
+    //         }
+    //         linkedAssignments.add(new Assignment(task, linkedSlot));
+    //     }
 
-        List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
-        newAssignments.addAll(linkedAssignments);
+    //     List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
+    //     newAssignments.addAll(linkedAssignments);
 
-        for (Assignment a : linkedAssignments) {
-            if (!hardChecker.validate(a)) {
-                return currentState; // Return the original state if validation fails
-            }
+    //     for (Assignment a : linkedAssignments) {
+    //         if (!hardChecker.validate(a)) {
+    //             return currentState; // Return the original state if validation fails
+    //         }
             
-            // Create a new state with updated assignments and penalties
-            SearchState newState = currentState.clone();
-            newState.setAssignments(newAssignments);
+    //         // Create a new state with updated assignments and penalties
+    //         SearchState newState = currentState.clone();
+    //         newState.setAssignments(newAssignments);
 
-            // Remove assigned slots from availability
-            for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
-                newState.updateRemainingSlots(assignedSlot);
-            }
+    //         // Remove assigned slots from availability
+    //         for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
+    //             newState.updateRemainingSlots(assignedSlot);
+    //         }
 
-            //Remove slots and tasks
-            List<Task> remainingTasks = newState.getRemainingTask();
-            for (int i = 0; i < remainingTasks.size(); i++){
-                Task cult = remainingTasks.get(i);
-                if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
-            }
+    //         //Remove slots and tasks
+    //         List<Task> remainingTasks = newState.getRemainingTask();
+    //         for (int i = 0; i < remainingTasks.size(); i++){
+    //             Task cult = remainingTasks.get(i);
+    //             if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
+    //         }
 
-            // Recalculate the penalty for the new state, huh... so this is the only time called
-            int penalty = newState.getPenalty();
-            newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
-            return newState;
-        }
+    //         // Recalculate the penalty for the new state, huh... so this is the only time called
+    //         int penalty = newState.getPenalty();
+    //         newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
+    //         return newState;
+    //     }
 
-    return state;
-    }
+    // return state;
+    // }
 
     // private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
 
@@ -241,16 +239,17 @@ public class AndTree {
     //     SearchState newState = currentState.clone();
     //     List<Assignment> newAssignments = newState.getAssignments();
     //     newState.addAssignment(newAssignment);
-    //     newState.updateRemainingSlots(slot);
+        // newState.updateRemainingSlots(slot);
 
-    //         //Remove slots and tasks
-    //     // List<Task> remainingTasks = newState.getRemainingTask();
-    //     // for (int i = 0; i < remainingTasks.size(); i++){
-    //     //     Task cult = remainingTasks.get(i);
-    //     //     if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
-    //     // }
+            //Remove slots and tasks
+        // List<Task> remainingTasks = newState.getRemainingTask();
+        // for (int i = 0; i < remainingTasks.size(); i++){
+        //     Task cult = remainingTasks.get(i);
+        //     if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
+        // }
 
     //     newState.getRemainingTask().remove(task);
+    //     slot.setCurrentCount(slot.getCurrentCount() - 1);
 
     //     // Recalculate the penalty for the new state, huh... so this is the only time called
     //     int penalty = newState.getPenalty();
@@ -260,6 +259,49 @@ public class AndTree {
     //     //newState.printState();
     //     return newState;
     // }
+
+
+    private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
+
+        if (task.isUnwantedSlot(slot)) {
+            return currentState;
+        }
+
+
+        Assignment newAssignment = new Assignment(task, slot);
+
+        task.setCurrentAssign(slot);
+
+        if (!hardChecker.validate(newAssignment)){
+            // update this for task -> slot
+            return currentState;
+        }
+
+        SearchState newState = currentState.clone();
+        List<Assignment> newAssignments = newState.getAssignments();
+        newState.addAssignment(newAssignment);
+        newState.updateRemainingSlots(slot);
+
+
+            //Remove slots and tasks
+        List<Task> remainingTasks = newState.getRemainingTask();
+        for (int i = 0; i < remainingTasks.size(); i++){
+            Task cult = remainingTasks.get(i);
+            if (cult.getIdentifier().equals(task.getIdentifier())) {
+                remainingTasks.remove(cult);
+                slot.setCurrentCount(slot.getCurrentCount() - 1);
+            }
+        }
+
+
+        // Recalculate the penalty for the new state, huh... so this is the only time called
+        int penalty = newState.getPenalty();
+        newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
+
+        //System.out.println("SO NEW STATE IS");
+        //newState.printState();
+        return newState;
+    }
 
 
 
@@ -282,8 +324,6 @@ public class AndTree {
     public void search() {
         // Start from the initial state
         dfs(state);
-        
-        
         // After DFS, print the best state found
         if (lastState != null) {
             System.out.println("Best solution found with penalty: " + minEval);
@@ -297,8 +337,8 @@ public class AndTree {
     
     private void dfs(SearchState current) {
         System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
-        // current.printState();
-        // System.out.println("--------------------------------------------");
+        current.printState();
+        System.out.println("--------------------------------------------");
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("REACHED LEAF NODE.");
@@ -316,6 +356,7 @@ public class AndTree {
         }
 
         Task nextTask = current.getRemainingTask().get(0);
+        System.out.println(nextTask);
         // System.out.println("##########################NEXT TASK: " + nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
@@ -325,37 +366,38 @@ public class AndTree {
             dfs(nextState); // Recursive DFS call
         }
     }
+
     
-    private void makePairList() {
-        List<Constraint> pairConstraints = constraints.get("Pairs");
+//     private void makePairList() {
+//         List<Constraint> pairConstraints = constraints.get("Pairs");
 
-        if (pairConstraints == null || pairConstraints.isEmpty()) {
-            return;
-        }
+//         if (pairConstraints == null || pairConstraints.isEmpty()) {
+//             return;
+//         }
 
-        for (Constraint constraint : pairConstraints) {
-            Pair nc = (Pair) constraint;
+//         for (Constraint constraint : pairConstraints) {
+//             Pair nc = (Pair) constraint;
 
-            Task task1 = findTaskByIdentifier(nc.getTeam1Id());
-            Task task2 = findTaskByIdentifier(nc.getTeam2Id());
+//             Task task1 = findTaskByIdentifier(nc.getTeam1Id());
+//             Task task2 = findTaskByIdentifier(nc.getTeam2Id());
             
-            // Add first task if exists and not already in list
-            if (task1 != null) {
-                if (!notCompatibles.contains(task1)) {
-                    notCompatibles.add(task1);
-                }
-            }
-            // Add second task if exists and not already in list
-            if (task2 != null) {
-                if (!notCompatibles.contains(task2)) {
-                    notCompatibles.add(task2);
-                }
-            }
-        }
-    }
+//             // Add first task if exists and not already in list
+//             if (task1 != null) {
+//                 if (!notCompatibles.contains(task1)) {
+//                     notCompatibles.add(task1);
+//                 }
+//             }
+//             // Add second task if exists and not already in list
+//             if (task2 != null) {
+//                 if (!notCompatibles.contains(task2)) {
+//                     notCompatibles.add(task2);
+//                 }
+//             }
+//         }
+//     }
 
     private void makeNotCompatibleList() {
-        List<Constraint> notCompatibleConstraints = constraints.get("NotCompatible");
+        List<Constraint> notCompatibleConstraints = parser.parseNotCompatible();
         
         if (notCompatibleConstraints == null || notCompatibleConstraints.isEmpty()) {
             return;
@@ -368,18 +410,18 @@ public class AndTree {
 
             Task task1 = findTaskByIdentifier(nc.getTeam1Id());
             Task task2 = findTaskByIdentifier(nc.getTeam2Id());
+
+            // System.out.println("THIS IS TEAM 1 AND 2: ");
+            // System.out.println(task1);
+            // System.out.println(task2);
             
             // Add first task if exists and not already in list
             if (task1 != null) {
-                if (!notCompatibles.contains(task1)) {
-                    notCompatibles.add(task1);
-                }
+                task1.addNotCompatible(task2.getIdentifier());
             }
             // Add second task if exists and not already in list
             if (task2 != null) {
-                if (!notCompatibles.contains(task2)) {
-                    notCompatibles.add(task2);
-                }
+                task2.addNotCompatible(task1.getIdentifier());
             }
         }
     }

@@ -8,10 +8,10 @@ import model.task.Task;
 
 public class HardConstraintsEval {
 
-    List<Slot> allSlots;
+    List<Task> allTasks;
 
-    public HardConstraintsEval(List<Slot> slots) {
-        this.allSlots = slots;
+    public HardConstraintsEval(List<Task> allTasks) {
+        this.allTasks = allTasks;
     }
 
     public boolean validate(Assignment newAssignment) {
@@ -61,32 +61,34 @@ public class HardConstraintsEval {
     }
 
     private boolean maxConstraint(Slot slot) {
+        // System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
         boolean result = slot.getCurrentCount() <= slot.getMax();
         return result;
     }
 
-    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
-        return this.allSlots.stream()
-                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
-                && slot.forGame() == forGame)
-                .toList();
+    private boolean isOverlap(Task a, Task b) {
+        boolean overlap = a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime()) && a.getCurrentAssigned().getDay().equals(b.getCurrentAssigned().getDay());
+        return overlap;
     }
 
 
     // not the same slot. if new assignment is a game, look at the practice slots, and vice versa
     private boolean noOverlappingPracticesAndGames(Assignment newAssignment) {    
         Task newTask = newAssignment.getTask();
-        List<Slot> slots = findSlotsByDayAndTime(newAssignment.getSlot().getDay(), newAssignment.getSlot().getStartTime(), !newAssignment.getSlot().forGame());
+        Slot slot = newAssignment.getSlot();
 
-        if (slots.size() == 0) {
-            return true;
-        } 
 
-        if (slots.size() > 1) {
-            return false;
-        }
 
-        Slot slot = slots.get(0);
+        // if (slots.size() == 0) {
+        //     System.out.println("returning here");
+        //     return true;
+        // } 
+
+        // if (slots.size() > 1) {
+        //     return false;
+        // }
+
+        // Slot slot = slots.get(0);
 
         String newId = newTask.getIdentifier();
         
@@ -116,18 +118,17 @@ public class HardConstraintsEval {
     }
 
     private boolean nonOverlappingTimeForCertainLevels(Slot slot) {
-        // boolean result = slot.getU1519() <= 1;
-        // return result;
-
-        return true;
+        boolean result = slot.getU1519() <= 1;
+        return result;
     }
 
     private boolean notCompatibleConstraint(Assignment newAssignment) {
         Task newTask = newAssignment.getTask();
         Slot slot = newAssignment.getSlot();
-                
+
+        newTask.printNotCombatible();
         for (Task existingTask : slot.getAssignedTasks()) {
-            if (!newTask.equals(existingTask) && newTask.isNotCompatibleWith(existingTask)) {
+            if (newTask.isNotCompatibleWith(existingTask)) {
                 return false;
             }
         }

@@ -111,9 +111,20 @@ public class Task {
         this.notCompatibleIdentifiers.add(anotherTaskIdentifier);
     }
 
+    public void printNotCombatible() {
+        System.out.println(notCompatibleIdentifiers);
+    }
+
     public boolean isNotCompatibleWith(Task otherTask) {
-        if (notCompatibleIdentifiers != null)return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
+        // System.out.println("6666666666666666666666666666666 Printing other task:: ");
+        // System.out.println(otherTask.getIdentifier());
+        for (String notc : notCompatibleIdentifiers) {
+            if (otherTask.getIdentifier().equals(notc)) {
+                return true;
+            }
+        }
         return false;
+        // return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
     }
 
     public void addUnwantedSlot(Slot slot){
