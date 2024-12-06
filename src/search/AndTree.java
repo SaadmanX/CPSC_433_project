@@ -271,16 +271,17 @@ public class AndTree {
         }
 
 
-        if (slot.getStartTime().equals("11:00")){
+        if (task.getIsGame() && slot.getStartTime().equals("11:00")){
             return currentState;
         }
 
         Assignment newAssignment = new Assignment(task, slot);
 
-        task.setCurrentAssign(slot);
+        // task.setCurrentAssign(slot);
 
         if (!hardChecker.validate(newAssignment)){
             // update this for task -> slot
+            // slot.setCurrentCount(slot.getCurrentCount() - 1);
             return currentState;
         }
 
@@ -288,6 +289,10 @@ public class AndTree {
         List<Assignment> newAssignments = newState.getAssignments();
         newState.addAssignment(newAssignment);
         newState.updateRemainingSlots(slot);
+        // slot.addAssignedTask(task);
+
+        System.out.println("current count of this slot is: " + slot.getCurrentCount() + " and max is: " + slot.getMax());
+        System.out.println(slot);
 
 
             //Remove slots and tasks

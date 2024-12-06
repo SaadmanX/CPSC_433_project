@@ -145,6 +145,7 @@ public class HardConstraintsEval {
         // newTask.printNotCombatible();
         for (Task existingTask : slot.getAssignedTasks()) {
             if (newTask.isNotCompatibleWith(existingTask)) {
+                // System.out.println(existingTask + " is not compatible with " + newTask);
                 return false;
             }
         }
