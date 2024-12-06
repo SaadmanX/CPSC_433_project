@@ -19,9 +19,9 @@ public class SearchState {
     }
 
     public SearchState(SearchState another){
-        this.assignments = another.assignments;
-        //this.remainingTasks = another.remainingTasks;
-        //this.availableSlots = another.availableSlots;
+        this.assignments = new ArrayList<>(another.assignments);
+        this.remainingTasks = new ArrayList<>(another.remainingTasks);
+        this.availableSlots = new ArrayList<>(another.availableSlots);
         this.penalty = another.penalty;
     }
 
@@ -60,15 +60,15 @@ public class SearchState {
    
     public SearchState clone() {
         SearchState clonedState = new SearchState(this);
-        clonedState.availableSlots = new ArrayList<>();
-        clonedState.remainingTasks = new ArrayList<>();
-        for (Slot slot : this.availableSlots) {
-            clonedState.availableSlots.add(new Slot(slot)); // Deep clone slots
-        }
+        // clonedState.availableSlots = new ArrayList<>();
+        // clonedState.remainingTasks = new ArrayList<>();
+        // for (Slot slot : this.availableSlots) {
+        //     clonedState.availableSlots.add(new Slot(slot)); // Deep clone slots
+        // }
 
-        for (Task task: this.remainingTasks){
-            clonedState.remainingTasks.add(new Task(task));
-        }
+        // for (Task task: this.remainingTasks){
+        //     clonedState.remainingTasks.add(new Task(task));
+        // }
 
 
         

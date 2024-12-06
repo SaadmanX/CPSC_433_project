@@ -29,10 +29,13 @@ public class Slot {
     public Slot(Slot anotherSlot){
         this.day = anotherSlot.day;
         this.startTime = anotherSlot.startTime;
+        this.slotStartTime = anotherSlot.slotStartTime;
         this.identifier = anotherSlot.identifier;
         this.max = anotherSlot.max;
         this.min = anotherSlot.min;
         this.forGame = anotherSlot.forGame;
+        this.taskList = new ArrayList<>(anotherSlot.taskList);
+        this.u1519 = anotherSlot.u1519;    
     }
 
     public boolean forGame(){

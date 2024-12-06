@@ -10,7 +10,8 @@ public class Task {
     private String identifier;
     private String level; 
     private String division; 
-    private String tier;
+    // private String tier;
+
     private List<Slot> unwantedSlots = new ArrayList<>();
     private HashMap<Slot, Integer> preferences = new HashMap<>();
     private ArrayList<String> notCompatibleIdentifiers = new ArrayList<>();
@@ -31,7 +32,6 @@ public class Task {
         this.division = another.division;
         this.level = another.level;
         this.isGame = another.isGame;
-        this.tier = another.tier;
         this.unwantedSlots = another.unwantedSlots;
         this.preferences = another.preferences;
         this.notCompatibleIdentifiers = another.notCompatibleIdentifiers;
@@ -93,9 +93,6 @@ public class Task {
         return this.division;
     }
 
-    public String getTier() {
-        return this.tier;
-    }
 
     public boolean getIsGame() {
         return this.isGame;
@@ -134,24 +131,26 @@ public class Task {
     
     private void parseIdentifier() {
         String[] parts = this.identifier.split(" "); 
-
+    
         if (parts.length >= 2) {
             this.level = parts[1]; 
-            this.tier = level.length() > 3 ? level.substring(3) : ""; 
+            // this.tier = level.length() > 3 ? level.substring(3) : ""; 
         }
+        
+        // Find division number
         this.division = ""; 
-        for (String part : parts) {
-            if (part.startsWith("DIV")) {
-                //its the next one
-                this.division = part;
+        for (int i = 0; i < parts.length; i++) {
+            if (parts[i].equals("DIV") && i + 1 < parts.length) {
+                // Combine "DIV" with its number
+                this.division = parts[i + 1];
                 break;
             }
         }
     }
-
+    
     @Override
     public String toString() {
-        return String.format("Task[identifier=%s, level=%s, division=%s, tier=%s, isGame=%b, isSpecialPractice=%b]",
-                identifier, level, division, tier, isGame, isSpecialPractice);
+        return String.format("Task[identifier=%s, level=%s, division=%s, isGame=%b, isSpecialPractice=%b]",
+                identifier, level, division, isGame, isSpecialPractice);
     }
 }

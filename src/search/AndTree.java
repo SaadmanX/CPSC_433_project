@@ -72,18 +72,6 @@ public class AndTree {
             unwantedList = parser.parseUnwanted();
             partialAssignments  = parser.parsePartialAssignments();
 
-            //DEBUGGING
-            //parser.parseNotCompatible().forEach(System.out::println);
-            //parser.parseUnwanted().forEach(System.out::println);
-            //parser.parsePairs().forEach(System.out::println);
-            //parser.parsePartialAssignments().forEach(System.out::println);
-            //parser.parsePreferences().forEach(System.out::println);
-
-            //parser.parseGameSlots().forEach(System.out::println);
-            //parser.parseGames().forEach(System.out::println);
-            //parser.parsePracticeSlots().forEach(System.out::println);
-            //parser.parsePractices().forEach(System.out::println);
-
             softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
             state.setPenalty(softChecker.initialPenalty);
 
@@ -98,18 +86,12 @@ public class AndTree {
         parseInput();
         buildLinkedSlots();
 
-        //System.out.println("initial state before preprocess");
-        //state.printState();
-
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
             System.exit(1);
         }
         assignPreferences();
         assignUnwanted();
-
-        //System.out.println("After preprocess");
-        //state.printState();
 
     }
 
@@ -145,6 +127,23 @@ public class AndTree {
                 .findFirst()
                 .orElse(null);
     }
+
+    private boolean assignPartialAssignments() {
+
+        for (PartialAssignment partial : partialAssignments) {
+            Task task = findTaskByIdentifier(partial.getTaskIdentifier());
+            Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
+            if (task != null && slot != null) {
+                SearchState newestState = transitLinkedAssignment(state, task, slot);
+                if (state.equals(newestState)){
+                    return false;
+                }
+                state = newestState;
+            }
+        }
+        return true;
+    }
+
 
     private void buildLinkedSlots() {
         for (Slot slot : allSlots) {
@@ -183,13 +182,13 @@ public class AndTree {
         linkedAssignments.add(new Assignment(task, slot));
 
         for (Slot linkedSlot : linkedSlots) {
-            if (!state.getAvailableSlots().contains(linkedSlot)) {
+            if (!currentState.getAvailableSlots().contains(linkedSlot)) {
                 return state;
             }
             linkedAssignments.add(new Assignment(task, linkedSlot));
         }
 
-        List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
+        List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
         newAssignments.addAll(linkedAssignments);
 
         for (Assignment a : linkedAssignments) {
@@ -212,10 +211,6 @@ public class AndTree {
                 Task cult = remainingTasks.get(i);
                 if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
             }
-           
-            //for (Task t : newState.getRemainingTask()) {
-            //    System.out.println(t);
-            //}
 
             // Recalculate the penalty for the new state, huh... so this is the only time called
             int penalty = newState.getPenalty();
@@ -229,21 +224,6 @@ public class AndTree {
     return state;
     }
 
-    private boolean assignPartialAssignments() {
-
-        for (PartialAssignment partial : partialAssignments) {
-            Task task = findTaskByIdentifier(partial.getTaskIdentifier());
-            Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
-            if (task != null && slot != null) {
-                SearchState newestState = transitLinkedAssignment(state, task, slot);
-                if (state.equals(newestState)){
-                    return false;
-                }
-                state = newestState;
-            }
-        }
-        return true;
-    }
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
@@ -293,12 +273,12 @@ public class AndTree {
         }
     
         // Prune states with penalty worse than the best solution
-        if (current.getPenalty() >= minEval) {
+        if (current.getPenalty() > minEval) {
             return;
         }
 
-       Task nextTask = current.getRemainingTask().get(0);
-        //System.out.println("##########################NEXT TASK: " + nextTask);
+        Task nextTask = current.getRemainingTask().get(0);
+        System.out.println("##########################NEXT TASK: " + nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
@@ -307,7 +287,7 @@ public class AndTree {
             dfs(nextState); // Recursive DFS call
         }
     }
-
+    
     private void makePairList() {
         List<Constraint> pairConstraints = constraints.get("Pairs");
 
