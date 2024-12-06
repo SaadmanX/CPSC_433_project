@@ -212,20 +212,32 @@ public class AndTree {
         // Check linked days pattern
         switch (day) {
             case "MO":
-                // If Monday is assigned, check if Wednesday and Friday slots are available
-                return hasAvailableLinkedSlots(currentState, task, "WE", "FR", slot.getStartTime());
+                // For Monday, if WE/FR slots don't exist in input, we should still allow the assignment
+                List<Slot> wedSlots = findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame());
+                List<Slot> friSlots = findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame());
+                // Only check availability if the slots exist in input
+                return (wedSlots.isEmpty() && friSlots.isEmpty()) || 
+                       hasAvailableLinkedSlots(currentState, task, "WE", "FR", slot.getStartTime());
             case "TU":
-                // If Tuesday is assigned, check if Thursday slot is available
-                return hasAvailableLinkedSlots(currentState, task, "TH", null, slot.getStartTime());
+                // For Tuesday, if TH slots don't exist in input, we should still allow the assignment
+                List<Slot> thuSlots = findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame());
+                return thuSlots.isEmpty() || 
+                       hasAvailableLinkedSlots(currentState, task, "TH", null, slot.getStartTime());
             case "WE":
-                // If Wednesday is assigned, check if Friday slot is available
-                return hasAvailableLinkedSlots(currentState, task, "FR", null, slot.getStartTime());
+                // For Wednesday, if FR slots don't exist in input, we should still allow the assignment
+                List<Slot> fridaySlots = findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame());
+                return fridaySlots.isEmpty() || 
+                       hasAvailableLinkedSlots(currentState, task, "FR", null, slot.getStartTime());
             default:
                 return true;
         }
     }
 
     private boolean hasAvailableLinkedSlots(SearchState state, Task task, String day1, String day2, String time) {
+        if (state == null || task == null || day1 == null || time == null) {
+            return false;
+        }
+
         boolean day1Available = state.getAvailableSlots().stream()
                 .anyMatch(s -> s.getDay().equals(day1) && 
                              s.getStartTime().equals(time) && 
@@ -278,6 +290,7 @@ public class AndTree {
             if (current.getPenalty() < minEval) {
                 minEval = current.getPenalty();
                 lastState = current;
+                System.out.println("Found better solution with penalty: " + minEval);
             }
             return;
         }
@@ -289,6 +302,10 @@ public class AndTree {
 
         Task nextTask = current.getRemainingTask().get(0);
         List<SearchState> nextStates = generateNextStates(current, nextTask);
+
+        if (nextStates.isEmpty()) {
+            System.out.println("Warning: No valid next states found for task: " + nextTask.getIdentifier());
+        }
 
         // Sort states by penalty to try most promising first
         nextStates.sort(Comparator.comparingInt(SearchState::getPenalty));
