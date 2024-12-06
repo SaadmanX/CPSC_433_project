@@ -39,15 +39,23 @@ public class SoftConstraintsEval {
     }
     
     public int calculatePenalty(Assignment assignment) {
+        System.out.println("IN EVAL FOR ----------------------");
+        System.out.println("Current assignment: ");
         
         int penalty = 0;
         Slot slot = assignment.getSlot();
         Task task = assignment.getTask();
+
+        System.out.println(task);
+        System.out.println(slot);
     
         int minFillPenalty = evalMinFilled(slot);
         int prefPenalty = evalPreferencePenalty(task, slot);
         int pairPenalty = evalPairingPenalty(task);
         int secDiffPenalty = evalSecDiff(slot);
+
+        System.out.println("Min= " + minFillPenalty +
+          "pref=" + prefPenalty + "pair=" + "secDiff=" + secDiffPenalty);
     
     
         penalty = minFillPenalty + prefPenalty + pairPenalty + secDiffPenalty;

@@ -1,5 +1,3 @@
-//Need to test evening slots as wellName: 
-
 Name:
 ShortExample 
 
@@ -9,6 +7,7 @@ WE, 8:00, 3, 0
 FR, 8:00, 3, 2
 TU, 9:00, 1, 1
 TH, 9:00, 1, 1  
+FR, 19:00, 1, 0
 
 Practice slots: 
 MO, 11:00, 3, 2 
@@ -18,10 +17,12 @@ TU, 10:00, 1, 1
 TH, 10:00, 1, 1
 FR, 10:00, 2, 1 
 
+
 Games: 
 CMSA U13T3 DIV 01 
 CMSA U13T3 DIV 02 
 CUSA O18 DIV 01 
+CUSA O18 DIV 09
 
 Practices: 
 CMSA U13T3 DIV 01 PRC 01 

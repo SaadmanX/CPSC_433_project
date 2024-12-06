@@ -32,7 +32,7 @@ public class AndTree {
     private List<Task> notCompatibles = new ArrayList<>();
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
-    private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
+    //private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
     SearchState lastState;
     HardConstraintsEval hardChecker = new HardConstraintsEval();
     SoftConstraintsEval softChecker;
@@ -84,7 +84,7 @@ public class AndTree {
 
     public void preprocess() {
         parseInput();
-        buildLinkedSlots();
+        //buildLinkedSlots();
 
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
@@ -145,6 +145,7 @@ public class AndTree {
     }
 
 
+    /**
     private void buildLinkedSlots() {
         for (Slot slot : allSlots) {
             List<Slot> linkedSlots = new ArrayList<>();
@@ -165,6 +166,7 @@ public class AndTree {
         }
     }
 
+     */
     private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
         return allSlots.stream()
                 .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
@@ -177,6 +179,7 @@ public class AndTree {
         if (task.isUnwantedSlot(slot)) {
             return currentState;
         }
+        /**
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
         List<Assignment> linkedAssignments = new ArrayList<>();
         linkedAssignments.add(new Assignment(task, slot));
@@ -190,7 +193,7 @@ public class AndTree {
 
         List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
         newAssignments.addAll(linkedAssignments);
-
+       
         for (Assignment a : linkedAssignments) {
             if (!hardChecker.validate(a)) {
                 return currentState; // Return the original state if validation fails
@@ -205,6 +208,17 @@ public class AndTree {
                 newState.updateRemainingSlots(assignedSlot);
             }
 
+         */
+        Assignment newAssignment = new Assignment(task, slot);
+        if (!hardChecker.validate(newAssignment)){
+            return currentState;
+        }
+
+        SearchState newState = currentState.clone();
+        List<Assignment> newAssignments = newState.getAssignments();
+        newState.addAssignment(newAssignment);
+        newState.updateRemainingSlots(slot);
+
             //Remove slots and tasks
             List<Task> remainingTasks = newState.getRemainingTask();
             for (int i = 0; i < remainingTasks.size(); i++){
@@ -216,12 +230,12 @@ public class AndTree {
             int penalty = newState.getPenalty();
             newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
                         
-            System.out.println("SO NEW STATE IS");
-            newState.printState();
+            //System.out.println("SO NEW STATE IS");
+            //newState.printState();
             return newState;
-        }
+        //}
 
-    return state;
+        //return state;
     }
 
 
@@ -278,7 +292,7 @@ public class AndTree {
         }
 
         Task nextTask = current.getRemainingTask().get(0);
-        System.out.println("##########################NEXT TASK: " + nextTask);
+        //System.out.println("##########################NEXT TASK: " + nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     

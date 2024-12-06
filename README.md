@@ -86,6 +86,7 @@ Penalty: 6 (1 pair, 5 minFilled)
 CUSA O18 DIV 01             MO, 8:00 
 CUSA O18 DIV 01             WE, 8:00
 CUSA O18 DIV 01             FR, 8:00
+CUSA O18 DIV 09             FR, 19:00
 
 CMSA U13T3 DIV 02           TU, 9:00
 
