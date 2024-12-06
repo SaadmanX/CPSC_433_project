@@ -1,0 +1,23 @@
+Name:
+Blank Test
+
+Game slots:
+TH, 11:00, 2, 2
+
+Practice slots:
+
+Games:
+CMSA U16T2 DIV 01
+
+Practices:
+
+Not compatible:
+
+Unwanted:
+
+Preferences:
+
+Pair:
+
+Partial assignments:
+

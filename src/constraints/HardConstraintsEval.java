@@ -48,11 +48,11 @@ public class HardConstraintsEval {
         return result;
     }
 
-    private boolean noOverlappingPracticesAndGames(Assignment newAssignment) {
+    // not the same slot. if new assignment is a game, look at the practice slots, and vice versa
+    private boolean noOverlappingPracticesAndGames(Assignment newAssignment) {    
         Task newTask = newAssignment.getTask();
         Slot slot = newAssignment.getSlot();
         String newId = newTask.getIdentifier();
-        
         
         for (Task existingTask : slot.getAssignedTasks()) {
             if (newTask.getIsGame() != existingTask.getIsGame()) {

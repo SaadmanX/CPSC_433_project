@@ -1,0 +1,23 @@
+Name:
+Blank Test
+
+Game slots:
+MO, 8:00, 1, 2
+
+Practice slots:
+
+Games:
+CMSA U14T2 DIV 91
+
+Practices:
+
+Not compatible:
+
+Unwanted:
+
+Preferences:
+
+Pair:
+
+Partial assignments:
+

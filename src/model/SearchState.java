@@ -119,5 +119,6 @@ public class SearchState {
 
     public void addAssignment(Assignment assignment) {
         assignments.add(assignment);
+        assignment.getSlot().setCurrentCount(assignment.getSlot().getCurrentCount() + 1);
     }
 }

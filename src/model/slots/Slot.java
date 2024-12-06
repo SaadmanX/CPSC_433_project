@@ -85,6 +85,7 @@ public class Slot {
 
     public int getCurrentCount(){
         return this.currentCount;
+        // return this.taskList.size();
     }
 
     public int getMin() {
@@ -97,6 +98,6 @@ public class Slot {
 
     @Override
     public String toString() {
-        return String.format("TimeSlot[day=%s, startTime=%s, max=%d, min=%d, isGame=%s]", day, startTime, max, min, forGame);
+        return String.format("TimeSlot[day=%s, startTime=%s, max=%d, min=%d, curr=%d, isGame=%s]", day, startTime, max, min, currentCount, forGame);
     }
 }

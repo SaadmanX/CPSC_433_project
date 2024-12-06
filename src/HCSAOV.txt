@@ -1,0 +1,24 @@
+Name:
+Blank Test
+
+Game slots:
+TU, 17:00, 2, 2
+
+Practice slots:
+TU, 18:00, 1, 1
+
+Games:
+CMSA U13T1 DIV 01
+
+Practices:
+
+Not compatible:
+
+Unwanted:
+
+Preferences:
+
+Pair:
+
+Partial assignments:
+
