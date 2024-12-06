@@ -45,6 +45,9 @@ public class AndTree {
         this.inputFileName = filename;
         this.weightList = weightList;
         this.multiplierList = multiplierList;
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            OutputHandler.writeToFile(lastState, inputFileName);
+        }));
     }
 
     private void parseInput(){
@@ -165,7 +168,7 @@ public class AndTree {
 
         }
 
-        System.out.println(linkedSlotGroups);
+        // System.out.println(linkedSlotGroups);
 
     }
 
@@ -225,6 +228,40 @@ public class AndTree {
     return state;
     }
 
+    // private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
+
+    //     if (task.isUnwantedSlot(slot)) {
+    //         return currentState;
+    //     }
+    //     Assignment newAssignment = new Assignment(task, slot);
+    //     if (!hardChecker.validate(newAssignment)){
+    //         return currentState;
+    //     }
+
+    //     SearchState newState = currentState.clone();
+    //     List<Assignment> newAssignments = newState.getAssignments();
+    //     newState.addAssignment(newAssignment);
+    //     newState.updateRemainingSlots(slot);
+
+    //         //Remove slots and tasks
+    //     // List<Task> remainingTasks = newState.getRemainingTask();
+    //     // for (int i = 0; i < remainingTasks.size(); i++){
+    //     //     Task cult = remainingTasks.get(i);
+    //     //     if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
+    //     // }
+
+    //     newState.getRemainingTask().remove(task);
+
+    //     // Recalculate the penalty for the new state, huh... so this is the only time called
+    //     int penalty = newState.getPenalty();
+    //     newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
+
+    //     //System.out.println("SO NEW STATE IS");
+    //     //newState.printState();
+    //     return newState;
+    // }
+
+
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
@@ -260,12 +297,12 @@ public class AndTree {
     
     private void dfs(SearchState current) {
         System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
-        current.printState();
-        System.out.println("--------------------------------------------");
+        // current.printState();
+        // System.out.println("--------------------------------------------");
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("REACHED LEAF NODE.");
-                if (current.getPenalty() <= minEval) {
+                if (current.getPenalty() < minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();
                     lastState = current;

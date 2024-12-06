@@ -38,6 +38,17 @@ public class SearchState {
     }
 
     public void updateRemainingSlots(Slot slot){
+        for (Slot s: this.availableSlots){
+            if (s.getId().equals(slot.getId()) && s.forGame() == slot.forGame()){
+                s.setCurrentCount(s.getCurrentCount() + 1);
+
+                if (s.getMax() == s.getCurrentCount()){
+                    availableSlots.remove(s);
+                }
+            }
+        }
+
+        /* 
         for (Iterator<Slot> iterator = availableSlots.iterator(); iterator.hasNext(); ) {
             Slot cur = iterator.next();
             //Ah, this needs to be clone as well in order to avoid concurrent update
@@ -51,26 +62,15 @@ public class SearchState {
                 break;
             }
         }
+        */
     }
 
     public List<Assignment> getAssignments() {
         return assignments;
     }
 
-   
     public SearchState clone() {
         SearchState clonedState = new SearchState(this);
-        // clonedState.availableSlots = new ArrayList<>();
-        // clonedState.remainingTasks = new ArrayList<>();
-        // for (Slot slot : this.availableSlots) {
-        //     clonedState.availableSlots.add(new Slot(slot)); // Deep clone slots
-        // }
-
-        // for (Task task: this.remainingTasks){
-        //     clonedState.remainingTasks.add(new Task(task));
-        // }
-
-
         
         return clonedState;
     }
@@ -119,6 +119,5 @@ public class SearchState {
 
     public void addAssignment(Assignment assignment) {
         assignments.add(assignment);
-        assignment.getSlot().setCurrentCount(assignment.getSlot().getCurrentCount() + 1);
     }
 }
