@@ -32,7 +32,7 @@ public class AndTree {
     private List<Task> allTasks = new ArrayList<>();
     private List<Slot> allSlots = new ArrayList<>();
     SearchState lastState;
-    HardConstraintsEval hardChecker = new HardConstraintsEval(allTasks);
+    HardConstraintsEval hardChecker;
     SoftConstraintsEval softChecker;
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
@@ -75,6 +75,9 @@ public class AndTree {
 
             softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
             state.setPenalty(softChecker.initialPenalty);
+
+            hardChecker = new HardConstraintsEval(allTasks, allSlots);
+
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -268,6 +271,10 @@ public class AndTree {
         }
 
 
+        if (slot.getStartTime().equals("11:00")){
+            return currentState;
+        }
+
         Assignment newAssignment = new Assignment(task, slot);
 
         task.setCurrentAssign(slot);
@@ -289,9 +296,10 @@ public class AndTree {
             Task cult = remainingTasks.get(i);
             if (cult.getIdentifier().equals(task.getIdentifier())) {
                 remainingTasks.remove(cult);
-                slot.setCurrentCount(slot.getCurrentCount() - 1);
+                // slot.setCurrentCount(slot.getCurrentCount() - 1);
             }
         }
+
 
 
         // Recalculate the penalty for the new state, huh... so this is the only time called

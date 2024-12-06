@@ -58,9 +58,9 @@ public class Slot {
         return this.max;
     }
 
-    public void setCurrentCount(int count){
-        this.currentCount = count;
-    }
+    // public void setCurrentCount(int count){
+    //     this.currentCount = count;
+    // }
 
     public void addAssignedTask(Task task){
         taskList.add(task);
@@ -84,8 +84,8 @@ public class Slot {
     }
 
     public int getCurrentCount(){
-        return this.currentCount;
-        // return this.taskList.size();
+        return taskList.size();
+        // return this.currentCount;
     }
 
     public int getMin() {

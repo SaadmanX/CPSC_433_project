@@ -9,9 +9,11 @@ import model.task.Task;
 public class HardConstraintsEval {
 
     List<Task> allTasks;
+    List<Slot> allSlots;
 
-    public HardConstraintsEval(List<Task> allTasks) {
+    public HardConstraintsEval(List<Task> allTasks, List<Slot> allSlots) {
         this.allTasks = allTasks;
+        this.allSlots = allSlots;
     }
 
     public boolean validate(Assignment newAssignment) {
@@ -61,46 +63,59 @@ public class HardConstraintsEval {
     }
 
     private boolean maxConstraint(Slot slot) {
-        // System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
+        System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
         boolean result = slot.getCurrentCount() <= slot.getMax();
         return result;
     }
-
-    private boolean isOverlap(Task a, Task b) {
-        boolean overlap = a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime()) && a.getCurrentAssigned().getDay().equals(b.getCurrentAssigned().getDay());
-        return overlap;
-    }
-
 
     // not the same slot. if new assignment is a game, look at the practice slots, and vice versa
     private boolean noOverlappingPracticesAndGames(Assignment newAssignment) {    
         Task newTask = newAssignment.getTask();
         Slot slot = newAssignment.getSlot();
+        // System.out.println("=========================");
+        // System.out.println(allSlots.size());
+        // System.out.println(slot);
+        Slot overlapslot = new Slot(slot);
 
+        for (Slot s : allSlots) {
+            if (!s.equals(slot)) {
+                // System.out.println("line 85");
+                if (s.getDay().equals(slot.getDay())) {
+                    // System.out.println("line 87");
+                    if (s.getStartTime().equals(slot.getStartTime())) {
+                        // System.out.println("line 89");
+                        if (s.forGame() != slot.forGame()) {
+                            // System.out.println("line 91");
+                            overlapslot = s;
+                        }
+                    }
+                }
+            }
+        }
 
+        if (overlapslot.equals(slot)) {
+            System.out.println("overlap slot same as assigned slot");
+            return true;
+        }
 
-        // if (slots.size() == 0) {
-        //     System.out.println("returning here");
-        //     return true;
-        // } 
+        // System.out.println(overlapslot);
 
-        // if (slots.size() > 1) {
-        //     return false;
-        // }
-
-        // Slot slot = slots.get(0);
-
-        String newId = newTask.getIdentifier();
-        
-        for (Task existingTask : slot.getAssignedTasks()) {
+        String newId = newTask.getIdentifier(); 
+        for (Task existingTask : overlapslot.getAssignedTasks()) {
             if (newTask.getIsGame() != existingTask.getIsGame()) {
+                // System.out.println("line 109");
                 String existingId = existingTask.getIdentifier();
+                // System.out.println("new task: " + newId + " existing task: " + existingId);
                 if (newTask.getIsGame()) {
-                    if (newId.equals(existingId.substring(0, existingId.length() - 6))) {
+                    // System.out.println("line 113");
+                    if (newId.equals(existingId.substring(0, existingId.length() - 7))) {
+                        // System.out.println("line 115");
                         return false;
                     }
                 } else {
-                    if (existingId.equals(newId.substring(0, newId.length() - 6))) {
+                    // System.out.println("line 119");
+                    if (existingId.equals(newId.substring(0, newId.length() - 7))) {
+                        // System.out.println("line 121");
                         return false;
                     }
                 }
@@ -109,8 +124,9 @@ public class HardConstraintsEval {
         return true;
     }
     
-    private boolean eveningDivisionConstraint(Assignment assignment) {        
-        if (assignment.getTask().getDivision().startsWith("DIV 9")) {
+    private boolean eveningDivisionConstraint(Assignment assignment) {    
+        int div = Integer.parseInt(assignment.getTask().getDivision());
+        if (div >= 9) {
             boolean result = assignment.getSlot().getSlotStartTime() >= 18.0;
             return result;
         }
@@ -126,7 +142,7 @@ public class HardConstraintsEval {
         Task newTask = newAssignment.getTask();
         Slot slot = newAssignment.getSlot();
 
-        newTask.printNotCombatible();
+        // newTask.printNotCombatible();
         for (Task existingTask : slot.getAssignedTasks()) {
             if (newTask.isNotCompatibleWith(existingTask)) {
                 return false;
@@ -179,7 +195,7 @@ public class HardConstraintsEval {
     private boolean noGamesOnTuesdayMeeting(Assignment assignment) {
         if (assignment.getTask().getIsGame()) {
             Slot slot = assignment.getSlot();
-            boolean result = !(slot.getDay().equals("TU") && slot.getSlotStartTime() == 11.0);
+            boolean result = !(slot.getDay().equals("TU") && slot.getStartTime().equals("11:00"));
             return result;
         }
         return true;

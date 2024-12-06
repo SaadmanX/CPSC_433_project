@@ -70,7 +70,7 @@ public class SearchState {
         
         for (Slot s: this.availableSlots) {
             if (s.getId().equals(slot.getId()) && s.forGame() == slot.forGame()) {
-                s.setCurrentCount(s.getCurrentCount() + 1);
+                // s.setCurrentCount(s.getCurrentCount() + 1);
                 if (s.getMax() == s.getCurrentCount()) {
                     slotsToUpdate.add(s);
                 }
