@@ -34,7 +34,7 @@ public class AndTree {
     private List<Slot> allSlots = new ArrayList<>();
     private Map<Slot, List<Slot>> linkedSlotGroups = new HashMap<>();
     SearchState lastState;
-    HardConstraintsEval hardChecker = new HardConstraintsEval();
+    HardConstraintsEval hardChecker = new HardConstraintsEval(allSlots);
     SoftConstraintsEval softChecker;
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
@@ -65,7 +65,7 @@ public class AndTree {
 
             constraints.put("NotCompatible", parser.parseNotCompatible());
             makeNotCompatibleList();
-          
+
             makePairList();
             pairList = parser.parsePairs();
             preferencesList = parser.parsePreferences();

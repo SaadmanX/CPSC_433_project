@@ -1,10 +1,18 @@
 package constraints;
 
+import java.util.List;
+
 import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
 
 public class HardConstraintsEval {
+
+    List<Slot> allSlots;
+
+    public HardConstraintsEval(List<Slot> slots) {
+        this.allSlots = slots;
+    }
     
     public boolean validate(Assignment newAssignment) {
         if (!maxConstraint(newAssignment.getSlot())) {
@@ -48,10 +56,29 @@ public class HardConstraintsEval {
         return result;
     }
 
+    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
+        return allSlots.stream()
+                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
+                && slot.forGame() == forGame)
+                .toList();
+    }
+
+
     // not the same slot. if new assignment is a game, look at the practice slots, and vice versa
     private boolean noOverlappingPracticesAndGames(Assignment newAssignment) {    
         Task newTask = newAssignment.getTask();
-        Slot slot = newAssignment.getSlot();
+        List<Slot> slots = findSlotsByDayAndTime(newAssignment.getSlot().getDay(), newAssignment.getSlot().getStartTime(), !newAssignment.getSlot().forGame());
+
+        if (slots.size() == 0) {
+            return true;
+        } 
+
+        if (slots.size() > 1) {
+            return false;
+        }
+
+        Slot slot = slots.get(0);
+
         String newId = newTask.getIdentifier();
         
         for (Task existingTask : slot.getAssignedTasks()) {
