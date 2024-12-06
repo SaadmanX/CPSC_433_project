@@ -73,7 +73,7 @@ public class HardConstraintsEval {
     
     private boolean eveningDivisionConstraint(Assignment assignment) {        
         if (assignment.getTask().getDivision().startsWith("DIV 9")) {
-            boolean result = assignment.getSlot().getSlotStartTime() == 18.0;
+            boolean result = assignment.getSlot().getSlotStartTime() >= 18.0;
             return result;
         }
         return true;
