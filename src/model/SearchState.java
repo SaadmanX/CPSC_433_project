@@ -11,17 +11,17 @@ public class SearchState {
     private List<Slot> availableSlots;
     private int penalty;
 
-    public SearchState(List<Assignment> assignments, List<Task> remaningTasks, List<Slot> availableSlots, int penalty) {
+    public SearchState(List<Assignment> assignments, List<Task> remainingTasks, List<Slot> availableSlots, int penalty) {
         this.assignments = assignments;
-        this.remainingTasks = remaningTasks;
+        this.remainingTasks = remainingTasks;
         this.availableSlots = availableSlots;
         this.penalty = penalty;
     }
 
     public SearchState(SearchState another){
         this.assignments = another.assignments;
-        this.remainingTasks = another.remainingTasks;
-        this.availableSlots = another.availableSlots;
+        //this.remainingTasks = another.remainingTasks;
+        //this.availableSlots = another.availableSlots;
         this.penalty = another.penalty;
     }
 
@@ -42,9 +42,11 @@ public class SearchState {
             Slot cur = iterator.next();
             //Ah, this needs to be clone as well in order to avoid concurrent update
             if (cur.getId().equals(slot.getId()) && cur.forGame() == slot.forGame()) {
+                
                 cur.setCurrentCount(cur.getCurrentCount() + 1);
+
                 if (cur.getMax() == cur.getCurrentCount()){
-                    iterator.remove();
+                    availableSlots.remove(slot);
                 }
                 break;
             }
@@ -59,9 +61,16 @@ public class SearchState {
     public SearchState clone() {
         SearchState clonedState = new SearchState(this);
         clonedState.availableSlots = new ArrayList<>();
+        clonedState.remainingTasks = new ArrayList<>();
         for (Slot slot : this.availableSlots) {
             clonedState.availableSlots.add(new Slot(slot)); // Deep clone slots
         }
+
+        for (Task task: this.remainingTasks){
+            clonedState.remainingTasks.add(new Task(task));
+        }
+
+
         
         return clonedState;
     }

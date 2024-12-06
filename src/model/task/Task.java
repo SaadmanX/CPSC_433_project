@@ -26,6 +26,21 @@ public class Task {
         parseIdentifier(); 
     }
 
+    public Task (Task another){
+        this.identifier = another.identifier;
+        this.division = another.division;
+        this.level = another.level;
+        this.isGame = another.isGame;
+        this.tier = another.tier;
+        this.unwantedSlots = another.unwantedSlots;
+        this.preferences = another.preferences;
+        this.notCompatibleIdentifiers = another.notCompatibleIdentifiers;
+        this.pairedList = another.pairedList;
+        this.isSpecialPractice = another.isSpecialPractice;
+        this.sumPreferences = another.sumPreferences;
+        this.isCurrentlyAssignedTo = another.isCurrentlyAssignedTo;
+    }
+
     //Handy for update with 1 newest assignment only
     public int getSumPreferences(){
         return sumPreferences;

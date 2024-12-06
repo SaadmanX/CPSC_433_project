@@ -83,6 +83,7 @@ public class AndTree {
             //parser.parseGames().forEach(System.out::println);
             //parser.parsePracticeSlots().forEach(System.out::println);
             //parser.parsePractices().forEach(System.out::println);
+
             softChecker = new SoftConstraintsEval(multiplierList, weightList, preferencesList, pairList, allSlots);
             state.setPenalty(softChecker.initialPenalty);
 
@@ -172,9 +173,10 @@ public class AndTree {
                 .toList();
     }
 
-    private SearchState transitLinkedAssignment(SearchState state, Task task, Slot slot) {
+    private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
+        
         if (task.isUnwantedSlot(slot)) {
-            return state;
+            return currentState;
         }
         List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
         List<Assignment> linkedAssignments = new ArrayList<>();
@@ -189,35 +191,44 @@ public class AndTree {
 
         List<Assignment> newAssignments = new ArrayList<>(state.getAssignments());
         newAssignments.addAll(linkedAssignments);
-        if (!hardChecker.validate(newAssignments)) {
-            return state; // Return the original state if validation fails
+
+        for (Assignment a : linkedAssignments) {
+            if (!hardChecker.validate(a)) {
+                return currentState; // Return the original state if validation fails
+            }
+            
+            // Create a new state with updated assignments and penalties
+            SearchState newState = currentState.clone();
+            newState.setAssignments(newAssignments);
+
+            // Remove assigned slots from availability
+            for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
+                newState.updateRemainingSlots(assignedSlot);
+            }
+
+            //Remove slots and tasks
+            List<Task> remainingTasks = newState.getRemainingTask();
+            for (int i = 0; i < remainingTasks.size(); i++){
+                Task cult = remainingTasks.get(i);
+                if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
+            }
+           
+            //for (Task t : newState.getRemainingTask()) {
+            //    System.out.println(t);
+            //}
+
+            // Recalculate the penalty for the new state, huh... so this is the only time called
+            int penalty = newState.getPenalty();
+            newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
+                        
+            System.out.println("SO NEW STATE IS");
+            newState.printState();
+            return newState;
         }
 
-        // Create a new state with updated assignments and penalties
-        SearchState newState = state.clone();
-        newState.setAssignments(newAssignments);
-
-        // Remove assigned slots from availability
-        for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
-            newState.updateRemainingSlots(assignedSlot);
-        }
-
-        //Remove slots and tasks
-        List<Task> remainingTask = newState.getRemainingTask();
-        remainingTask.remove(task);
-        newState.setRemainingTask(remainingTask);
-
-        // Recalculate the penalty for the new state, huh... so this is the only time called
-        int penalty = newState.getPenalty();
-        newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
-        
-        
-        //System.out.println("SO NEW STATE IS");
-        //newState.printState();
-        return newState;
+    return state;
     }
 
-    // Faster tracking of assignPartial
     private boolean assignPartialAssignments() {
 
         for (PartialAssignment partial : partialAssignments) {
@@ -234,19 +245,19 @@ public class AndTree {
         return true;
     }
 
-
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
         
         List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());            
         
-        for (Slot slot : availableSlots) {                
+        for (Slot slot : availableSlots) {           
+            if (slot.forGame() != task.getIsGame())continue;     
             SearchState newState = transitLinkedAssignment(state, task, slot);
             if (!newState.equals(state)) {
                 states.add(newState);
             } 
         }
-        System.out.println("=================================generating next states end================================");
+        //System.out.println("=================================generating next states end================================");
         return states;
     }
 
@@ -272,28 +283,27 @@ public class AndTree {
         System.out.println("--------------------------------------------");
 
         if (current.getRemainingTask().isEmpty()) {
-            System.out.println("Reached leaf node.");
-            if (hardChecker.validate(current.getAssignments())) {
-                if (current.getPenalty() <= minEval) {
+            System.out.println("REACHED LEAF NODE.");
+                if (current.getPenalty() < minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();
                     lastState = current;
                 }
-            }
             return;
         }
     
         // Prune states with penalty worse than the best solution
-        if (current.getPenalty() > minEval) {
+        if (current.getPenalty() >= minEval) {
             return;
         }
-    
-        Task nextTask = current.getRemainingTask().get(0);
-        System.out.println(nextTask);
+
+       Task nextTask = current.getRemainingTask().get(0);
+        //System.out.println("##########################NEXT TASK: " + nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
         for (SearchState nextState : nextStates) {
+            
             dfs(nextState); // Recursive DFS call
         }
     }
