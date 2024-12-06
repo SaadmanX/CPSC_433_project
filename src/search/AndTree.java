@@ -39,6 +39,7 @@ public class AndTree {
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
+    boolean foundaleaf = false;
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
@@ -93,6 +94,8 @@ public class AndTree {
         assignPreferences();
         assignUnwanted();
 
+        
+
     }
 
     private void assignUnwanted(){
@@ -144,71 +147,11 @@ public class AndTree {
         return true;
     }
 
-
-    /**
-    private void buildLinkedSlots() {
-        for (Slot slot : allSlots) {
-            List<Slot> linkedSlots = new ArrayList<>();
-
-            // Build linked slots based on problem constraints
-            switch (slot.getDay()) {
-                case "MO" -> {
-                    linkedSlots.addAll(findSlotsByDayAndTime("WE", slot.getStartTime(), slot.forGame()));
-                    linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
-                }
-                case "TU" -> linkedSlots.addAll(findSlotsByDayAndTime("TH", slot.getStartTime(), slot.forGame()));
-                case "WE" -> linkedSlots.addAll(findSlotsByDayAndTime("FR", slot.getStartTime(), slot.forGame()));
-                default -> {
-                }
-            }
-
-            linkedSlotGroups.put(slot, linkedSlots);
-        }
-    }
-
-     */
-    private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
-        return allSlots.stream()
-                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
-                && slot.forGame() == forGame)
-                .toList();
-    }
-
     private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
         
         if (task.isUnwantedSlot(slot)) {
             return currentState;
         }
-        /**
-        List<Slot> linkedSlots = linkedSlotGroups.getOrDefault(slot, Collections.emptyList());
-        List<Assignment> linkedAssignments = new ArrayList<>();
-        linkedAssignments.add(new Assignment(task, slot));
-
-        for (Slot linkedSlot : linkedSlots) {
-            if (!currentState.getAvailableSlots().contains(linkedSlot)) {
-                return state;
-            }
-            linkedAssignments.add(new Assignment(task, linkedSlot));
-        }
-
-        List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
-        newAssignments.addAll(linkedAssignments);
-       
-        for (Assignment a : linkedAssignments) {
-            if (!hardChecker.validate(a)) {
-                return currentState; // Return the original state if validation fails
-            }
-            
-            // Create a new state with updated assignments and penalties
-            SearchState newState = currentState.clone();
-            newState.setAssignments(newAssignments);
-
-            // Remove assigned slots from availability
-            for (Slot assignedSlot : linkedAssignments.stream().map(Assignment::getSlot).toList()) {
-                newState.updateRemainingSlots(assignedSlot);
-            }
-
-         */
         Assignment newAssignment = new Assignment(task, slot);
         if (!hardChecker.validate(newAssignment)){
             return currentState;
@@ -220,22 +163,21 @@ public class AndTree {
         newState.updateRemainingSlots(slot);
 
             //Remove slots and tasks
-            List<Task> remainingTasks = newState.getRemainingTask();
-            for (int i = 0; i < remainingTasks.size(); i++){
-                Task cult = remainingTasks.get(i);
-                if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
-            }
+        // List<Task> remainingTasks = newState.getRemainingTask();
+        // for (int i = 0; i < remainingTasks.size(); i++){
+        //     Task cult = remainingTasks.get(i);
+        //     if (cult.getIdentifier().equals(task.getIdentifier()))remainingTasks.remove(cult);
+        // }
+
+        newState.getRemainingTask().remove(task);
 
             // Recalculate the penalty for the new state, huh... so this is the only time called
-            int penalty = newState.getPenalty();
-            newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
-                        
-            //System.out.println("SO NEW STATE IS");
-            //newState.printState();
-            return newState;
-        //}
-
-        //return state;
+        int penalty = newState.getPenalty();
+        newState.setPenalty(penalty + softChecker.calculatePenalty(newAssignments));
+                    
+        //System.out.println("SO NEW STATE IS");
+        //newState.printState();
+        return newState;
     }
 
 
@@ -243,21 +185,31 @@ public class AndTree {
         List<SearchState> states = new ArrayList<>();
         
         List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());            
-        
+        int c = 0;
         for (Slot slot : availableSlots) {           
             if (slot.forGame() != task.getIsGame())continue;     
             SearchState newState = transitLinkedAssignment(state, task, slot);
-            if (!newState.equals(state)) {
-                states.add(newState);
+            if (newState.equals(state)) {
+                System.out.println("new state is same as old state");
+                c += 1;
+                continue;
             } 
+            System.out.println("adding new state to states NOWWWW");
+            states.add(newState);
         }
+
+        System.out.println("total number of times the states were the same: " + c);
+        System.out.println("total size of states: " + states.size());
         //System.out.println("=================================generating next states end================================");
         return states;
     }
 
     public void search() {
+
+        System.out.println("state with numner of tasks " + state.getRemainingTask().size());
         // Start from the initial state
         dfs(state);
+
         
         
         // After DFS, print the best state found
@@ -269,25 +221,30 @@ public class AndTree {
         } else {
             System.out.println("No solution found.");
         }
+
+        System.out.println("Found a leaf? : " + foundaleaf);
     }
     
     private void dfs(SearchState current) {
-        System.out.println("------------Current State-------------------");
+        System.out.println("------------Current state with remaining tasks: " + current.getRemainingTask().size() + " -------------------");
         current.printState();
         System.out.println("--------------------------------------------");
 
         if (current.getRemainingTask().isEmpty()) {
+            foundaleaf = true;
             System.out.println("REACHED LEAF NODE.");
-                if (current.getPenalty() < minEval) {
-                    System.out.println("New best state with penalty: " + current.getPenalty());
-                    minEval = current.getPenalty();
-                    lastState = current;
-                }
+            if (current.getPenalty() < minEval) {
+                System.out.println("New best state with penalty: " + current.getPenalty());
+                minEval = current.getPenalty();
+                lastState = current;
+            }
             return;
         }
     
         // Prune states with penalty worse than the best solution
         if (current.getPenalty() > minEval) {
+            System.out.println("stopped because current eval is greater than min eval");
+            foundaleaf = true;
             return;
         }
 

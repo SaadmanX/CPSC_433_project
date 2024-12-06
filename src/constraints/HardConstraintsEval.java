@@ -8,35 +8,43 @@ public class HardConstraintsEval {
     
     public boolean validate(Assignment newAssignment) {
         if (!maxConstraint(newAssignment.getSlot())) {
+            System.out.println("hard constraint failed: max constraint");
             return false;
         }
         
         if (!noOverlappingPracticesAndGames(newAssignment)) {
+            System.out.println("hard constraint failed: overlapping game and practice");
             return false;
         }
         
         if (!eveningDivisionConstraint(newAssignment)) {
+            System.out.println("hard constraint failed: evening div");
             return false;
         }
 
         if (!nonOverlappingTimeForCertainLevels(newAssignment.getSlot())) {
+            System.out.println("hard constraint failed: overlaping levels");
             return false;
             
         }
     
         if (!noGamesOnTuesdayMeeting(newAssignment)) {
+            System.out.println("hard constraint failed: game on tuesday meeting");
             return false;
         }
 
         if (!specialPracticeBookingConstraint(newAssignment)) {
+            System.out.println("hard constraint failed: special practice");
             return false;
         }
         
         if (!specialGamePracticeBookingConstraint(newAssignment)) {
+            System.out.println("hard constraint failed: special game practice");
             return false;
         }
 
         if (!notCompatibleConstraint(newAssignment)) {
+            System.out.println("hard constraint failed: not compatible");
             return false;
         }
 
