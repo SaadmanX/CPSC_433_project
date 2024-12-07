@@ -7,8 +7,6 @@ import java.util.Map;
 import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
-import model.constraints.Pair;
-import model.constraints.Preference;
 
 public class SoftConstraintsEval {
 
@@ -22,7 +20,7 @@ public class SoftConstraintsEval {
 
     public int initialPenalty; //can be higher/lower after assignment, acts as a reference point of initial state
 
-    public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Preference> prefer, List<Pair> pair, List<Slot> allSlots) {
+    public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Slot> allSlots) {
         this.multiplierList = multiplierList;
         this.penaltyList = penaltyList;
     }
@@ -56,6 +54,9 @@ public class SoftConstraintsEval {
     }
     
     private boolean isOverlap(Task a, Task b) {
+        //So this only checks b because a is passed from currently assigned task,
+        //only b can cause null ptr
+        if (b.getCurrentAssigned() == null)return false;
         boolean overlap = a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime());
         return overlap;
     }
@@ -76,7 +77,7 @@ public class SoftConstraintsEval {
     
     private int evalPreferencePenalty(Task task, Slot slot) {
     
-        if (!task.isPreferredSlot(slot)) {
+        if (!task.isPreferredSlot(slot.getId(), slot.forGame())) {
             int penalty = (task.getSumPreferences() - task.getPreferenceValue(slot)) * multiplierList.get(1);
             return penalty;
         }

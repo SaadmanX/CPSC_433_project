@@ -6,6 +6,7 @@ import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
 
+//TODO: FIX TO REFLECT ALL DEEP COPIES
 public class HardConstraintsEval {
 
     List<Task> allTasks;
@@ -63,7 +64,7 @@ public class HardConstraintsEval {
     }
 
     private boolean maxConstraint(Slot slot) {
-        System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
+        //System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
         boolean result = slot.getCurrentCount() <= slot.getMax();
         return result;
     }

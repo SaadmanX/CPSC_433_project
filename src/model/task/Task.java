@@ -13,7 +13,7 @@ public class Task {
     // private String tier;
 
     private List<Slot> unwantedSlots = new ArrayList<>();
-    private HashMap<Slot, Integer> preferences = new HashMap<>();
+    private HashMap<String, Integer> preferences = new HashMap<>();
     private ArrayList<String> notCompatibleIdentifiers = new ArrayList<>();
     private List<Task> pairedList = new ArrayList<>();
     private boolean isGame; 
@@ -21,21 +21,30 @@ public class Task {
     private int sumPreferences = 0;
     private Slot isCurrentlyAssignedTo;
 
+    /**
+     * Default constructor with parser
+     * @param identifier
+     * @param isGame
+     */
     public Task(String identifier, boolean isGame) {
         this.identifier = identifier;
         this.isGame = isGame;
         parseIdentifier(); 
     }
 
+    /**
+     * Copy Constructor
+     * @param another: constructor to copy
+     */
     public Task (Task another){
         this.identifier = another.identifier;
         this.division = another.division;
         this.level = another.level;
         this.isGame = another.isGame;
-        this.unwantedSlots = another.unwantedSlots;
-        this.preferences = another.preferences;
-        this.notCompatibleIdentifiers = another.notCompatibleIdentifiers;
-        this.pairedList = another.pairedList;
+        this.unwantedSlots = new ArrayList<>(another.unwantedSlots);
+        this.preferences = new HashMap<>(another.preferences);
+        this.notCompatibleIdentifiers = new ArrayList<>(another.notCompatibleIdentifiers);
+        this.pairedList = new ArrayList<>(another.pairedList);
         this.isSpecialPractice = another.isSpecialPractice;
         this.sumPreferences = another.sumPreferences;
         this.isCurrentlyAssignedTo = another.isCurrentlyAssignedTo;
@@ -46,24 +55,45 @@ public class Task {
         return sumPreferences;
     }
 
+    /**
+     * Set shallow copy to the currentlyAssigned
+     * @param slot: currently Assigned (shallow)
+     */
     public void setCurrentAssign(Slot slot){
         this.isCurrentlyAssignedTo = slot;
     }
 
+    /**
+     * This function returns the current slot this task is assigned to
+     * @return currently Assign slot, shallow copy
+     */
     public Slot getCurrentAssigned(){
         return this.isCurrentlyAssignedTo;
     }
 
+
     public void addPreference(Slot slot, int value) {
-        preferences.put(slot, value);
+        preferences.put(slot.getId(), value);
         sumPreferences += value;
     }
 
-    public boolean isPreferredSlot(Slot slot) {
-        if (preferences != null)return preferences.containsKey(slot);
+    /**
+     * @param identifer: Slot id
+     * @param isGame: Slot isGame
+     * @return whether it is a preferred slot
+     */
+    public boolean isPreferredSlot(String identifer, boolean isGame) {
+        if (preferences != null){
+            return preferences.containsKey(identifer);
+        }
         return false;
     }
 
+
+    /**
+     * SHALLOW LIST OF TASKS WILL BE RETURNED
+     * @return list of tasks (will need further processing)
+     */
     public List<Task> getPairs(){
         return pairedList;
     }
@@ -74,11 +104,18 @@ public class Task {
 
     public void addPair(Task anotherTask) {
         pairedList.add(anotherTask);
-        anotherTask.addPair(this);
     }
 
+    /**
+     * The function takes in another Tasks and checks if that deep copy is pair with current task
+     * @param anotherTask: deep copy of original task
+     * @return whether identifier matches
+     */
     public boolean isPair(Task anotherTask) {
-        return pairedList.contains(anotherTask);
+        for (Task t: pairedList){
+            if (t.getIdentifier().equals(anotherTask.getIdentifier()))return true;
+        }
+        return false;
     }
 
     public String getIdentifier() {
@@ -107,6 +144,10 @@ public class Task {
         this.isSpecialPractice = isSpecialPractice;
     }
 
+    /**
+     * Add String of notCompatible instead of task
+     * @param anotherTaskIdentifier
+     */
     public void addNotCompatible(String anotherTaskIdentifier) {
         this.notCompatibleIdentifiers.add(anotherTaskIdentifier);
     }
@@ -127,15 +168,35 @@ public class Task {
         // return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
     }
 
+
+    /**
+     * Shallow copy of unwantedSlot
+     * @param slot: slot to be added to unwanted
+     */
     public void addUnwantedSlot(Slot slot){
         this.unwantedSlots.add(slot);
     }
 
+    /**
+     * Already processed the id and for game
+     * @param slot: Slot to check
+     * @return true if the id + forgame map
+     */
     public boolean isUnwantedSlot(Slot slot){
-        if (unwantedSlots != null)return unwantedSlots.contains(slot);
+        if (unwantedSlots != null){
+            for (Slot s: unwantedSlots){
+                if (s.getId().equals(slot.getId()) && s.forGame() == slot.forGame()){
+                    return true;
+                }
+            }
+        };
         return false;
     }
 
+    /**
+     * LIST of SLOTS, will need further processing with String
+     * @return list of SLOT
+     */
     public List<Slot> getUnwantedSlots(){
         return unwantedSlots;
     }

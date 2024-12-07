@@ -36,6 +36,12 @@ public class Slot {
         this.forGame = anotherSlot.forGame;
         this.taskList = new ArrayList<>(anotherSlot.taskList);
         this.u1519 = anotherSlot.u1519;    
+        this.currentCount = anotherSlot.currentCount;
+    }
+
+    public Slot clone() {
+        Slot clonedSlot = new Slot(this);
+        return clonedSlot;
     }
 
     public boolean forGame(){

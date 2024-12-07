@@ -10,7 +10,7 @@ public class Assignment {
     public Assignment(Task task, Slot slot) {
         this.task = task;
         this.slot = slot;
-        slot.addAssignedTask(task);
+        //slot.addAssignedTask(task);
     }
 
     public Task getTask(){

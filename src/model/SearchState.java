@@ -5,6 +5,12 @@ import java.util.*;
 import model.slots.*;
 import model.task.Task;
 
+//TODO: For every assignment added, slot and task are deep clones
+//TODO: Remaining tasks + available slots are initially cloned
+//TODO: Then a new state is cloned right after the assignment passes hard constraints
+//TODO: So, everything is deep clone of the previous one at this point
+//TODO: So still needs to work with deep clone
+
 public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;
@@ -13,9 +19,10 @@ public class SearchState {
     
 
     public SearchState(List<Assignment> assignments, List<Task> remainingTasks, List<Slot> availableSlots, int penalty) {
-        this.assignments = assignments;
-        this.remainingTasks = remainingTasks;
-        this.availableSlots = availableSlots;
+        //create deep copy in order not to mutate/share state
+        this.assignments = new ArrayList<>(assignments);
+        this.remainingTasks = new ArrayList<>(remainingTasks);
+        this.availableSlots = new ArrayList<>(availableSlots);
         this.penalty = penalty;
     }
 
@@ -29,7 +36,7 @@ public class SearchState {
     public void setAssignments(List<Assignment> assignments){
         this.assignments = assignments;
     }
-
+    
     public void setRemainingTask(List<Task> tasks) {
         List<Task> orderedTasks = new ArrayList<>();
         
@@ -61,35 +68,44 @@ public class SearchState {
         this.remainingTasks = orderedTasks;
     }
         
+    public void removeTask(Task task) {
+        remainingTasks.removeIf(task2 -> task2.getIdentifier().equals(task.getIdentifier()));
+    }
+    
+
     public void setRemainingSlots(List<Slot> slots){
         this.availableSlots = slots;
     }
 
-    public void updateRemainingSlots(Slot slot) {
-        List<Slot> slotsToUpdate = new ArrayList<>();
-        
-        for (Slot s: this.availableSlots) {
-            if (s.getDay().equals(slot.getDay()) && s.getStartTime().equals(slot.getStartTime()) && s.forGame() == slot.forGame()) {
-                s.setCurrentCount(s.getCurrentCount() + 1);
-                if (s.getMax() == s.getCurrentCount()) {
-                    slotsToUpdate.add(s);
-                }
-            }
+    public void updateRemainingSlots(Slot slot) {   
+        availableSlots.removeIf(s -> (s.forGame() == slot.forGame() && slot.getId().equals(s.getId())));
+
+        //Add in the newest clone if the max hasn't reached
+        if (slot.getMax() > slot.getCurrentCount()){
+            //System.out.println("WAIT BUT THE CURRENT COUNT IS: " + slot.getCurrentCount());
+            availableSlots.add(slot);
         }
-        
-        availableSlots.removeAll(slotsToUpdate);
     }
+    
     
     public List<Assignment> getAssignments() {
         return assignments;
     }
 
     public SearchState clone() {
-        SearchState clonedState = new SearchState(this);
-        
-        return clonedState;
+        List<Slot> clonedSlots = new ArrayList<>();
+        for (Slot slot : this.availableSlots) {
+            clonedSlots.add(slot.clone());
+        }
+    
+        return new SearchState(
+            new ArrayList<>(this.assignments),
+            new ArrayList<>(this.remainingTasks),
+            clonedSlots,
+            this.penalty
+        );
     }
-
+    
 
     public List<Task> getRemainingTask(){
         return remainingTasks;
@@ -134,5 +150,11 @@ public class SearchState {
 
     public void addAssignment(Assignment assignment) {
         assignments.add(assignment);
+        Task task = assignment.getTask();
+        Slot slot = assignment.getSlot();
+        
+        task.setCurrentAssign(slot);
+        slot.addAssignedTask(task);
+        slot.setCurrentCount(slot.getCurrentCount() + 1);
     }
 }

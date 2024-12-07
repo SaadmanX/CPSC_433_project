@@ -2,12 +2,12 @@ package parser;
 import java.io.*;
 import java.util.*;
 
-import model.constraints.Constraint;
-import model.constraints.NotCompatible;
-import model.constraints.Pair;
+//import model.constraints.Constraint;
+//import model.constraints.NotCompatible;
+//import model.constraints.Pair;
 import model.constraints.PartialAssignment;
-import model.constraints.Preference;
-import model.constraints.Unwanted;
+//import model.constraints.Preference;
+//import model.constraints.Unwanted;
 import model.slots.Slot;
 import model.task.Game;
 import model.task.Practice;
@@ -71,6 +71,8 @@ public class InputParser {
                         Slot gs = new Slot(day, startTime, gameMax, gameMin, true);
                         gameSlots.add(gs);
                         allSlots.add(gs);
+
+                        //System.out.println(gs);
                     }
                 }
             }
@@ -93,6 +95,7 @@ public class InputParser {
                     Slot ps = new Slot(day, startTime, practiceMax, practiceMin, false);
                     practiceSlots.add(ps);
                     allSlots.add(ps);
+                    //System.out.println(ps);
                 }
             }
         }
@@ -110,6 +113,8 @@ public class InputParser {
                 Game newGame = new Game(identifier);
                 games.add(newGame);
                 allTasks.add(newGame);
+
+                //System.out.println(newGame);
             }
         }
         return games;
@@ -126,13 +131,13 @@ public class InputParser {
                 Practice newP = new Practice(identifier);
                 practices.add(newP);
                 allTasks.add(newP);
+                //System.out.println(newP);
             }
         }
         return practices;
     }
 
-    public List<Constraint> parseNotCompatible() {
-        List<Constraint> constraints = new ArrayList<>();
+    public void parseNotCompatible() {
         List<String> lines = sections.get("Not compatible:");
 
         if (lines != null) {
@@ -140,14 +145,22 @@ public class InputParser {
                 String[] parts = line.split("\\s*,\\s*");
                 String id1 = parts[0].trim().replaceAll("\\s+", " ");
                 String id2 = parts[1].trim().replaceAll("\\s+", " ");
-                constraints.add(new NotCompatible(id1, id2));
+
+                Task t1 = findTaskByIdentifier(id1);
+                Task t2 = findTaskByIdentifier(id2);
+                t1.addNotCompatible(id2);
+                t2.addNotCompatible(id1);
+
+                //constraints.add(new NotCompatible(id1, id2));
+                //System.out.println(id1 + ", " + id2);
+                
             }
         }
-        return constraints;
     }
 
-    public List<Pair> parsePairs() {
-        List<Pair> constraints = new ArrayList<>();
+    
+    public void parsePairs() {
+        //List<Pair> constraints = new ArrayList<>();
         List<String> lines = sections.get("Pair:");
 
         if (lines != null) {
@@ -155,14 +168,22 @@ public class InputParser {
                 String[] parts = line.split("\\s*,\\s*");
                 String id1 = parts[0].trim().replaceAll("\\s+", " ");
                 String id2 = parts[1].trim().replaceAll("\\s+", " ");
-                constraints.add(new Pair(id1, id2));
+                //constraints.add(new Pair(id1, id2));
+
+                Task t1 = findTaskByIdentifier(id1);
+                Task t2 = findTaskByIdentifier(id2);
+
+                t1.addPair(t2);
+                t2.addPair(t1);
+
+                //System.out.println(id1 + ", " + id2);
             }
         }
-        return constraints;
+        //return constraints;
     }
 
-    public List<Preference> parsePreferences() {
-        List<Preference> constraints = new ArrayList<>();
+    public void parsePreferences() {
+        //List<Preference> constraints = new ArrayList<>();
         List<String> lines = sections.get("Preferences:");
 
         if (lines != null) {
@@ -173,15 +194,22 @@ public class InputParser {
                     String time = parts[1].trim();
                     String identifier = parts[2].trim().replaceAll("\\s+", " ");
                     int value = Integer.parseInt(parts[3].trim());
-                    constraints.add(new Preference(day, time, identifier, value));
+                    //constraints.add(new Preference(day, time, identifier, value));
+
+                    Task task = findTaskByIdentifier(identifier);
+                    Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
+
+                    task.addPreference(slot, value);
+
+                    //System.out.println(task + ", " + slot);
                 }
             }
         }
-        return constraints;
+        //return constraints;
     }
 
-    public List<Unwanted> parseUnwanted() {
-        List<Unwanted> constraints = new ArrayList<>();
+    public void parseUnwanted() {
+        //List<Unwanted> constraints = new ArrayList<>();
         List<String> lines = sections.get("Unwanted:");
 
         if (lines != null) {
@@ -191,11 +219,17 @@ public class InputParser {
                     String identifier = parts[0].trim().replaceAll("\\s+", " ");
                     String day = parts[1].trim();
                     String time = parts[2].trim();
-                    constraints.add(new Unwanted(identifier, day, time));
+                    //constraints.add(new Unwanted(identifier, day, time));
+
+                    Task task = findTaskByIdentifier(identifier);
+                    Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
+
+                    task.addUnwantedSlot(slot);
+                    //System.out.println(task + ", " + slot);
                 }
             }
         }
-        return constraints;
+        //return constraints;
     }
 
     public List<PartialAssignment> parsePartialAssignments() {
@@ -209,10 +243,24 @@ public class InputParser {
                     String identifier = parts[0].trim().replaceAll("\\s+", " ");
                     String day = parts[1].trim();
                     String time = parts[2].trim();
+                
                     constraints.add(new PartialAssignment(identifier, day, time));
+                    //System.out.println(task + ", " + slot);
                 }
             }
         }
+        //return false;
         return constraints;
+    }
+
+    private Task findTaskByIdentifier(String identifier) {
+        return allTasks.stream().filter(task -> task.getIdentifier().equals(identifier)).findFirst().orElse(null);
+    }
+
+    private Slot findSlotByDayAndTime(String day, String time, boolean isGame) {
+        return allSlots.stream()
+                .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) && slot.forGame() == isGame)
+                .findFirst()
+                .orElse(null);
     }
 }
