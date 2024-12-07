@@ -28,6 +28,7 @@ public class Slot {
 
     public Slot(Slot anotherSlot){
         this.day = anotherSlot.day;
+        // this.currentCount = anotherSlot.currentCount;
         this.startTime = anotherSlot.startTime;
         this.slotStartTime = anotherSlot.slotStartTime;
         this.identifier = anotherSlot.identifier;
@@ -58,9 +59,9 @@ public class Slot {
         return this.max;
     }
 
-    public void setCurrentCount(int count){
-        this.currentCount = count;
-    }
+    // public void setCurrentCount(int count){
+    //     this.currentCount = count;
+    // }
 
     public void addAssignedTask(Task task){
         taskList.add(task);
@@ -84,8 +85,8 @@ public class Slot {
     }
 
     public int getCurrentCount(){
-        // return taskList.size();
-        return this.currentCount;
+        return taskList.size();
+        // return this.currentCount;
     }
 
     public int getMin() {
@@ -98,6 +99,6 @@ public class Slot {
 
     @Override
     public String toString() {
-        return String.format("TimeSlot[day=%s, startTime=%s, max=%d, min=%d, curr=%d, isGame=%s]", day, startTime, max, min, currentCount, forGame);
+        return String.format("TimeSlot[day=%s, startTime=%s, max=%d, min=%d, curr=%d, isGame=%s]", day, startTime, max, min, getCurrentCount(), forGame);
     }
 }

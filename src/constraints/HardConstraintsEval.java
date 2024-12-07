@@ -18,10 +18,10 @@ public class HardConstraintsEval {
 
     public boolean validate(Assignment newAssignment) {
 
-        if (!maxConstraint(newAssignment.getSlot())) {
-            System.out.println("hard constraint failed: max constraint");
-            return false;
-        }
+        // if (!maxConstraint(newAssignment.getSlot())) {
+        //     System.out.println("hard constraint failed: max constraint");
+        //     return false;
+        // }
         
         if (!noOverlappingPracticesAndGames(newAssignment)) {
             System.out.println("hard constraint failed: overlapping game and practice");
@@ -31,18 +31,17 @@ public class HardConstraintsEval {
         if (!eveningDivisionConstraint(newAssignment)) {
             System.out.println("hard constraint failed: evening div");
             return false;
-        }
+        }  
 
         if (!nonOverlappingTimeForCertainLevels(newAssignment.getSlot())) {
             System.out.println("hard constraint failed: overlaping levels");
             return false;
-            
         }
 
-        if (!noGamesOnTuesdayMeeting(newAssignment)) {
-            System.out.println("hard constraint failed: game on tuesday meeting");
-            return false;
-        }
+        // if (!noGamesOnTuesdayMeeting(newAssignment)) {
+        //     System.out.println("hard constraint failed: game on tuesday meeting");
+        //     return false;
+        // }
 
         if (!specialPracticeBookingConstraint(newAssignment)) {
             System.out.println("hard constraint failed: special practice");
@@ -63,7 +62,7 @@ public class HardConstraintsEval {
     }
 
     private boolean maxConstraint(Slot slot) {
-        System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
+        System.out.println("Slot: " + slot.getDay() + " " + slot.getStartTime() + " : Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
         boolean result = slot.getCurrentCount() <= slot.getMax();
         return result;
     }
@@ -94,7 +93,7 @@ public class HardConstraintsEval {
         }
 
         if (overlapslot.equals(slot)) {
-            System.out.println("overlap slot same as assigned slot");
+            // System.out.println("overlap slot same as assigned slot");
             return true;
         }
 

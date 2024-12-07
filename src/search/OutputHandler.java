@@ -13,7 +13,7 @@ public class OutputHandler {
     public static void writeToFile(SearchState state, String inputFileName) {
         if (state == null) return;
         
-        String outputFileName = inputFileName.replace(".txt", "") + "_solution.txt";
+        String outputFileName = "output.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
             writer.write(String.format("Eval-value: %d\n", state.getPenalty()));
             writer.write("Solution:\n");
