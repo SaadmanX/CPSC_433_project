@@ -81,7 +81,7 @@ public class AndTree {
             softChecker = new SoftConstraintsEval(multiplierList, weightList, allSlots);
             state.setPenalty(softChecker.initialPenalty);
 
-            hardChecker = new HardConstraintsEval(allTasks, allSlots);
+            hardChecker = new HardConstraintsEval();
 
 
         } catch (IOException e) {
@@ -127,7 +127,6 @@ public class AndTree {
         return true;
     }
 
-    //TODO: FIX TO REFLECT DEEP COPY
     private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
         // Clone the task and slot
         Task clonedTask = new Task(task);  // Assuming a proper clone constructor
@@ -140,7 +139,7 @@ public class AndTree {
     
         Assignment newAssignment = new Assignment(clonedTask, clonedSlot);
 
-        if (!hardChecker.validate(newAssignment)){
+        if (!hardChecker.validate(newAssignment, currentState.getAssignments())){
             return currentState;
         }
 
@@ -158,7 +157,7 @@ public class AndTree {
         // Recalculate the penalty for the new state, huh... so this is the only time called
         
         //TODO:SOFT CONSTRAINTS YOU BITCH
-        newState.setPenalty(newState.getPenalty() + softChecker.calculatePenalty(newAssignment));
+        newState.setPenalty(softChecker.calculatePenalty(newAssignment));
 
         System.out.println("SO NEW STATE IS");
         newState.printState();

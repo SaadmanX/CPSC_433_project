@@ -20,6 +20,7 @@ public class Task {
     private boolean isSpecialPractice;
     private int sumPreferences = 0;
     private Slot isCurrentlyAssignedTo;
+    private boolean isU1519 = false;
 
     /**
      * Default constructor with parser
@@ -30,6 +31,10 @@ public class Task {
         this.identifier = identifier;
         this.isGame = isGame;
         parseIdentifier(); 
+    }
+
+    public boolean isU1519(){
+        return this.isU1519;
     }
 
     /**
@@ -48,6 +53,7 @@ public class Task {
         this.isSpecialPractice = another.isSpecialPractice;
         this.sumPreferences = another.sumPreferences;
         this.isCurrentlyAssignedTo = another.isCurrentlyAssignedTo;
+        this.isU1519 = another.isU1519;
     }
 
     //Handy for update with 1 newest assignment only
@@ -206,6 +212,9 @@ public class Task {
     
         if (parts.length >= 2) {
             this.level = parts[1]; 
+            if (level.contains("U15") || level.contains("U16") || level.contains("U17") || level.contains("U19")){
+                this.isU1519 = true;
+            }
             // this.tier = level.length() > 3 ? level.substring(3) : ""; 
         }
         

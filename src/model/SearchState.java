@@ -5,12 +5,6 @@ import java.util.*;
 import model.slots.*;
 import model.task.Task;
 
-//TODO: For every assignment added, slot and task are deep clones
-//TODO: Remaining tasks + available slots are initially cloned
-//TODO: Then a new state is cloned right after the assignment passes hard constraints
-//TODO: So, everything is deep clone of the previous one at this point
-//TODO: So still needs to work with deep clone
-
 public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;

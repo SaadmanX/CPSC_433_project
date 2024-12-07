@@ -98,3 +98,29 @@ CMSA U13T3 DIV 01 PRC 01    WE, 11:00
 CMSA U13T3 DIV 01 PRC 01    FR, 11:00
 
 Penalty: 17 (1 pair, 6 minFilled, 10 prefPen)
+
+
+minnumber.txt 1 0 0 0 100 100 0 10
+Eval: 0
+
+parallelpen.txt 0 0 0 1 1 1 0 5
+Eval: 5
+
+prefexamp.txt 0 1 0 0 100 100 0 100
+Eval: 30
+
+pairing.txt 0 0 1 0 0 0 11 0
+Eval: 55
+
+/hc3
+Games and Practices overlap
+
+/hc10
+There are two special " practice bookings" CMSA U12T1S and CMSA 
+U13T1S that must be scheduled Tuesdays / Thursdays 18:00-19:00. CMSA 
+U12T1S is not allowed to overlap with any practices/games of CMSA U12T1 
+and CMSA U13T1S is not allowed to overlap with any practices/games of 
+CMSA U13T1. These two "practice bookings" are a way of schedule special 
+showcase tryouts series for these divisions’ players for selection to special 
+provincial teams for Alberta Games. These bookings are only triggered if the 
+respective game booking for CMSA U12T1 or CMSA U13T1 is requested. 

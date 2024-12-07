@@ -48,6 +48,13 @@ public class Slot {
         return this.forGame;
     }
 
+    public boolean containsU15U19(){
+        for (Task task: taskList){
+            if (task.isU1519())return true;
+        }
+        return false;
+    }
+
     public String getDay() {
         return this.day;
     }
@@ -74,15 +81,6 @@ public class Slot {
 
     public List<Task> getAssignedTasks(){
         return this.taskList;
-    }
-
-
-    public void addU1519() {
-        this.u1519 += 1;
-    }
-
-    public void delU1519() {
-        this.u1519 -= 1;
     }
 
     public int getU1519() {
