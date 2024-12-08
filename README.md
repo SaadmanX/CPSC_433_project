@@ -99,21 +99,21 @@ CMSA U13T3 DIV 01 PRC 01    FR, 11:00
 
 Penalty: 17 (1 pair, 6 minFilled, 10 prefPen)
 
-
+### minnunmber
 minnumber.txt 1 0 0 0 100 100 0 10
 Eval: 0
 
+### parallelpen
 parallelpen.txt 0 0 0 1 1 1 0 5
 Eval: 5
 
+### prefexamp
 prefexamp.txt 0 1 0 0 100 100 0 100
 Eval: 30
 
+### pairing 
 pairing.txt 0 0 1 0 0 0 11 0
 Eval: 55
-
-/hc3
-Games and Practices overlap
 
 /hc10
 There are two special " practice bookings" CMSA U12T1S and CMSA 
