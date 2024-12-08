@@ -13,6 +13,7 @@ public class InputParser {
     private ArrayList<Task> allTasks = new ArrayList<>();
     private ArrayList<Slot> allSlots = new ArrayList<>();
     public List<String> specialTasks = new ArrayList<>();
+    private boolean div9 = false;
 
     public ArrayList<Task> getAllTasks() {
         return allTasks;
@@ -107,6 +108,12 @@ public class InputParser {
                 Game newGame = new Game(identifier);
                 games.add(newGame);
                 allTasks.add(newGame);
+
+                // flag to check for div 9 presence. will be used to pull these up, as well as pull any evening slots up as well. if no evening slot is present, hard constraints will automatically take care of it later on. also, put the special practices at the very top as well. both of these are hard constraints and are at the top of the priority
+                if (identifier.contains("DIV 9")) {
+                    div9 = true;
+                }
+
                 if (identifier.contains("CMSA U12T1")) {
                     specialTasks.add("CMSA U12T1S");
                 }
@@ -278,6 +285,92 @@ public class InputParser {
         //return false;
         return constraints;
     }
+
+    public void sortTasks() {
+        if (allTasks.isEmpty()) return;
+        
+        // Create temporary lists to hold the sorted elements
+        List<Task> sortedList = new ArrayList<>();
+        List<Task> remainingTasks = new ArrayList<>(allTasks);
+    
+        // First handle special practices if there are any
+        if (!specialTasks.isEmpty()) {
+            // Find and move U12T1S and U13T1S practices to front
+            Iterator<Task> specialIterator = remainingTasks.iterator();
+            while (specialIterator.hasNext()) {
+                Task task = specialIterator.next();
+                if (task.getIdentifier().contains("CMSA U12T1S") || 
+                    task.getIdentifier().contains("CMSA U13T1S")) {
+                    sortedList.add(task);
+                    specialIterator.remove();
+                }
+            }
+        }
+    
+        // Then handle div9 tasks if div9 flag is true
+        if (div9) {
+            Iterator<Task> div9Iterator = remainingTasks.iterator();
+            while (div9Iterator.hasNext()) {
+                Task task = div9Iterator.next();
+                if (task.getIdentifier().contains("DIV 9")) {
+                    sortedList.add(task);
+                    div9Iterator.remove();
+                }
+            }
+        }
+    
+        // Add remaining tasks
+        sortedList.addAll(remainingTasks);
+    
+        // Clear and refill allTasks with sorted list
+        allTasks.clear();
+        allTasks.addAll(sortedList);
+    }
+
+    public void sortSlots() {
+        if (allSlots.isEmpty()) return;
+        
+        List<Slot> sortedList = new ArrayList<>();
+        List<Slot> remainingSlots = new ArrayList<>(allSlots);
+        
+        // Handle special practice slots first if there are special tasks
+        if (!specialTasks.isEmpty()) {
+            Iterator<Slot> specialIterator = remainingSlots.iterator();
+            while (specialIterator.hasNext()) {
+                Slot slot = specialIterator.next();
+                if (!slot.forGame() && // is a practice slot
+                    slot.getDay().equals("TU") && 
+                    slot.getStartTime().equals("18:00")) {
+                    sortedList.add(slot);
+                    specialIterator.remove();
+                }
+            }
+        }
+        
+        // Handle evening slots for div9
+        if (div9) {
+            Iterator<Slot> div9Iterator = remainingSlots.iterator();
+            while (div9Iterator.hasNext()) {
+                Slot slot = div9Iterator.next();
+                if (slot.getDay().equals("TU")) {
+                    // Parse time to check if it's 18:00 or later
+                    int hour = Integer.parseInt(slot.getStartTime().split(":")[0]);
+                    if (hour >= 18) {
+                        sortedList.add(slot);
+                        div9Iterator.remove();
+                    }
+                }
+            }
+        }
+        
+        // Add remaining slots
+        sortedList.addAll(remainingSlots);
+        
+        // Clear and refill allSlots with sorted list
+        allSlots.clear();
+        allSlots.addAll(sortedList);
+    }
+
 
     private Task findTaskByIdentifier(String identifier) {
         return allTasks.stream().filter(task -> task.getIdentifier().equals(identifier)).findFirst().orElse(null);

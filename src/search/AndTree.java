@@ -73,6 +73,9 @@ public class AndTree {
 
             partialAssignments  = parser.parsePartialAssignments();
 
+            parser.sortTasks();
+            parser.sortSlots();
+
             softChecker = new SoftConstraintsEval(multiplierList, weightList, allSlots);
             state.setPenalty(softChecker.initialPenalty);
 
