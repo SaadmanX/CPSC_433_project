@@ -34,6 +34,7 @@ public class SoftConstraintsEval {
         }
     
         return penalty;
+
     }
     
     public int calculatePenalty(Assignment assignment) {
@@ -42,6 +43,7 @@ public class SoftConstraintsEval {
         Slot slot = assignment.getSlot();
         Task task = assignment.getTask();
     
+        // ^^ check to see if any weight * penalty == 0. in which case we dont bother doing them
         int minFillPenalty = evalMinFilled(slot);
         int prefPenalty = evalPreferencePenalty(task, slot);
         int pairPenalty = evalPairingPenalty(task);
@@ -57,7 +59,7 @@ public class SoftConstraintsEval {
         //So this only checks b because a is passed from currently assigned task,
         //only b can cause null ptr
         if (b.getCurrentAssigned() == null)return false;
-        boolean overlap = a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime());
+        boolean overlap = a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime()) && a.getCurrentAssigned().getDay().equals(b.getCurrentAssigned().getDay());
         return overlap;
     }
     
@@ -76,7 +78,6 @@ public class SoftConstraintsEval {
     }
     
     private int evalPreferencePenalty(Task task, Slot slot) {
-    
         if (!task.isPreferredSlot(slot.getId(), slot.forGame())) {
             int penalty = (task.getSumPreferences() - task.getPreferenceValue(slot)) * multiplierList.get(1);
             return penalty;
@@ -104,7 +105,7 @@ public class SoftConstraintsEval {
     }
     
     private int evalSecDiff(Slot slot) {
-        
+
         HashMap<String, Integer> ageFrequencyMap = new HashMap<>();
     
         for (Task t : slot.getAssignedTasks()) {

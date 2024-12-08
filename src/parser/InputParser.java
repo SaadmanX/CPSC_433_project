@@ -68,7 +68,6 @@ public class InputParser {
                         gameSlots.add(gs);
                         allSlots.add(gs);
 
-                        //System.out.println(gs);
                     }
                 }
             }
@@ -91,7 +90,6 @@ public class InputParser {
                     Slot ps = new Slot(day, startTime, practiceMax, practiceMin, false);
                     practiceSlots.add(ps);
                     allSlots.add(ps);
-                    //System.out.println(ps);
                 }
             }
         }
@@ -109,10 +107,19 @@ public class InputParser {
                 Game newGame = new Game(identifier);
                 games.add(newGame);
                 allTasks.add(newGame);
-                if (identifier.contains("CMSA U12T1") || identifier.contains("CMSA U13T1")){
-                    specialTasks.add(newGame.getIdentifier());
+                if (identifier.contains("CMSA U12T1")) {
+                    specialTasks.add("CMSA U12T1S");
                 }
-                //System.out.println(newGame);
+
+                if (identifier.contains("CMSA U13T1")) {
+                    specialTasks.add("CMSA U13T1S");
+                }
+
+                Slot s = findSlotByDayAndTime("TU", "18:00", true);
+
+                if (s != null) {
+                    newGame.addUnwantedSlot(s);
+                }
             }
         }
         return games;
@@ -130,7 +137,26 @@ public class InputParser {
                 practices.add(newP);
                 allTasks.add(newP);
 
-                //System.out.println(newP);
+            }
+        }
+
+        for (String s : specialTasks) {
+            if (s.equals("CMSA U13T1S")) {
+                Practice newP = new Practice("CMSA U13T1S");
+                practices.add(newP);
+                allTasks.add(newP);
+            } 
+
+            if (s.equals("CMSA U12T1S")) {
+                Practice newP = new Practice("CMSA U12T1S");
+                practices.add(newP);
+                allTasks.add(newP);
+            } 
+        }
+
+        for (Task p : practices) {
+            if (p.getIdentifier().contains("CMSA U12T1 ") || p.getIdentifier().contains("CMSA U13T1 ")) {
+                p.addUnwantedSlot(findSlotByDayAndTime("TU", "18:00", false));
             }
         }
         return practices;
@@ -148,18 +174,13 @@ public class InputParser {
                 Task t1 = findTaskByIdentifier(id1);
                 Task t2 = findTaskByIdentifier(id2);
                 t1.addNotCompatible(id2);
-                t2.addNotCompatible(id1);
-
-                //constraints.add(new NotCompatible(id1, id2));
-                //System.out.println(id1 + ", " + id2);
-                
+                t2.addNotCompatible(id1);                
             }
         }
     }
 
     
     public void parsePairs() {
-        //List<Pair> constraints = new ArrayList<>();
         List<String> lines = sections.get("Pair:");
 
         if (lines != null) {
@@ -174,8 +195,6 @@ public class InputParser {
 
                 t1.addPair(t2);
                 t2.addPair(t1);
-
-                //System.out.println(id1 + ", " + id2);
             }
         }
         //return constraints;
@@ -195,12 +214,23 @@ public class InputParser {
                     int value = Integer.parseInt(parts[3].trim());
                     //constraints.add(new Preference(day, time, identifier, value));
 
+
                     Task task = findTaskByIdentifier(identifier);
+
+                    if (day.equals("TU") && time.equals("11:00") && task.getIsGame()) {
+                        continue;
+                    }
+
                     Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
+
+                    if (slot == null) {
+                        System.out.println("at inputparser, slot is null");
+                        System.out.println(task);
+                        System.out.println(line);
+                    }
 
                     task.addPreference(slot, value);
 
-                    //System.out.println(task + ", " + slot);
                 }
             }
         }
@@ -224,11 +254,9 @@ public class InputParser {
                     Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
 
                     task.addUnwantedSlot(slot);
-                    //System.out.println(task + ", " + slot);
                 }
             }
         }
-        //return constraints;
     }
 
     public List<PartialAssignment> parsePartialAssignments() {
@@ -244,7 +272,6 @@ public class InputParser {
                     String time = parts[2].trim();
                 
                     constraints.add(new PartialAssignment(identifier, day, time));
-                    //System.out.println(task + ", " + slot);
                 }
             }
         }
