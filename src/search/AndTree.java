@@ -158,6 +158,11 @@ public class AndTree {
         Task clonedTask = new Task(task);  // Assuming a proper clone constructor
         Slot clonedSlot = new Slot(slot);  // Clone slot
     
+        //No game for meeting here
+        if (task.getIsGame() && slot.getDay().equals("TU") && slot.getStartTime().equals("11:00")){
+            return currentState;
+        }
+
         // Use cloned objects instead of the original ones
         if (clonedTask.isUnwantedSlot(clonedSlot)) {
             // System.out.println(slot);

@@ -69,13 +69,14 @@ public class InputParser {
                     int gameMax = Integer.parseInt(parts[2].trim());
                     int gameMin = Integer.parseInt(parts[3].trim());
 
-                    if (!(day.equals("TU") && startTime.equals("11:00"))) {
+                    //Commented this out because it can cause nullptr with large input
+                    //if (!(day.equals("TU") && startTime.equals("11:00"))) {
                         Slot gs = new Slot(day, startTime, gameMax, gameMin, true);
                         gameSlots.add(gs);
                         allSlots.add(gs);
                         maxMinGame += gameMin;
                         //System.out.println(gs);
-                    }
+                    //}
                 }
             }
         }
