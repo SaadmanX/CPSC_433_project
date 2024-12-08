@@ -23,6 +23,7 @@ public class SoftConstraintsEval {
     public SoftConstraintsEval(List<Integer> multiplierList, List<Integer> penaltyList, List<Slot> allSlots) {
         this.multiplierList = multiplierList;
         this.penaltyList = penaltyList;
+        initialPenalty = 0;
     }
 
     public int calculatePenalty(List<Assignment> assignments) {
@@ -42,16 +43,22 @@ public class SoftConstraintsEval {
         int penalty = 0;
         Slot slot = assignment.getSlot();
         Task task = assignment.getTask();
+        System.out.println("------------- calculating pen values -------------");
     
         // ^^ check to see if any weight * penalty == 0. in which case we dont bother doing them
         int minFillPenalty = evalMinFilled(slot);
+        System.out.println("minFill penalty : " + minFillPenalty);
         int prefPenalty = evalPreferencePenalty(task, slot);
+        System.out.println("preference penalty : " + prefPenalty);
         int pairPenalty = evalPairingPenalty(task);
+        System.out.println("pairing penalty : " + pairPenalty);
         int secDiffPenalty = evalSecDiff(slot);
+        System.out.println("SecDiff penalty : " + secDiffPenalty);
     
     
         penalty = minFillPenalty + prefPenalty + pairPenalty + secDiffPenalty;
-        
+        System.out.println("Total penalty: " + penalty); 
+        System.out.println("-------------  -------------");
         return penalty;
     }
     

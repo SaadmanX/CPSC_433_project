@@ -17,7 +17,7 @@ public class HardConstraintsEval {
         
         if (!noOverlappingPracticesAndGames(newAssignment, previouAssignments)) {
             System.out.println("hard constraint failed: overlapping game and practice");
-            System.out.println(newAssignment);
+            // System.out.println(newAssignment);
             return false;
         }
         
@@ -109,7 +109,7 @@ public class HardConstraintsEval {
         
             if (prevTask.getIsGame() && prevTask.isU1519() && prevTask.getAge() != task.getAge()) {
                 if (isOverlap(prevSlot, currentSlot)) {
-                    System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
+                    // System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
                     return false;
                 }
             }

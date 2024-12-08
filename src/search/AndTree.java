@@ -29,6 +29,8 @@ public class AndTree {
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
     List<String> specialList = new ArrayList<>();
+    int totalBranches = 0;
+    int curBranch = 0;
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
@@ -81,6 +83,7 @@ public class AndTree {
 
             hardChecker = new HardConstraintsEval();
 
+            totalBranches = allSlots.size() * allTasks.size();
 
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -217,6 +220,8 @@ public class AndTree {
         //System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
         //current.printState();
         //System.out.println("--------------------------------------------");
+        System.out.println("total branch: " + totalBranches);
+        System.out.println("curnt branch: " + curBranch);
         System.out.println(current.getRemainingTask().size());
 
         if (current.getRemainingTask().isEmpty()) {
@@ -226,6 +231,13 @@ public class AndTree {
                     minEval = current.getPenalty();
                     lastState = current;
                 }
+
+                if (current.getPenalty() == 0) {
+                    System.out.println("Found perfect solution with zero penalty. Terminating search.");
+                    current.printState();
+                    System.exit(0);  // Terminate program immediately
+                }
+    
             return;
         }
     
@@ -239,6 +251,7 @@ public class AndTree {
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
         for (SearchState nextState : nextStates) {
+            curBranch += 1;
             
             dfs(nextState); // Recursive DFS call
         }

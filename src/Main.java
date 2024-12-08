@@ -30,7 +30,15 @@ public class Main {
         
         //This will parse inputs from file + preprocess data
 
+        long startTime = System.currentTimeMillis();
+
         andTree.preprocess();
         andTree.search();
+
+        long endTime = System.currentTimeMillis();
+        double totalTimeSeconds = (endTime - startTime) / 1000.0;
+        
+        System.out.println("\nTotal execution time: " + totalTimeSeconds + " seconds");
+    
     }
 }
