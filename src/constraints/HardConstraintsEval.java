@@ -146,7 +146,7 @@ public class HardConstraintsEval {
             if (slot.getDay().equals("TU")) return 1.5; 
             return 1.0; 
         } else {
-            if (slot.getDay().equals("TU")) return 1.5; 
+            //if (slot.getDay().equals("TU")) return 1.5; 
             if (slot.getDay().equals("FR")) return 2.0; 
             return 1.0; 
         }
