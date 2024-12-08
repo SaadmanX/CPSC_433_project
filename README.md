@@ -99,7 +99,7 @@ CMSA U13T3 DIV 01 PRC 01    FR, 11:00
 
 Penalty: 17 (1 pair, 6 minFilled, 10 prefPen)
 
-### minnunmber
+### minnumber
 minnumber.txt 1 0 0 0 100 100 0 10
 Eval: 0
 

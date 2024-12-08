@@ -27,6 +27,8 @@ public class AndTree {
     private int minEval = Integer.MAX_VALUE;
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
+    private boolean isSpecialBooking = false;
+    List<String> specialList = new ArrayList<>();
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
         this.state = root;
@@ -55,6 +57,11 @@ public class AndTree {
 
             allTasks = parser.getAllTasks();
             allSlots = parser.getAllSlots();
+            if (!parser.specialTasks.isEmpty()){
+                specialList = parser.specialTasks;
+                isSpecialBooking = true;
+            }
+            //System.out.println("IS SPECIAL BOOKING: " + isSpecialBooking);
 
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
@@ -93,11 +100,34 @@ public class AndTree {
 
     public void preprocess() {
         parseInput();
+        if (!crossCheckIsSpecialBooking()){
+            System.out.println("MISERABLY FAILED WITH SPECIAL BOOKING");
+            System.exit(1);
+        }
 
         if (!assignPartialAssignments()){
             System.out.println("FAILED WITH PARTIAL");
             System.exit(1);
         }
+    }
+
+    private boolean crossCheckIsSpecialBooking(){
+        if (!isSpecialBooking)return true;
+        Slot special18Slot = findSlotByDayAndTime("TU", "18:00", true);
+        if (special18Slot == null)return false;
+
+        //So it might print out partial fails if there is not enough 18:00 slot ahaha
+
+        if (specialList.contains("CMSA U13T1S")){
+            Task U13T1S = new Task(" CMSA U13T1S", true);
+            partialAssignments.add(new PartialAssignment(U13T1S.getIdentifier(), "TU", "18:00"));
+        }
+        if (specialList.contains("CMSA U12T1S")){
+            Task U12T1S = new Task(" CMSA U12T1S", true);
+            partialAssignments.add(new PartialAssignment(U12T1S.getIdentifier(), "TU", "18:00"));
+        }
+       
+        return true;
     }
 
     private Task findTaskByIdentifier(String identifier) {
@@ -136,10 +166,10 @@ public class AndTree {
         if (clonedTask.isUnwantedSlot(clonedSlot)) {
             return currentState;
         }
-    
+
         Assignment newAssignment = new Assignment(clonedTask, clonedSlot);
 
-        if (!hardChecker.validate(newAssignment, currentState.getAssignments())){
+        if (!hardChecker.validate(newAssignment, currentState.getAssignments(), isSpecialBooking)){
             return currentState;
         }
 

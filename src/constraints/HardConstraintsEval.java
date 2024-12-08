@@ -6,9 +6,10 @@ import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
 
+
 public class HardConstraintsEval {
 
-    public boolean validate(Assignment newAssignment, List<Assignment> previouAssignments) {
+    public boolean validate(Assignment newAssignment, List<Assignment> previouAssignments, boolean isSpecialBooking) {
         if (!maxConstraint(newAssignment.getSlot())) {
             System.out.println("hard constraint failed: max constraint");
             return false;
@@ -35,14 +36,13 @@ public class HardConstraintsEval {
             return false;
         }
 
-        if (!specialPracticeBookingConstraint(newAssignment)) {
-            System.out.println("hard constraint failed: special practice");
-            return false;
-        }
-        
-        if (!specialGamePracticeBookingConstraint(newAssignment)) {
-            System.out.println("hard constraint failed: special game practice");
-            return false;
+        //SPECIAL BOOKING IS VIP SO THIS IS HERE
+    
+        if (isSpecialBooking) {
+            if (!specialBookingConstraint(newAssignment)) {
+                System.out.println("hard constraint failed: special practice");
+                return false;
+            }
         }
 
         if (!notCompatibleConstraint(newAssignment)) {
@@ -85,7 +85,6 @@ public class HardConstraintsEval {
 
         return true;
     }
-    
 
 
     private boolean eveningDivisionConstraint(Assignment assignment) {    
@@ -170,44 +169,15 @@ public class HardConstraintsEval {
         return true;
     }
 
-    private boolean specialPracticeBookingConstraint(Assignment assignment) {
-        
-        if (assignment.getTask().isSpecialPractice()) {
-            Slot slot = assignment.getSlot();
-            boolean result = slot.getDay().matches("TU|TH") && slot.getSlotStartTime() == 18.0;
-            return result;
+    
+    //Any practices/games of CMSA U12T1 and practices/games of CMSA U13T1 cannot be scheduled overlap TU: 18
+    private boolean specialBookingConstraint(Assignment assignment) {
+        if (assignment.getTask().getIdentifier().contains("CMSA U12T1") || assignment.getTask().getIdentifier().contains("CMSA U13T1"))
+        {
+            Slot temp = new Slot("TU", "18:00", 1, 1, false);
+            if (isOverlap(assignment.getSlot(), temp))return false;
         }
-        return true;
-    }
 
-    private boolean specialGamePracticeBookingConstraint(Assignment newAssignment) {
-        Task newTask = newAssignment.getTask();
-        String newTaskId = newTask.getIdentifier();
-        String newTeamType = "";
-        
-        if (newTaskId.startsWith("CMSA U12T1S")) newTeamType = "U12T1S";
-        else if (newTaskId.startsWith("CMSA U12T1")) newTeamType = "U12T1";
-        else if (newTaskId.startsWith("CMSA U13T1S")) newTeamType = "U13T1S";
-        else if (newTaskId.startsWith("CMSA U13T1")) newTeamType = "U13T1";
-                
-        if (!newTeamType.isEmpty()) {
-            for (Task existingTask : newAssignment.getSlot().getAssignedTasks()) {
-                String existingId = existingTask.getIdentifier();
-                String existingTeamType = "";
-                
-                if (existingId.startsWith("CMSA U12T1S")) existingTeamType = "U12T1S";
-                else if (existingId.startsWith("CMSA U12T1")) existingTeamType = "U12T1";
-                else if (existingId.startsWith("CMSA U13T1S")) existingTeamType = "U13T1S";
-                else if (existingId.startsWith("CMSA U13T1")) existingTeamType = "U13T1";
-                
-                if ((newTeamType.equals("U12T1") && existingTeamType.equals("U12T1S")) ||
-                    (newTeamType.equals("U12T1S") && existingTeamType.equals("U12T1")) ||
-                    (newTeamType.equals("U13T1") && existingTeamType.equals("U13T1S")) ||
-                    (newTeamType.equals("U13T1S") && existingTeamType.equals("U13T1"))) {
-                    return false;
-                }
-            }
-        }
         return true;
     }
 

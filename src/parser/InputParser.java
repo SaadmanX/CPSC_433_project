@@ -2,12 +2,7 @@ package parser;
 import java.io.*;
 import java.util.*;
 
-//import model.constraints.Constraint;
-//import model.constraints.NotCompatible;
-//import model.constraints.Pair;
 import model.constraints.PartialAssignment;
-//import model.constraints.Preference;
-//import model.constraints.Unwanted;
 import model.slots.Slot;
 import model.task.Game;
 import model.task.Practice;
@@ -17,6 +12,7 @@ public class InputParser {
     private Map<String, List<String>> sections;
     private ArrayList<Task> allTasks = new ArrayList<>();
     private ArrayList<Slot> allSlots = new ArrayList<>();
+    public List<String> specialTasks = new ArrayList<>();
 
     public ArrayList<Task> getAllTasks() {
         return allTasks;
@@ -113,7 +109,9 @@ public class InputParser {
                 Game newGame = new Game(identifier);
                 games.add(newGame);
                 allTasks.add(newGame);
-
+                if (identifier.contains("CMSA U12T1") || identifier.contains("CMSA U13T1")){
+                    specialTasks.add(newGame.getIdentifier());
+                }
                 //System.out.println(newGame);
             }
         }
@@ -131,6 +129,7 @@ public class InputParser {
                 Practice newP = new Practice(identifier);
                 practices.add(newP);
                 allTasks.add(newP);
+
                 //System.out.println(newP);
             }
         }
