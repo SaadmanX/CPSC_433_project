@@ -38,12 +38,12 @@ public class HardConstraintsEval {
 
         //SPECIAL BOOKING IS VIP SO THIS IS HERE
     
-        if (isSpecialBooking) {
-            if (!specialBookingConstraint(newAssignment)) {
-                System.out.println("hard constraint failed: special practice");
-                return false;
-            }
-        }
+        // if (isSpecialBooking) {
+        //     if (!specialBookingConstraint(newAssignment)) {
+        //         System.out.println("hard constraint failed: special practice");
+        //         return false;
+        //     }
+        // }
 
         if (!notCompatibleConstraint(newAssignment)) {
             System.out.println("hard constraint failed: not compatible");
@@ -54,7 +54,6 @@ public class HardConstraintsEval {
     }
 
     private boolean maxConstraint(Slot slot) {
-        //System.out.println("Max: " + slot.getMax() + " vs Curr: " + slot.getCurrentCount());
         boolean result = slot.getCurrentCount() <= slot.getMax();
         return result;
     }
@@ -70,12 +69,10 @@ public class HardConstraintsEval {
             if (curTask.getIsGame() == prevTask.getIsGame())continue;
             
             if (!curTask.getIsGame()){ // If it is practice
-               // System.out.println("IS SUBSTRING: " + curTask.getIdentifier().contains(prevTask.getIdentifier()));
                 if (!curTask.getIdentifier().contains(prevTask.getIdentifier())){
                     continue;
                 }
             } else { //If it is game
-                //System.out.println("IS SUBSTRING: " + prevTask.getIdentifier().contains(curTask.getIdentifier()));
                 if (!prevTask.getIdentifier().contains(curTask.getIdentifier()))continue;
             }
 
@@ -162,7 +159,6 @@ public class HardConstraintsEval {
         // newTask.printNotCombatible();
         for (Task existingTask : slot.getAssignedTasks()) {
             if (newTask.isNotCompatibleWith(existingTask)) {
-                // System.out.println(existingTask + " is not compatible with " + newTask);
                 return false;
             }
         }
@@ -170,16 +166,17 @@ public class HardConstraintsEval {
     }
 
     
+    // && I probably do not need this at all. since the special practices are being added to unwanted slots anyways
     //Any practices/games of CMSA U12T1 and practices/games of CMSA U13T1 cannot be scheduled overlap TU: 18
-    private boolean specialBookingConstraint(Assignment assignment) {
-        if (assignment.getTask().getIdentifier().contains("CMSA U12T1S") || assignment.getTask().getIdentifier().contains("CMSA U13T1S"))
-        {
-            Slot temp = new Slot("TU", "18:00", 1, 1, false);
-            if (!isOverlap(assignment.getSlot(), temp))return false;
-        }
+    // private boolean specialBookingConstraint(Assignment assignment) {
+    //     if (assignment.getTask().getIdentifier().contains("CMSA U12T1S") || assignment.getTask().getIdentifier().contains("CMSA U13T1S"))
+    //     {
+    //         Slot temp = new Slot("TU", "18:00", 1, 1, false);
+    //         if (!isOverlap(assignment.getSlot(), temp))return false;
+    //     }
 
-        return true;
-    }
+    //     return true;
+    // }
 
     private boolean noGamesOnTuesdayMeeting(Assignment assignment) {
         if (assignment.getTask().getIsGame()) {

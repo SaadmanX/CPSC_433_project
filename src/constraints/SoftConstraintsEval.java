@@ -35,7 +35,6 @@ public class SoftConstraintsEval {
     
         return penalty;
 
-        // ^ i dont think we do this. have to do it for all assignment altoghether, otherwise pairs for example will crash
     }
     
     public int calculatePenalty(Assignment assignment) {
@@ -44,6 +43,7 @@ public class SoftConstraintsEval {
         Slot slot = assignment.getSlot();
         Task task = assignment.getTask();
     
+        // ^^ check to see if any weight * penalty == 0. in which case we dont bother doing them
         int minFillPenalty = evalMinFilled(slot);
         int prefPenalty = evalPreferencePenalty(task, slot);
         int pairPenalty = evalPairingPenalty(task);
@@ -58,13 +58,11 @@ public class SoftConstraintsEval {
     private boolean isOverlap(Task a, Task b) {
         //So this only checks b because a is passed from currently assigned task,
         //only b can cause null ptr
-        // ^^ included check for same day as well
         if (b.getCurrentAssigned() == null)return false;
         boolean overlap = a.getCurrentAssigned().getStartTime().equals(b.getCurrentAssigned().getStartTime()) && a.getCurrentAssigned().getDay().equals(b.getCurrentAssigned().getDay());
         return overlap;
     }
     
-    // ^^ this is correct, as far as I can see, and if getCurrentCount() is working fine after cloning
     private int evalMinFilled(Slot slot) {
     
         if (slot.getCurrentCount() < slot.getMin()) {
@@ -80,7 +78,6 @@ public class SoftConstraintsEval {
     }
     
     private int evalPreferencePenalty(Task task, Slot slot) {
-        // ^^ i think this is correct as well. basically calculating the total evalPref of the assignment, then subtracting the one that was already assignmed
         if (!task.isPreferredSlot(slot.getId(), slot.forGame())) {
             int penalty = (task.getSumPreferences() - task.getPreferenceValue(slot)) * multiplierList.get(1);
             return penalty;
@@ -109,8 +106,6 @@ public class SoftConstraintsEval {
     
     private int evalSecDiff(Slot slot) {
 
-        // ^^ i assume this is correct. dont understand it
-        
         HashMap<String, Integer> ageFrequencyMap = new HashMap<>();
     
         for (Task t : slot.getAssignedTasks()) {

@@ -44,15 +44,11 @@ public class AndTree {
         try {
             parser.parseFile(this.inputFileName);
 
-        //    System.out.println("Games slots: ");
             parser.parseGameSlots();
 
-        //    System.out.println("Practices Slot: ");
             parser.parsePracticeSlots();
 
-            // System.out.println("Games: ");
             parser.parseGames();
-            // System.out.println("Practices: ");
             parser.parsePractices();
 
             allTasks = parser.getAllTasks();
@@ -66,23 +62,15 @@ public class AndTree {
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
 
-            // constraints.put("NotCompatible", parser.parseNotCompatible());
-            //makeNotCompatibleList();
 
-            // System.out.println("Not Compatible: ");
             parser.parseNotCompatible();
-            // makePairList();
 
-            // System.out.println("Pairs: ");
             parser.parsePairs();
 
-            // System.out.println("Preferences: ");
             parser.parsePreferences();
 
-            //System.out.println("Unwanted: ");
             parser.parseUnwanted();
 
-            //System.out.println("Partial: ");
             partialAssignments  = parser.parsePartialAssignments();
 
             softChecker = new SoftConstraintsEval(multiplierList, weightList, allSlots);
@@ -123,15 +111,11 @@ public class AndTree {
         //So it might print out partial fails if there is not enough 18:00 slot ahaha
 
         if (specialList.contains("CMSA U13T1S")){
-            // Task U13T1S = new Task("CMSA U13T1S", false);
 
             partialAssignments.add(new PartialAssignment("CMSA U13T1S", "TU", "18:00"));
-            // System.out.println(U13T1S);
         }
         if (specialList.contains("CMSA U12T1S")){
-            // Task U12T1S = new Task("CMSA U12T1S", false);
             partialAssignments.add(new PartialAssignment("CMSA U12T1S", "TU", "18:00"));
-            // System.out.println(U12T1S);
         }
 
         return true;
@@ -149,11 +133,8 @@ public class AndTree {
     }
 
     private boolean assignPartialAssignments() {
-        // System.out.println(partialAssignments);
-        // System.out.println(allTasks);
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
-            // System.out.println(task.getIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
             if (task != null && slot != null) {
                 SearchState newestState = transitLinkedAssignment(state, task, slot);
@@ -173,6 +154,7 @@ public class AndTree {
     
         // Use cloned objects instead of the original ones
         if (clonedTask.isUnwantedSlot(clonedSlot)) {
+            // System.out.println(slot);
             return currentState;
         }
 
@@ -188,8 +170,6 @@ public class AndTree {
         newState.addAssignment(newAssignment);
         newState.updateRemainingSlots(clonedSlot);
 
-        //System.out.println("current count of this slot is: " + clonedSlot.getCurrentCount() + " and max is: " + clonedSlot.getMax());
-        //System.out.println(clonedSlot);
 
         newState.removeTask(clonedTask);
 
@@ -198,8 +178,6 @@ public class AndTree {
         //TODO:SOFT CONSTRAINTS YOU BITCH
         newState.setPenalty(softChecker.calculatePenalty(newAssignment));
 
-        System.out.println("SO NEW STATE IS");
-        newState.printState();
         return newState;
     }
 
@@ -215,7 +193,6 @@ public class AndTree {
                 states.add(newState);
             } 
         }
-        //System.out.println("=================================generating next states end================================");
         return states;
     }
 
@@ -237,6 +214,7 @@ public class AndTree {
         //System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
         //current.printState();
         //System.out.println("--------------------------------------------");
+        System.out.println(current.getRemainingTask().size());
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("REACHED LEAF NODE.");
@@ -254,8 +232,6 @@ public class AndTree {
         }
 
         Task nextTask = current.getRemainingTask().get(0);
-        System.out.println(nextTask);
-        // System.out.println("##########################NEXT TASK: " + nextTask);
 
         List<SearchState> nextStates = generateNextStates(current, nextTask);
     
