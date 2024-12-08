@@ -114,11 +114,11 @@ public class InputParser {
                     div9 = true;
                 }
 
-                if (identifier.contains("CMSA U12T1")) {
+                if (identifier.contains("CMSA U12T1") && !specialTasks.contains("CMSA U12T1S")) {
                     specialTasks.add("CMSA U12T1S");
                 }
 
-                if (identifier.contains("CMSA U13T1")) {
+                if (identifier.contains("CMSA U13T1") && !specialTasks.contains("CMSA U13T1S")) {
                     specialTasks.add("CMSA U13T1S");
                 }
 
