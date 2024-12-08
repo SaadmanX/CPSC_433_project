@@ -172,10 +172,10 @@ public class HardConstraintsEval {
     
     //Any practices/games of CMSA U12T1 and practices/games of CMSA U13T1 cannot be scheduled overlap TU: 18
     private boolean specialBookingConstraint(Assignment assignment) {
-        if (assignment.getTask().getIdentifier().contains("CMSA U12T1") || assignment.getTask().getIdentifier().contains("CMSA U13T1"))
+        if (assignment.getTask().getIdentifier().contains("CMSA U12T1S") || assignment.getTask().getIdentifier().contains("CMSA U13T1S"))
         {
             Slot temp = new Slot("TU", "18:00", 1, 1, false);
-            if (isOverlap(assignment.getSlot(), temp))return false;
+            if (!isOverlap(assignment.getSlot(), temp))return false;
         }
 
         return true;

@@ -109,9 +109,16 @@ public class InputParser {
                 Game newGame = new Game(identifier);
                 games.add(newGame);
                 allTasks.add(newGame);
-                if (identifier.contains("CMSA U12T1") || identifier.contains("CMSA U13T1")){
-                    specialTasks.add(newGame.getIdentifier());
+                if (identifier.contains("CMSA U12T1")) {
+                    // System.out.println(newGame.getIdentifier());
+                    specialTasks.add("CMSA U12T1S");
                 }
+
+                if (identifier.contains("CMSA U13T1")) {
+                    // System.out.println(newGame.getIdentifier());
+                    specialTasks.add("CMSA U13T1S");
+                }
+
                 //System.out.println(newGame);
             }
         }
@@ -132,6 +139,22 @@ public class InputParser {
 
                 //System.out.println(newP);
             }
+        }
+
+        for (String s : specialTasks) {
+            if (s.equals("CMSA U13T1S")) {
+                Practice newP = new Practice("CMSA U13T1S");
+                practices.add(newP);
+                allTasks.add(newP);
+                // System.out.println("added practice for u13");
+            } 
+
+            if (s.equals("CMSA U12T1S")) {
+                Practice newP = new Practice("CMSA U12T1S");
+                practices.add(newP);
+                allTasks.add(newP);
+                // System.out.println("added practice for u12");
+            } 
         }
         return practices;
     }
@@ -195,8 +218,19 @@ public class InputParser {
                     int value = Integer.parseInt(parts[3].trim());
                     //constraints.add(new Preference(day, time, identifier, value));
 
+
                     Task task = findTaskByIdentifier(identifier);
+
+                    if (day.equals("TU") && time.equals("11:00") && task.getIsGame()) {
+                        continue;
+                    }
+
                     Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
+
+                    if (slot == null) {
+                        System.out.println(task);
+                        System.out.println(line);
+                    }
 
                     task.addPreference(slot, value);
 

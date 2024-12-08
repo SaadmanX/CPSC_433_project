@@ -44,15 +44,15 @@ public class AndTree {
         try {
             parser.parseFile(this.inputFileName);
 
-           // System.out.println("Games slots: ");
+        //    System.out.println("Games slots: ");
             parser.parseGameSlots();
 
-           //System.out.println("Practices Slot: ");
+        //    System.out.println("Practices Slot: ");
             parser.parsePracticeSlots();
 
-            //System.out.println("Games: ");
+            // System.out.println("Games: ");
             parser.parseGames();
-            //System.out.println("Practices: ");
+            // System.out.println("Practices: ");
             parser.parsePractices();
 
             allTasks = parser.getAllTasks();
@@ -61,7 +61,7 @@ public class AndTree {
                 specialList = parser.specialTasks;
                 isSpecialBooking = true;
             }
-            //System.out.println("IS SPECIAL BOOKING: " + isSpecialBooking);
+            System.out.println("IS SPECIAL BOOKING: " + isSpecialBooking);
 
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
@@ -69,14 +69,14 @@ public class AndTree {
             // constraints.put("NotCompatible", parser.parseNotCompatible());
             //makeNotCompatibleList();
 
-            //System.out.println("Not Compatible: ");
+            // System.out.println("Not Compatible: ");
             parser.parseNotCompatible();
             // makePairList();
 
-            //System.out.println("Pairs: ");
+            // System.out.println("Pairs: ");
             parser.parsePairs();
 
-            //System.out.println("Preferences: ");
+            // System.out.println("Preferences: ");
             parser.parsePreferences();
 
             //System.out.println("Unwanted: ");
@@ -112,21 +112,28 @@ public class AndTree {
     }
 
     private boolean crossCheckIsSpecialBooking(){
-        if (!isSpecialBooking)return true;
-        Slot special18Slot = findSlotByDayAndTime("TU", "18:00", true);
-        if (special18Slot == null)return false;
-
+        if (!isSpecialBooking) {
+            return true;
+        }
+        Slot special18Slot = findSlotByDayAndTime("TU", "18:00", false);
+        if (special18Slot == null){
+            System.out.println("line 120");
+            return false;
+        }
         //So it might print out partial fails if there is not enough 18:00 slot ahaha
 
         if (specialList.contains("CMSA U13T1S")){
-            Task U13T1S = new Task(" CMSA U13T1S", true);
-            partialAssignments.add(new PartialAssignment(U13T1S.getIdentifier(), "TU", "18:00"));
+            // Task U13T1S = new Task("CMSA U13T1S", false);
+
+            partialAssignments.add(new PartialAssignment("CMSA U13T1S", "TU", "18:00"));
+            // System.out.println(U13T1S);
         }
         if (specialList.contains("CMSA U12T1S")){
-            Task U12T1S = new Task(" CMSA U12T1S", true);
-            partialAssignments.add(new PartialAssignment(U12T1S.getIdentifier(), "TU", "18:00"));
+            // Task U12T1S = new Task("CMSA U12T1S", false);
+            partialAssignments.add(new PartialAssignment("CMSA U12T1S", "TU", "18:00"));
+            // System.out.println(U12T1S);
         }
-       
+
         return true;
     }
 
@@ -142,9 +149,11 @@ public class AndTree {
     }
 
     private boolean assignPartialAssignments() {
-
+        // System.out.println(partialAssignments);
+        // System.out.println(allTasks);
         for (PartialAssignment partial : partialAssignments) {
             Task task = findTaskByIdentifier(partial.getTaskIdentifier());
+            // System.out.println(task.getIdentifier());
             Slot slot = findSlotByDayAndTime(partial.getDay(), partial.getTime(), task.getIsGame());
             if (task != null && slot != null) {
                 SearchState newestState = transitLinkedAssignment(state, task, slot);
