@@ -177,7 +177,6 @@ public class AndTree {
         newState.updateRemainingSlots(clonedSlot);
         newState.removeTask(clonedTask);
         
-        //TODO:SOFT CONSTRAINTS YOU BITCH
         newState.setPenalty(softChecker.updatePenalty(newAssignment, newState));
         newState.printState();
         return newState;
