@@ -30,7 +30,7 @@ public class AndTree {
     private boolean isSpecialBooking = false;
     List<String> specialList = new ArrayList<>();
 
-    public AndTree(SearchState root, String filename, ArrayList<Integer> weightList, ArrayList<Integer> multiplierList) {
+    public AndTree(SearchState root, String filename, ArrayList<Integer> multiplierList, ArrayList<Integer> weightList) {
         this.state = root;
         this.inputFileName = filename;
         this.weightList = weightList;
@@ -57,11 +57,10 @@ public class AndTree {
                 specialList = parser.specialTasks;
                 isSpecialBooking = true;
             }
-            System.out.println("IS SPECIAL BOOKING: " + isSpecialBooking);
+            //System.out.println("IS SPECIAL BOOKING: " + isSpecialBooking);
 
             state.setRemainingSlots(allSlots);
             state.setRemainingTask(allTasks);
-
 
             parser.parseNotCompatible();
 
@@ -72,9 +71,16 @@ public class AndTree {
             parser.parseUnwanted();
 
             partialAssignments  = parser.parsePartialAssignments();
+            state.setMinGameFillPenalty(parser.maxMinGame * weightList.get(0) * multiplierList.get(0));
+            state.setMinPracticeFillPenalty(parser.maxMinPractice * weightList.get(1) * multiplierList.get(0));
+            state.setPairPenalty(parser.maxPairs * weightList.get(2) * multiplierList.get(2));
+            state.setPrefPenalty(parser.maxPreferencesValue * multiplierList.get(1));
+            
+            state.updatePenalty();
+            System.out.println("MAX PENALTY = " + state.getPenalty());
+            System.out.println("MAX PAIRING INITIAL= " + state.getPairPenalty());
 
-            softChecker = new SoftConstraintsEval(multiplierList, weightList, allSlots);
-            state.setPenalty(softChecker.initialPenalty);
+            softChecker = new SoftConstraintsEval(multiplierList, weightList);
 
             hardChecker = new HardConstraintsEval();
 
@@ -105,7 +111,7 @@ public class AndTree {
         }
         Slot special18Slot = findSlotByDayAndTime("TU", "18:00", false);
         if (special18Slot == null){
-            System.out.println("line 120");
+            //System.out.println("line 120");
             return false;
         }
         //So it might print out partial fails if there is not enough 18:00 slot ahaha
@@ -172,12 +178,10 @@ public class AndTree {
 
 
         newState.removeTask(clonedTask);
-
-        // Recalculate the penalty for the new state, huh... so this is the only time called
         
         //TODO:SOFT CONSTRAINTS YOU BITCH
-        newState.setPenalty(softChecker.calculatePenalty(newAssignment));
-
+        newState.setPenalty(softChecker.updatePenalty(newAssignment, newState));
+        newState.printState();
         return newState;
     }
 
@@ -214,7 +218,7 @@ public class AndTree {
         //System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
         //current.printState();
         //System.out.println("--------------------------------------------");
-        System.out.println(current.getRemainingTask().size());
+        //System.out.println(current.getRemainingTask().size());
 
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("REACHED LEAF NODE.");
@@ -227,9 +231,9 @@ public class AndTree {
         }
     
         // Prune states with penalty worse than the best solution
-        if (current.getPenalty() > minEval) {
-            return;
-        }
+        //if (current.getPenalty() > minEval) {
+        //    return;
+        //}
 
         Task nextTask = current.getRemainingTask().get(0);
 

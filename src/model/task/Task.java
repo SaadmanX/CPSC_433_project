@@ -80,7 +80,7 @@ public class Task {
 
     public void addPreference(Slot slot, int value) {
         preferences.put(slot.getId(), value);
-        sumPreferences += value;
+        this.sumPreferences += value;
     }
 
     /**
@@ -105,7 +105,7 @@ public class Task {
     }
 
     public int getPreferenceValue(Slot slot) {
-        return preferences.getOrDefault(slot, 0);
+        return preferences.getOrDefault(slot.getId(), 0);
     }
 
     public void addPair(Task anotherTask) {
@@ -158,14 +158,16 @@ public class Task {
         this.notCompatibleIdentifiers.add(anotherTaskIdentifier);
     }
 
-    public boolean isNotCompatibleWith(Task otherTask) {
-        for (String notc : notCompatibleIdentifiers) {
-            if (otherTask.getIdentifier().equals(notc)) {
+    public boolean isNotCompatibleWith(Task anotherTask) {
+        /**
+        for (String s : notCompatibleIdentifiers) {
+            if (anotherTask.getIdentifier().equals(s)) {
                 return true;
             }
         }
         return false;
-        // return this.notCompatibleIdentifiers.contains(otherTask.getIdentifier());
+         */
+        return this.notCompatibleIdentifiers.contains(anotherTask.getIdentifier());
     }
 
 

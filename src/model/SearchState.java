@@ -9,9 +9,15 @@ public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;
     private List<Slot> availableSlots;
-    private int penalty;
-    
+    private int penalty = 0;
 
+    //These values are cumulative of all assignments in the SearchState
+    private int minGameFillPenalty; //MAX value of min, deducted or updated with newest assignment
+    private int prefPenalty; //Same thing, MAX VALUE of preferences, updated with newest assignment
+    private int pairPenalty;
+    private int secDiffPenalty;
+    private int minPracticeFillPenalty; 
+    
     public SearchState(List<Assignment> assignments, List<Task> remainingTasks, List<Slot> availableSlots, int penalty) {
         //create deep copy in order not to mutate/share state
         this.assignments = new ArrayList<>(assignments);
@@ -25,6 +31,11 @@ public class SearchState {
         this.remainingTasks = new ArrayList<>(another.remainingTasks);
         this.availableSlots = new ArrayList<>(another.availableSlots);
         this.penalty = another.penalty;
+        this.pairPenalty = another.pairPenalty;
+        this.prefPenalty = another.prefPenalty;
+        this.minGameFillPenalty = another.minGameFillPenalty;
+        this.minPracticeFillPenalty = another.minPracticeFillPenalty;
+        this.secDiffPenalty = another.secDiffPenalty;
     }
 
     public void setAssignments(List<Assignment> assignments){
@@ -92,12 +103,7 @@ public class SearchState {
             clonedSlots.add(slot.clone());
         }
     
-        return new SearchState(
-            new ArrayList<>(this.assignments),
-            new ArrayList<>(this.remainingTasks),
-            clonedSlots,
-            this.penalty
-        );
+        return new SearchState(this);
     }
     
 
@@ -113,10 +119,53 @@ public class SearchState {
         return penalty;
     }
 
+    public void updatePenalty(){
+        this.penalty = pairPenalty + prefPenalty + minGameFillPenalty + minPracticeFillPenalty + secDiffPenalty;
+    }
+
     public void setPenalty(int penalty) {
         this.penalty = penalty;
     }
 
+    public void setMinGameFillPenalty(int penalty){
+        this.minGameFillPenalty = penalty;
+    }
+
+    public void setMinPracticeFillPenalty(int penaly){
+        this.minPracticeFillPenalty = penaly;
+    }
+
+    public int getMinPracticeFillPenalty(){
+        return this.minPracticeFillPenalty;
+    }
+
+    public void setPrefPenalty(int penalty){
+        this.prefPenalty = penalty;
+    }
+
+    public void setPairPenalty(int penalty){
+        this.pairPenalty = penalty;
+    }
+
+    public void setSecDiffPenalty(int penalty){
+        this.secDiffPenalty = penalty;
+    }
+
+    public int getMinGameFillPenalty(){
+        return minGameFillPenalty;
+    }
+
+    public int getPrefPenalty(){
+        return prefPenalty;
+    }
+
+    public int getPairPenalty(){
+        return pairPenalty;
+    }
+
+    public int getSecDiffPenalty(){
+        return secDiffPenalty;
+    }
 
     public void printState(){
         System.out.println("Assignment: ");
@@ -139,6 +188,7 @@ public class SearchState {
             
         }
 
+        System.out.println("Pairing: " + pairPenalty);
         System.out.println("Penalty: " + penalty);
     }
 

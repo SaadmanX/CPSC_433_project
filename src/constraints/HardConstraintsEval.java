@@ -11,28 +11,28 @@ public class HardConstraintsEval {
 
     public boolean validate(Assignment newAssignment, List<Assignment> previouAssignments, boolean isSpecialBooking) {
         if (!maxConstraint(newAssignment.getSlot())) {
-            System.out.println("hard constraint failed: max constraint");
+            //System.out.println("hard constraint failed: max constraint");
             return false;
         }
         
         if (!noOverlappingPracticesAndGames(newAssignment, previouAssignments)) {
-            System.out.println("hard constraint failed: overlapping game and practice");
+            //System.out.println("hard constraint failed: overlapping game and practice");
             return false;
         }
         
         if (!eveningDivisionConstraint(newAssignment)) {
-            System.out.println("hard constraint failed: evening div");
+            //System.out.println("hard constraint failed: evening div");
             return false;
         }
 
         if (!nonOverlappingTimeForCertainLevels(newAssignment, previouAssignments)) {
-            System.out.println("hard constraint failed: overlaping levels");
+            //System.out.println("hard constraint failed: overlaping levels");
             return false;
             
         }
 
         if (!noGamesOnTuesdayMeeting(newAssignment)) {
-            System.out.println("hard constraint failed: game on tuesday meeting");
+            //System.out.println("hard constraint failed: game on tuesday meeting");
             return false;
         }
 
@@ -46,7 +46,7 @@ public class HardConstraintsEval {
         // }
 
         if (!notCompatibleConstraint(newAssignment)) {
-            System.out.println("hard constraint failed: not compatible");
+            //System.out.println("hard constraint failed: not compatible");
             return false;
         }
 
@@ -117,6 +117,7 @@ public class HardConstraintsEval {
     }
 
     private boolean isOverlap(Slot slot1, Slot slot2) {
+        if (slot1 == null || slot2 == null)return false;  
         if (!slot1.getDay().equals(slot2.getDay())) {
             return false; 
         }
