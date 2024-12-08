@@ -17,6 +17,7 @@ public class HardConstraintsEval {
         
         if (!noOverlappingPracticesAndGames(newAssignment, previouAssignments)) {
             System.out.println("hard constraint failed: overlapping game and practice");
+            System.out.println(newAssignment);
             return false;
         }
         
@@ -27,6 +28,7 @@ public class HardConstraintsEval {
 
         if (!nonOverlappingTimeForCertainLevels(newAssignment, previouAssignments)) {
             System.out.println("hard constraint failed: overlaping levels");
+            // System.out.println(newAssignment);
             return false;
             
         }
@@ -96,7 +98,7 @@ public class HardConstraintsEval {
     private boolean nonOverlappingTimeForCertainLevels(Assignment assignment , List<Assignment> previousAssignments) {
         Task task = assignment.getTask();
         
-        if (!task.isU1519()) {
+        if (!task.isU1519() || !task.getIsGame()) {
             return true; 
         }
         
@@ -105,9 +107,9 @@ public class HardConstraintsEval {
             Task prevTask = prevAssignment.getTask();
             Slot prevSlot = prevAssignment.getSlot();
         
-            if (prevTask.isU1519()) {
+            if (prevTask.getIsGame() && prevTask.isU1519() && prevTask.getAge() != task.getAge()) {
                 if (isOverlap(prevSlot, currentSlot)) {
-                    //System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
+                    System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
                     return false;
                 }
             }
@@ -117,26 +119,28 @@ public class HardConstraintsEval {
     }
 
     private boolean isOverlap(Slot slot1, Slot slot2) {
-        if (!slot1.getDay().equals(slot2.getDay())) {
-            return false; 
-        }
+        // if (!slot1.getDay().equals(slot2.getDay())) {
+        //     return false; 
+        // }
 
-        if (slot1.getId().equals(slot2.getId()) && slot1.forGame() == slot2.forGame()){
-            return true;
-        }
+        // if (slot1.getId().equals(slot2.getId()) && slot1.forGame() == slot2.forGame()){
+        //     return true;
+        // }
 
-        double start1 = slot1.getSlotStartTime();
-        double start2 = slot2.getSlotStartTime();
+        // double start1 = slot1.getSlotStartTime();
+        // double start2 = slot2.getSlotStartTime();
     
-        double duration1 = getSlotDuration(slot1);
-        double duration2 = getSlotDuration(slot2);
+        // double duration1 = getSlotDuration(slot1);
+        // double duration2 = getSlotDuration(slot2);
     
-        double end1 = start1 + duration1;
-        double end2 = start2 + duration2;
+        // double end1 = start1 + duration1;
+        // double end2 = start2 + duration2;
     
-        // Slots overlap if:
-        // Start1 is before end2 and Start2 is before end1
-        return (start1 < end2 && start2 < end1);
+        // // Slots overlap if:
+        // // Start1 is before end2 and Start2 is before end1
+        // return (start1 < end2 && start2 < end1);
+
+        return slot1.getDay().equals(slot2.getDay()) && slot1.getStartTime().equals(slot2.getStartTime());
     }
     
     // Helper function to determine the duration of a slot

@@ -21,6 +21,7 @@ public class Task {
     private int sumPreferences = 0;
     private Slot isCurrentlyAssignedTo;
     private boolean isU1519 = false;
+    private int age;
 
     /**
      * Default constructor with parser
@@ -54,6 +55,7 @@ public class Task {
         this.sumPreferences = another.sumPreferences;
         this.isCurrentlyAssignedTo = another.isCurrentlyAssignedTo;
         this.isU1519 = another.isU1519;
+        this.age = another.age;
     }
 
     //Handy for update with 1 newest assignment only
@@ -136,6 +138,10 @@ public class Task {
         return this.division;
     }
 
+    public int getAge() {
+        return this.age;
+    }
+
 
     public boolean getIsGame() {
         return this.isGame;
@@ -201,15 +207,62 @@ public class Task {
         return unwantedSlots;
     }
     
+    // private void parseIdentifier() {
+    //     String[] parts = this.identifier.split(" "); 
+    
+    //     if (parts.length >= 2) {
+    //         this.level = parts[1]; 
+    //         if (level.contains("U15") || level.contains("U16") || level.contains("U17") || level.contains("U19")){
+    //             this.isU1519 = true;
+    //         }
+    //         // this.tier = level.length() > 3 ? level.substring(3) : ""; 
+    //     }
+        
+    //     // Find division number
+    //     this.division = ""; 
+    //     for (int i = 0; i < parts.length; i++) {
+    //         if (parts[i].equals("DIV") && i + 1 < parts.length) {
+    //             // Combine "DIV" with its number
+    //             this.division = parts[i + 1];
+    //             break;
+    //         }
+    //     }
+    // }
+
     private void parseIdentifier() {
         String[] parts = this.identifier.split(" "); 
     
         if (parts.length >= 2) {
-            this.level = parts[1]; 
+            this.level = parts[1];
             if (level.contains("U15") || level.contains("U16") || level.contains("U17") || level.contains("U19")){
                 this.isU1519 = true;
             }
-            // this.tier = level.length() > 3 ? level.substring(3) : ""; 
+    
+            // Extract age from level (parts[1])
+            if (level.startsWith("U")) {
+                // For youth teams (e.g., U07, U19)
+                // Find index of 'T' if it exists, otherwise take full number
+                int endIndex = level.indexOf('T');
+                if (endIndex == -1) {
+                    endIndex = level.length();
+                }
+                try {
+                    this.age = Integer.parseInt(level.substring(1, endIndex));
+                } catch (NumberFormatException e) {
+                    this.age = 0;  // Default value if parsing fails
+                }
+            } else if (level.startsWith("O")) {
+                // For adult teams (e.g., O19, O35)
+                int endIndex = level.indexOf('T');
+                if (endIndex == -1) {
+                    endIndex = level.length();
+                }
+                try {
+                    this.age = Integer.parseInt(level.substring(1, endIndex));
+                } catch (NumberFormatException e) {
+                    this.age = 0;  // Default value if parsing fails
+                }
+            }
         }
         
         // Find division number
@@ -225,7 +278,7 @@ public class Task {
     
     @Override
     public String toString() {
-        return String.format("Task[identifier=%s, level=%s, division=%s, isGame=%b, isSpecialPractice=%b]",
-                identifier, level, division, isGame, isSpecialPractice);
+        return String.format("Task[identifier=%s, level=%s, division=%s, age=%s, isGame=%b, isSpecialPractice=%b]",
+                identifier, level, division, age, isGame, isSpecialPractice);
     }
 }
