@@ -186,6 +186,32 @@ public class AndTree {
 
     }
 
+    private void printSlotMap(Map<Slot, List<Task>> sMap) {
+        System.out.println("\n=== Slot Map Status ===");
+        for (Map.Entry<Slot, List<Task>> entry : sMap.entrySet()) {
+            Slot slot = entry.getKey();
+            List<Task> tasks = entry.getValue();
+            
+            System.out.printf("Slot [%s %s] (max: %d, current: %d):\n", 
+                slot.getDay(), 
+                slot.getStartTime(),
+                slot.getMax(),
+                tasks.size()
+            );
+            
+            if (tasks.isEmpty()) {
+                System.out.println("  No tasks assigned");
+            } else {
+                for (Task task : tasks) {
+                    System.out.printf("  - %s\n", task.getIdentifier());
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("=====================\n");
+    }
+    
+
     private List<Slot> findSlotsByDayAndTime(String day, String time, boolean forGame) {
         return allSlots.stream()
                 .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) 
@@ -225,16 +251,17 @@ public class AndTree {
 
         List<Assignment> newAssignments = new ArrayList<>(currentState.getAssignments());
         newAssignments.addAll(linkedAssignments);
-        for (Assignment a : linkedAssignments) {
-            Slot s = a.getSlot();
-            sMap.computeIfAbsent(s, k -> new ArrayList<>()).add(a.getTask());
-        }
 
         for (Assignment a : linkedAssignments) {
             if (!hardChecker.validate(a)) {
                 return currentState; // Return the original state if validation fails
             }
             
+            Slot s = a.getSlot();
+            sMap.computeIfAbsent(s, k -> new ArrayList<>()).add(a.getTask());
+
+            printSlotMap(sMap);
+
             // Create a new state with updated assignments and penalties
             SearchState newState = currentState.clone();
             newState.setAssignments(newAssignments);
@@ -358,6 +385,7 @@ public class AndTree {
         current.printState();
         System.out.println("--------------------------------------------");
 
+
         if (current.getRemainingTask().isEmpty()) {
             System.out.println("REACHED LEAF NODE.");
             if (current.getPenalty() < minEval) {
@@ -380,8 +408,14 @@ public class AndTree {
         List<SearchState> nextStates = generateNextStates(current, nextTask, sMap);
     
         for (SearchState nextState : nextStates) {
-            
-            dfs(nextState, sMap); // Recursive DFS call
+            Map<Slot, List<Task>> newMap = new HashMap<>();
+            for (Map.Entry<Slot, List<Task>> entry : sMap.entrySet()) {
+                newMap.put(entry.getKey(), new ArrayList<>(entry.getValue()));
+            }
+            dfs(nextState, newMap);
+
+
+            // dfs(nextState, sMap); // Recursive DFS call
         }
     }
 
