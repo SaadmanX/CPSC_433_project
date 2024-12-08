@@ -9,10 +9,6 @@ import model.SearchState;
 import model.slots.Slot;
 import model.task.Task;
 
-
-/**
- * This class only calculates for the partial of each new assignment, total logic handled in states
- */
 public class SoftConstraintsEval {
 
     // Multiplier List (Order: minFill, pref, pair, secdiff)
@@ -36,7 +32,7 @@ public class SoftConstraintsEval {
         int prefPenaltyDiff = evalPreferencePenalty(task, slot) * multiplierList.get(1);
         int pairPenaltyDiff = evalPairingPenalty(task, slot) * multiplierList.get(2);
 
-        int secDiffPenaltyDiff = evalSecDiff(slot) * multiplierList.get(3);
+        int secDiffPenaltyDiff = evalSecDiff(slot, task) * multiplierList.get(3);
 
         if (minFillPenaltyDiff != 0){
             if (task.getIsGame())state.setMinGameFillPenalty(state.getMinGameFillPenalty() - minFillPenaltyDiff);
@@ -45,49 +41,12 @@ public class SoftConstraintsEval {
 
         if (prefPenaltyDiff != 0)state.setPrefPenalty(state.getPrefPenalty() - prefPenaltyDiff);
         if (pairPenaltyDiff != 0)state.setPairPenalty(state.getPairPenalty() - pairPenaltyDiff);
-        if (secDiffPenaltyDiff != 0)state.setSecDiffPenalty(state.getSecDiffPenalty() - secDiffPenaltyDiff);
+        if (secDiffPenaltyDiff != 0)state.setSecDiffPenalty(state.getSecDiffPenalty() + secDiffPenaltyDiff);
         
         state.updatePenalty();
 
         return state.getPenalty();
     }
-    
-    private boolean isOverlap(Slot slot1, Slot slot2) {
-        if (slot1 == null || slot2 == null)return false;  
-        if (!slot1.getDay().equals(slot2.getDay())) {
-            return false; 
-        }
-
-        if (slot1.getId().equals(slot2.getId()) && slot1.forGame() == slot2.forGame()){
-            return true;
-        }
-
-        double start1 = slot1.getSlotStartTime();
-        double start2 = slot2.getSlotStartTime();
-    
-        double duration1 = getSlotDuration(slot1);
-        double duration2 = getSlotDuration(slot2);
-    
-        double end1 = start1 + duration1;
-        double end2 = start2 + duration2;
-    
-        // Slots overlap if:
-        // Start1 is before end2 and Start2 is before end1
-        return (start1 < end2 && start2 < end1);
-    }
-    
-    // Helper function to determine the duration of a slot
-    private double getSlotDuration(Slot slot) {
-        if (slot.forGame()) {
-            if (slot.getDay().equals("TU")) return 1.5; 
-            return 1.0; 
-        } else {
-            if (slot.getDay().equals("TU")) return 1.5; 
-            if (slot.getDay().equals("FR")) return 2.0; 
-            return 1.0; 
-        }
-    }
-    
     
     private int updateMinFilled(Slot slot) {
         //Below scenario means it just met the minCondition or is just added another task in
@@ -121,27 +80,14 @@ public class SoftConstraintsEval {
         return 0;
     }
     
-    private int evalSecDiff(Slot slot) {
+    private int evalSecDiff(Slot slot, Task task) {
+        if (!task.getIsGame() || task.getDivision().equals(""))return 0;
 
-        HashMap<String, Integer> ageFrequencyMap = new HashMap<>();
-    
-        for (Task t : slot.getAssignedTasks()) {
-            if (t.getIsGame() && !t.getDivision().equals("")) {
-                String level = t.getLevel();
-                ageFrequencyMap.put(level, ageFrequencyMap.getOrDefault(level, 0) + 1);
-            }
-        }
-    
-        int numberOfPair = 0;
-        for (Map.Entry<String, Integer> entry : ageFrequencyMap.entrySet()) {
-            Integer n = entry.getValue();
-            if (n > 1) {
-                int pairs = (n * (n-1)) / 2;
-                numberOfPair += pairs;
-            }
-        }
-    
-        int penalty = numberOfPair * penaltyList.get(3);
+        int n = slot.getTierTaskCount(task.getLevel());
+        
+        int pairs = (n * (n-1)) / 2;
+              
+        int penalty = pairs * penaltyList.get(3);
         return penalty;
     }
 }

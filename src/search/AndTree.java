@@ -75,10 +75,10 @@ public class AndTree {
             state.setMinPracticeFillPenalty(parser.maxMinPractice * weightList.get(1) * multiplierList.get(0));
             state.setPairPenalty(parser.maxPairs * weightList.get(2) * multiplierList.get(2));
             state.setPrefPenalty(parser.maxPreferencesValue * multiplierList.get(1));
-            
+
             state.updatePenalty();
-            System.out.println("MAX PENALTY = " + state.getPenalty());
-            System.out.println("MAX PAIRING INITIAL= " + state.getPairPenalty());
+            //System.out.println("MAX PENALTY = " + state.getPenalty());
+            System.out.println("MAX SECDIFF INITIAL= " + state.getPairPenalty());
 
             softChecker = new SoftConstraintsEval(multiplierList, weightList);
 
@@ -175,8 +175,6 @@ public class AndTree {
         //Update assignment, task, and slot in newest state
         newState.addAssignment(newAssignment);
         newState.updateRemainingSlots(clonedSlot);
-
-
         newState.removeTask(clonedTask);
         
         //TODO:SOFT CONSTRAINTS YOU BITCH

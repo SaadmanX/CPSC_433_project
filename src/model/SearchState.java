@@ -8,7 +8,7 @@ import model.task.Task;
 public class SearchState {
     private List<Assignment> assignments; // Maps game/practice to slot
     private List<Task> remainingTasks;
-    private List<Slot> availableSlots;
+    private List<Slot> availableSlots; 
     private int penalty = 0;
 
     //These values are cumulative of all assignments in the SearchState
@@ -200,5 +200,6 @@ public class SearchState {
         task.setCurrentAssign(slot);
         slot.addAssignedTask(task);
         slot.setCurrentCount(slot.getCurrentCount() + 1);
+        slot.addTaskToTierList(task);
     }
 }

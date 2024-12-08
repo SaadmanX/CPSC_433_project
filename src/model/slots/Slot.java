@@ -1,6 +1,7 @@
 package model.slots;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import model.task.Task;
@@ -16,6 +17,7 @@ public class Slot {
     private int currentCount = 0;
     private List<Task> taskList = new ArrayList<>();
     private int u1519 = 0;
+    private HashMap<String, Integer> tierFrequencyMap = new HashMap<>();
 
     public Slot(String day, String startTime, int max, int min, boolean isGame) {
         this.day = day;
@@ -38,6 +40,7 @@ public class Slot {
         this.taskList = new ArrayList<>(anotherSlot.taskList);
         this.u1519 = anotherSlot.u1519;    
         this.currentCount = anotherSlot.currentCount;
+        this.tierFrequencyMap = new HashMap<>(anotherSlot.tierFrequencyMap);
     }
 
     public Slot clone() {
@@ -71,6 +74,21 @@ public class Slot {
             if (task.isU1519())return true;
         }
         return false;
+    }
+
+    public void addTaskToTierList(Task t){
+        if (!t.getIsGame() || t.getDivision().equals(""))return;
+        String level = t.getLevel();
+        tierFrequencyMap.put(level, tierFrequencyMap.getOrDefault(level, 0) + 1);
+    }
+
+    public int getTierTaskCount(String tierId){
+        if (tierFrequencyMap.containsKey(tierId)){
+            System.out.println("--------------TIER " + tierId + " COUNT= " + tierFrequencyMap.get(tierId).intValue() + "-----------");
+            return tierFrequencyMap.get(tierId).intValue(); 
+           
+        }   
+        return 0;
     }
 
     public String getDay() {
