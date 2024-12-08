@@ -3,11 +3,12 @@ hc10-sppr
 
 Game slots:
 MO, 8:00, 1, 1
-TU, 17:00, 2, 1
+TU, 15:00, 2, 1
 TU, 18:00, 3, 2
 
 Practice slots:
-TU, 14:00, 4, 2
+TU, 17:00, 3, 2
+TU, 14:00, 1, 2
 
 
 Games:
@@ -16,6 +17,7 @@ CMSA U13T1 DIV 01
 
 Practices:
 CMSA U10T1 DIV 01 PRC 01
+CMSA U13T1 DIV 01 PRC 01
 
 Not compatible:
 CMSA U13T1 DIV 01, CMSA U10T1 DIV 01
