@@ -23,6 +23,7 @@ public class Slot {
         this.identifier = day + ", " + startTime;
         this.max = max;
         this.min = min;
+        parseSlotStartTime();
         this.forGame = isGame;
     }
 
@@ -42,6 +43,23 @@ public class Slot {
     public Slot clone() {
         Slot clonedSlot = new Slot(this);
         return clonedSlot;
+    }
+
+    public void parseSlotStartTime() {
+        String[] timeParts = startTime.split(":");
+
+        if (timeParts.length == 2) {
+            try {
+                int hours = Integer.parseInt(timeParts[0]);
+                int minutes = Integer.parseInt(timeParts[1]);
+
+                this.slotStartTime = hours + (minutes / 60.0);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid time format: " + startTime);
+            }
+        } else {
+            System.out.println("Invalid time format: " + startTime);
+        }
     }
 
     public boolean forGame(){

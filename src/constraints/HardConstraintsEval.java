@@ -1,15 +1,11 @@
 package constraints;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.Assignment;
 import model.slots.Slot;
 import model.task.Task;
 
-//TODO: LOGIC FOR OVERLAPPING AGAIN
-//TODO: GAMES: ON MONDAY/ FRIDAY: 1 hour session, from 8-21, TUES: 1.5, from 8:00-20:00
-//TODO: PRACTICES: Same as games for M/F: 1 hour and T, F: 2 hour session from 8:00-20:00
 public class HardConstraintsEval {
 
     public boolean validate(Assignment newAssignment, List<Assignment> previouAssignments) {
@@ -18,7 +14,7 @@ public class HardConstraintsEval {
             return false;
         }
         
-        if (!noOverlappingPracticesAndGames(newAssignment)) {
+        if (!noOverlappingPracticesAndGames(newAssignment, previouAssignments)) {
             System.out.println("hard constraint failed: overlapping game and practice");
             return false;
         }
@@ -63,13 +59,35 @@ public class HardConstraintsEval {
         return result;
     }
 
-    //TODO: THIS MF TOO
-    // not the same slot. if new assignment is a game, look at the practice slots, and vice versa
-    private boolean noOverlappingPracticesAndGames(Assignment newAssignment) {    
+    private boolean noOverlappingPracticesAndGames(Assignment newAssignment, List<Assignment> previousAssignments) {    
+        Task curTask = newAssignment.getTask();
+        Slot curSlot = newAssignment.getSlot();
+
+        for (Assignment assignment: previousAssignments){
+            Task prevTask = assignment.getTask();
+
+            //Only 1 game and 1 practice
+            if (curTask.getIsGame() == prevTask.getIsGame())continue;
+            
+            if (!curTask.getIsGame()){ // If it is practice
+               // System.out.println("IS SUBSTRING: " + curTask.getIdentifier().contains(prevTask.getIdentifier()));
+                if (!curTask.getIdentifier().contains(prevTask.getIdentifier())){
+                    continue;
+                }
+            } else { //If it is game
+                //System.out.println("IS SUBSTRING: " + prevTask.getIdentifier().contains(curTask.getIdentifier()));
+                if (!prevTask.getIdentifier().contains(curTask.getIdentifier()))continue;
+            }
+
+            Slot prevSlot = assignment.getSlot();
+            if (isOverlap(prevSlot, curSlot))return false;
+        }
 
         return true;
     }
     
+
+
     private boolean eveningDivisionConstraint(Assignment assignment) {    
         if (assignment.getTask().getDivision().startsWith("9")) {
             boolean result = assignment.getSlot().getSlotStartTime() >= 18.0;
@@ -107,10 +125,12 @@ public class HardConstraintsEval {
             return false; 
         }
 
+        if (slot1.getId().equals(slot2.getId()) && slot1.forGame() == slot2.forGame()){
+            return true;
+        }
+
         double start1 = slot1.getSlotStartTime();
         double start2 = slot2.getSlotStartTime();
-
-        if (start1 == start2)return true;
     
         double duration1 = getSlotDuration(slot1);
         double duration2 = getSlotDuration(slot2);
