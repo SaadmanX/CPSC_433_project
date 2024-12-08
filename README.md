@@ -114,13 +114,3 @@ Eval: 30
 ### pairing 
 pairing.txt 0 0 1 0 0 0 11 0
 Eval: 55
-
-/hc10
-There are two special " practice bookings" CMSA U12T1S and CMSA 
-U13T1S that must be scheduled Tuesdays / Thursdays 18:00-19:00. CMSA 
-U12T1S is not allowed to overlap with any practices/games of CMSA U12T1 
-and CMSA U13T1S is not allowed to overlap with any practices/games of 
-CMSA U13T1. These two "practice bookings" are a way of schedule special 
-showcase tryouts series for these divisions’ players for selection to special 
-provincial teams for Alberta Games. These bookings are only triggered if the 
-respective game booking for CMSA U12T1 or CMSA U13T1 is requested. 
