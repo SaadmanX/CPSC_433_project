@@ -71,6 +71,10 @@ public class AndTree {
             parser.parseUnwanted();
 
             partialAssignments  = parser.parsePartialAssignments();
+
+            parser.sortTasks();
+            parser.sortSlots();
+
             state.setMinGameFillPenalty(parser.maxMinGame * weightList.get(0) * multiplierList.get(0));
             state.setMinPracticeFillPenalty(parser.maxMinPractice * weightList.get(1) * multiplierList.get(0));
             state.setPairPenalty(parser.maxPairs * weightList.get(2) * multiplierList.get(2));

@@ -93,10 +93,33 @@ public class HardConstraintsEval {
     }
 
 
+    // private boolean nonOverlappingTimeForCertainLevels(Assignment assignment , List<Assignment> previousAssignments) {
+    //     Task task = assignment.getTask();
+        
+    //     if (!task.isU1519()) {
+    //         return true; 
+    //     }
+        
+    //     Slot currentSlot = assignment.getSlot();
+    //     for (Assignment prevAssignment : previousAssignments) {
+    //         Task prevTask = prevAssignment.getTask();
+    //         Slot prevSlot = prevAssignment.getSlot();
+        
+    //         if (prevTask.isU1519()) {
+    //             if (isOverlap(prevSlot, currentSlot)) {
+    //                 //System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
+    //                 return false;
+    //             }
+    //         }
+    //     }
+        
+    //     return true;
+    // }
+
     private boolean nonOverlappingTimeForCertainLevels(Assignment assignment , List<Assignment> previousAssignments) {
         Task task = assignment.getTask();
         
-        if (!task.isU1519()) {
+        if (!task.isU1519() || !task.getIsGame()) {
             return true; 
         }
         
@@ -105,9 +128,9 @@ public class HardConstraintsEval {
             Task prevTask = prevAssignment.getTask();
             Slot prevSlot = prevAssignment.getSlot();
         
-            if (prevTask.isU1519()) {
+            if (prevTask.getIsGame() && prevTask.isU1519() && prevTask.getAge() != task.getAge()) {
                 if (isOverlap(prevSlot, currentSlot)) {
-                    //System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
+                    // System.out.println("Overlap detected between: " + prevTask.getIdentifier() + " and " + task.getIdentifier());
                     return false;
                 }
             }

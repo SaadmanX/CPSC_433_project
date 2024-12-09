@@ -1,4 +1,4 @@
-MAX SECDIFF INITIAL= 0
+MAX SECDIFF INITIAL= 1
 --------------TIER U13T3 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
@@ -7,48 +7,54 @@ Task[identifier=CMSA U13T3 DIV 02, level=U13T3, division=02, isGame=true, isSpec
 Task[identifier=CUSA O18 DIV 01, level=O18, division=01, isGame=true, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
+Pairing: 1
+Penalty: 9
+--------------TIER U13T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Remaining Tasks: 
+Task[identifier=CUSA O18 DIV 01, level=O18, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
 Penalty: 8
 --------------TIER U13T3 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
-Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
-Remaining Tasks: 
-Task[identifier=CUSA O18 DIV 01, level=O18, division=01, isGame=true, isSpecialPractice=false]
-Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
-Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
-Remaining Slots:
----For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
----For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
----For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
----For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
----For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 7
---------------TIER U13T3 COUNT= 1-----------
-Assignment: 
-Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Remaining Tasks: 
 Task[identifier=CUSA O18 DIV 01, level=O18, division=01, isGame=true, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 7
+Pairing: 1
+Penalty: 8
 --------------TIER O18 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
@@ -57,14 +63,16 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 6
+Pairing: 1
+Penalty: 7
 --------------TIER O18 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
@@ -73,10 +81,12 @@ Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 Pairing: 0
 Penalty: 7
@@ -87,14 +97,32 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
@@ -102,13 +130,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
@@ -116,14 +146,32 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 4
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
@@ -131,13 +179,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 1
+Pairing: 1
+Penalty: 2
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
@@ -145,17 +195,409 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
 Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+New best state with penalty: 5
 REACHED LEAF NODE.
 New best state with penalty: 4
 REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 1
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 2
+REACHED LEAF NODE.
 New best state with penalty: 1
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 3
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+REACHED LEAF NODE.
 REACHED LEAF NODE.
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
@@ -164,13 +606,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 4
+Pairing: 1
+Penalty: 5
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
@@ -178,13 +622,158 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 4
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
 REACHED LEAF NODE.
 REACHED LEAF NODE.
 Assignment: 
@@ -194,6 +783,69 @@ Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+Pairing: 0
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
@@ -205,13 +857,30 @@ Assignment:
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
-Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
-Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
----For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 Pairing: 0
 Penalty: 6
 Assignment: 
@@ -220,6 +889,7 @@ Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
@@ -233,7 +903,118 @@ Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+Pairing: 0
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 1
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
@@ -246,7 +1027,190 @@ Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+Pairing: 0
+Penalty: 2
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+Pairing: 0
+Penalty: 3
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+Pairing: 0
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
@@ -261,8 +1225,98 @@ Assignment:
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 2
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
@@ -275,7 +1329,85 @@ Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=0, isGame=true]
@@ -293,14 +1425,16 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 6
+Pairing: 1
+Penalty: 7
 --------------TIER O18 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
@@ -309,10 +1443,12 @@ Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 Pairing: 0
@@ -325,14 +1461,16 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 02 PRC 01, level=U13T3, division=02, isGame=false, isSpecialPractice=false]
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 7
+Pairing: 1
+Penalty: 8
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -340,14 +1478,32 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -355,13 +1511,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -369,14 +1527,32 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 4
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -384,28 +1560,421 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
 Penalty: 1
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 2
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
 Penalty: 5
 REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 3
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
 REACHED LEAF NODE.
 REACHED LEAF NODE.
 Assignment: 
@@ -415,13 +1984,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 4
+Pairing: 1
+Penalty: 5
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -429,13 +2000,158 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
 Remaining Slots:
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 4
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
 REACHED LEAF NODE.
 REACHED LEAF NODE.
 Assignment: 
@@ -445,9 +2161,11 @@ Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
@@ -457,13 +2175,31 @@ Assignment:
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
-Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 Pairing: 0
 Penalty: 6
@@ -474,20 +2210,204 @@ Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
 Pairing: 0
 Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 6
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 1
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
@@ -501,7 +2421,202 @@ Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 2
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 3
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
@@ -517,8 +2632,104 @@ Assignment:
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 2
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
@@ -532,7 +2743,90 @@ Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
 Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 5
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 0
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
 Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
@@ -550,14 +2844,32 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 6
+Pairing: 1
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 8
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -565,13 +2877,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
 Task[identifier=CMSA U13T3 DIV 01 PRC 01, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
-Penalty: 6
+Pairing: 1
+Penalty: 7
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -579,14 +2893,32 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 7
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -594,13 +2926,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 2
+Pairing: 1
+Penalty: 3
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -608,14 +2942,405 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
-Pairing: 0
+Pairing: 1
+Penalty: 7
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 2
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 3
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 3
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
 Penalty: 6
 REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 4
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=13:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=13:00, max=1, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 3
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 3
 REACHED LEAF NODE.
 REACHED LEAF NODE.
 Assignment: 
@@ -625,13 +3350,15 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
 Assignment: 
 Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
 Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
@@ -639,13 +3366,158 @@ Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
 Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U13T3 DIV 01 PRC 02, level=U13T3, division=01, isGame=false, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 7
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=MO, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 5
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=TU, time=9:00]
+Remaining Tasks: 
 Remaining Slots:
 ---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
 ---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
-Penalty: 5
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=11:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+Pairing: 1
+Penalty: 6
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+REACHED LEAF NODE.
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
+Assignment: 
+Assignment[Task=CMSA U13T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=10:00]
+Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
+Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=TU, time=9:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=FR, time=11:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=FR, startTime=9:00, max=1, min=1, curr=0, isGame=true]
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
+---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
+Penalty: 6
 REACHED LEAF NODE.
 REACHED LEAF NODE.
 Best solution found with penalty: 1
@@ -656,12 +3528,14 @@ Assignment[Task=CMSA U13T3 DIV 02, day=FR, time=9:00]
 Assignment[Task=CUSA O18 DIV 01, day=FR, time=10:00]
 Assignment[Task=CMSA U13T3 DIV 02 PRC 01, day=FR, time=11:00]
 Assignment[Task=CMSA U13T3 DIV 01 PRC 01, day=FR, time=13:00]
+Assignment[Task=CMSA U13T3 DIV 01 PRC 02, day=MO, time=11:00]
 Remaining Tasks: 
 Remaining Slots:
----For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=0, isGame=false]
+---For Practices--- TimeSlot[day=TU, startTime=9:00, max=1, min=0, curr=0, isGame=false]
 ---For Game--- TimeSlot[day=MO, startTime=9:00, max=2, min=1, curr=1, isGame=true]
 ---For Game--- TimeSlot[day=FR, startTime=10:00, max=2, min=1, curr=1, isGame=true]
 ---For Practices--- TimeSlot[day=FR, startTime=11:00, max=2, min=1, curr=1, isGame=false]
-Pairing: 0
+---For Practices--- TimeSlot[day=MO, startTime=11:00, max=2, min=1, curr=1, isGame=false]
+Pairing: 1
 Penalty: 1
 --------------------------------------------
