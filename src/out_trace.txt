@@ -3,54 +3,1510 @@ MAX SECDIFF INITIAL= 0
 Assignment: 
 Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
 Remaining Tasks: 
-Task[identifier=CMSA U10T1 DIV 02, level=U10T1, division=02, isGame=true, isSpecialPractice=false]
-Task[identifier=CUSA O19T1 DIV 01, level=O19T1, division=01, isGame=true, isSpecialPractice=false]
-Task[identifier=CMSA U10T1 DIV 01 PRC 01, level=U10T1, division=01, isGame=false, isSpecialPractice=false]
-Task[identifier=CUSA O19T1 DIV 01 PRC 01, level=O19T1, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U10T2 DIV 01, level=U10T2, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
 Remaining Slots:
----For Game--- TimeSlot[day=MO, startTime=9:00, max=1, min=1, curr=0, isGame=true]
----For Practices--- TimeSlot[day=MO, startTime=8:00, max=4, min=2, curr=0, isGame=false]
----For Practices--- TimeSlot[day=TU, startTime=10:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
 Pairing: 0
-Penalty: 0
+Penalty: 500
 --------------TIER U10T1 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
 Remaining Tasks: 
-Task[identifier=CMSA U10T1 DIV 02, level=U10T1, division=02, isGame=true, isSpecialPractice=false]
-Task[identifier=CUSA O19T1 DIV 01, level=O19T1, division=01, isGame=true, isSpecialPractice=false]
-Task[identifier=CMSA U10T1 DIV 01 PRC 01, level=U10T1, division=01, isGame=false, isSpecialPractice=false]
-Task[identifier=CUSA O19T1 DIV 01 PRC 01, level=O19T1, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U10T2 DIV 01, level=U10T2, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
 Remaining Slots:
----For Game--- TimeSlot[day=MO, startTime=8:00, max=1, min=1, curr=0, isGame=true]
----For Practices--- TimeSlot[day=MO, startTime=8:00, max=4, min=2, curr=0, isGame=false]
----For Practices--- TimeSlot[day=TU, startTime=10:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
 Pairing: 0
-Penalty: 0
+Penalty: 500
 --------------TIER U10T1 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T2 DIV 01, level=U10T2, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 500
+--------------TIER U10T2 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
-Assignment[Task=CMSA U10T1 DIV 02, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
 Remaining Tasks: 
-Task[identifier=CUSA O19T1 DIV 01, level=O19T1, division=01, isGame=true, isSpecialPractice=false]
-Task[identifier=CMSA U10T1 DIV 01 PRC 01, level=U10T1, division=01, isGame=false, isSpecialPractice=false]
-Task[identifier=CUSA O19T1 DIV 01 PRC 01, level=O19T1, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
 Remaining Slots:
----For Practices--- TimeSlot[day=MO, startTime=8:00, max=4, min=2, curr=0, isGame=false]
----For Practices--- TimeSlot[day=TU, startTime=10:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
 Pairing: 0
-Penalty: 0
---------------TIER U10T1 COUNT= 1-----------
+Penalty: 400
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 500
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+Pairing: 0
+Penalty: 500
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T6 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+REACHED LEAF NODE.
+New best state with penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T6 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+REACHED LEAF NODE.
+--------------TIER U10T2 COUNT= 1-----------
 Assignment: 
 Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
-Assignment[Task=CMSA U10T1 DIV 02, day=MO, time=8:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
 Remaining Tasks: 
-Task[identifier=CUSA O19T1 DIV 01, level=O19T1, division=01, isGame=true, isSpecialPractice=false]
-Task[identifier=CMSA U10T1 DIV 01 PRC 01, level=U10T1, division=01, isGame=false, isSpecialPractice=false]
-Task[identifier=CUSA O19T1 DIV 01 PRC 01, level=O19T1, division=01, isGame=false, isSpecialPractice=false]
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
 Remaining Slots:
----For Practices--- TimeSlot[day=MO, startTime=8:00, max=4, min=2, curr=0, isGame=false]
----For Practices--- TimeSlot[day=TU, startTime=10:00, max=2, min=1, curr=0, isGame=false]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T6 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+REACHED LEAF NODE.
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T6 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 100
+REACHED LEAF NODE.
+New best state with penalty: 100
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T2 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T3 DIV 01, level=U10T3, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 400
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T3 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T4 DIV 01, level=U10T4, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+Pairing: 0
+Penalty: 300
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T4 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T5 DIV 01, level=U10T5, division=01, isGame=true, isSpecialPractice=false]
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+Pairing: 0
+Penalty: 200
+--------------TIER U10T6 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+Pairing: 0
+Penalty: 100
+REACHED LEAF NODE.
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=1, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T5 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Remaining Tasks: 
+Task[identifier=CMSA U10T6 DIV 01, level=U10T6, division=01, isGame=true, isSpecialPractice=false]
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=0, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+Pairing: 0
+Penalty: 100
+--------------TIER U10T6 COUNT= 1-----------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
 Pairing: 0
 Penalty: 0
-No solution found.
+REACHED LEAF NODE.
+New best state with penalty: 0
+Best solution found with penalty: 0
+--------------------------------------------
+Assignment: 
+Assignment[Task=CMSA U10T1 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T2 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T3 DIV 01, day=MO, time=10:00]
+Assignment[Task=CMSA U10T4 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T5 DIV 01, day=MO, time=9:00]
+Assignment[Task=CMSA U10T6 DIV 01, day=MO, time=8:00]
+Remaining Tasks: 
+Remaining Slots:
+---For Game--- TimeSlot[day=MO, startTime=10:00, max=6, min=3, curr=3, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=9:00, max=6, min=2, curr=2, isGame=true]
+---For Game--- TimeSlot[day=MO, startTime=8:00, max=6, min=1, curr=1, isGame=true]
+Pairing: 0
+Penalty: 0
+--------------------------------------------
