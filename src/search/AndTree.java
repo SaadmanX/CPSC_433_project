@@ -36,31 +36,25 @@ public class AndTree {
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
-    List<String> specialList = new ArrayList<>();    
+    List<String> specialList = new ArrayList<>();     
     
-    private int calculateHeuristic(SearchState state) {
-        //So this measures the leftOver heuristics, with potentiall
-        //min game fullfilled, pairing fulfilled (so not included), instead using another strategy
-        //secDiff or pref ONLY will because it strictly limits to the actual assignment task-slot assignment
+    private int calculateMinFilledHeuristic(SearchState state){
+        //TODO: no because I'm being too optimistic about the TOTAL
+        //TODO: it's not the total, but individual task and how the current assignment looks
+        //TODO: for example, if a task is already assigned to another task, no way it can
+        //TODO: be adjusted to be assigned to another task, this must be taken into consideration
 
-        int totalEstimatedPenalty = 0;
+        int total = 0;
 
-        //Other 2 will try these 2 other heuristics, which is used to rather reduce the penalty,
-        //Because future assignments potentially reduce the penalty down
-        //So, the number of best case scenarios for remaining minFilledPen
-        // = Number of slots leftovers - number of unassigned tasks (in best case)
-
-        int numberOfMinGamesLeftToFill = 0;
-        int numberOfMinPracticeLeftToFill = 0;
+        int numberOfMinGamesLeftToFill = parser.maxMinGame;
+        int numberOfMinPracticeLeftToFill = parser.maxMinPractice;
         
         for (Assignment a: state.getAssignments()){
             if (a.getSlot().getMin() > a.getSlot().getCurrentCount()){
                 if (!a.getSlot().forGame()){
-                    int diff = parser.maxMinPractice - (a.getSlot().getMin() - a.getSlot().getCurrentCount());
-                    numberOfMinPracticeLeftToFill  += diff;
+                    numberOfMinPracticeLeftToFill -= (a.getSlot().getMin() - a.getSlot().getCurrentCount());
                 } else {
-                    int diff = parser.maxMinGame - (a.getSlot().getMin() - a.getSlot().getCurrentCount());
-                    numberOfMinGamesLeftToFill  += diff;
+                    numberOfMinPracticeLeftToFill -= (a.getSlot().getMin() - a.getSlot().getCurrentCount());
                 }
             }
         }
@@ -72,9 +66,30 @@ public class AndTree {
 
         //Parallelism here, so if all (even non optimal go for it, it will be prioritized the same)
         //Have to set a cap of 0 for all
-        if (numberOfMinPracticeLeftToFill > 0)totalEstimatedPenalty += weightList.get(1) * numberOfMinPracticeLeftToFill;
+        if (numberOfMinPracticeLeftToFill > 0)total+= weightList.get(1) * numberOfMinPracticeLeftToFill;
+        else {
+            //But if everything is 0... it will also ignore the state with the same heuristic all over...
+            if (state.getMinPracticeFillPenalty() > 0)total -= state.getMinPracticeFillPenalty(); //Rebase to 0
+        }
+        if (numberOfMinGamesLeftToFill > 0)total += weightList.get(0) * numberOfMinGamesLeftToFill;
+        else {
+            if (state.getMinGameFillPenalty() > 0)total-= state.getMinGameFillPenalty();
+        }
 
-        if (numberOfMinGamesLeftToFill > 0)totalEstimatedPenalty += weightList.get(0) * numberOfMinGamesLeftToFill;
+        return total;
+    }
+    
+    private int calculateHeuristic(SearchState state) {
+        //So this measures the leftOver heuristics, with potentiall
+        //min game fullfilled, pairing fulfilled (so not included), instead using another strategy
+        //secDiff or pref ONLY will because it strictly limits to the actual assignment task-slot assignment
+
+        int totalEstimatedPenalty = 0;
+        totalEstimatedPenalty -= state.getMinGameFillPenalty() + state.getMinPracticeFillPenalty();
+
+        //Other 2 will try these 2 other heuristics, which is used to rather reduce the penalty,
+        //Because future assignments potentially reduce the penalty down
+        
 
         System.out.println("Total estimated min game filled: " + totalEstimatedPenalty);
 
@@ -409,8 +424,9 @@ public class AndTree {
                             int estimatedPenalty = calculateHeuristic(current);
                             
                             //Drop the minFilled, will be handled with estimatedPen
-                            int fValue = current.getPenalty() + estimatedPenalty - current.getMinGameFillPenalty() 
-                                - current.getMinPracticeFillPenalty();
+                            int fValue = current.getPenalty() + estimatedPenalty;
+                            System.out.println("THE VALUE OF MINFILLEDPEN: " + current.getMinGameFillPenalty());
+                            System.out.println("TOTAL ESTIMATION VALUE: " + fValue);
 
                             if (fValue >= minEval) continue;
                         }
