@@ -125,15 +125,15 @@ public class InputParser {
                     div9 = true;
                 }
 
-                if (identifier.contains("CMSA U12T1") && !specialTasks.contains("CMSA U12T1S")) {
+                Slot s = findSlotByDayAndTime("TU", "18:00", true);
+
+                if (identifier.contains("CMSA U12T1") && !specialTasks.contains("CMSA U12T1S") && s != null) {
                     specialTasks.add("CMSA U12T1S");
                 }
 
-                if (identifier.contains("CMSA U13T1") && !specialTasks.contains("CMSA U13T1S")) {
+                if (identifier.contains("CMSA U13T1") && !specialTasks.contains("CMSA U13T1S") && s != null) {
                     specialTasks.add("CMSA U13T1S");
                 }
-
-                Slot s = findSlotByDayAndTime("TU", "18:00", true);
 
                 if (s != null) {
                     newGame.addUnwantedSlot(s);

@@ -68,6 +68,15 @@ public class HardConstraintsEval {
             //Only 1 game and 1 practice
             if (curTask.getIsGame() == prevTask.getIsGame())continue;
             
+            // practices with no div values
+            if (!curTask.getIsGame() && curTask.getDivision().equals("")) {
+                // check to see if GAMEs identifier contains PRACTIEC's identifier minus the training PRC <NUM>
+                if (prevTask.getIdentifier().contains(curTask.getIdentifier().subSequence(0, curTask.getIdentifier().length() - 7))) {
+                    Slot prevSlot = assignment.getSlot();
+                    return !isOverlap(prevSlot, curSlot);
+                }
+            }
+
             if (!curTask.getIsGame()){ // If it is practice
                 if (!curTask.getIdentifier().contains(prevTask.getIdentifier())){
                     continue;
@@ -140,41 +149,8 @@ public class HardConstraintsEval {
     }
 
     private boolean isOverlap(Slot slot1, Slot slot2) {
-        if (slot1 == null || slot2 == null)return false;  
-        if (!slot1.getDay().equals(slot2.getDay())) {
-            return false; 
-        }
-
-        if (slot1.getId().equals(slot2.getId()) && slot1.forGame() == slot2.forGame()){
-            return true;
-        }
-
-        double start1 = slot1.getSlotStartTime();
-        double start2 = slot2.getSlotStartTime();
-    
-        double duration1 = getSlotDuration(slot1);
-        double duration2 = getSlotDuration(slot2);
-    
-        double end1 = start1 + duration1;
-        double end2 = start2 + duration2;
-    
-        // Slots overlap if:
-        // Start1 is before end2 and Start2 is before end1
-        return (start1 < end2 && start2 < end1);
+        return (slot1.getDay().equals(slot2.getDay()) && slot1.getStartTime().equals(slot2.getStartTime()));
     }
-    
-    // Helper function to determine the duration of a slot
-    private double getSlotDuration(Slot slot) {
-        if (slot.forGame()) {
-            if (slot.getDay().equals("TU")) return 1.5; 
-            return 1.0; 
-        } else {
-            //if (slot.getDay().equals("TU")) return 1.5; 
-            if (slot.getDay().equals("FR")) return 2.0; 
-            return 1.0; 
-        }
-    }
-    
 
     private boolean notCompatibleConstraint(Assignment newAssignment) {
         Task newTask = newAssignment.getTask();
