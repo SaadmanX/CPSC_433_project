@@ -187,7 +187,7 @@ public class AndTree {
         newState.removeTask(clonedTask);
         
         newState.setPenalty(softChecker.updatePenalty(newAssignment, newState));
-        newState.printState();
+        // newState.printState();
         return newState;
     }
 
@@ -227,7 +227,7 @@ public class AndTree {
         //System.out.println(current.getRemainingTask().size());
 
         if (current.getRemainingTask().isEmpty()) {
-            System.out.println("REACHED LEAF NODE.");
+            // System.out.println("REACHED LEAF NODE.");
                 if (current.getPenalty() < minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();
