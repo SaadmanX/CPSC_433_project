@@ -206,10 +206,10 @@ public class InputParser {
                     //constraints.add(new Preference(day, time, identifier, value));
 
                     Task task = findTaskByIdentifier(identifier);
+                    if (task == null)return;
                     Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
-
+                    if (slot == null)slot = new Slot(day, time, 0 , 0, task.getIsGame());
                     task.addPreference(slot, value);
-
                     maxPreferencesValue += value;
                     //System.out.println(task + ", " + slot);
                 }

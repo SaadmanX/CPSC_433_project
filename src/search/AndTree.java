@@ -8,15 +8,7 @@ import model.task.Task;
 import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.PriorityBlockingQueue;
-
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
 
@@ -36,105 +28,7 @@ public class AndTree {
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
-    List<String> specialList = new ArrayList<>();    
-    
-    private int calculateHeuristic(SearchState state) {
-        //So this measures the leftOver heuristics, with potentiall
-        //min game fullfilled, pairing fulfilled (so not included), instead using another strategy
-        //secDiff or pref ONLY will because it strictly limits to the actual assignment task-slot assignment
-
-        int totalEstimatedPenalty = 0;
-
-        //Other 2 will try these 2 other heuristics, which is used to rather reduce the penalty,
-        //Because future assignments potentially reduce the penalty down
-        //So, the number of best case scenarios for remaining minFilledPen
-        // = Number of slots leftovers - number of unassigned tasks (in best case)
-
-        int numberOfMinGamesLeftToFill = 0;
-        int numberOfMinPracticeLeftToFill = 0;
-        
-        for (Assignment a: state.getAssignments()){
-            if (a.getSlot().getMin() > a.getSlot().getCurrentCount()){
-                if (!a.getSlot().forGame()){
-                    int diff = parser.maxMinPractice - (a.getSlot().getMin() - a.getSlot().getCurrentCount());
-                    numberOfMinPracticeLeftToFill  += diff;
-                } else {
-                    int diff = parser.maxMinGame - (a.getSlot().getMin() - a.getSlot().getCurrentCount());
-                    numberOfMinGamesLeftToFill  += diff;
-                }
-            }
-        }
-
-        for (Task task: state.getRemainingTask()){
-            if (task.getIsGame())numberOfMinGamesLeftToFill --;
-            else numberOfMinPracticeLeftToFill--;
-        }
-
-        //Parallelism here, so if all (even non optimal go for it, it will be prioritized the same)
-        //Have to set a cap of 0 for all
-        if (numberOfMinPracticeLeftToFill > 0)totalEstimatedPenalty += weightList.get(1) * numberOfMinPracticeLeftToFill;
-
-        if (numberOfMinGamesLeftToFill > 0)totalEstimatedPenalty += weightList.get(0) * numberOfMinGamesLeftToFill;
-
-        System.out.println("Total estimated min game filled: " + totalEstimatedPenalty);
-
-        //TODO: For pairing
-
-        for (Task task : state.getRemainingTask()) {
-            int minPenalty = Integer.MAX_VALUE;
-    
-            for (Slot slot : state.getAvailableSlots()) {
-                if (slot.forGame() != task.getIsGame()) continue; 
-                Assignment assignment = new Assignment(task, slot);
-                List<Integer> penaltyList = softChecker.updatePenalty(assignment, state);
-                int penalty = 0;
-
-                penalty += penaltyList.get(1); //directly add Pref pen
-                penalty += penaltyList.get(3); //directly add secDiff
-
-                //There are other strategy in SearchState for the last 2:
-
-                minPenalty = Math.min(minPenalty, penalty);
-            }
-    
-            totalEstimatedPenalty += minPenalty;
-        }
-    
-        return totalEstimatedPenalty;
-    }
-    
-
-    // private int calculateHeuristic(SearchState state) {
-    //     int heuristicPenalty = 0;
-    
-    //     // MinFilled: Estimate penalty for slots not meeting minimum requirements
-    //     for (Slot slot : state.getAvailableSlots()) {
-    //         int deficit = slot.getMin() - slot.getCurrentCount();
-    //         int assignableCount = countAssignableTasks(slot, state.getRemainingTask());
-    //         if (deficit > assignableCount) {
-    //             heuristicPenalty += (deficit - assignableCount) * minFillWeight(slot);
-    //         }
-    //     }
-    
-    //     // Pairing: Estimate penalty for unpaired tasks
-    //     for (Task task : state.getRemainingTask()) {
-    //         int unpairedCount = countUnpairedTasks(task, state.getAssignments());
-    //         heuristicPenalty += unpairedCount * pairPenaltyWeight;
-    //     }
-    
-    //     // Preference: Assign penalty for unassigned tasks based on least preferred slot
-    //     for (Task task : state.getRemainingTask()) {
-    //         heuristicPenalty += calculateLeastPreferredSlotPenalty(task, state.getAvailableSlots());
-    //     }
-    
-    //     // SecDiff: Predict overlap conflicts in slots
-    //     for (Slot slot : state.getAvailableSlots()) {
-    //         heuristicPenalty += calculateSectionConflictPenalty(slot, state.getRemainingTask());
-    //     }
-    
-    //     return heuristicPenalty;
-    // }
-    
+    List<String> specialList = new ArrayList<>();
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> multiplierList, ArrayList<Integer> weightList) {
         this.state = root;
@@ -184,7 +78,7 @@ public class AndTree {
 
             state.updatePenalty();
             //System.out.println("MAX PENALTY = " + state.getPenalty());
-            //System.out.println("MAX SECDIFF INITIAL= " + state.getPairPenalty());
+            System.out.println("MAX SECDIFF INITIAL= " + state.getPairPenalty());
 
             softChecker = new SoftConstraintsEval(multiplierList, weightList);
 
@@ -192,7 +86,7 @@ public class AndTree {
 
 
         } catch (IOException e) {
-            //System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Error reading file: " + e.getMessage());
         }
 
     }
@@ -288,87 +182,25 @@ public class AndTree {
         newState.updateRemainingSlots(clonedSlot);
         newState.removeTask(clonedTask);
         
-        List<Integer> newPenList = (softChecker.updatePenalty(newAssignment, newState));
-
-        if (newPenList.get(0) != Integer.MAX_VALUE)
-            if (task.getIsGame())newState.setMinGameFillPenalty(newPenList.get(0));
-            else newState.setMinPracticeFillPenalty(newPenList.get(0));
-
-        if (newPenList.get(1) != Integer.MAX_VALUE)newState.setPrefPenalty(newPenList.get(1));
-        if (newPenList.get(2) != Integer.MAX_VALUE)newState.setPairPenalty(newPenList.get(2));
-        if (newPenList.get(3) != Integer.MAX_VALUE)newState.setSecDiffPenalty(newPenList.get(3));
-
-        newState.updatePenalty();
-
+        newState.setPenalty(softChecker.updatePenalty(newAssignment, newState));
         newState.printState();
         return newState;
     }
 
     private List<SearchState> generateNextStates(SearchState state, Task task) {
-        List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());
-        List<SearchState> states = Collections.synchronizedList(new ArrayList<>());
-        int threadCount = Runtime.getRuntime().availableProcessors(); // Number of threads to use
-        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
-
-        // Divide slots among threads
-        int chunkSize = (int) Math.ceil((double) availableSlots.size() / threadCount);
-        List<Future<?>> futures = new ArrayList<>();
-
-        for (int i = 0; i < availableSlots.size(); i += chunkSize) {
-            int start = i;
-            int end = Math.min(i + chunkSize, availableSlots.size());
-
-            futures.add(executor.submit(() -> {
-                for (int j = start; j < end; j++) {
-                    Slot slot = availableSlots.get(j);
-
-                    if (slot.forGame() != task.getIsGame()) continue;
-
-                    SearchState newState = transitLinkedAssignment(state, task, slot);
-                    if (!newState.equals(state)) {
-                        states.add(newState);
-                    }
-                }
-            }));
+        List<SearchState> states = new ArrayList<>();
+        
+        List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());            
+        
+        for (Slot slot : availableSlots) {      
+            if (slot.forGame() != task.getIsGame())continue;     
+            SearchState newState = transitLinkedAssignment(state, task, slot);
+            if (!newState.equals(state)) {
+                states.add(newState);
+            } 
         }
-
-        // Wait for all threads to finish
-        try {
-            for (Future<?> future : futures) {
-                future.get(); // Wait for task completion
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        } finally {
-            executor.shutdown(); // Shut down the thread pool
-        }
-
-        // Sort states based on the heuristic value
-        states.sort(Comparator.comparingInt(this::calculateHeuristic));
-
         return states;
     }
-
-    
-    // private List<SearchState> generateNextStates(SearchState state, Task task) {
-    //     List<SearchState> states = new ArrayList<>();
-        
-    //     List<Slot> availableSlots = new ArrayList<>(state.getAvailableSlots());            
-        
-    //     for (Slot slot : availableSlots) {      
-    //         if (slot.forGame() != task.getIsGame())continue;     
-    //         SearchState newState = transitLinkedAssignment(state, task, slot);
-    //         if (!newState.equals(state)) {
-    //             states.add(newState);
-    //         } 
-    //     }
-
-    //     // Sort states based on the heuristic value
-    //     states.sort(Comparator.comparingInt(this::calculateHeuristic));
-
-    //     return states;
-    // }
-    
 
     public void search() {
         // Start from the initial state
@@ -383,101 +215,36 @@ public class AndTree {
             System.out.println("No solution found.");
         }
     }
+    
+    private void dfs(SearchState current) {
+        //System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
+        //current.printState();
+        //System.out.println("--------------------------------------------");
+        //System.out.println(current.getRemainingTask().size());
 
-    private void dfs(SearchState root) {
-        // Create a thread pool for parallel processing
-        int threadCount = Runtime.getRuntime().availableProcessors();
-        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+        if (current.getRemainingTask().isEmpty()) {
+            System.out.println("REACHED LEAF NODE.");
+                if (current.getPenalty() < minEval) {
+                    System.out.println("New best state with penalty: " + current.getPenalty());
+                    minEval = current.getPenalty();
+                    lastState = current;
+                }
+            return;
+        }
+    
+        // Prune states with penalty worse than the best solution
+        //if (current.getPenalty() > minEval) {
+        //    return;
+        //}
 
-        try {
-            // Use a shared priority queue for managing states to explore
-            PriorityBlockingQueue<SearchState> queue = new PriorityBlockingQueue<>(1000, Comparator.comparingInt(SearchState::getPenalty));
-            queue.add(root); // Start with the root state
+        Task nextTask = current.getRemainingTask().get(0);
 
-            List<Future<?>> futures = new ArrayList<>();
+        List<SearchState> nextStates = generateNextStates(current, nextTask);
+    
+        for (SearchState nextState : nextStates) {
             
-            for (int i = 0; i < threadCount; i++) {
-                futures.add(executor.submit(() -> {
-                    while (!queue.isEmpty()) {
-                        SearchState current;
-                        
-                        // Safely poll the next state to process
-                        synchronized (queue) {
-                            current = queue.poll();
-                            if (current == null) continue;
-                       
-                            int estimatedPenalty = calculateHeuristic(current);
-                            
-                            //Drop the minFilled, will be handled with estimatedPen
-                            int fValue = current.getPenalty() + estimatedPenalty - current.getMinGameFillPenalty() 
-                                - current.getMinPracticeFillPenalty();
-
-                            if (fValue >= minEval) continue;
-                        }
-
-                        // Check if it's a terminal state
-                        if (current.getRemainingTask().isEmpty()) {
-                            synchronized (this) {
-                                if (current.getPenalty() < minEval) {
-                                    minEval = current.getPenalty();
-                                    lastState = current;
-                                }
-                            }
-                            continue;
-                        }
-
-                        // Generate next states and add them to the queue
-                        Task nextTask = current.getRemainingTask().get(0);
-                        List<SearchState> nextStates = generateNextStates(current, nextTask);
-
-                        synchronized (queue) {
-                            queue.addAll(nextStates);
-                        }
-                    }
-                }));
-            }
-
-            // Wait for all threads to complete
-            for (Future<?> future : futures) {
-                future.get();
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        } finally {
-            executor.shutdown(); // Shut down the thread pool
+            dfs(nextState); // Recursive DFS call
         }
     }
-
-
-    // private void dfs(SearchState current) {
-    //     //System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
-    //     //current.printState();
-    //     //System.out.println("--------------------------------------------");
-    //     //System.out.println(current.getRemainingTask().size());
-
-    //     if (current.getRemainingTask().isEmpty()) {
-    //         //System.out.println("REACHED LEAF NODE.");
-    //             if (current.getPenalty() < minEval) {
-    //                 //System.out.println("New best state with penalty: " + current.getPenalty());
-    //                 minEval = current.getPenalty();
-    //                 lastState = current;
-    //             }
-    //         return;
-    //     }
-    
-    //     // Prune states with penalty worse than the best solution
-    //     //if (current.getPenalty() > minEval) {
-    //     //    return;
-    //     //}
-
-    //     Task nextTask = current.getRemainingTask().get(0);
-
-    //     List<SearchState> nextStates = generateNextStates(current, nextTask);
-    
-    //     for (SearchState nextState : nextStates) {
-            
-    //         dfs(nextState); // Recursive DFS call
-    //     }
-    // }
 
 }
