@@ -137,11 +137,7 @@ public class InputParser {
 
                 if (s != null) {
                     newGame.addUnwantedSlot(s);
-                } else {
-                    if (!specialTasks.isEmpty()) {
-                        System.exit(0);
-                    }
-                }
+                } 
             }
         }
         return games;

@@ -86,7 +86,7 @@ public class Slot {
         if (tierFrequencyMap.containsKey(tierId)){
             // System.out.println("--------------TIER " + tierId + " COUNT= " + tierFrequencyMap.get(tierId).intValue() + "-----------");
             return tierFrequencyMap.get(tierId).intValue(); 
-           
+
         }   
         return 0;
     }
