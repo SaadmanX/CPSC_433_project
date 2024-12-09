@@ -227,19 +227,19 @@ public class AndTree {
         //System.out.println(current.getRemainingTask().size());
 
         if (current.getRemainingTask().isEmpty()) {
-            // System.out.println("REACHED LEAF NODE.");
+            // System.out.println("REACHED LEAF NODE. best solution at penalty: " + minEval);
                 if (current.getPenalty() < minEval) {
                     System.out.println("New best state with penalty: " + current.getPenalty());
                     minEval = current.getPenalty();
                     lastState = current;
-                }
+                }   
             return;
         }
     
         // Prune states with penalty worse than the best solution
-        //if (current.getPenalty() > minEval) {
-        //    return;
-        //}
+        // if (current.getPenalty() > minEval) {
+        //     return;
+        // }
 
         Task nextTask = current.getRemainingTask().get(0);
 
