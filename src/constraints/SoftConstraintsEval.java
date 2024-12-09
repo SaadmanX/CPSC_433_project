@@ -1,5 +1,6 @@
 package constraints;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Assignment;
@@ -20,7 +21,7 @@ public class SoftConstraintsEval {
         this.penaltyList = penaltyList;
     }
     
-    public int updatePenalty(Assignment assignment, SearchState state) {
+    public List<Integer> updatePenalty(Assignment assignment, SearchState state) {
 
         Slot slot = assignment.getSlot();
         Task task = assignment.getTask();
@@ -32,18 +33,27 @@ public class SoftConstraintsEval {
 
         int secDiffPenaltyDiff = evalSecDiff(slot, task) * multiplierList.get(3);
 
+        int minFillPen = Integer.MAX_VALUE;
+        int prefPen = Integer.MAX_VALUE;
+        int pairPen = Integer.MAX_VALUE;
+        int secDiffPen = Integer.MAX_VALUE;
+
         if (minFillPenaltyDiff != 0){
-            if (task.getIsGame())state.setMinGameFillPenalty(state.getMinGameFillPenalty() - minFillPenaltyDiff);
-            else state.setMinPracticeFillPenalty(state.getMinPracticeFillPenalty() - minFillPenaltyDiff);
+            if (task.getIsGame())minFillPen = (state.getMinGameFillPenalty() - minFillPenaltyDiff);
+            else minFillPen = (state.getMinPracticeFillPenalty() - minFillPenaltyDiff);
         }
 
-        if (prefPenaltyDiff != 0)state.setPrefPenalty(state.getPrefPenalty() - prefPenaltyDiff);
-        if (pairPenaltyDiff != 0)state.setPairPenalty(state.getPairPenalty() - pairPenaltyDiff);
-        if (secDiffPenaltyDiff != 0)state.setSecDiffPenalty(state.getSecDiffPenalty() + secDiffPenaltyDiff);
-        
-        state.updatePenalty();
+        if (prefPenaltyDiff != 0)prefPen = (state.getPrefPenalty() - prefPenaltyDiff);
+        if (pairPenaltyDiff != 0)pairPen = (state.getPairPenalty() - pairPenaltyDiff);
+        if (secDiffPenaltyDiff != 0)secDiffPen = (state.getSecDiffPenalty() + secDiffPenaltyDiff);
 
-        return state.getPenalty();
+        List<Integer> penLists = new ArrayList<>();
+        penLists.add(minFillPen);
+        penLists.add(prefPen);
+        penLists.add(pairPen);
+        penLists.add(secDiffPen);
+
+        return penLists;
     }
     
     private int updateMinFilled(Slot slot) {

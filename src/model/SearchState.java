@@ -43,34 +43,8 @@ public class SearchState {
     }
     
     public void setRemainingTask(List<Task> tasks) {
-        List<Task> orderedTasks = new ArrayList<>();
-        
-        // First add tasks with division >= 9
-        for (Task task : tasks) {
-            try {
-                int divNum = Integer.parseInt(task.getDivision());
-                if (divNum >= 9) {
-                    orderedTasks.add(task);
-                }
-            } catch (NumberFormatException e) {
-                continue;
-            }
-        }
-        
-        // Then add remaining tasks
-        for (Task task : tasks) {
-            try {
-                int divNum = Integer.parseInt(task.getDivision());
-                if (divNum < 9) {
-                    orderedTasks.add(task);
-                }
-            } catch (NumberFormatException e) {
-                // Add tasks with non-numeric divisions at the end
-                orderedTasks.add(task);
-            }
-        }
-        
-        this.remainingTasks = orderedTasks;
+        tasks.sort(new TaskComparator());;
+        this.remainingTasks = tasks;
     }
         
     public void removeTask(Task task) {
@@ -80,6 +54,16 @@ public class SearchState {
 
     public void setRemainingSlots(List<Slot> slots){
         this.availableSlots = slots;
+    }
+    
+    public int countAssignableTasks(Slot slot) {
+        return (int) remainingTasks.stream()
+            .filter(task -> !task.isUnwantedSlot(slot) && task.getIsGame() == slot.forGame())
+            .count();
+    }
+
+    public boolean isTaskAssigned(Task task) {
+        return assignments.stream().anyMatch(assignment -> assignment.getTask().getIdentifier().equals(task.getIdentifier()));
     }
 
     public void updateRemainingSlots(Slot slot) {   

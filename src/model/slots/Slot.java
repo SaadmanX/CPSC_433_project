@@ -84,7 +84,7 @@ public class Slot {
 
     public int getTierTaskCount(String tierId){
         if (tierFrequencyMap.containsKey(tierId)){
-            System.out.println("--------------TIER " + tierId + " COUNT= " + tierFrequencyMap.get(tierId).intValue() + "-----------");
+            //System.out.println("--------------TIER " + tierId + " COUNT= " + tierFrequencyMap.get(tierId).intValue() + "-----------");
             return tierFrequencyMap.get(tierId).intValue(); 
            
         }   
