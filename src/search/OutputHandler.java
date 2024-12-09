@@ -10,11 +10,14 @@ import model.Assignment;
 import model.SearchState;
 
 public class OutputHandler {
-    public static void writeToFile(SearchState state, String inputFileName) {
-        if (state == null) return;
-        
+    public static void writeToFile(SearchState state, String inputFileName) {        
         String outputFileName = "Output.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
+            if (state == null) {
+                writer.write("No solution");
+                return;
+            }
+
             writer.write(String.format("Eval-value: %d\n", state.getPenalty()));
             writer.write("Solution:\n");
             
