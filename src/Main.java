@@ -17,8 +17,8 @@ public class Main {
         ArrayList<Integer> weightList = new ArrayList<>();
         ArrayList<Integer> multiplierList = new ArrayList<>();
 
-        PrintStream out = new PrintStream(new FileOutputStream("out_trace.txt"));
-        System.setOut(out);
+        // PrintStream out = new PrintStream(new FileOutputStream("out_trace.txt"));
+        // System.setOut(out);
 
         //Parse from command line here
         String inputFileName = args[0];
@@ -37,6 +37,8 @@ public class Main {
         //This will parse inputs from file + preprocess data
 
         long startTime = System.currentTimeMillis();
+
+        // long maxTimeMillis = 900000;
 
         andTree.preprocess();
         andTree.search();

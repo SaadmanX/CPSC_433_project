@@ -72,6 +72,7 @@ public class HardConstraintsEval {
             if (!curTask.getIsGame() && curTask.getDivision().equals("")) {
                 // check to see if GAMEs identifier contains PRACTIEC's identifier minus the training PRC <NUM>
                 if (prevTask.getIdentifier().contains(curTask.getIdentifier().subSequence(0, curTask.getIdentifier().length() - 7))) {
+                    // System.out.println("universal practice");
                     Slot prevSlot = assignment.getSlot();
                     return !isOverlap(prevSlot, curSlot);
                 }

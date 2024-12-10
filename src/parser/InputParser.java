@@ -34,6 +34,7 @@ public class InputParser {
         sections = new LinkedHashMap<>(); // Preserve order of sections
     }    
 
+    // takes the name of the file and parses each section
     public void parseFile(String filename) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
@@ -53,11 +54,13 @@ public class InputParser {
         }
     }
 
+    // parses the name of the test
     public String parseName() {
         List<String> lines = sections.get("Name:");
         return (lines != null && !lines.isEmpty()) ? lines.get(0).trim() : null;
     }
 
+    // parses each game slot and adds creates a new slot 
     public List<Slot> parseGameSlots() {
         List<Slot> gameSlots = new ArrayList<>();
         List<String> lines = sections.get("Game slots:");
@@ -85,6 +88,7 @@ public class InputParser {
         return gameSlots;
     }
 
+    // parses each practice slot and adds creates a new slot 
     public List<Slot> parsePracticeSlots() {
         List<Slot> practiceSlots = new ArrayList<>();
         List<String> lines = sections.get("Practice slots:");
@@ -108,6 +112,7 @@ public class InputParser {
         return practiceSlots;
     }
 
+    // parses each game and creates a game object. checks whether game will trigger special practices, and also whether the game is supposed to be assigned into an evening slot
     public List<Game> parseGames() {
         List<Game> games = new ArrayList<>();
         List<String> lines = sections.get("Games:");
@@ -127,11 +132,15 @@ public class InputParser {
 
                 Slot s = findSlotByDayAndTime("TU", "18:00", true);
 
-                if (identifier.contains("CMSA U12T1") && !specialTasks.contains("CMSA U12T1S") && s != null) {
+                // if (s == null){
+                //     System.err.println("FAILED WITH SPPS");
+                // }
+
+                if (identifier.contains("CMSA U12T1") && !specialTasks.contains("CMSA U12T1S")) {
                     specialTasks.add("CMSA U12T1S");
                 }
 
-                if (identifier.contains("CMSA U13T1") && !specialTasks.contains("CMSA U13T1S") && s != null) {
+                if (identifier.contains("CMSA U13T1") && !specialTasks.contains("CMSA U13T1S")) {
                     specialTasks.add("CMSA U13T1S");
                 }
 
@@ -143,6 +152,7 @@ public class InputParser {
         return games;
     }
 
+    // parses each practice and creates a practice object. also, checks whether special practices needs to be added, and adds them accordingly
     public List<Practice> parsePractices() {
         List<Practice> practices = new ArrayList<>();
         List<String> lines = sections.get("Practices:");
@@ -180,6 +190,7 @@ public class InputParser {
         return practices;
     }
 
+    // parses the not compatible section, adding each not compatible task to its respective tasks
     public void parseNotCompatible() {
         List<String> lines = sections.get("Not compatible:");
 
@@ -189,15 +200,19 @@ public class InputParser {
                 String id1 = parts[0].trim().replaceAll("\\s+", " ");
                 String id2 = parts[1].trim().replaceAll("\\s+", " ");
 
+                
                 Task t1 = findTaskByIdentifier(id1);
                 Task t2 = findTaskByIdentifier(id2);
+
+                if (t1 == null || t2 == null)continue;
+
                 t1.addNotCompatible(id2);
                 t2.addNotCompatible(id1);                
             }
         }
     }
 
-    
+    // parses pair section and adds them to the respective tasks.
     public void parsePairs() {
         List<String> lines = sections.get("Pair:");
 
@@ -211,6 +226,9 @@ public class InputParser {
                 Task t1 = findTaskByIdentifier(id1);
                 Task t2 = findTaskByIdentifier(id2);
 
+
+                if (t1 == null || t2 == null)continue;
+
                 t1.addPair(t2);
                 t2.addPair(t1);
 
@@ -222,6 +240,7 @@ public class InputParser {
         //return constraints;
     }
 
+    // parses preference section, adding the preferred time slot to the tasks list
     public void parsePreferences() {
         //List<Preference> constraints = new ArrayList<>();
         List<String> lines = sections.get("Preferences:");
@@ -256,6 +275,7 @@ public class InputParser {
         //return constraints;
     }
 
+    // parses unwanted section, adding each unwanted slot to the task list
     public void parseUnwanted() {
         //List<Unwanted> constraints = new ArrayList<>();
         List<String> lines = sections.get("Unwanted:");
@@ -270,7 +290,11 @@ public class InputParser {
                     //constraints.add(new Unwanted(identifier, day, time));
 
                     Task task = findTaskByIdentifier(identifier);
+
+                    if (task == null)continue;
                     Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
+                    if (slot == null)continue;
+                   
 
                     task.addUnwantedSlot(slot);
                 }
@@ -278,6 +302,7 @@ public class InputParser {
         }
     }
 
+    // parses partial assignment section, adding a partial assignment object into the constraints list
     public List<PartialAssignment> parsePartialAssignments() {
         List<PartialAssignment> constraints = new ArrayList<>();
         List<String> lines = sections.get("Partial assignments:");
@@ -298,6 +323,7 @@ public class InputParser {
         return constraints;
     }
 
+    // sorts the tasks, prioritizing the hard constraints. pushes special tasks to the top of the list, then pushes any evening slot tasks (DIV 9x) next
     public void sortTasks() {
         if (allTasks.isEmpty()) return;
         
@@ -339,6 +365,7 @@ public class InputParser {
         allTasks.addAll(sortedList);
     }
 
+    // sorts the time slots, prioritizing pushing the special tasks slot (TU @ 1800) first, and then pushes all evening slots to the top as well
     public void sortSlots() {
         if (allSlots.isEmpty()) return;
         
@@ -383,11 +410,12 @@ public class InputParser {
         allSlots.addAll(sortedList);
     }
 
-
+    // used to find task by its identifier
     private Task findTaskByIdentifier(String identifier) {
         return allTasks.stream().filter(task -> task.getIdentifier().equals(identifier)).findFirst().orElse(null);
     }
 
+    // used to find slot by its day, time, and whether its a game or practice slot
     private Slot findSlotByDayAndTime(String day, String time, boolean isGame) {
         return allSlots.stream()
                 .filter(slot -> slot.getDay().equals(day) && slot.getStartTime().equals(time) && slot.forGame() == isGame)
