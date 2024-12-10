@@ -149,8 +149,40 @@ public class HardConstraintsEval {
     }
 
     private boolean isOverlap(Slot slot1, Slot slot2) {
-        return (slot1.getDay().equals(slot2.getDay()) && slot1.getStartTime().equals(slot2.getStartTime()));
+        if (slot1 == null || slot2 == null)return false;  
+        if (!slot1.getDay().equals(slot2.getDay())) {
+            return false; 
+        }
+
+        if (slot1.getId().equals(slot2.getId()) && slot1.forGame() == slot2.forGame()){
+            return true;
+        }
+
+        double start1 = slot1.getSlotStartTime();
+        double start2 = slot2.getSlotStartTime();
+    
+        double duration1 = getSlotDuration(slot1);
+        double duration2 = getSlotDuration(slot2);
+    
+        double end1 = start1 + duration1;
+        double end2 = start2 + duration2;
+    
+        // Slots overlap if:
+        // Start1 is before end2 and Start2 is before end1
+        return (start1 < end2 && start2 < end1);
     }
+
+    private double getSlotDuration(Slot slot) {
+        if (slot.forGame()) {
+            if (slot.getDay().equals("TU")) return 1.5; 
+            return 1.0; 
+        } else {
+            //if (slot.getDay().equals("TU")) return 1.5; 
+            if (slot.getDay().equals("FR")) return 2.0; 
+            return 1.0; 
+        }
+    }
+
 
     private boolean notCompatibleConstraint(Assignment newAssignment) {
         Task newTask = newAssignment.getTask();

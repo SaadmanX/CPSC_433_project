@@ -224,7 +224,7 @@ public class AndTree {
         //System.out.println("------------Current State with number of remaining tasks: " + current.getRemainingTask().size() + "-------------------");
         //current.printState();
         //System.out.println("--------------------------------------------");
-        //System.out.println(current.getRemainingTask().size());
+        System.out.println(current.getRemainingTask().size() + " " + minEval);
 
         if (current.getRemainingTask().isEmpty()) {
             // System.out.println("REACHED LEAF NODE. best solution at penalty: " + minEval);
@@ -235,11 +235,19 @@ public class AndTree {
                 }   
             return;
         }
+
+        // && may cause errors here
+        if (minEval == 0) {
+            System.out.println("MINEVAL of 0 REACHED");
+            System.exit(1);
+        }
     
         // Prune states with penalty worse than the best solution
         // if (current.getPenalty() > minEval) {
         //     return;
         // }
+
+
 
         Task nextTask = current.getRemainingTask().get(0);
 
