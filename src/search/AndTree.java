@@ -9,8 +9,10 @@ import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
@@ -34,6 +36,7 @@ public class AndTree {
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
     List<String> specialList = new ArrayList<>();     
+    Map<Integer, SearchState> prevStates = new HashMap<Integer, SearchState>();
     
     private int calculateMinFilledHeuristic(SearchState state){
         //TODO: no because I'm being too optimistic about the TOTAL
@@ -238,6 +241,12 @@ public class AndTree {
         return true;
     }
 
+    // ^^ add stuff here please
+
+    private void addToPrevStates(SearchState aState) {
+        prevStates.put(aState.getAssignments().size(), aState);
+    }
+
     private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
         // Clone the task and slot
         Task clonedTask = new Task(task);  // Assuming a proper clone constructor
@@ -292,8 +301,11 @@ public class AndTree {
         for (Slot slot : availableSlots) {      
             if (slot.forGame() != task.getIsGame())continue;     
             SearchState newState = transitLinkedAssignment(state, task, slot);
-            if (!newState.equals(state)) {
+
+            // ^^ add the comparison here. check if that new state is already on the hashmap of states. if it isnt, then add it to the hashmap
+            if (!newState.equals(state)) {  // ^^ comapre here exactly
                 states.add(newState);
+                addToPrevStates(newState);
             } 
         }
 
@@ -318,7 +330,7 @@ public class AndTree {
 
         while (!openSet.isEmpty()) {
             SearchState current = openSet.poll(); 
-           
+
             if (current.getRemainingTask().isEmpty()) {
                 if (current.getPenalty() < minEval) {
                     System.out.println("New best state found with penalty: " + current.getPenalty());

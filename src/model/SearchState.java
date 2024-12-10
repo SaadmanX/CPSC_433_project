@@ -177,6 +177,7 @@ public class SearchState {
     }
 
     public void addAssignment(Assignment assignment) {
+        // have to make this addition check for alphabetical order 
         assignments.add(assignment);
         Task task = assignment.getTask();
         Slot slot = assignment.getSlot();
