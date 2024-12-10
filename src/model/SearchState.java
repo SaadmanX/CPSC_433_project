@@ -72,6 +72,32 @@ public class SearchState {
         
         this.remainingTasks = orderedTasks;
     }
+
+    public boolean compareSearchState(SearchState anotherState){
+
+        AssignmentComparator assignmentComparator = new AssignmentComparator();
+
+        //Sort both assignment tasks
+        this.assignments.sort(assignmentComparator);
+        anotherState.assignments.sort(assignmentComparator);
+
+        List<Assignment> otherAssignments = anotherState.getAssignments();
+        if (otherAssignments.size() != getAssignments().size()){
+            return false;
+        } 
+
+
+        for (int i = 0; i < getAssignments().size(); i++){
+
+            if (!assignments.get(i).getSlot().getId().equals(otherAssignments.get(i).getSlot().getId())) {
+                return false;
+            }
+            if (!assignments.get(i).getTask().getIdentifier().equals(otherAssignments.get(i).getTask().getIdentifier()))return false;
+        }
+        
+        return true;
+    }
+
         
     public void removeTask(Task task) {
         remainingTasks.removeIf(task2 -> task2.getIdentifier().equals(task.getIdentifier()));

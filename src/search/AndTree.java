@@ -8,6 +8,7 @@ import model.task.Task;
 import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
@@ -29,6 +30,9 @@ public class AndTree {
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
     List<String> specialList = new ArrayList<>();
+
+    HashMap<Integer, List<SearchState>> seenStateMap = new HashMap<>();
+
 
     public AndTree(SearchState root, String filename, ArrayList<Integer> multiplierList, ArrayList<Integer> weightList) {
         this.state = root;
@@ -157,6 +161,39 @@ public class AndTree {
         return true;
     }
 
+    private void addToPrevStates(SearchState aState) {
+        int key = aState.getAssignments().size();
+    
+        if (!seenStateMap.containsKey(key)) {
+            List<SearchState> newStateList = new ArrayList<>();
+            newStateList.add(aState);
+            seenStateMap.put(key, newStateList);
+        } else {
+            seenStateMap.get(key).add(aState);
+        }
+    }
+
+    private boolean checkAlreadySeenState(SearchState aState) {
+        int len = aState.getAssignments().size();
+
+        if (!seenStateMap.containsKey(len)) {
+            return false;
+        }
+
+        for (SearchState seen : seenStateMap.get(len)) {
+            if (aState.compareSearchState(seen)) {
+                System.out.println("STATE FOUND HERE =======================");
+                System.out.println(aState.getAssignments());
+                System.out.println(seen.getAssignments());
+                System.out.println("++++++++++++++++++++++++");
+                System.out.println(seen.getAssignments());
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
         // Clone the task and slot
         Task clonedTask = new Task(task);  // Assuming a proper clone constructor
@@ -199,10 +236,11 @@ public class AndTree {
         for (Slot slot : availableSlots) {      
             if (slot.forGame() != task.getIsGame())continue;     
             SearchState newState = transitLinkedAssignment(state, task, slot);
-            if (!newState.equals(state)) {
-                states.add(newState);
-            } 
-        }
+            if (!newState.equals(state) && !checkAlreadySeenState(newState)) {  // ^^ comapre here exactly
+                    states.add(newState);
+                    addToPrevStates(newState);
+                } 
+            }
         return states;
     }
 
@@ -239,6 +277,7 @@ public class AndTree {
         // && may cause errors here
         if (minEval == 0) {
             System.out.println("MINEVAL of 0 REACHED");
+            lastState.printState();
             System.exit(1);
         }
     
