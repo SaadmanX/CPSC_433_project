@@ -62,8 +62,9 @@ public class SearchState {
 
         for (int i = 0; i < getAssignments().size(); i++){
            if (!assignments.get(i).getTask().getIdentifier().equals(otherAssignments.get(i).getTask().getIdentifier()))return false;
+           if (!assignments.get(i).getSlot().getId().equals(otherAssignments.get(i).getSlot().getId()))return false;
         }
-        
+
         return true;
     }
         

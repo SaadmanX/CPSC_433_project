@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Set;
 
 import constraints.HardConstraintsEval;
 import constraints.SoftConstraintsEval;
@@ -37,7 +35,7 @@ public class AndTree {
     List<String> specialList = new ArrayList<>(); 
     
     //Key = size,  maps to all the states with that size of assignments
-    HashMap<String, List<Assignment>> seenStateMap = new HashMap<>();
+    HashMap<Integer, List<SearchState>> seenStateMap = new HashMap<>();
     
     private int calculateMinFilledHeuristic(SearchState state){
         int total = 0;
@@ -307,7 +305,6 @@ public class AndTree {
 
     public void search() {
         PriorityQueue<SearchState> openSet = new PriorityQueue<>(Comparator.comparingInt(this::calculateTotalCost));
-        Set<SearchState> closedSet = new HashSet<>();
         
         openSet.add(state); // Add the root state to the open set
 
@@ -322,13 +319,28 @@ public class AndTree {
                 }
                 continue; 
             }
+           
+            if (seenStateMap.containsKey(current.getAssignments().size())) {
+                List<SearchState> toCompareSearchStates = seenStateMap.get(current.getAssignments().size());
+                boolean match = false;
+                for (SearchState s: toCompareSearchStates){
+                    if (s.compareSearchState(current)){
+                        System.out.println("I THINK I'VE SEEN THIS FILM BEFORE");
+                        match = true;
+                        break;
+                    }
+                }
 
-            // TODO: PRUNING AND STATE REVISITED
-            if (closedSet.contains(current)) {
-                continue;
+                if (match)continue; //skip seen state
+                //Add it in otherwise
+                toCompareSearchStates.add(current);
+                seenStateMap.put(current.getAssignments().size(), toCompareSearchStates);
+
+            } else {
+                List<SearchState> newList = new ArrayList<>();
+                newList.add(current);
+                seenStateMap.put(current.getAssignments().size(), newList);
             }
-
-            closedSet.add(current);
 
             // Generate and process next states
             Task nextTask = current.getRemainingTask().get(0);

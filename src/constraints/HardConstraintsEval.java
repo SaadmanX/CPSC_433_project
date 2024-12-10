@@ -67,6 +67,15 @@ public class HardConstraintsEval {
 
             //Only 1 game and 1 practice
             if (curTask.getIsGame() == prevTask.getIsGame())continue;
+
+            // practices with no div values
+            if (!curTask.getIsGame() && curTask.getDivision().equals("")) {
+                // check to see if GAMEs identifier contains PRACTIEC's identifier minus the training PRC <NUM>
+                if (prevTask.getIdentifier().contains(curTask.getIdentifier().subSequence(0, curTask.getIdentifier().length() - 7))) {
+                    Slot prevSlot = assignment.getSlot();
+                    return !isOverlap(prevSlot, curSlot);
+                }
+            }
             
             if (!curTask.getIsGame()){ // If it is practice
                 if (!curTask.getIdentifier().contains(prevTask.getIdentifier())){
@@ -82,7 +91,6 @@ public class HardConstraintsEval {
 
         return true;
     }
-
 
     private boolean eveningDivisionConstraint(Assignment assignment) {    
         if (assignment.getTask().getDivision().startsWith("9")) {
