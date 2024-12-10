@@ -9,6 +9,7 @@ import parser.InputParser;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -33,14 +34,12 @@ public class AndTree {
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
-    List<String> specialList = new ArrayList<>();     
+    List<String> specialList = new ArrayList<>(); 
+    
+    //Key = size,  maps to all the states with that size of assignments
+    HashMap<String, List<Assignment>> seenStateMap = new HashMap<>();
     
     private int calculateMinFilledHeuristic(SearchState state){
-        //TODO: no because I'm being too optimistic about the TOTAL
-        //TODO: it's not the total, but individual task and how the current assignment looks
-        //TODO: for example, if a task is already assigned to another task, no way it can
-        //TODO: be adjusted to be assigned to another task, this must be taken into consideration
-
         int total = 0;
 
         int numberOfMinGamesLeftToFill = parser.maxMinGame;
@@ -76,19 +75,15 @@ public class AndTree {
         return total;
     }
     
-    private int calculateHeuristic(SearchState state) {
-        //So this measures the leftOver heuristics, with potentiall
-        //min game fullfilled, pairing fulfilled (so not included), instead using another strategy
-        //secDiff or pref ONLY will because it strictly limits to the actual assignment task-slot assignment
 
+    private int calculateHeuristic(SearchState state) {
+    
         int totalEstimatedPenalty = 0;
         totalEstimatedPenalty -= state.getMinGameFillPenalty() + state.getMinPracticeFillPenalty();
 
         //Other 2 will try these 2 other heuristics, which is used to rather reduce the penalty,
         //Because future assignments potentially reduce the penalty down
-        
-
-        System.out.println("Total estimated min game filled: " + totalEstimatedPenalty);
+        //System.out.println("Total estimated min game filled: " + totalEstimatedPenalty);
 
         //TODO: For pairing
 
