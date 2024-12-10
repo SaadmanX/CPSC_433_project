@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -35,15 +36,12 @@ public class AndTree {
     ArrayList<Integer> weightList;
     ArrayList<Integer> multiplierList;
     private boolean isSpecialBooking = false;
-    List<String> specialList = new ArrayList<>();     
-    Map<Integer, SearchState> prevStates = new HashMap<Integer, SearchState>();
+    List<String> specialList = new ArrayList<>(); 
+    
+    //Key = size,  maps to all the states with that size of assignments
+    HashMap<Integer, List<SearchState>> seenStateMap = new HashMap<>();
     
     private int calculateMinFilledHeuristic(SearchState state){
-        //TODO: no because I'm being too optimistic about the TOTAL
-        //TODO: it's not the total, but individual task and how the current assignment looks
-        //TODO: for example, if a task is already assigned to another task, no way it can
-        //TODO: be adjusted to be assigned to another task, this must be taken into consideration
-
         int total = 0;
 
         int numberOfMinGamesLeftToFill = parser.maxMinGame;
@@ -79,19 +77,15 @@ public class AndTree {
         return total;
     }
     
-    private int calculateHeuristic(SearchState state) {
-        //So this measures the leftOver heuristics, with potentiall
-        //min game fullfilled, pairing fulfilled (so not included), instead using another strategy
-        //secDiff or pref ONLY will because it strictly limits to the actual assignment task-slot assignment
 
+    private int calculateHeuristic(SearchState state) {
+    
         int totalEstimatedPenalty = 0;
         totalEstimatedPenalty -= state.getMinGameFillPenalty() + state.getMinPracticeFillPenalty();
 
         //Other 2 will try these 2 other heuristics, which is used to rather reduce the penalty,
         //Because future assignments potentially reduce the penalty down
-        
-
-        System.out.println("Total estimated min game filled: " + totalEstimatedPenalty);
+        //System.out.println("Total estimated min game filled: " + totalEstimatedPenalty);
 
         //TODO: For pairing
 
@@ -244,9 +238,32 @@ public class AndTree {
     // ^^ add stuff here please
 
     private void addToPrevStates(SearchState aState) {
-        prevStates.put(aState.getAssignments().size(), aState);
+        int key = aState.getAssignments().size();
+    
+        if (!seenStateMap.containsKey(key)) {
+            List<SearchState> newStateList = new ArrayList<>();
+            newStateList.add(aState);
+            seenStateMap.put(key, newStateList);
+        } else {
+            seenStateMap.get(key).add(aState);
+        }
     }
 
+    private boolean checkAlreadySeenState(SearchState aState) {
+        int len = aState.getAssignments().size();
+
+        if (!seenStateMap.containsKey(len)) {
+            return false;
+        }
+
+        for (SearchState seen : seenStateMap.get(len)) {
+            if (aState.compareSearchState(seen)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     private SearchState transitLinkedAssignment(SearchState currentState, Task task, Slot slot) {
         // Clone the task and slot
         Task clonedTask = new Task(task);  // Assuming a proper clone constructor
@@ -303,7 +320,7 @@ public class AndTree {
             SearchState newState = transitLinkedAssignment(state, task, slot);
 
             // ^^ add the comparison here. check if that new state is already on the hashmap of states. if it isnt, then add it to the hashmap
-            if (!newState.equals(state)) {  // ^^ comapre here exactly
+            if (!newState.equals(state) && !checkAlreadySeenState(newState)) {  // ^^ comapre here exactly
                 states.add(newState);
                 addToPrevStates(newState);
             } 
