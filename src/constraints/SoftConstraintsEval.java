@@ -84,8 +84,9 @@ public class SoftConstraintsEval {
         int n = slot.getTierTaskCount(task.getLevel());
         
         int pairs = (n * (n-1)) / 2;
-              
+
         int penalty = pairs * penaltyList.get(3);
         return penalty;
     }
+
 }

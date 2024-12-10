@@ -238,22 +238,17 @@ public class InputParser {
 
 
                     Task task = findTaskByIdentifier(identifier);
-
+                    if (task == null)continue;
+                    Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
+                    if (slot == null)slot = new Slot(day, time, 0 , 0, task.getIsGame());
                     if (day.equals("TU") && time.equals("11:00") && task.getIsGame()) {
                         continue;
                     }
 
-                    Slot slot = findSlotByDayAndTime(day, time, task.getIsGame());
-
-                    if (slot == null) {
-                        System.out.println("at inputparser, slot is null");
-                        System.out.println(task);
-                        System.out.println(line);
-                    }
-
                     task.addPreference(slot, value);
-
                     maxPreferencesValue += value;
+
+
                     //System.out.println(task + ", " + slot);
                 }
             }
