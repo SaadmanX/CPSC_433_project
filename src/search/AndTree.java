@@ -258,6 +258,10 @@ public class AndTree {
 
         for (SearchState seen : seenStateMap.get(len)) {
             if (aState.compareSearchState(seen)) {
+                System.out.println("STATE FOUND HERE =======================");
+                System.out.println(aState.getAssignments());
+                System.out.println("++++++++++++++++++++++++");
+                System.out.println(seen.getAssignments());
                 return true;
             }
         }
@@ -309,7 +313,6 @@ public class AndTree {
         return newState;
     }
 
-
     private List<SearchState> generateNextStates(SearchState state, Task task) {
         List<SearchState> states = new ArrayList<>();
         
@@ -321,6 +324,7 @@ public class AndTree {
 
             // ^^ add the comparison here. check if that new state is already on the hashmap of states. if it isnt, then add it to the hashmap
             if (!newState.equals(state) && !checkAlreadySeenState(newState)) {  // ^^ comapre here exactly
+            // if (!newState.equals(state)) {
                 states.add(newState);
                 addToPrevStates(newState);
             } 
