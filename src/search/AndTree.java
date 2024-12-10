@@ -107,6 +107,9 @@ public class AndTree {
                 penalty += penaltyList.get(1); //directly add Pref pen
                 penalty += penaltyList.get(3); //directly add secDiff
 
+                // penalty += penaltyList.get(2); 
+
+
                 //There are other strategy in SearchState for the last 2:
 
                 minPenalty = Math.min(minPenalty, penalty);
@@ -315,7 +318,8 @@ public class AndTree {
 
         newState.updatePenalty();
 
-        newState.printState();
+        // newState.printState();
+        System.out.println(newState.getPenalty());
         return newState;
     }
 
@@ -420,7 +424,9 @@ public class AndTree {
                         synchronized (queue) {
                             current = queue.poll();
                             if (current == null) continue;
-                       
+
+                            System.out.println(current.getRemainingTask().size() + " " + minEval);
+
                             int estimatedPenalty = calculateHeuristic(current);
                             
                             //Drop the minFilled, will be handled with estimatedPen

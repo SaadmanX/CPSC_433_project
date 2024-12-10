@@ -17,8 +17,8 @@ public class Main {
         ArrayList<Integer> weightList = new ArrayList<>();
         ArrayList<Integer> multiplierList = new ArrayList<>();
 
-        PrintStream out = new PrintStream(new FileOutputStream("out_trace.txt"));
-        System.setOut(out);
+        // PrintStream out = new PrintStream(new FileOutputStream("out_trace.txt"));
+        // System.setOut(out);
 
         //Parse from command line here
         String inputFileName = args[0];
